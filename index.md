@@ -63,7 +63,7 @@ A number of open-source data analysis tools have been employed in our overall sy
 # Products
 
 ## General data export
-* [**"Clip n' Ship"**](/interpolants/sources/clipnship.html) — spatial data export system, by geographic extent. Includes many of the products listed below.
+* [**"Clip 'n Ship"**](/interpolants/sources/clipnship.html) — spatial data export system, by geographic extent. Includes many of the products listed below.
 
 ## Spatial interpolation
 _Static 2D fields, updated frequently_
