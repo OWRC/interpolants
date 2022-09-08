@@ -1,5 +1,5 @@
 ---
-title: Clip n' Ship
+title: Clip 'n Ship
 author: Oak Ridges Moraine Groundwater Program
 output: html_document
 ---
