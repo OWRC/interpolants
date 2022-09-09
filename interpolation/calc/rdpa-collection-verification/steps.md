@@ -3,25 +3,39 @@
 # 1. Hourly scalars to Hourly Basin
 > workflow: `preprocessMSCtoBasinsHourly.xml`
 
-1. Scrape MSC for recent data, import as MSC hourly scalars into FEWS.
-1. Export hourly MSC .nc from FEWS, from 1989-10-01
-1. Interpolate to 10km sub-watersheds, using a python script executed from FEWS (`ncScalarHoulyBasinNetCDF.py`)
+1. Scrape MSC for recent data, executed from FEWS
+1. Import scraped MSC hourly scalars into FEWS.
+1. Export hourly MSC .nc from FEWS, from 1989-10-01 (`_exportMSChourlyNetcdf.nc`)
+1. Interpolate to 10km sub-watersheds, using a python script executed from config file `pyMSChourliesToBasin.xml` that executes: `ncMSCtoHourlyBasinNetCDF.py`.
     - Air temperature $(T)$, relative humidity $(r)$ and wind speeds $(u)$ are interpolated using a [linear radial basis function (RBF)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.Rbf.html).
     - Air/barometric pressure $(P)$ are first [corrected for elevation](https://owrc.github.io/interpolants/interpolation/barometry.html) then interpolated using the same linear RBF. 
     - Wind directions are split into their x-y components, each interpolated separately using a linear RBF before returned to an angle. A sample result is shown below:
     ![](fig/windir.png)
 
-1. Save to NetCDF (.nc) for import back to FEWS.
+1. Interpolated $(T, r, u)$ are applied to compute potential evaporation flux [m/s]:
+
+$$
+    E_a=7.46\times 10^{-9} \cdot au^b d_a
+$$
+
+$$
+    d_a=(1-r) \cdot e_s(T)
+$$
+
+1. Save to NetCDF (.nc) for import back to FEWS. (`_exportMSChourlyNetcdf_interp.nc`) > $T, P, r, u, E_a$ hourly basins
 
 
 
 # 2. Hourly Basin to 6-hourly Basin
 > workflow: `preprocessMSCtoBasinsHourly.xml` (continued)
 
-1. Hourly aggregation to 6-hourly time intervals (00:00 06:00 12:00 18:00 UTC) is performed in FEWS using the [meanToMean aggregation](https://publicwiki.deltares.nl/display/FEWSDOC/Aggregation+MeanToMean) routine. 
-*__These data have a set expiry.__*
+1. Hourly aggregation to 6-hourly time intervals (00:00 06:00 12:00 18:00 UTC) is performed in FEWS using the:
+    - [MeanToMean aggregation](https://publicwiki.deltares.nl/display/FEWSDOC/Aggregation+MeanToMean) routine for $T, P, r, u$, and
+    - [Accumulative aggregation](https://publicwiki.deltares.nl/display/FEWSDOC/Aggregation+Accumulative) routine for $E_a$.
 
-1. Export 6-hourly, basin-interpolated $T, P, r, u$ to NetCDF (`yyyyMMddHHmm-6hourlyBasin.nc`).
+    *__These data have a set expiry.__*
+
+1. Export 6-hourly, basin-interpolated $Precip, T, P, r, u$ to NetCDF (`yyyyMMddHHmm-6hourlyBasin.nc`).
 
 
 
