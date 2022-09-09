@@ -3,9 +3,14 @@
 # 1. Hourly scalars to Hourly Basin
 > workflow: `preprocessMSCtoBasinsHourly.xml`
 
+
+## MSC scalars
 1. Scrape MSC for recent data, executed from FEWS
 1. Import scraped MSC hourly scalars into FEWS.
-1. Export hourly MSC .nc from FEWS, from 1989-10-01 (`_exportMSChourlyNetcdf.nc`)
+1. Export hourly MSC .nc from FEWS, from 1989-10-01 
+    
+    `_exportMSChourlyNetcdf.nc` $P, T, r, \text{vis}, u, u_\text{dir}$
+
 1. Interpolate to 10km sub-watersheds, using a python script executed from config file `pyMSChourliesToBasin.xml` that executes: `ncMSCtoHourlyBasinNetCDF.py`.
     - Air temperature $(T)$, relative humidity $(r)$ and wind speeds $(u)$ are interpolated using a [linear radial basis function (RBF)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.Rbf.html).
     - Air/barometric pressure $(P)$ are first [corrected for elevation](https://owrc.github.io/interpolants/interpolation/barometry.html) then interpolated using the same linear RBF. 
@@ -22,12 +27,12 @@ $$
     d_a=(1-r) \cdot e_s(T)
 $$
 
-1. Save to NetCDF (.nc) for import back to FEWS. (`_exportMSChourlyNetcdf_interp.nc`) > $T, P, r, u, E_a$ hourly basins
+6. Save to NetCDF (.nc) for import back to FEWS. (`_exportMSChourlyNetcdf_interp.nc`) > $T, P, r, u, E_a$ hourly basins
 
 
 
-# 2. Hourly Basin to 6-hourly Basin
-> workflow: `preprocessMSCtoBasinsHourly.xml` (continued)
+## Hourly Basin to 6-hourly Basin interpolation
+
 
 1. Hourly aggregation to 6-hourly time intervals (00:00 06:00 12:00 18:00 UTC) is performed in FEWS using the:
     - [MeanToMean aggregation](https://publicwiki.deltares.nl/display/FEWSDOC/Aggregation+MeanToMean) routine for $T, P, r, u$, and
@@ -36,6 +41,8 @@ $$
     *__These data have a set expiry.__*
 
 1. Export 6-hourly, basin-interpolated $Precip, T, P, r, u$ to NetCDF (`yyyyMMddHHmm-6hourlyBasin.nc`).
+
+    *__to be altered to__* $Rf, Sm, T, r, u, Ea$
 
 
 
