@@ -9,12 +9,12 @@
 1. Import scraped MSC hourly scalars into FEWS.
 1. Export hourly MSC .nc from FEWS, from 1989-10-01 
     
-    `_exportMSChourlyNetcdf.nc` $P, T, r, \text{vis}, u, u_\text{dir}$
+    `_exportMSChourlyNetcdf.nc` $P, T, r, \text{vis}, u, u_\alpha$
 
 1. Interpolate to 10km sub-watersheds, using a python script executed from config file `pyMSChourliesToBasin.xml` that executes: `ncMSCtoHourlyBasinNetCDF.py`.
     - Air temperature $(T)$, relative humidity $(r)$ and wind speeds $(u)$ are interpolated using a [linear radial basis function (RBF)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.Rbf.html).
     - Air/barometric pressure $(P)$ are first [corrected for elevation](https://owrc.github.io/interpolants/interpolation/barometry.html) then interpolated using the same linear RBF. 
-    - Wind directions are split into their x-y components, each interpolated separately using a linear RBF before returned to an angle. A sample result is shown below:
+    - Wind directions $(u_\alpha)$ are split into their x-y components, each interpolated separately using a linear RBF before returned to an angle. A sample result is shown below:
     ![](fig/windir.png)
 
 1. Interpolated $(T, r, u)$ are applied to compute potential evaporation flux [m/s]:
