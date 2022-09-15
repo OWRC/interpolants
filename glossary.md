@@ -12,9 +12,11 @@ output: html_document
 
 $E_a$   atmospheric demand/potential evaporation (mm)
 
-$P_a$   atmospheirc pressure (Pa)
+$P_R$   Precipitation in the form of rain (mm)
 
-$P_\text{drn}$ Snowmelt/drainage from snowpack (mm)
+$P_S$   Precipitation in the form of snow (mm SWE)
+
+$P_M$ Snowmelt/drainage from snowpack (mm)
 
 $T_a$   temperature of air (°C)
 
@@ -22,6 +24,9 @@ $T_a$   temperature of air (°C)
 
 
 ## lower case
+
+$p_a$   atmospheirc pressure (Pa)
+
 $r$ relative humidity (-)
 
 $u$ windspeed (m/s)
@@ -30,5 +35,9 @@ $u$ windspeed (m/s)
 
 
 ## lower case Greek
+
+$e$ vapour pressure of water in air (Pa)
+
+$e_s$ saturation vapour pressure of water in air (Pa)
 
 $\alpha_u$ wind direction (degrees CW north)
