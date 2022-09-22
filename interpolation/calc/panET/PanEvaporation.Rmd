@@ -255,13 +255,38 @@ The model also has a lower limit of zero meaning that condensation/dew collectio
 
 
 
-# Python code snippit
-to read *.nc files
+# Python code snippet
+> to read *.nc files
 
-```{python, eval=F, echo=T}
+```{python pythonSample, eval=F, echo=T}
 import np
+import netCDF4 as nc
 
-print('yes')
+with nc.Dataset('199611010000_exportMSChourlyNetcdf.nc') as ds:
+  ds.set_auto_mask(False) # https://github.com/Unidata/netcdf4-python/issues/785
+  for v in ds.variables: print(v) # print available variables
+  
+  tim = ds.variables['time']
+  tims = nc.num2date(tim[:],tim.units).astype('datetime64[ns]')
+  nt = len(tims)        
+  
+  lats = ds.variables['lat'][:]
+  lngs = ds.variables['lon'][:]
+  elev = ds.variables['z'][:]
+  
+  def getVar(vnam):
+      print("  - "+vnam)
+      v = ds.variables[vnam][:,:]
+      v[v == -9999] = np.nan
+      return v
+  
+  sids = getVar('station_id')
+  smns = getVar('station_names')
+  pa = getVar('air_pressure')
+  ta = getVar('air_temperature')
+  rh = getVar('relative_humidity')
+  wd = getVar('wind_direction')
+  ws = getVar('wind_speed')
 ```
 
 
