@@ -67,7 +67,7 @@ The final product, a single forcing termed "Atmospheric Yield" is inputted in th
 
 $$\text{Rainfall} + \text{Snowmelt} = \textit{Atmospheric Yield}$$
 
-The aim of the model design is to simulatneously reduce the amount of computational processes and leverage near-realtime data assimilation products. It is recognized from a hydrological model design perspective, that the dynamic processes that dictate the spatial distribution of watershed moisture is only affected by atmopheric yeild, that is water sourced from the atmosphere in liquid form.
+The aim of the model design is to simultaneously reduce the amount of computational processes and leverage near-realtime data assimilation products. It is recognized from a hydrological model design perspective, that the dynamic processes that dictate the spatial distribution of watershed moisture is only affected by atmospheric yield, that is water sourced from the atmosphere in liquid form.
 
 
 
@@ -80,7 +80,7 @@ Once transformed to the set time step, both scalar (i.e., point) data and gridde
 
 <!-- ### Temperature, Pressure, Humidity and Wind Speed -->
 ### Atmospheric Demand
-> $T_a$, $P_a$, $\text{rh}$ and $u$
+> $T_a$, $P_a$, $r$ and $u$
 
 Historical hourly measurements of air temperature, pressure, relative humidity and wind speed were retrieved from the ECCC website: https://climate.weather.gc.ca/historical_data/search_historic_data_e.html. In total, 46 stations with varying periods of record length and quality were collected. 
 
@@ -96,13 +96,41 @@ Model elevations range from 75-400 masl and orographic effects were deemed negli
 
 
 
-# Pre-computation (???)
+# Pre-processing
+
+In an attempt to make most of computational efficiency, many processes that are typically computed as part of a hydrological model have been pre-built as input to the ORMGP water balance model.  Processes such as snowmelt and potential evapotranspiration can modelled independently of the rainfall-runoff-recharge process and thus much computational gains can be made if these processes are pre-determined.
+
+
+## Atmospheric Demand $(E_a)$
+
+
+The model considers the greater role the atmosphere has on its 30,000 km² extent. The atmosphere, taking a top-down perspective, requires consideration of PBL (Oke, 1987) as it represents the barrier from which mass must transfer when surface evaporation is captured by the atmosphere. This is particularity so when considering mass transfer over rough surfaces, where surface evaporation becomes coupled with advective (vapour deficit) flux through the PBL (Bailey et.al., 1997).
+
+This is evident when relating pan evaporation to strictly aerodynamic variables temperature and humidity, simulated at an hourly timestep. For instance, using the advective term [kg/m²/s] of Penman (1948):
+
+$$
+  E_a=\rho_a \frac{\varepsilon}{p_a} d_a \cdot f(u)
+$$
+
+where $d_a=(1-r)e_s$ [Pa], $e_s \propto T_a$, the wind-function $f(u)=a+ub$ [m/s], where $u$ is wind speed [m/s], the above equation can be safely reduced to an empirical form (Novák, 2012):
+
+$$
+  E_a=7.46\times 10^{-6} \cdot (a+ub) d_a
+$$
+
+where $E_a$ is now given in [m/s] for water. 
+
+<!-- This is the power form of open water evaporation $(E_o)$ used by Penman (1948). It is worth noting that this is modified from Penman (1948) in that it is assumed $T_s \approx T_a$, that is the relationship between surface temperature and air temperature is captured by this empirical equation. -->
+
+While considering its simplicity, the Penman advective term performs well against observation. [24,641 data-days from 17 MSC daily pan evaporation stations were gathered for validation](https://owrc.github.io/interpolants/interpolation/calc/panET/PanEvaporation.html). With $u$ [m/s] and $d_a$ [Pa], $a=9.3\times 10^{-3}$ and $b=7.8\times 10^{-4}$ resulted in a globally weighted Nash-Sutcliffe efficiency of 0.41 and 0.90 for daily and monthly pan evaporation estimation, respectively.
+
+
 
 
 ## Atmospheric Yield
 
 
-The data collected include total precipitation and snowmelt. Summing the two together would double count precipitation fallen as snow; the model, however does not account for snow, rather it relies on snowmelt as a forcing. Precipition is parsed into rainfall and snowfall on the basis of a critical temperature ($T_\text{crit}$):
+The data collected include total precipitation and snowmelt. Summing the two together would double count precipitation fallen as snow; the model, however does not account for snow, rather it relies on snowmelt as a forcing. Precipitation is parsed into rainfall and snowfall on the basis of a critical temperature ($T_\text{crit}$):
 
 $$
 \text{Rainfall}=
@@ -156,43 +184,6 @@ The aim of the model design is to simultaneously reduce the amount of computatio
 
 
 
-## Atmospheric Demand $(E_a)$
-
-
-The model considers the greater role the atmosphere has on its 30,000 km² extent. The atmosphere, taking a top-down perspective, requires consideration of PBL (Oke) as it reprensents the barrier from which mass must transfer when surface evaporation is captured by the atmosphere. This is particularily so when considering mass transfer over rough surfaces, where surface evaporation becomes coupled with advective (vapour deficit) flux through the PBL (surf clim can).
-
-This is evident when relating pan evaporation to strictly aerodynamic variables temperature and humidity, integrated at the 6-hourly timestep. For instance, using the advective term [kg/m²/s] of Penman (1948) is:
-
-$$
-E_a=\rho_a \frac{\varepsilon}{p_a} d_a \cdot f(u)
-$$
-
-where $d_a=(1-rh)e_s$, $e_s \propto T_a$ and the wind-function $f(u)=au^b$ [m/s] can safely reduced to an empirical form:
-
-$$
-E_a=7.46\times 10^{-9} \cdot au^b d_a
-$$
-where $E_a$ is now given in [m/s]. This is the power form of open water evaporation $(E_o)$ used by Penman (1948). It is worth noting that this is modified from Penman (1948) in that it is assumed $T_s \propto T_a$, that is the relationship between surface temperature and air temperature is captured in this empirical form.
-
-<!-- In addition to the above "Power" form, Penman (1948) also offers the the most common (linear) form: -->
-
-<!-- $$ -->
-<!-- E_a=a(1+bu) d_a -->
-<!-- $$ -->
-<!-- However, this did not perform as well as well as the power form. Either form is dependent on temperature and horizontal wind speed. -->
-
-For not it's simplicity, the power law does perform well against observation. 24,641 data-days from 17 MSC daily pan evaporation stations were gathered for validatation. With $u$ [m/s] and $d_a$ [Pa], $a=0.009$ and $b=0.26$ resulted in a global Kling-Gupta (2008) efficiency of 0.66 and 0.86 for daily and monthly pan evaporation estimation, respectively.
-
-![](fig/4937_daily.svg)
-Simulated daily evaporation (using the above equation) against observed pan evaporation.
-
-![](fig/4937_mscatter.svg)
-Monthly totals, scatter plot. Red line is the 1:1 line
-
-![](fig/4937_mts.svg)
-Monthly totals, timeseries. (Note: shown here are consecutive months, only December-March are not included.)
-
-
 
 
 
@@ -224,4 +215,12 @@ An optimization routine is employed to determine $T_\text{crit}$ such that annua
 
 # References
 
+Bailey W.G., Oke T.R., Rouse W.R., 1997. The Surface Climates of Canada. ed. W.G. Bailey, Timothy R. Oke, and Wayne R. Rouse. McGill-Queen's University Press.
+
 National Operational Hydrologic Remote Sensing Center. 2004. Snow Data Assimilation System (SNODAS) Data Products at NSIDC, Version 1. [Indicate subset used]. Boulder, Colorado USA. NSIDC: National Snow and Ice Data Center. doi: https://doi.org/10.7265/N5TB14TC. [Date Accessed]
+
+Novák, V., 2012. Evapotranspiration in the Soil-Plant-Atmosphere System. Springer Science+Business Media Dordrecht. 253pp.
+
+Oke, T.R., 1987. Boundary Layer Climates, 2nd ed. London: Methuen, Inc.
+
+Penman, H.L., 1948. Natural evaporation from open water, bare soil and grass. Proceedings of the Royal Society of London. Series A, Mathematical and Physical Sciences 193(1032): 120-145.

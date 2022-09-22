@@ -2,26 +2,36 @@
 title: Regional Calibration to Pan Evaporation
 author: M. Marchildon
 date: Last compiled `r format(Sys.time(),'%B %e, %Y')`
-output: html_document
+output:
+  html_document:
+    toc: true
+    toc_float: true
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(knitr)
 library(ggplot2)
+library(scales)
 library(ggrepel)
 library(dplyr)
 library(tidyr)
+library(reshape2)
 library(sf)
 library(dygraphs)
 library(xts)
+library(lubridate)
+library(reticulate)
 locCsv = "M:/ORMGP-Delft-FEWS/Config/MapLayerFiles/panET_station_loc.csv"
+
 ```
 
 
 
-# 
+# Methodology
 
-Beginning with the advective term of Penman (1948) [kg/m²/s]: 
+Beginning with the advective flux term of Penman (1948) [kg/m²/s]: 
+<!-- [kg/m²/s]:  -->
 
 <!-- modified from 9.31 -->
 $$
@@ -29,36 +39,39 @@ $$
 $$
 
 <!-- equations 2.11 and 2.12 and page 181 -->
-where $d_a=(1-r)e_s$ is the vapour pressure deficit [Pa], and the wind-function $f(u)=a+ub$ [m/s] leaves a pair of empirical parameters: $a$ and $b$. Using the standard values of $\rho_a=1.2\text{ kg m}^{-3}$ and $p_a=10^5\text{ Pa}$ (Novák, 2012), the above is further reduced to:
+where $d_a=(1-r)e_s$ is the vapour pressure deficit [Pa], and the wind-function $f(u)=a+ub$ [m/s] leaves a pair of empirical parameters: $a$ and $b$. With $\varepsilon=0.622$ and using standard values of $\rho_a=1.2\text{ kg m}^{-3}$ and $p_a=10^5\text{ Pa}$, the above is reduced to (Novák, 2012):
 
 <!-- equation 9.33 -->
 $$
-    E_a=7.46\times 10^{-6} \cdot d_a (a+ub) 
+    E_a=7.46\times 10^{-6} \cdot (a+ub) d_a 
 $$
 
-and requires as input:
+has the units [mm/s] for water and requires as input:
 
-- Air temperature $(T_a)$ to compute $e_s$
-- Relative humidity $(r)$
-- Wind speed $(u)$
+- Air temperature $(T_a)$ [°C] to compute $e_s$ [Pa]
+- Relative humidity $(r)$ [-]
+- Wind speed $(u)$ [m/s]
 
 ## Pan Evaporation Data
-Daily Pan evaporation was measured by the Meteorological Services Canada (MSC) at a variety (17) of locations near the ORMGP jurisdiction from 1962-04-04 to 1996-10-31 (12629 days). 
+Daily Pan evaporation was measured by the Meteorological Services Canada (MSC) at a variety (17) of locations near the ORMGP jurisdiction from 1962-04-04 to 1996-10-31 (12629 days). The file `199611010000_exportPanEvap.nc` was exported from [FEWS](https://owrc.github.io/interpolants/interpolation/fews.html).
 <!-- T0: Fri 01-11-1996 00:00:00 -->
 
-```{r panMap}
+```{r panMap, fig.width=9, echo=FALSE}
 wb <- read_sf('E:/Sync/@gis/water/GreatLakes_WGS.geojson')
-read.csv(locCsv) %>%
-  ggplot() +
+df <- read.csv(locCsv)
+
+df %>% ggplot() +
   theme(axis.title = element_blank()) +
   geom_sf(data=wb) +
   geom_point(aes(long, lat)) +
   geom_text_repel(aes(x = long, y = lat, label = station_name), size = 2.5) +
   lims(x=c(-82,-76), y=c(43,45))
+
+kable(df, caption="Local MSC pan evaporation stations")
 ```
 
 
-Hourly scalar data from the MSC was collected from 105 stations over the same period. These data contain the necessary input $(T_a, p_a, r, u)$ to the model. The file `199611010000_exportMSChourlyNetcdf.nc` was exported from FEWS.
+Hourly scalar data from the MSC was collected from 105 stations over the same period. These data contain the necessary input $(T_a, p_a, r, u)$ for the model. The file `199611010000_exportMSChourlyNetcdf.nc` was exported from FEWS.
 
 
 
@@ -67,21 +80,21 @@ Hourly scalar data from the MSC was collected from 105 stations over the same pe
 
 # Automatic calibration
 
-Parameters $a$ and $b$ were determined automatically using a [shuffled complex evolution](https://github.com/maseology/glbopt) (SCE) global optimization routine.
+Parameters $a$ and $b$ were determined automatically using a [shuffled complex evolution](https://github.com/maseology/glbopt) (SCE) global optimization routine. The Nash-Sutcliffe (1970) efficiency factor (NSE) is computed for both daily and monthly timeseries, and the average of these 2 objective functions is automatically maximized.
 
 The goal here is not to create a predictive model, rather an empirical function that allows me to distribute $E_a$ estimates regionally.
 
 
 
-## model testing
+## Model testing
 
-MSC station [WATERLOO WELLINGTON A](https://climate.weather.gc.ca/climate_data/hourly_data_e.html?hlyRange=1966-06-13%7C2002-10-31&dlyRange=1970-03-01%7C2003-02-25&mlyRange=1970-01-01%7C2002-10-01&StationID=4832&Prov=ON&urlExtension=_e.html&searchType=stnName&optLimit=yearRange&StartYear=1840&EndYear=2022&selRowPerPage=25&Line=0&searchMethod=contains&Month=10&Day=31&txtStationName=WATERLOO+WELLINGTON+A&timeframe=1&Year=2002) maintained a 10+ years pan evaporation station with concurrent hourly meteorological data, thus offering a benchmark in validating the above model. Using the SCE optimization, $a=7.22\times 10^{-3}$ and $b=8.0\times 10^{-4}$ yielded the following result:
+MSC station [4832: WATERLOO WELLINGTON A](https://climate.weather.gc.ca/climate_data/hourly_data_e.html?hlyRange=1966-06-13%7C2002-10-31&dlyRange=1970-03-01%7C2003-02-25&mlyRange=1970-01-01%7C2002-10-01&StationID=4832&Prov=ON&urlExtension=_e.html&searchType=stnName&optLimit=yearRange&StartYear=1840&EndYear=2022&selRowPerPage=25&Line=0&searchMethod=contains&Month=10&Day=31&txtStationName=WATERLOO+WELLINGTON+A&timeframe=1&Year=2002) maintained a 10+ years pan evaporation station with concurrent hourly meteorological data; however, reported only at daytime hours. This station was used as a benchmark in validating the above model formulation. Using the SCE optimization, $a=0.0107$ and $b=7.8\times 10^{-4}$ yielded the following results.
 
 
 
 <!-- 
 ```{r calibResults}
-read.csv("E:/Sync/@dev/pages_owrc/interpolants/interpolation/calc/panET/dat/4832_ts.csv") %>%
+read.csv("interpolation/calc/panET/dat/4832_ts.csv") %>%
   ggplot(aes(x=as.Date(date))) +
   geom_line(aes(y=obs), color='blue') +
   geom_line(aes(y=sim), color='red')
@@ -89,18 +102,26 @@ read.csv("E:/Sync/@dev/pages_owrc/interpolants/interpolation/calc/panET/dat/4832
 ```
  -->
 ```{r validationTimeseriesMonthly, fig.width=9, echo=FALSE}
-read.csv("E:/Sync/@dev/pages_owrc/interpolants/interpolation/calc/panET/dat/4832_mts.csv") %>% 
+read.csv("interpolation/calc/panET/dat/4832_mts.csv") %>% 
   gather('typ','value',-month) %>%
   ggplot(aes(x=month,y=value)) +
-    theme(legend.title = element_blank(), legend.position = c(0.1, 0.8)) +
+    theme(legend.title = element_blank(), legend.position = c(0.1, 0.8), plot.caption = element_text(hjust = 0)) +
     geom_step(aes(color=typ), size=1, alpha=0.5) +
-    labs(title = 'Monthly evaporation', y='evaporation flux (mm/month)', x='consecutive months with measured pan evaporation') +
+    labs(title = 'Monthly evaporation',
+         subtitle = 'WATERLOO WELLINGTON A',
+         y='evaporation flux (mm/month)', 
+         x='consecutive months with measured pan evaporation',
+         caption='Note: Pan evaporation is not measured November through April, the remaining 6 months are plotted consecutively (1984-1995).') +
     scale_color_manual(values = c("blue", "red"), labels = c("Pan observation","Simulated"))
 ```
 
 
+Monthly evaporation amounts followed seasonal trends well. In the image above, simulated and observed monthly evaporation flux are in good agreement (NSE=0.90).
+
+From visual inspection, the model shows good match at the daily timescale (r²=0.55).
+
 ```{r validationTimeseries, fig.width=9, echo=FALSE}
-df <- read.csv("E:/Sync/@dev/pages_owrc/interpolants/interpolation/calc/panET/dat/4832_ts.csv") %>% 
+df <- read.csv("interpolation/calc/panET/dat/4832_ts.csv") %>% 
   na_if(-9999) %>%
   # select(-c("rf","tf","sf","tm","por","swe","den")) %>%
   mutate('diff'=sim-obs, date=as.POSIXct(date))
@@ -109,51 +130,145 @@ xts(cbind(df$obs, df$sim, df$diff),df$date) %>%
   setNames(c("obs", "sim","diff")) %>%
   dygraph(main = "Daily evaporation model validation") %>% 
     dyAxis("x", label = "Aggregated snowpack record (years)") %>%
-    dyAxis("y", label = "Snowpack depth (m)") %>% #, valueRange = c(0, 1.5)) %>% # 
-    dyAxis('y2', label = 'error (m)', valueRange = c(-40, 8.95)) %>%
+    dyAxis("y", label = "evaporation flux (mm/day)") %>% #, valueRange = c(0, 1.5)) %>% # 
+    dyAxis('y2', label = 'error (m)', valueRange = c(-35, 7.35)) %>%
     dySeries("diff", label = "Error", axis = 'y2', stepPlot = TRUE, color = "grey") %>% #, fillGraph = TRUE) %>% #"#008080"
     dySeries("sim", label = "Simulated", strokeWidth = 2, fillGraph = TRUE, color = "darkred") %>%
-    # dySeries("obs", label = "Observed", strokeWidth = 0, drawPoints = TRUE, color = "blue") %>%
     dySeries("obs", label = "Pan evaporation (observed)", strokeWidth = 2, fillGraph = TRUE, color = "blue") %>%
-    # dySeries("sm", label = "Snowmelt", strokeWidth = 2, fillGraph = TRUE, stepPlot=TRUE, color = "red") %>%
     dyOptions(axisLineWidth = 1.5) %>%
     dyLegend(show="auto", width = 400) %>%
     dyRangeSelector()
 ```
 
-```{r validationScatter}
+
+Or, as an alternate view, a scatter plot of daily data:
+```{r validationScatter, echo=FALSE}
 lm_eqn <- function(df){
     m <- lm(obs ~ sim, df);
     format(summary(m)$r.squared, digits = 3)
 }
 
-df <- read.csv("E:/Sync/@dev/pages_owrc/interpolants/interpolation/calc/panET/dat/4832_ts.csv")
+df <- read.csv("interpolation/calc/panET/dat/4832_ts.csv")
 df %>% ggplot(aes(x=sim, y=obs)) +
   geom_abline(slope=1,intercept=0) +
   geom_point(alpha=0.5) +
   geom_text(x = 3, y = 17, label = paste0('r²: ',lm_eqn(df)[1])) +
   coord_fixed() +
-  labs(title = 'Daily evaporation (mm/d)', x='Simulated', y='Pan observation')
-  
+  labs(title = 'Daily evaporation (mm/d)', subtitle = 'WATERLOO WELLINGTON A', x='Simulated', y='Pan observation')
+
+# df %>% ggplot(aes(x=obs)) + geom_histogram()
 ```
 
 
 
 ## Regional calibration
 
-Due to the poor coordination among pan evporation stations and hourly meteorological stations, the 17 pan evaporation stations of the ORMGP region had [hourly climate data interpolated it's location](https://owrc.github.io/interpolants/interpolation/hourly.html). The SCE optimization routine is them applied to all stations using the interpolated input data.
+Due to the poor coordination among pan evaporation stations and hourly meteorological stations, the 17 locations where pan evaporation was measured had [hourly climate data interpolated to it's location](https://owrc.github.io/interpolants/interpolation/hourly.html). The SCE optimization routine was then applied independently to all stations using the interpolated input data.
+
+> Using `pyFEWS\prep\interpolateMSCpanET.py` to create `199611010000_exportPanEvap-InterpolatedMSChourly.nc` ~9hrs \
+> Using `src\ORMGP Modelling\PanEvap\opt\main.go` to optimize ~10min
+
+The resulting weighted (by data length) model parameters are $a=9.3\times 10^{-3}$ and $b=7.8\times 10^{-4}$ shown below as the red diamond:
+
+```{r summaryScatter, echo=FALSE}
+read.csv("interpolation/calc/panET/dat/summary.csv") %>% #filter(mobj>0) %>% 
+  ggplot(aes(x=b,y=a)) + 
+    theme(plot.caption = element_text(hjust = 0)) +
+    geom_point(aes(size=n, color=mobj)) + 
+    geom_point(aes(x=7.8e-4,y=9.25e-3),colour="red", shape=18, size=3) +
+    scale_colour_gradient(name="NSE of monthly sums", low = "#56B1F7",  high = "#132B43") +
+    scale_size_continuous(name="count of observations") +
+    labs(title="Optimum parameter results", caption="Note: red diamond is the weighted (by count) mean")
+  
+```
 
 
+
+### Discussion
+
+It is worthy of note that $b$ is an order of magnitude less than $a$. With wind speeds at times exceeding 10 m/s, any effect wind has on evaporation occurs on infrequent windy days. As a long term model, further simplification of the above equation may be allowed to something like $E_a=Cd_a$, a function of $T_a$ and $r$ --- maybe next time.
+
+```{python pyGetu, echo=FALSE}
+import numpy as np
+import netCDF4 as nc
+
+fp = "interpolation/calc/rdpa-criticalTemperature/dat/202009301300_exportMSChourlyNetcdf.nc"
+with nc.Dataset(fp) as ds:
+  ds.set_auto_mask(False) # https://github.com/Unidata/netcdf4-python/issues/785
+  # print(ds)
+  # for v in ds.variables: print(v)
+  
+  def getVar(vnam):
+    # print("  - "+vnam)
+    v = ds.variables[vnam][:,:]
+    v[v == -9999] = np.nan
+    return v
+
+  ws = getVar('wind_speed')
+
+wsf = ws.flatten()
+wsf = wsf[~np.isnan(wsf)]
+# print(wsf)
+```
+
+```{r uhisto}
+ggplot() + geom_histogram(aes(py$wsf)) +
+  xlim(c(NA,20)) +
+  labs(title=paste0("Distribution of reported wind speed (n=",format(length(py$wsf), big.mark = ","),")"), x="wind speed (m/s)")
+```
+
+
+There is also an apparent linear trend to the optimized set of parameter pairs, which may offer leads to further simplifying the equation.
+
+
+### Limitations
+
+A problem with calibrating to evaporation data is the seasonal constraints to southern Ontario. The parameters determined above are entirely conditioned on the summer season. Projecting the results into the winter season using the above formulation and parameterization appears to look consistent where winter rates of evaporation potential fall to ~15\% that of summer rates.
+
+```{r monthlyAvg}
+read.csv("interpolation/calc/panET/dat/4832_ts-full.csv") %>%
+  mutate(date=as.Date(date)) %>%
+  mutate(month=month(date)) %>%
+  melt(id.vars=c("month"), measure.vars=c("obs", "sim")) %>%
+  mutate(value = replace_na(value, 0)) %>%
+  mutate(month = factor(month.abb[month], levels = month.abb)) %>%
+  
+  ggplot(aes(x=month)) +
+   theme(axis.title.x = element_blank(), legend.title = element_blank()) +
+   geom_bar(aes(x=month, y=value*30, fill=factor(variable, levels=c("obs", "sim"))), 
+            stat = "summary", fun.y = "mean", position='dodge') +
+   labs(title="Average monthly evaporation", 
+        subtitle = 'WATERLOO WELLINGTON A',
+        y='evaporation (mm/month)') +
+   scale_fill_manual(values = c("blue","darkred"), labels = c("observed", "simulated"))
+
+```
+
+The model also has a lower limit of zero meaning that condensation/dew collection is not represented. It is then assumed that this is a negotiable source to the land surface water balance.
 
 
 # Source data
 
-- [`199611010000_exportMSChourlyNetcdf.nc`]() Export of MSC hourly data collected 
+- [`199611010000_exportPanEvap.nc`](https://www.dropbox.com/s/cjeyb7y5b98waf1/199611010000_exportPanEvap.nc?dl=1) Export of collected MSC daily pan evaporation data;
+- [`199611010000_exportMSChourlyNetcdf.nc`](https://www.dropbox.com/s/nnt4mk8i7qzzlyc/199611010000_exportMSChourlyNetcdf.nc?dl=1) Export of collected MSC hourly data;
+- [`199611010000_exportPanEvap-InterpolatedMSChourly.nc`](https://www.dropbox.com/s/ayxan40tv85y65g/199611010000_exportPanEvap-InterpolatedMSChourly.nc?dl=1) Exported MSC hourly data interpolated to Pan Evaporation station locations. 
 
+
+
+# Python code snippit
+to read *.nc files
+
+```{python, eval=F, echo=T}
+import np
+
+print('yes')
+```
 
 
 
 # References
+
+Nash, J.E. and J.V. Sutcliffe, 1970.  River flow forecasting through conceptual models, Part I - A discussion of principles. Journal of Hydrology, 10. pp. 282-290.
 
 Novák, V., 2012. Evapotranspiration in the Soil-Plant-Atmosphere System. Springer Science+Business Media Dordrecht. 253pp.
 
