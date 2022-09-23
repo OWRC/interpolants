@@ -130,7 +130,7 @@ While considering its simplicity, the Penman advective term performs well agains
 ## Atmospheric Yield
 
 
-The data collected include total precipitation and snowmelt. Summing the two together would double count precipitation fallen as snow; the model, however does not account for snow, rather it relies on snowmelt as a forcing. Precipitation is parsed into rainfall and snowfall on the basis of a critical temperature ($T_\text{crit}$):
+The data collected include total precipitation and snowmelt. Summing the two together would double count precipitation fallen as snow; the model, however does not account for snow, rather it relies on snowmelt as a forcing. Precipitation is parsed into rainfall and snowfall on the basis of a critical temperature $(T_\text{crit})$:
 
 $$
 \text{Rainfall}=
@@ -139,6 +139,7 @@ $$
 0 & \text{otherwise},
 \end{cases}
 $$
+
 $$
 \text{Snowfall}=
 \begin{cases}
