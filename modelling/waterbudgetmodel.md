@@ -1,7 +1,6 @@
 ---
 title: Water Budget Modelling
 author: M.Marchildon
-date: 2022-07-22
 output: html_document
 ---
 
@@ -11,22 +10,20 @@ output: html_document
 
 # Introduction
 
-A regionally-distributed runoff/recharge model has been developed to simulate hydrologic processes at a fine (grid-based) scale. The model conceptualization has been written to a large-scale yet high-resolution distributed numerical model code optimized for implementation on parallel computer architectures. No process of the model is in any way novel, rather a suite of existing model structures have been combined into one platform chosen specifically for their ease of implementation, practical applicability and computational scalability.
+A regionally-distributed runoff/recharge model has been developed to simulate hydrologic processes at a fine (grid-based) scale. The model conceptualization is written to a large-scale yet high-resolution distributed numerical model code optimized for implementation on parallel computer architectures. No process of the model is in any way novel, rather a suite of existing model structures have been combined into one platform chosen specifically for their ease of implementation, practical applicability and computational efficiency and scalability.
 
-The model's primary intention is to interpolate watershed moisture conditions for the purposes of estimating regional groundwater recharge, given all available data. While the model can project stream flow discharge and overland runoff at any point in space, the model is not optimized, nor intended to serve as your typical rainfall runoff model. Outputs from this model will most often be used to constrain regional groundwater models within the 30,000km² Oak Ridges Moraine Groundwater Program jurisdiction of southern Ontario.
+The model's primary intention is to project land surface moisture distribution for the purposes of estimating regional groundwater recharge. It utilized hydrological model procedures that as best suited to the data available locally. While the model can simulate stream flow discharge and overland runoff at any point in space, the model is not optimized, nor intended to serve as your typical rainfall runoff model. Outputs from this model will most often be used to constrain regional groundwater models within the 30,000km² Oak Ridges Moraine Groundwater Program jurisdiction of southern Ontario.
 
-This model is currently in beta mode, and its use for practical application should proceed with caution. Users should be aware that model results posted online will always be subject to change. Ultimately, the intent of this model is to produced ranges of long-term (monthly average) water budgeting as a hydrological reference for the partners of the ORMGP. 
+This model is currently in beta mode, and its use for practical application should proceed with caution. Users should be aware that model results posted online will always be subject to change. Ultimately, the intent of this model is to produced ranges of long-term (monthly average) water budget metrics (precipitation, runoff, evaporation, recharge, moisture state, etc.) as a hydrological reference for the partners of the ORMGP.
 
-
-
-The model is physically based in that mass is conserved and it is not constrained to any particular timestep. Most parameters are common, percent impervious, conductivity of surficial soils, etc.
+The model is physically based in that mass is conserved and it is not constrained to any particular timestep. The model conceptualization has maintained parameters that speaks to common physical propertied, such as percent impervious, conductivity of surficial soils, etc.
 
 ## Summary
 - model run from the hydrological water year 2010 (2009-10-01) through water year 2020. 
-- Potential evaporation determined using the empirical wind functions of Penman (1948)
-- Rainfall was collected from capa
-- Snowmelt was collected from SNODAS
-- T, rh from MSC
+- Precipitation was collected from [CaPA-HRDPA](https://eccc-msc.github.io/open-data/msc-data/nwp_hrdpa/readme_hrdpa_en/)
+- Snowmelt was collected from [SNODAS]()
+- $T_a$, $r$, $u$ from MSC
+- Potential evaporation $(E_a)$ determined using the [empirical wind functions of Penman (1948)]()
 - 12.1M x 50x50 m cells x 6-hourly ts x 10 years
 
 The following is a description of the water budget tool located on our website, hereinafter referred to as the "*model*".
@@ -196,7 +193,8 @@ The extent of the model combined with the resolution of the processes simulated 
 ## Long-term data assimilation system
 
 * **[Input data and Preprocessing](/interpolants/modelling/waterbudget/data.html)**
-    * **[Evaporation calibration](/interpolants/interpolation/calc/panET/PanEvaporation.html)**
+    * **[Evaporation calibration $(E_a)$](/interpolants/interpolation/calc/panET/PanEvaporation.html)**
+    * **[Critical temperature evaluation $(T_c)$](/interpolants/interpolation/calc/rdpa-criticalTemperature/rdpa-criticalTemperature.html)**    
     * **[Snowmelt](/interpolants/modelling/waterbudget/snowmeltCCF.html)**
 * **[Shallow groundwater](/interpolants/modelling/waterbudget/gw.html)**
 * **[Soil moisture accounting](/interpolants/modelling/waterbudget/sma.html)**

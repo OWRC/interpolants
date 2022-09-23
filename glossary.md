@@ -20,6 +20,8 @@ $P_M$ Snowmelt/drainage from snowpack (mm)
 
 $T_a$   temperature of air (°C)
 
+$T_c$   critical air temperature (°C) where precipition likely falls as snow
+
 
 
 

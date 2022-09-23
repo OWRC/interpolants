@@ -1,11 +1,11 @@
-
+# Steps to creating 
 
 # 1. Hourly scalars to Hourly Basin
 > workflow: `preprocessMSCtoBasinsHourly.xml`
 
 
 ## MSC scalars
-1. Scrape MSC for recent data, executed from FEWS
+1. Scrape MSC for recent data, executed from FEWS.
 1. Import scraped MSC hourly scalars into FEWS.
 1. Export hourly MSC .nc from FEWS, from 1989-10-01 
     

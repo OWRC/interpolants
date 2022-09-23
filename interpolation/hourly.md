@@ -15,12 +15,12 @@ The [ORMGP](https://maps.oakridgeswater.ca/) maintains a current, continuous 6-h
 Scalar data are interpolated to a set of ~10km sub-watersheds, using a python script executed from config file `pyMSChourliesToBasin.xml` that executes: `ncMSCtoHourlyBasinNetCDF.py`.
 
 - Air temperature $(T_a)$, relative humidity $(r)$ and wind speeds $(u)$ are interpolated using a [linear radial basis function (RBF)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.Rbf.html).
-- Air/barometric pressure $(P_a)$ are first [corrected for elevation](https://owrc.github.io/interpolants/interpolation/barometry.html) then interpolated using the same linear RBF. 
+- Air/barometric pressure $(P_a)$ are first [corrected for elevation](interpolants/interpolation/barometry.html) then interpolated using the same linear RBF. 
 - Wind directions $(\alpha_u)$ are split into their x-y components, each interpolated separately using a linear RBF before returned to an angle. A sample result is shown below:
 ![](https://raw.githubusercontent.com/OWRC/interpolants/main/interpolation/calc/rdpa-collection-verification/fig/windir.png)
 
 ## Estimate evaporation
-Interpolated $(T_a, r, u)$ are applied to compute a [Penman-type aerodynamic evaporation flux](/interpolants/interpolation/calc/panET/PanEvaporation.html) [m/s] (Novák, 2012): 
+Interpolated $(T_a, r, u)$ are applied to compute a [Penman-type aerodynamic evaporation flux](interpolants/modelling/waterbudget/data.html#atmospheric-demand-e_a) [m/s] (Novák, 2012): 
 <!-- page 182 -->
 
 $$
