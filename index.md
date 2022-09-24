@@ -63,6 +63,16 @@ A number of open-source and proprietary data analysis tools have been employed i
 
 
 
+# Web Applications
+## Web mapping/data portal
+* [**oakridgeswater.ca**](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP)
+## Timeseries analysis
+* [**R-Shiny apps**](https://owrc.github.io/shinyapps-manual/)
+   * [Automatic hydrograph separation](https://owrc.github.io/education/hydrographseparation/)
+   * [Hydrograph disaggregation](/interpolants/modelling/hydroparse.html)
+
+
+
 # Products
 
 ## Geospatial Layers
@@ -113,10 +123,6 @@ _Time-series data, updated nightly_
 ## Existing numerical model files, output and sharing
 * [Numerical Model Custodianship Program](https://owrc.github.io/snapshots/md/numerical-model-custodianship-program.html) — model archive.
 * [*A Guide for Actively Managing Watershed-Scale Numerical Models in Ontario*](https://www.oakridgeswater.ca/_files/ugd/4a0a6e_c41c71a481ea4657806e1fbb0c912f7a.pdf) — model management guidance (2017)
-
-## Streamflow separation
-* [Hydrograph separation](/interpolants/modelling/hydrographseparation.html)
-* [Hydrograph disaggregation](/interpolants/modelling/hydroparse.html)
 
 ## Regional Water Budget, Long-term and Continuous
 * [Regionally-distributed runoff-recharge model](/interpolants/modelling/waterbudgetmodel.html) or the ORMGP jurisdiction.
