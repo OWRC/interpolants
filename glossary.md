@@ -22,6 +22,9 @@ $T_a$   temperature of air (°C)
 
 $T_c$   critical air temperature (°C) where precipition likely falls as snow
 
+$T_n$   minimum daily air temperature
+
+$T_x$   maximum daily air temperature
 
 
 
