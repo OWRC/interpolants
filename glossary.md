@@ -14,7 +14,7 @@ $E_a$   atmospheric demand/potential evaporation (mm)
 
 $P_R$   Precipitation in the form of rain (mm)
 
-$P_S$   Precipitation in the form of snow (mm SWE)
+$P_S$   Precipitation in the form of snow (mm snow water equivalent)
 
 $P_M$ Snowmelt/drainage from snowpack (mm)
 

@@ -23,6 +23,7 @@
 *-script.txt
 
 input/
+old/
 *.bil
 *.hdr
 *.prj
@@ -31,3 +32,10 @@ input/
 *.nc
 *.csv
 *.xlsx
+*.tim
+*.sta
+*.air_pressure
+*.air_temperature
+*.relative_humidity
+*.wind_speed
+*.water_*

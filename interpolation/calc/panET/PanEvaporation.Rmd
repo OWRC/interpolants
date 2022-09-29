@@ -48,7 +48,7 @@ $$
 
 has the units [mm/s] for water and requires as input:
 
-- Air temperature $(T_a)$ [°C] to compute $e_s$ [Pa]
+- Air temperature $(T_a)$ [°C] to compute $e_s$ [Pa] (August-Roche-Magnus)
 - Relative humidity $(r)$ [-]
 - Wind speed $(u)$ [m/s]
 

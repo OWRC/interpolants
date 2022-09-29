@@ -1,5 +1,5 @@
 ---
-title: Snowmelt Estimation
+title: Cold-Content Function Snowmelt Estimation
 author: M. Marchildon
 date: Last compiled 2021-10-18
 output: 
@@ -17,12 +17,6 @@ library(dygraphs)
 ```
 
 
-
-# SNODAS
-
-Estimates of 24-hour snowmelt accumulation is recovered from the [Snow Data Assimilation System (SNODAS) data product](https://nsidc.org/data/g02158), a (near-)real-time service that returns gridded data at a ~30m resolution. The [NSIDC](https://nsidc.org/) also maintains continuous estimates covering our jurisdiction since September, 2010.
-
-Prior to 2010-09-01, snowmelt estimation is as follows.
 
 
 # Snowmelt model
@@ -274,7 +268,7 @@ A total of 66 meteorological stations (current and historic) kept records of sno
 ```{r map, fig.width=9, echo=FALSE, warning=FALSE}
 wb <- read_sf('E:/Sync/@gis/water/GreatLakes_WGS.geojson')
 
-read.csv("dat/snowpack-station-summary.csv") %>%
+read.csv("modelling/dat/snowpack-station-summary.csv") %>%
   ggplot() +
   theme(axis.title = element_blank()) +
   geom_sf(data=wb) +
@@ -300,7 +294,7 @@ In viewing the results, one can appreciate how well the simple model matches obs
 
 
 ```{r validation, fig.width=9, echo=FALSE}
-read.csv('dat/taggregate.csv') %>% 
+read.csv('modelling/dat/taggregate.csv') %>% 
   na_if(-9999) %>%
   select(-c("rf","tf","sf","tm","por","swe","den")) %>%
   mutate('diff'=sim-obs, d=d/365.24) %>%

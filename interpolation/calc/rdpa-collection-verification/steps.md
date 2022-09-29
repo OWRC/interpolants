@@ -42,11 +42,11 @@ $$
 
     *__These data have a set expiry.__*
 
-1. Export 6-hourly, basin-interpolated $P, T_a, p_a, r, u$ to NetCDF. 
+1. Export 6-hourly, basin-interpolated $P_\text{HRDPA}, T_a, p_a, r, u$ to NetCDF. 
 
     > `yyyyMMddHHmm-6hourlyBasin.nc`
 
-    *__to be altered to__* $P, P_R, P_S, T_a, p_a, r, u, E_a$
+    *__to be altered to__* $P_\text{HRDPA}, P_R, P_S, T_a, p_a, r, u, E_a$
 
 
 
@@ -56,7 +56,7 @@ $$
 ## 2a. YCDB daily scalars
 > workflow: `preprocessYCDBtoBasinsDaily.xml`
 
-1. Export daily YCDB climate .nc from FEWS, from 1900-10-01
+1. Export daily YCDB climate .nc from FEWS, from 1901-10-01
 1. Interpolate to 10km sub-watersheds, using a python script executed from FEWS 
 
     > `ncScalarToDailyBasinNetCDF.py`
@@ -66,7 +66,7 @@ $$
 
 1. Save to NetCDF (.nc) for import back to FEWS. 
 
-
+    > `_exportYCDBdaily_interpBasin.nc`  $T_x, T_n, P_R, P_S$ daily basins
 
 
 ## 2b. Daily SNODAS to Basin
@@ -76,14 +76,14 @@ $$
 
 
 ## 2c. export basin-interpolated daily data to NetCDF
-- $T_n, T_x, P_R, P_S, P_M$ to NetCDF (`yyyyMMddHHmm-dailyBasin.nc`)
+> $T_n, T_x, P_R, P_S, P_M$ to NetCDF (`yyyyMMddHHmm-dailyBasin.nc`)
 
 
+<br>
 
 
-
-# 3. Parse CaPA-RDPA to rainfall/snowfall
-> `ncgob.go`
+# 3. Parse CaPA-RDPA to rainfall/snowfall, snowmelt disaggregation
+> `rdpaCritTemperature.go`
 1. Optimize $T_c$ (on a 6-hourly time step) such that $\sum P_{S\text{,CaPA}} \to \sum P_{S\text{,daily}}$
 
     $$
@@ -104,8 +104,11 @@ $$
 
 1. dis-aggregate 24-hour SNODAS snowmelt to 6-hourly time-steps using the following rules:
 
-    1. asdf
-    2. asdfasdf
+    1. If any timesteps has temperatures greater than 10°C, snowmelt is equally divided amongst them;
+    1. The first time step having 6-hour rainfall $\geq$ 5mm, all melt is assumed to occur during this event;
+    1. If any timesteps within 06:00-06:00 UTC has rainfall greater than 1mm, snowmelt is proportionned according to (and added with) rainfall;
+    1. If any timesteps has temperatures greater than 0°C, snowmelt is equally divided amongst them; otherwise
+    1. Snowmelt is equally divided among the 2 daytime time steps (12:00-00:00 UTC---07:00-19:00 EST).
 
 1. Merge to $P_R$ and $P_M$ to remaining 6-hourly variables $(T_a, p_a, r, u, E_a)$, save to NetCDF (.nc) for import back to FEWS.
 

@@ -1,5 +1,5 @@
 ---
-title: Water Budget Modelling
+title: Regionally-distributed runoff-recharge model
 author: M.Marchildon
 output: html_document
 ---
@@ -190,12 +190,12 @@ The extent of the model combined with the resolution of the processes simulated 
 
 # Theory
 
-## Long-term data assimilation system
+## Long-term continuos water budgeting
 
 * **[Input data and Preprocessing](/interpolants/modelling/waterbudget/data.html)**
-    * **[Evaporation calibration $(E_a)$](/interpolants/interpolation/calc/panET/PanEvaporation.html)**
+    * **[Evaporation calibration $(E_a)$](/interpolants/modelling/waterbudget/data.html#atmospheric-demand-e_a)**
     * **[Critical temperature evaluation $(T_c)$](/interpolants/interpolation/calc/rdpa-criticalTemperature/rdpa-criticalTemperature.html)**    
-    * **[Snowmelt](/interpolants/modelling/waterbudget/snowmeltCCF.html)**
+    * **[Snowmelt $(P_M)$](/interpolants/modelling/waterbudget/data.html#sub-daily-snowmelt)**
 * **[Shallow groundwater](/interpolants/modelling/waterbudget/gw.html)**
 * **[Soil moisture accounting](/interpolants/modelling/waterbudget/sma.html)**
 * **[Overland flow routing](/interpolants/modelling/waterbudget/overlandflow.html)**
@@ -208,7 +208,6 @@ The extent of the model combined with the resolution of the processes simulated 
 
 * **[Lateral water movement](/interpolants/modelling/infiltration/lateral.html)**
 * **[Multiphase flow through porous media](/interpolants/modelling/infiltration/pmflow.html)**
-* test
 
 
 # References
