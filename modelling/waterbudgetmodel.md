@@ -194,8 +194,8 @@ The extent of the model combined with the resolution of the processes simulated 
 
 * **[Input data and Preprocessing](/interpolants/modelling/waterbudget/data.html)**
     * **[Evaporation calibration $(E_a)$](/interpolants/modelling/waterbudget/data.html#atmospheric-demand-e_a)**
-    * **[Critical temperature evaluation $(T_c)$](/interpolants/interpolation/calc/rdpa-criticalTemperature/rdpa-criticalTemperature.html)**    
-    * **[Snowmelt $(P_M)$](/interpolants/modelling/waterbudget/data.html#sub-daily-snowmelt)**
+    * **[Critical temperature evaluation $(T_c)$](https://owrc.github.io/interpolants/modelling/waterbudget/data.html#rainfall-p_r)**    
+    * **[Snowmelt $(P_M)$](/interpolants/modelling/waterbudget/data.html#sub-daily-from-daily-snowmelt)**
 * **[Shallow groundwater](/interpolants/modelling/waterbudget/gw.html)**
 * **[Soil moisture accounting](/interpolants/modelling/waterbudget/sma.html)**
 * **[Overland flow routing](/interpolants/modelling/waterbudget/overlandflow.html)**

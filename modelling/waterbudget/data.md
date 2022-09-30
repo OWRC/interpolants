@@ -184,7 +184,7 @@ $$
 [An optimization routine is employed to determine $T_c$](/interpolants/interpolation/calc/rdpa-criticalTemperature/rdpa-criticalTemperature.html) such that annual average snowfall is equal to annual average snowmelt to ensure minimal deviation from total precipitation. 
 
 ### Snowmelt $(P_M)$
-Snowmelt, is acquired at a daily timestep and is [disaggregated to the 6-hourly timestep](/interpolants/modelling/waterbudget/data.html#sub-daily-snowmelt) before being apllied to the $T_c$ optimization routinge.
+Snowmelt, is acquired at a daily timestep and is [disaggregated to the 6-hourly timestep](/interpolants/modelling/waterbudget/data.html#sub-daily-from-daily-snowmelt) before being applied to the $T_c$ optimization routine.
 
 
 
