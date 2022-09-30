@@ -6,9 +6,17 @@ output: html_document
 
 The ORMGP is previewing a service from which partners can easily gain access to the spatial layers we produce.  Imaging a *cookie-cutter* taking a vertical section within which the data are provided.
 
+The first part is the **clipping** function. This is where the user supplies an extent of their data request, and the return is all the data available within those extents.
+
+![https://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/clip.htm](https://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/GUID-6D3322A8-57EA-4D24-9FFE-2A9E7C6B29EC-web.png) \
+[*ArcMAP Clip function*](https://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/clip.htm)
+
+
+Then the **ship** feature requires our server to package the clipped data into a compressed file for download.  
+
 
 # Data formats
-The data format chosen for the exports are provided in a format that is most compressible, maintaining efficient file transfer. The files formats are thus less less common yet are general enough that they'll open on many platforms
+The data format chosen for the exports are provided in a format that is most compressible, maintaining efficient file transfer. The files formats are thus less less common; yet are general enough that they'll open on common GIS platforms.
 
 ## File Formats
 
