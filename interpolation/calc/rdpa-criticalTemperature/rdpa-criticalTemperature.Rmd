@@ -1,14 +1,24 @@
 ---
 title: Critical Temperature
-author: M.Marchildon
-output: html_document
+author: M. Marchildon
+date: Last compiled `r format(Sys.time(),'%B %e, %Y')`
+output:
+  html_document:
+    toc: true
+    toc_float: true
 ---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(ggplot2)
+library(dplyr)
+library(gridExtra)
+```
+
 
 # Critical Temperature $(T_c)$ optimization
 
-Precipitation data can come in the form of just that: "precipitation", without information of whether it's in the snow/solid or rain/liquid form.
-
-A simple solution would be to determine a "critical" temperature $(T_c)$ from which precipitation falls either as snow or rain. 
+Precipitation data can come in the form of just that: "precipitation", without information of whether it's in the snow (solid) or rain (liquid) form. A simple solution would be to determine a "critical" temperature $(T_c)$ from which precipitation falls either as snow or rain. 
 
 $$
 \text{Rainfall}=
@@ -30,8 +40,8 @@ $$
 $T_a$ is air temperature measured at land surface and is assumed to have some relationship with the temperature of the surface boundary layer. Here, it is discussed how an optimal $T_c$ is determined for every [ORMGP subwatershed](/interpolants/modelling/waterbudgetmodel.html#sub-basins).
 
 # Data Collected
-## Precipitation
-- Composite [CaPA-RPDA](https://weather.gc.ca/grib/grib2_RDPA_ps10km_e.html) 6-hourly precipitation accumulation distributed at 10-15km grids are interpolated to [2,183 10km² sub-watersheds](interpolants/interpolation/subwatershed.html). 
+## 6-hourly Precipitation
+- Composite [CaPA-RPDA](https://weather.gc.ca/grib/grib2_RDPA_ps10km_e.html) 6-hourly precipitation $(P)$ accumulation distributed at 10-15km grids are interpolated to [2,183 10km² sub-watersheds](interpolants/interpolation/subwatershed.html). 
 - Exported `202009301300-CaPA-RDPA.nc` from [ORMGP-FEWS](interpolants/interpolation/fews.html):
 
 ```   
@@ -47,9 +57,8 @@ Period of record:
   (6-hourly)
 ```
 
-## Sub-daily $T_a, p_a, r, u, \alpha_u, E_a$ 
-- 6-hourly, basin-interpolated climatologies from [hourly scalar MSC stations](interpolants/interpolation/hourly.html).
-- Atmospheric Demand $E_a$ is [modelled hourly](interpolants/modelling/waterbudget/data.html#atmospheric-demand-e_a) at each basin, aggregated to the 6-hour timestep.
+## 6-hourly Temperature 
+- Sub-daily, basin-interpolated aire temperatures $(T_a)$ from [hourly scalar MSC stations](interpolants/interpolation/hourly.html).
 - Following [ORMGP-FEWS](interpolants/interpolation/fews.html) workflow: `preprocessMSCtoBasinsHourly.xml`, exported `202209271600-6hourlyBasin.nc`:
 
 ```
@@ -90,8 +99,8 @@ Period of record:
 ```
 
 
-### Daily $T_x, T_n, P_R, P_S, P_M$
-- Daily, basin-interpolated climatologies from [daily scalar stations](interpolants/interpolation/daily.html).
+## Daily Snowmelt
+- Daily, basin-interpolated snowmelt $(P_M)$ from [SNODAS](interpolants/interpolation/daily.html).
 - Following [ORMGP-FEWS](interpolants/interpolation/fews.html) workflow: `preprocessYCDBtoBasinsDaily.xml`, exported `202209271600-dailyBasin.nc`:
 
 ```
@@ -130,3 +139,63 @@ Period of record:
   end date: 2022-09-28 05:00:00 UTC
   (daily)
 ``` 
+
+
+
+# Results
+```{r resultsLoad}
+df <- read.csv("interpolation/calc/rdpa-criticalTemperature/dat/tcrit-summary.csv")
+```
+
+
+At the 6-hourly time step, at every sub-watershed, $T_c$ is determined by computing:
+
+$$
+  P_S=
+  \begin{cases}
+  P, & T_a\leq T_c\\
+  0 & \text{otherwise}
+  \end{cases}
+$$
+
+for every season (i.e., water year), such that:
+
+$$
+  \sum P_S \to \sum P_M
+$$
+for every water year. This results in `r format(nrow(df),big.mark=",",scientific=FALSE)` separate $T_c$ optimizations averaging `r round(mean(df$tc), 1)`°C, with a mean residual/error $\left(\left|\sum P_S - \sum P_M \right|\right)$ of `r round(mean(df$diff),1)` mm, roughly `r round(mean(df$diff)/10,1)`\% of annual average precipitation. Below are this distributions of the results.
+
+
+```{r plot1}
+p0 <- df %>% ggplot() + 
+  geom_histogram(aes(tc)) + 
+  ylim(c(NA,12000)) + 
+  labs(x="Tc (°C)")
+
+p1 <- df %>% ggplot() + 
+  theme(axis.title.y = element_blank(), axis.text.y = element_blank()) +
+  geom_histogram(aes(diff)) + 
+  ylim(c(NA,12000)) + 
+  xlim(c(NA,25)) + 
+  labs(x="residual (mm)")
+
+grid.arrange(top="Distribuiotn of Tc and residuals",p0, p1, ncol=2)
+```
+
+Seasonally, there does appear to be a ~6-year oscillation around the mean, 
+
+```{r plot2}
+df %>% ggplot(aes(wy,tc)) + 
+  theme(legend.title = element_blank(), legend.position = c(.9,.9)) +
+  geom_boxplot(aes(group=wy)) + 
+  geom_hline(aes(colour="blue", yintercept = mean(df$tc)), size=1.25, linetype='dashed', alpha=.7) +
+  stat_smooth(aes(colour = "red")) + 
+  labs(title="Annual distribution of Tc", x="water year", y="Tc (°C)") +
+  scale_colour_manual(values=c("blue","red"), labels=c("mean","GAM fitted"))
+```
+
+
+## Discussion
+
+Overall, regional $T_c$ managed to remain close to the freezing point as expected. There are some rare outliers, hover all seem to converge to negligible residuals. Based on these results, the CaPA-RDPA precipitation field are parsed into the $P_R$ and $P_S$ components at the 6-hour timestep, then aggregated to daily timesteps.
+
