@@ -46,7 +46,10 @@ Below is a list data sources used in deriving many of the interpolation products
 * **NOAA-NSIDC** - National Oceanic and Atmospheric Administration-National Snow & Ice Data Center
     * [Snow Data Assimilation System (SNODAS)](https://nsidc.org/data/g02158)
         - continuous ~30m resolution grid 24-hour accumulations of snowmelt and mean daily snow water equivalent (SWE), realtime from 2009 (when coverage was opened to Canada)
+    
+      > *SNODAS models Snow Water Equivalent, the liquid water content of the snowpack. SWE is a much more robust statistic than Depth, which changes the minute the snowflakes hit the ground. A twelve-inch snowfall slumps to eight inches after a day of sunshine and wind as the snowpack compresses and metamorphs, without any change to the SWE value. Depth is computed after that fact, by multiplying SWE against an independent estimate of Snow Density.* [Tim Szeliga, NOHRSC, 2012](https://gis.stackexchange.com/questions/34871/extracting-data-from-snodas-file-using-qgis).
 
+      > SNODAS is a modeling and data assimilation system developed by OHRSC to provide the best possible estimates of snow cover and associated parameters to support hydrologic modeling and analysis. The aim of SNODAS is to provide a physically consistent framework to integrate snow data from satellite, airborne platforms, and ground stations with model estimates of snow cover (Carroll et al. 2001).
 
 ## Partners' data
 

@@ -24,6 +24,7 @@
 
 input/
 old/
+png*
 *.bil
 *.hdr
 *.prj
@@ -39,3 +40,4 @@ old/
 *.relative_humidity
 *.wind_speed
 *.water_*
+*.lnk

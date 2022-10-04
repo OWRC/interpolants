@@ -1,5 +1,5 @@
 ---
-title: Critical Temperature
+title: Critical Temperature Optimization
 author: M. Marchildon
 date: Last compiled `r format(Sys.time(),'%B %e, %Y')`
 output:
@@ -12,11 +12,13 @@ output:
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 library(ggplot2)
 library(dplyr)
+library(tidyr)
 library(gridExtra)
+library(scales)
 ```
 
 
-# Critical Temperature $(T_c)$ optimization
+# Critical Temperature $(T_c)$
 
 Precipitation data can come in the form of just that: "precipitation", without information of whether it's in the snow (solid) or rain (liquid) form. A simple solution would be to determine a "critical" temperature $(T_c)$ from which precipitation falls either as snow or rain. 
 
@@ -145,6 +147,7 @@ Period of record:
 # Results
 ```{r resultsLoad}
 df <- read.csv("interpolation/calc/rdpa-criticalTemperature/dat/tcrit-summary.csv")
+df.noSNODAS <- read.csv("interpolation/calc/rdpa-criticalTemperature/dat/tcrit-summary-noSNODAS.csv")
 ```
 
 
@@ -182,7 +185,7 @@ p1 <- df %>% ggplot() +
 grid.arrange(top="Distribuiotn of Tc and residuals",p0, p1, ncol=2)
 ```
 
-Seasonally, there does appear to be a ~6-year oscillation around the mean, 
+Seasonally, there does appear to be a ~6-year oscillation around the mean, even after 2011, when the SNODAS data are used:
 
 ```{r plot2}
 df %>% ggplot(aes(wy,tc)) + 
@@ -190,6 +193,8 @@ df %>% ggplot(aes(wy,tc)) +
   geom_boxplot(aes(group=wy)) + 
   geom_hline(aes(colour="blue", yintercept = mean(df$tc)), size=1.25, linetype='dashed', alpha=.7) +
   stat_smooth(aes(colour = "red")) + 
+  geom_segment(aes(x = 2011, y = -5, xend = 2020.75, yend = -5), arrow = arrow(length = unit(0.25, "cm"), ends='both')) +
+  annotate('text', x = 2013, y = -4, label = "SNODAS") +
   labs(title="Annual distribution of Tc", x="water year", y="Tc (°C)") +
   scale_colour_manual(values=c("blue","red"), labels=c("mean","GAM fitted"))
 ```
@@ -198,4 +203,51 @@ df %>% ggplot(aes(wy,tc)) +
 ## Discussion
 
 Overall, regional $T_c$ managed to remain close to the freezing point as expected. There are some rare outliers, hover all seem to converge to negligible residuals. Based on these results, the CaPA-RDPA precipitation field are parsed into the $P_R$ and $P_S$ components at the 6-hour timestep, then aggregated to daily timesteps.
+
+
+
+```{r plot3}
+df %>% ggplot(aes(wy,tc)) + 
+  theme(legend.title = element_blank(), legend.position = c(.9,.9)) +
+  geom_boxplot(aes(group=wy), outlier.shape = NA) + 
+  stat_smooth(aes(colour = "red")) + 
+  stat_smooth(data=df.noSNODAS,aes(wy,tc,colour = "blue")) + 
+  geom_segment(aes(x = 2011, y = -5, xend = 2020.75, yend = -5), arrow = arrow(length = unit(0.25, "cm"), ends='both')) +
+  annotate('text', x = 2013, y = -4, label = "SNODAS") +
+  labs(title="Annual distribution of Tc", x="water year", y="Tc (°C)") +
+  scale_colour_manual(values=c("blue","red"), labels=c("no SNODAS","GAM fitted"))
+```
+
+```{r plot4}
+df %>% ggplot(aes(wy,diff/psum*100)) + 
+  theme(legend.title = element_blank(), legend.position = c(.9,.9)) +
+  geom_boxplot(aes(group=wy), outlier.shape = NA) + 
+  stat_smooth(aes(colour = "red")) + 
+  stat_smooth(data=df.noSNODAS,aes(wy,diff/psum*100,colour = "blue")) + 
+  geom_segment(aes(x = 2011, y = -0.1, xend = 2020.75, yend = -0.1), arrow = arrow(length = unit(0.25, "cm"), ends='both')) +
+  annotate('text', x = 2013, y = -0.05, label = "SNODAS") +
+  labs(title="Annual distribution of optimizaiton residuals", x="water year", y="residual (% annual precipitation)") +
+  scale_colour_manual(values=c("blue","red"), labels=c("no SNODAS","GAM fitted")) +
+  ylim(c(-0.1,1.25))
+```
+
+```{r plot5}
+df %>% select(-c("tc","diff","msum")) %>%
+  gather(src, precip, -sid, -wy) %>%
+  ggplot(aes(wy,precip, fill=src)) +
+  theme(legend.position = c(.82,.15)) +
+  geom_bar(stat="identity", width=.85, position = "dodge") +
+  # geom_segment(aes(x = 2011, y = 500, xend = 2020.75, yend = 500), size = 1, arrow = arrow(length = unit(0.25, "cm"), ends='both')) +
+  # annotate(geom="label", x = 2013, y = 500, label = "SNODAS", fontface = "bold", fill = "white") +
+  scale_fill_manual("source", values = c("psum" = "#0161e0", "psum2" = "#ff3975"),
+                    labels = c("psum" = "CaPA-RDPA", "psum2" = "MSC (scalar)")) +
+  scale_y_continuous(limits=c(500,NA),oob = rescale_none) +
+  labs(title = "Comparison of regional precipitation", y="Precipitation (mm/yr)", x="water year")
+```
+
+
+blah
+
+![Annual distribution of optimized Tc](E:/Sync/@dev/pages_owrc/interpolants/interpolation/calc/rdpa-criticalTemperature/gif/png.gif)
+
 

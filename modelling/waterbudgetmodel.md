@@ -242,6 +242,9 @@ The extent of the model combined with the resolution of the processes simulated 
 - Martinec, J., 1960. The degree-day factor for snowmelt-runoff forecasting. in Proceesings General Assembly of Helsinki, Commission on Surface Waters, IASH Publication 51:468—477.
 
 
+- National Operational Hydrologic Remote Sensing Center. 2004. Snow Data Assimilation System (SNODAS) data products at NSIDC. Boulder, CO: National Snow and Ice Data Center. Digital media.
+
+
 <!-- from GW -->
 - Ambroise, B., K. Beven, J. Freer, 1996. Toward a generalization of the TOPMODEL concepts: Topographic indices of hydrological similarity, Water Resources Research 32(7): pp.2135—2145.
 - Beven, K.J., 1986. Hillslope runoff processes and flood frequency characteristics. Hillslope Processes, edited by A.D. Abrahams, Allen and Unwin, Winchester, Mass. pp.187—202.

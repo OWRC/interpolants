@@ -87,7 +87,7 @@ $$
 1. Optimize $T_c$ (on a 6-hourly time step) such that $\sum P_{S\text{,CaPA}} \to \sum P_{S\text{,daily}}$
 
     $$
-    P_R=
+    P_{R\text{,CaPA}}=
     \begin{cases}
     P & T_a > T_c\\
     0 & \text{otherwise}
@@ -95,14 +95,16 @@ $$
     $$
 
     $$
-    P_S=
+    P_{S\text{,CaPA}}=
     \begin{cases}
     P & T_a \leq T_c\\
     0 & \text{otherwise}
     \end{cases}
     $$
 
-1. dis-aggregate 24-hour SNODAS snowmelt to 6-hourly time-steps using the following rules:
+> `sixHourlyYield.go`
+
+2. dis-aggregate 24-hour SNODAS snowmelt to 6-hourly time-steps using the following rules:
 
     1. If any timesteps has temperatures greater than 10°C, snowmelt is equally divided amongst them;
     1. The first time step having 6-hour rainfall $\geq$ 5mm, all melt is assumed to occur during this event;
