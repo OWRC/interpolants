@@ -20,7 +20,7 @@ library(scales)
 
 # Critical Temperature $(T_c)$
 
-Precipitation data can come in the form of just that: "precipitation", without information of whether it's in the snow (solid) or rain (liquid) form. A simple solution would be to determine a "critical" temperature $(T_c)$ from which precipitation falls either as snow or rain. 
+Precipitation data can come in the form of just that: "precipitation", without information of whether it's in the snow (solid) or rain (liquid) form. A simple solution would be to determine a "critical" temperature $(T_c)$ from which precipitation falls either as snow or rain:
 
 $$
 \text{Rainfall}=
@@ -39,12 +39,12 @@ $$
 $$
 
 
-$T_a$ is air temperature measured at land surface and is assumed to have some relationship with the temperature of the surface boundary layer. Here, it is discussed how an optimal $T_c$ is determined for every [ORMGP subwatershed](/interpolants/modelling/waterbudgetmodel.html#sub-basins).
+where $T_a$ is air temperature measured at land surface and is assumed to have some linear positive correlation with the temperature of the planetary boundary layer (Oke, 1987). Below, it is discussed how an optimal $T_c$ is determined for each of the 2,183 ~10km² [sub-watersheds delineated](/interpolants/modelling/waterbudgetmodel.html#sub-basins) across the [ORMGP](https://www.oakridgeswater.ca/) jurisdiction.
 
 # Data Collected
 ## 6-hourly Precipitation
-- Composite [CaPA-RPDA](https://weather.gc.ca/grib/grib2_RDPA_ps10km_e.html) 6-hourly precipitation $(P)$ accumulation distributed at 10-15km grids are interpolated to [2,183 10km² sub-watersheds](interpolants/interpolation/subwatershed.html). 
-- Exported `202009301300-CaPA-RDPA.nc` from [ORMGP-FEWS](interpolants/interpolation/fews.html):
+- Composite [CaPA-RPDA](https://weather.gc.ca/grib/grib2_RDPA_ps10km_e.html) 6-hourly precipitation $(P)$ accumulation distributed at 10-15km grids are interpolated to the ORMGP sub-watersheds, just short of a 2-decade period of record. 
+- Following [ORMGP-FEWS](https://owrc.github.io/interpolants/interpolation/fews.html) workflow: `exportBasinCapaRdpa.xml`, exported `202009301300-CaPA-RDPA.nc`:
 
 ```   
 float precipitation_amount(time=27392, stations=2813);
@@ -58,10 +58,11 @@ Period of record:
   end date: 2020-09-30 14:00:00 -0400 EDT
   (6-hourly)
 ```
+*(netCDF metadata)*
 
 ## 6-hourly Temperature 
-- Sub-daily, basin-interpolated aire temperatures $(T_a)$ from [hourly scalar MSC stations](interpolants/interpolation/hourly.html).
-- Following [ORMGP-FEWS](interpolants/interpolation/fews.html) workflow: `preprocessMSCtoBasinsHourly.xml`, exported `202209271600-6hourlyBasin.nc`:
+- Sub-daily, basin-interpolated air temperatures $(T_a)$ from [hourly scalar MSC stations are interpolated to the ORMGP sub-watersheds](https://owrc.github.io/interpolants/interpolation/hourly.html).
+- Following [ORMGP-FEWS](https://owrc.github.io/interpolants/interpolation/fews.html) workflow: `preprocessMSCtoBasinsHourly.xml`, exported `202209271600-6hourlyBasin.nc`:
 
 ```
 float air_temperature(time=48222, stations=2813);
@@ -99,7 +100,7 @@ Period of record:
   end date: 2022-09-28T00:00:00+0000
   (6-hourly)
 ```
-
+*(netCDF metadata)*
 
 ## Daily Snowmelt
 - Daily, basin-interpolated snowmelt $(P_M)$ from [SNODAS](interpolants/interpolation/daily.html).
@@ -141,7 +142,7 @@ Period of record:
   end date: 2022-09-28 05:00:00 UTC
   (daily)
 ``` 
-
+*(netCDF metadata)*
 
 
 # Results
@@ -150,8 +151,9 @@ df <- read.csv("interpolation/calc/rdpa-criticalTemperature/dat/tcrit-summary.cs
 df.noSNODAS <- read.csv("interpolation/calc/rdpa-criticalTemperature/dat/tcrit-summary-noSNODAS.csv")
 ```
 
+For this exercise, we need a complete and concurrent $P$ and $T_a$ time series, since the data have been interpolated to our sub-watershed, we have 2,813 of such time series. The limiting time step is 6-hours to match that of the CaPA-RDPA product. We also need a constraint, and seasonal snowmelt $(P_M)$ estimated using SNODAS aggregated to the same sub-watershed network is taken as the benchmark. Assuming the mass of $P_M$ originates as a proportion of total $P$ and that $T_a$ is a good predictor of its origin (i.e., snowmelt occurs in cold conditions) then we should be able to *"parse-out"* $P$ that has generally fallen as rain or snow.
 
-At the 6-hourly time step, at every sub-watershed, $T_c$ is determined by computing:
+Therefore At every sub-watershed, independently for each of the 19 seasons, $T_c$ is determined by computing:
 
 $$
   P_S=
@@ -161,12 +163,12 @@ $$
   \end{cases}
 $$
 
-for every season (i.e., water year), such that:
+For every "water year" season (Oct.-Sept.), $T_c$ is optimized such that:
 
 $$
   \sum P_S \to \sum P_M
 $$
-for every water year. This results in `r format(nrow(df),big.mark=",",scientific=FALSE)` separate $T_c$ optimizations averaging `r round(mean(df$tc), 1)`°C, with a mean residual/error $\left(\left|\sum P_S - \sum P_M \right|\right)$ of `r round(mean(df$diff),1)` mm, roughly `r round(mean(df$diff)/10,1)`\% of annual average precipitation. Below are this distributions of the results.
+That is snowfall predicted using $T_c$ is equal to the snowmelt predicted by SNODAS, year by year. This results in `r format(nrow(df),big.mark=",",scientific=FALSE)` separate $T_c$ optimizations averaging `r round(mean(df$tc), 1)`°C, with a mean residual/error $\left(\left|\sum P_S - \sum P_M \right|\right)$ of `r round(mean(df$diff),1)` mm, roughly `r round(mean(df$diff)/10,1)`\% of annual average precipitation. Below are the distributions of these results.
 
 
 ```{r plot1}
@@ -200,9 +202,15 @@ df %>% ggplot(aes(wy,tc)) +
 ```
 
 
+In the end, in 12 of 19 seasons did the grand mean sit within the inter-quartiles of the set of optimized critical temperatures.
+
+Operationally, when needing to apply $T_c$ to real-time $P$ estimates, the mean critical temperature of `r round(mean(df$tc), 1)`°C, whereas this analysis will only apply to past seasons, once complete.
+
+
+
 ## Discussion
 
-Overall, regional $T_c$ managed to remain close to the freezing point as expected. There are some rare outliers, hover all seem to converge to negligible residuals. Based on these results, the CaPA-RDPA precipitation field are parsed into the $P_R$ and $P_S$ components at the 6-hour timestep, then aggregated to daily timesteps.
+Overall, regional $T_c$ managed to remain close to the freezing point as expected. There are some rare outliers, hover all seem to converge to negligible residuals. Based on these results, the CaPA-RDPA precipitation field are parsed into the $P_R$ and $P_S$ components at the 6-hour time step, then aggregated to daily time steps.
 
 
 
@@ -251,3 +259,14 @@ blah
 ![Annual distribution of optimized Tc](E:/Sync/@dev/pages_owrc/interpolants/interpolation/calc/rdpa-criticalTemperature/gif/png.gif)
 
 
+# Data files
+The following data files used in the above analysis have been interpolated to the 2,813 sub-watersheds.
+
+- [`202009301300-CaPA-RDPA.nc`](google.ca) daily
+- `202209271600-6hourlyBasin.nc` hourly
+- `202209271600-dailyBasin.nc` Capa
+
+
+# References
+
+Oke, T.R., 1987. Boundary Layer Climates, 2nd ed. London: Methuen, Inc.
