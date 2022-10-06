@@ -96,7 +96,7 @@ float water_potential_evaporation_amount(time=48222, stations=2813);
   :coordinates = "lat lon";
 
 Period of record: 
-  start date: 21989-09-25T18:00:00+0000
+  start date: 1989-09-25T18:00:00+0000
   end date: 2022-09-28T00:00:00+0000
   (6-hourly)
 ```
@@ -138,7 +138,7 @@ float surface_snow_melt_amount(time=44198, stations=2813);
   :coordinates = "lat lon";
 
 Period of record: 
-  start date: 21901-09-26 05:00:00 UTC
+  start date: 1901-09-26 05:00:00 UTC
   end date: 2022-09-28 05:00:00 UTC
   (daily)
 ``` 
@@ -151,9 +151,11 @@ df <- read.csv("interpolation/calc/rdpa-criticalTemperature/dat/tcrit-summary.cs
 df.noSNODAS <- read.csv("interpolation/calc/rdpa-criticalTemperature/dat/tcrit-summary-noSNODAS.csv")
 ```
 
-For this exercise, we need a complete and concurrent $P$ and $T_a$ time series, since the data have been interpolated to our sub-watershed, we have 2,813 of such time series. The limiting time step is 6-hours to match that of the CaPA-RDPA product. We also need a constraint, and seasonal snowmelt $(P_M)$ estimated using SNODAS aggregated to the same sub-watershed network is taken as the benchmark. Assuming the mass of $P_M$ originates as a proportion of total $P$ and that $T_a$ is a good predictor of its origin (i.e., snowmelt occurs in cold conditions) then we should be able to *"parse-out"* $P$ that has generally fallen as rain or snow.
+For this exercise, we need a complete and concurrent $P$ and $T_a$ time series, since the data have been interpolated to our sub-watersheds, we have 2,813 of such time series. The limiting time step is 6-hours to match that of the CaPA-RDPA product. We also need a constraint, and seasonal snowmelt $(P_M)$ estimated using SNODAS aggregated to the same sub-watershed network is taken as the benchmark. Assuming the mass of $P_M$ originates as a proportion of total $P$ and that $T_a$ is a good predictor of its origin (i.e., snowmelt occurs in cold conditions) then we should be able to *"parse-out"* $P$ into its 2 (general) components: rain and snow.
 
-Therefore At every sub-watershed, independently for each of the 19 seasons, $T_c$ is determined by computing:
+**Note:** The SNODAS availability into Canada only began at 2010. For the previous seasons, a regional [cold-content snowpack model](https://owrc.github.io/interpolants/modelling/waterbudget/snowmeltCCF.html) was employed to estimate $P_M$ (which includes rain on snow events).
+
+Now, at every sub-watershed, independently for each of the 19 seasons, $T_c$ is determined by computing:
 
 $$
   P_S=
@@ -168,7 +170,7 @@ For every "water year" season (Oct.-Sept.), $T_c$ is optimized such that:
 $$
   \sum P_S \to \sum P_M
 $$
-That is snowfall predicted using $T_c$ is equal to the snowmelt predicted by SNODAS, year by year. This results in `r format(nrow(df),big.mark=",",scientific=FALSE)` separate $T_c$ optimizations averaging `r round(mean(df$tc), 1)`°C, with a mean residual/error $\left(\left|\sum P_S - \sum P_M \right|\right)$ of `r round(mean(df$diff),1)` mm, roughly `r round(mean(df$diff)/10,1)`\% of annual average precipitation. Below are the distributions of these results.
+That is, total annual snowfall predicted using $T_c$ is equal to the total snowmelt predicted by SNODAS, year by year. This results in `r format(nrow(df),big.mark=",",scientific=FALSE)` separate $T_c$ optimizations averaging `r round(mean(df$tc), 1)`°C, with a mean residual/error $\left(\left|\sum P_S - \sum P_M \right|\right)$ of `r round(mean(df$diff),1)` mm, roughly `r round(mean(df$diff)/10,1)`\% of annual average precipitation. Below are the distributions of these results.
 
 
 ```{r plot1}
@@ -202,17 +204,37 @@ df %>% ggplot(aes(wy,tc)) +
 ```
 
 
-In the end, in 12 of 19 seasons did the grand mean sit within the inter-quartiles of the set of optimized critical temperatures.
+The overall mean $T_c$ sat within the inter-quartiles of the set of optimized critical temperatures for 12 of 19 seasons.
 
-Operationally, when needing to apply $T_c$ to real-time $P$ estimates, the mean critical temperature of `r round(mean(df$tc), 1)`°C, whereas this analysis will only apply to past seasons, once complete.
+Operationally, when needing to apply $T_c$ to real-time $P$ estimates, the mean critical temperature of `r round(mean(df$tc), 1)`°C is used> This analysis will only apply to past seasons, once complete.
 
 
 
 ## Discussion
 
-Overall, regional $T_c$ managed to remain close to the freezing point as expected. There are some rare outliers, hover all seem to converge to negligible residuals. Based on these results, the CaPA-RDPA precipitation field are parsed into the $P_R$ and $P_S$ components at the 6-hour time step, then aggregated to daily time steps.
+As a simple validation, annual total precipitation, averaged over the 2,813 sub-watersheds is compared with total precipitation interpolated from station data. Overall the 2 data sets are follow each other, with no obvious sign of the 6-year occillation mentionned above.
 
+```{r plot5}
+df %>% select(-c("tc","diff","msum")) %>%
+  gather(src, precip, -sid, -wy) %>%
+  ggplot(aes(wy,precip, fill=src)) +
+  theme(legend.position = c(.85,.2)) +
+  geom_bar(stat="identity", width=.85, position = "dodge") +
+  # geom_segment(aes(x = 2011, y = 500, xend = 2020.75, yend = 500), size = 1, arrow = arrow(length = unit(0.25, "cm"), ends='both')) +
+  # annotate(geom="label", x = 2013, y = 500, label = "SNODAS", fontface = "bold", fill = "white") +
+  scale_fill_manual("source", values = c("psum" = "#0161e0", "psum2" = "#ff3975"),
+                    labels = c("psum" = "CaPA-RDPA", "psum2" = "MSC (scalar)")) +
+  # scale_y_continuous(limits=c(500,NA),oob = rescale_none) +
+  labs(title = "Comparison of regional precipitation", y="Precipitation (mm/yr)", x="water year")
+```
 
+Overall, regional $T_c$ managed to remain close to the freezing point as would be expected. There are some rare $T_c$ outliers; however every optimum seemed to converge to negligible residuals (\<percent annual precipitation).
+
+Based on these results, the CaPA-RDPA precipitation field have been successfully parsed into the $P_R$ and $P_S$ components at the 6-hour time step, then aggregated to daily time steps.
+
+### comparison with CCF model
+
+The optimization routine was also performed without SNODAS, as a means of validating the [CCF model](https://owrc.github.io/interpolants/modelling/waterbudget/snowmeltCCF.html) used for data infill. Below show the negligeable difference in optimal $T_c$ selection and residuals.
 
 ```{r plot3}
 df %>% ggplot(aes(wy,tc)) + 
@@ -239,32 +261,21 @@ df %>% ggplot(aes(wy,diff/psum*100)) +
   ylim(c(-0.1,1.25))
 ```
 
-```{r plot5}
-df %>% select(-c("tc","diff","msum")) %>%
-  gather(src, precip, -sid, -wy) %>%
-  ggplot(aes(wy,precip, fill=src)) +
-  theme(legend.position = c(.82,.15)) +
-  geom_bar(stat="identity", width=.85, position = "dodge") +
-  # geom_segment(aes(x = 2011, y = 500, xend = 2020.75, yend = 500), size = 1, arrow = arrow(length = unit(0.25, "cm"), ends='both')) +
-  # annotate(geom="label", x = 2013, y = 500, label = "SNODAS", fontface = "bold", fill = "white") +
-  scale_fill_manual("source", values = c("psum" = "#0161e0", "psum2" = "#ff3975"),
-                    labels = c("psum" = "CaPA-RDPA", "psum2" = "MSC (scalar)")) +
-  scale_y_continuous(limits=c(500,NA),oob = rescale_none) +
-  labs(title = "Comparison of regional precipitation", y="Precipitation (mm/yr)", x="water year")
-```
 
 
-blah
+### $T_c$ distribution
 
-![Annual distribution of optimized Tc](E:/Sync/@dev/pages_owrc/interpolants/interpolation/calc/rdpa-criticalTemperature/gif/png.gif)
+Lastly, as a final validation step, annual $T_c$'s distributed across the ORMGP sub-watershed network is inspected for irregularities. Notice the increased resolution offered by SNODAS.
+
+![](E:/Sync/@dev/pages_owrc/interpolants/interpolation/calc/rdpa-criticalTemperature/gif/png.gif)
 
 
 # Data files
 The following data files used in the above analysis have been interpolated to the 2,813 sub-watersheds.
 
-- [`202009301300-CaPA-RDPA.nc`](google.ca) daily
-- `202209271600-6hourlyBasin.nc` hourly
-- `202209271600-dailyBasin.nc` Capa
+- [`202009301300-CaPA-RDPA.nc`](https://www.dropbox.com/s/aldla0vryo3wqgk/202009301300-CaPA-RDPA.nc?dl=1) 6-hourly $P$ 2002-2020
+- [`202209271600-6hourlyBasin.nc`](https://www.dropbox.com/s/zq9i9cb4cawet9l/202209271600-6hourlyBasin.nc?dl=1) 6-hourly $T_a$, $p_a$, $r$, $\overline{u}$, $E_a$ 1989-2022
+- [`202209271600-dailyBasin.nc`](https://www.dropbox.com/s/uddestk6u9tuawn/202209271600-dailyBasin.nc?dl=1) daily $T_n$, $T_x$, $P_R$, $P_S$, $P_M$ 1901-2022
 
 
 # References
