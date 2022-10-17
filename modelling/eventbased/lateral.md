@@ -1,6 +1,5 @@
 ---
-title: Water Budget Modelling
-subtitle: Lateral movement of land surface moisture
+title: Lateral movement of land surface moisture
 author: M.Marchildon
 date: 2019
 output: html_document
@@ -13,7 +12,7 @@ output: html_document
 
 The simulation of lateral water movement is approximated by the local inertial approximation (LIA) of the shallow water equations (SWE) of (de Almeda et.al., 2012; 2013). 
 
-It is important to note that the interpretation of the use of the LIA to the SWE does not include the physical movement of sheet flow, rather, the LIA is being interpreted as a means of moving water laterally, either thought a network of micropores and rill structures. That being said, roughness coefficients may be higher than typically associated with flood forecasting. only when water depths achieve appreciable depths (say greater than 1\,cm) will the interpretation of the LIA as representing depth-averaged shallow surface water movement hold. Under most conditions, however, flow depths, on average, will report depths much less than 1\,cm. As flow depths receded beyond this (albeit arbitrary) threshold, flow paths through macropore networks and rill structures are expected to lengthen relative to the grid cell dimension and is assumed to be subcritical. Fortunately, the solution of de Almeda et.al., (2012) is best applicable to low Froude numbers, $Fr<0.5$, thus suitable for the interpretation made here.
+It is important to note that the interpretation of the use of the LIA to the SWE does not include the physical movement of sheet flow, rather, the LIA is being interpreted as a means of moving water laterally, either thought a network of micropores and rill structures. That being said, roughness coefficients may be higher than typically associated with flood forecasting. only when water depths achieve appreciable depths (say greater than 1cm) will the interpretation of the LIA as representing depth-averaged shallow surface water movement hold. Under most conditions, however, flow depths, on average, will report depths much less than 1cm. As flow depths receded beyond this (albeit arbitrary) threshold, flow paths through macropore networks and rill structures are expected to lengthen relative to the grid cell dimension and is assumed to be subcritical. Fortunately, the solution of de Almeda et.al., (2012) is best applicable to low Froude numbers, $Fr<0.5$, thus suitable for the interpretation made here.
 
 
 ## Governing Equations
@@ -76,6 +75,7 @@ $$
 
 
 Courant-Friedrichs-Lewy condition:
+
 $$
 	\Delta t = \alpha \frac{\Delta x}{\sqrt{gh_\text{max}}}, \qquad 0<\alpha\leq 1
 $$

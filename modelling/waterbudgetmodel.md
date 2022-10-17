@@ -190,7 +190,6 @@ The extent of the model combined with the resolution of the processes simulated 
 
 # Theory
 
-## Long-term continuos water budgeting
 
 * **[Input data and Preprocessing](/interpolants/modelling/waterbudget/data.html)**
     * **[Evaporation calibration $(E_a)$](/interpolants/modelling/waterbudget/data.html#atmospheric-demand-e_a)**
@@ -204,10 +203,7 @@ The extent of the model combined with the resolution of the processes simulated 
 * **[Future plans](/interpolants/modelling/waterbudget/future.html)**
 
 
-## Short-term infiltration model
 
-* **[Lateral water movement](/interpolants/modelling/infiltration/lateral.html)**
-* **[Multiphase flow through porous media](/interpolants/modelling/infiltration/pmflow.html)**
 
 
 # References
