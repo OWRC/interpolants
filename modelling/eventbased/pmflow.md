@@ -416,6 +416,7 @@ $$
 $$
 
 and thus <!-- pg.180-181 -->
+
 $$
 \begin{align*}
 	\frac{\partial F_i}{\partial\psi_i} &=\frac{K_i}{z_{i+1}-z_i}+\frac{K_{i-1}}{z_i-z_{i-1}}+u'_i+\varrho'_i \\

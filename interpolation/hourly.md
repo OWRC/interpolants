@@ -50,6 +50,11 @@ $$
 
 
 
+# *TODO*
+
+HRDPA... 2.5 km resolution, compare that to the `XX` average spacing among operational meteorological stations.
+
+
 # References
 
 Novák, V., 2012. Evapotranspiration in the Soil-Plant-Atmosphere System. Springer Science+Business Media Dordrecht. 253pp.

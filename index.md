@@ -119,15 +119,31 @@ _Time-series data, updated nightly_
 
 
 
-# Modelling
+# Numerical Modelling hydrological analysis tools
+
+Numerical modelling are applied in two ways: 
+
+The first is a long-term data assimilation system that utilizes hydrological analysis tools (i.e., models) and leverages the ORMGP's database. What amounts to *data assimilation system* (DAS) utilized modelling technology to provide real-time *interpolation* of the hydrological system, data we have access to. The computational structure of the DAS is specifically tailored to run as fast as possible, such that thousands of model "projections" made continuously on [ORMGP servers](https://owrc.github.io/interpolants/#servers). The results from this analysis will likely be offered as monthly ranges in long term seasonal water balance estimates.
+
+Other tools are intended for predictive use, but are restricted to short-term (less than 30 days) projections. The design of these models is more physically rigorous but will always be dependent on other models (existing groundwater models or the DAS described here) to prescribe the antecedent conditions. While computational time for this model is orders of magnitudes greater than that of the DAS, it continuous to share the philosophy of designed whereby computation efficiency is paramount.
+
+Combined, these two tools will provide all water groundwater resources needs for the ORMGP partners in order to:
+
+1. utilize readily available datasets provided daily by government agencies of Canada and the United States without the need for [data pre-processing](https://owrc.github.io/interpolants/modelling/waterbudget/data.html)
+1. capture long-term hydrological water budget estimates with an emphasis on its certainty
+1. project near-term hydrological response given a known antecedent state
+
+
 ## Existing numerical model files, output and sharing
 * [Numerical Model Custodianship Program](https://owrc.github.io/snapshots/md/numerical-model-custodianship-program.html) — model archive.
 * [*A Guide for Actively Managing Watershed-Scale Numerical Models in Ontario*](https://www.oakridgeswater.ca/_files/ugd/4a0a6e_c41c71a481ea4657806e1fbb0c912f7a.pdf) — model management guidance (2017)
 
 ## Regional Water Budget, Long-term and Continuous
 * [Regionally-distributed runoff-recharge model:](/interpolants/modelling/waterbudgetmodel.html) Long-term continuos water budgeting of the ORMGP jurisdiction.
-* [Lateral water movement:](/interpolants/modelling/eventbased/lateral.html) Short-term/event-based 2D shallow water model.
-* [Multiphase flow through porous media:](/interpolants/modelling/eventbased/pmflow.html) Short-term infiltration and evaporation model.
+
+## Regional Water Budget, Short-term/event-based
+* [Lateral water movement:](/interpolants/modelling/eventbased/lateral.html) a local inertial approximation of the shallow water equation for lateral movement of water.
+* [Multiphase flow through porous media:](/interpolants/modelling/eventbased/pmflow.html) a one-dimensional fully-implicit multi-layer solution to multi-phase flow through porous media used to investigate infiltration, evaporation and runoff generation.
 
 
 
@@ -146,4 +162,4 @@ _Time-series data, updated nightly_
 
 
 
-## [**Glossary**](glossary.html)
+# [**Glossary**](glossary.html)

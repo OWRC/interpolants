@@ -4,25 +4,24 @@ author: M.Marchildon
 output: html_document
 ---
 
+
+
+Meteorological data acquisition, management, aggregation and interpolation was largely accomplished using [Delft-FEWS](https://www.deltares.nl/en/software/flood-forecasting-system-delft-fews-2/) (ver.2019.02 build.39845) a flood forecasting system offered (at no cost, only license agreement) by [Deltares](https://www.deltares.nl/en/). <!-- Configuration files for the Delft-FEWS system build can be found here: BLAH. -->
+Model input (i.e., "climate forcing") data required by the model are termed *atmospheric yield* $(Y_a)$ and *atmospheric demand* $(E_a)$. These are provided on a 6-hourly timestep. These data have been distributed to [some 3,000 10km² sub-watersheds](https://owrc.github.io/interpolants/interpolation/subwatershed.html). 
+
+
+<iframe src="https://golang.oakridgeswater.ca/pages/subwatersheds.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
+
+
+The model was designed to remain amenable to data availability and new technologies; for instance, [SNODAS](https://nsidc.org/data/g02158) can avoid the need to model snowmelt explicitly and leverage these online resources.
+
+
+
+
 * TOC
 {:toc}
 
 
-# Introduction
-
-Meteorological data acquisition, management, aggregation and interpolation was accomplished using [Delft-FEWS](https://www.deltares.nl/en/software/flood-forecasting-system-delft-fews-2/) (ver.2019.02 build.39845) a flood forecasting system offered (at no cost, only license agreement) by [Deltares](https://www.deltares.nl/en/). Configuration files for the Delft-FEWS system build can be found here: BLAH.
-
-Climate forcing data required by the model are atmospheric yield and potential evaporation on a 6-hourly timestep. Atmospheric yield is her defined as water added to land surface in its mobile (read: liquid) form.  Additional processing performed on the data exported from Delft-FEWS is described below.
-
-
-*TODO:*
-
-CaSPAr 
-
-HRDPA... 2.5 km resolution, compare that to the `XX` average spacing among operational meteorological stations.
-
-
-snodas ... can avoid the need to model snowmelt explicitly, and leverage online resources.
 
 
 
@@ -58,9 +57,11 @@ Both scalar (i.e., point) data and gridded data are then interpolated to each of
 - Air temperature $(T_a)$, relative humidity $(r)$ and wind speeds $(u)$ are interpolated using a [radial basis function (RBF)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.Rbf.html) (with a cubic kernel and a  smoothing factor $\lambda=1/1000$ to prevent singular matrices).
 - Air/barometric pressure $(p_a)$ are first [corrected for elevation](https://owrc.github.io/interpolants/interpolation/barometry.html) then interpolated using the same cubic RBF. 
 - Wind directions $(u_\alpha)$ are split into their x-y components, each interpolated separately using a cubic RBF before returned to an angle.
-- Potential evaporation flux [m/s] $(E_a)$ is then computed at every sub-watershed using interpolated $(T_a, r, u)$:
+- Potential evaporation flux [m/s] $(E_a)$ is then computed at every sub-watershed and is described below.
 
-$$
+<!-- using interpolated $(T_a, r, u)$: -->
+
+<!-- $$
     E_a=7.46\times 10^{-9} \cdot (a + ub) d_a
 $$
 
@@ -70,7 +71,7 @@ $$
 
 $$
     e_s = 610.49 \cdot\exp\frac{17.625 T_a}{T_a+243.04}
-$$
+$$ -->
 
 
 
@@ -81,16 +82,6 @@ $$
 
 The time step of the model has been set to 6 hour steps. All other data sets have been either aggregated or disaggregated to match this temporal scale.
 
-The acquired data come in a variety of time steps...
-
-
-
-
-<!-- CHECK -->
-![](fig/met_timeline.svg)
-check
-
-
 ### Hourly to 6-hourly climate
 
 Historical hourly measurements of air temperature, pressure, relative humidity and wind speed were retrieved from the [ECCC website](https://climate.weather.gc.ca/historical_data/search_historic_data_e.html). In total, 46 stations with varying periods of record length and quality were collected.
@@ -100,7 +91,6 @@ The hourly time-series interpolated to each sub-watershed was then aggregated to
 The [Accumulative aggregation](https://publicwiki.deltares.nl/display/FEWSDOC/Aggregation+Accumulative) Delft-FEWS transformation was applied for $E_a$
 
 
-
 ### Sub-daily from daily Snowmelt
 Estimates of 24-hour snowmelt accumulation is recovered from the [Snow Data Assimilation System (SNODAS) data product](https://nsidc.org/data/g02158), a (near-)real-time service that returns gridded data at a ~30m resolution. The [NSIDC](https://nsidc.org/) also maintains continuous estimates covering our jurisdiction since September, 2010. [Prior to 2010-09-01, snowmelt estimation computed using a Cold-Content Function (CCF) model.](/interpolants/modelling/waterbudget/snowmeltCCF.html) 
 
@@ -108,10 +98,9 @@ Snowmelt is acquired at a daily timestep that represents the *"total of 24 per h
 
 1. If any timesteps has temperatures greater than 10°C, snowmelt is equally divided amongst them;
 1. The first time step having 6-hour rainfall $\geq$ 5mm, all melt is assumed to occur during this event;
-1. If any timesteps within 06:00-06:00 UTC has rainfall greater than 1mm, snowmelt is proportionned according to (and added with) rainfall;
+1. If any timesteps within 06:00-06:00 UTC has rainfall greater than 1mm, snowmelt is proportioned according to (and added with) rainfall;
 1. If any timesteps has temperatures greater than 0°C, snowmelt is equally divided amongst them; otherwise
 1. Snowmelt is equally divided among the 2 daytime time steps (12:00-00:00 UTC---07:00-19:00 EST).
-
 
 
 

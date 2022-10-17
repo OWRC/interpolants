@@ -4,23 +4,39 @@ author: M.Marchildon
 output: html_document
 ---
 
+
+A regionally-distributed runoff/recharge model has been developed to simulate hydrologic processes at a fine (grid-based) scale. The model code is written to support large-scale and high-resolution distributed processed optimized for implementation on parallel computer architectures. No process of the model is in any way novel, rather a suite of existing model structures have been combined into one platform chosen specifically for their ease of implementation, practical applicability and computational efficiency and scalability.
+
+The model's primary intention is to project land surface moisture distribution for the purposes of estimating regional groundwater recharge. It utilized hydrological model procedures that are amenable to local data availability. While the model can simulate stream flow discharge and overland runoff at any point in space, the model is not optimized, nor intended to serve as your typical rainfall runoff model. Outputs from this model will most often be used to constrain regional groundwater models within the 30,000km² Oak Ridges Moraine Groundwater Program jurisdiction of southern Ontario.
+
+This model is currently in beta mode, and its use for practical application should proceed with caution. Users should be aware that model results posted online will always be subject to change. Ultimately, the intent of this model is to produced ranges of long-term (monthly average) water budget metrics (precipitation, runoff, evaporation, recharge, moisture state, etc.) as a hydrological reference for the [partners of the ORMGP](https://www.oakridgeswater.ca/).
+
+The model is *physically based* in that mass is conserved and it is not constrained to any particular timestep. The model conceptualization has maintained parameters that speaks to the common physical hydrology lexicon, with parameters such as percent impervious, conductivity of surficial soils, etc.
+
+
+
+
+
+
+
+
+
+
+
+
+
 * TOC
 {:toc}
 
 
-# Introduction
 
-A regionally-distributed runoff/recharge model has been developed to simulate hydrologic processes at a fine (grid-based) scale. The model conceptualization is written to a large-scale yet high-resolution distributed numerical model code optimized for implementation on parallel computer architectures. No process of the model is in any way novel, rather a suite of existing model structures have been combined into one platform chosen specifically for their ease of implementation, practical applicability and computational efficiency and scalability.
 
-The model's primary intention is to project land surface moisture distribution for the purposes of estimating regional groundwater recharge. It utilized hydrological model procedures that as best suited to the data available locally. While the model can simulate stream flow discharge and overland runoff at any point in space, the model is not optimized, nor intended to serve as your typical rainfall runoff model. Outputs from this model will most often be used to constrain regional groundwater models within the 30,000km² Oak Ridges Moraine Groundwater Program jurisdiction of southern Ontario.
 
-This model is currently in beta mode, and its use for practical application should proceed with caution. Users should be aware that model results posted online will always be subject to change. Ultimately, the intent of this model is to produced ranges of long-term (monthly average) water budget metrics (precipitation, runoff, evaporation, recharge, moisture state, etc.) as a hydrological reference for the partners of the ORMGP.
 
-The model is physically based in that mass is conserved and it is not constrained to any particular timestep. The model conceptualization has maintained parameters that speaks to common physical propertied, such as percent impervious, conductivity of surficial soils, etc.
 
-## Summary
+# Modelling Summary
 - model run from the hydrological water year 2010 (2009-10-01) through water year 2020. 
-- Precipitation was collected from [CaPA-HRDPA](https://eccc-msc.github.io/open-data/msc-data/nwp_hrdpa/readme_hrdpa_en/)
+- Precipitation was collected from [CaPA-RDPA](https://eccc-msc.github.io/open-data/msc-data/nwp_hrdpa/readme_hrdpa_en/)
 - Snowmelt was collected from [SNODAS]()
 - $T_a$, $r$, $u$ from MSC
 - Potential evaporation $(E_a)$ determined using the [empirical wind functions of Penman (1948)]()
@@ -28,22 +44,27 @@ The model is physically based in that mass is conserved and it is not constraine
 
 The following is a description of the water budget tool located on our website, hereinafter referred to as the "*model*".
 
-### Model components:
+
+
+
+
+# Model Structure
+## Model components:
 
 1. use of regional climate fields (model inputs—precipitation, temperature, snowmelt, etc.)
 1. explicit soil moisture accounting scheme
 1. cold content energy balance snowpack model
 1. distribution function-based shallow groundwater model with groundwater feedback mechanisms
-1. a one-dimensional fully-implicit multi-layer solution to multi-phase flow through porous media
-1. a one-dimensional first-order kinematic overland flow module	
-1. local inertial approximation of the shallow water equation for lateral movement of water
+<!-- 1. a one-dimensional first-order kinematic overland flow module	 -->
 
 
 ## Computational Elements
 
-Model grids in the model represent a homogenized area on the land surface, similar to the concept of a Hydrologic Response Unit, or HRU. The term HRU will be avoided here as the concept itself is not well defined and the term "computational element" (CE) will be used herein to avoid ambiguity. All processes within the computational element are assumed to be zero-dimensional, that is processes are modelled at the point-scale, which effectively represents the "average" condition within the grid cell. The spatial proximity of each computational element is maintained, meaning that runoff occurring from an upgradient CE will runon to an adjacent downgradient CE, thus preserving the spatial distribution of land surface moisture.
+Model grids in the model represent a homogenized area on the land surface, similar to the concept of a Hydrologic Response Unit, or HRU. The term HRU will be avoided here as the concept itself is not well defined and the term *"computational element"* (CE) will be used herein to avoid ambiguity. All processes within the computational element are assumed to be zero-dimensional, that is processes are modelled at the point-scale, which effectively represents the "average" condition within the grid cell. The spatial proximity of each computational element is maintained, meaning that runoff occurring from an up-gradient CE will runon to an adjacent down-gradient CE, thus preserving the spatial distribution of land surface moisture.
 
-## Model Structure
+
+
+## Runoff
 
 Runoff is conceptualized as being generated through the saturation excess (Dunne, 1975 CHECK) mechanism. Land area that has the capacity to retain water (through interception, soil retention, depression/rill storage, etc.) must be satisfied. The saturation excess mechanism is dependent on topography and it's interaction with the groundwater system; thus the model is distributed (cell-based) and has an integrated (albeit conceptual) groundwater system.
 
@@ -73,21 +94,19 @@ The model runs using a variable time stepping approach. The soil moisture accoun
 The time step of the model has been set to 6 hour steps on 00:00 UTC, yielding the local time steps of 01:00, 07:00, 13:00, and 19:00 EST. This step is chosen as it matches the received precipitation dataset described below.
 
 
-## Model Breakdown
-
-The "model" described herein is actually two separate hydrological analysis tools. The first is a long-term data assimilation system that utilizes state-of-the-art data products and leverages the ORMGP's database. This data assimilation system (DAS) differs from a model (in the traditional sense) in that it is used to \emph{interpolate} the hydrological function of the landscape given the data that are available. The computational structure of the DAS is specifically tailored to run as fast as possible, as there are thousands of projections continuously made on ORMGP servers. The results from this analysis will only be offered as likely ranges in long term seasonal water balance estimates.
-
-The second tool is intended as a predictive model (this time, in the traditional sense), but is intended for short-term (i.e., less than a month) projections. The design of this model is more physically rigorous but will always be dependent on other models (or the DAS described here) to prescribe antecedent conditions. While computational time for this model is orders of magnitudes greater that the DAS, it continuous to share the philosophy of designed whereby computation efficiency is paramount.
-
-Combined, these two tools will provide all water groundwater resources needs for the ORMGP partners in order to:
-
-1. utilize readily available datasets provided daily by government agencies of Canada and the United States
-1. interpolate long-term hydrological water budget components with an emphasis on its certainty
-1. extrapolate near-term hydrological function from a given/known antecedent state
 
 
 
-# Model structure and physical constraints
+
+
+
+
+
+
+
+
+
+# Physical Constraints
 
 ### Digital Elevation Model
 
@@ -101,73 +120,12 @@ The 30,000 km² model area has been sub divided into 2,813 approximately 10 km²
 1. Meteorological forcings from external sources are aggregated applied uniformly within the sub-basin (via a pre-processing routine); and
 1. Local shallow water response is assumed to act uniformly (the shallow subsurface catchment area).
 
-<!-- ![](fig/fig-sws1.png) -->
+
 <iframe src="https://golang.oakridgeswater.ca/pages/subwatersheds.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 
 
 
-
-
-# Model Parameterization
-
-Although a distributed model, the procedures applied at the cell scale are quite parsimonious. There is no separate treatment of interception, depression storage, nor soil water retention, rather it is assumed that these processes respond to environmental factors (e.g., evaporation) in parallel and thus can be treated in bulk.
-
-From the top down perspective, viewing some 12.1 million 50x50m cells covering 30,000 km², it seems rather overcomplicated (possibly frivolous) to account water any more than to total mass present at any particular (lateral) location.
-
-#### Global parameters
-
-Cells with a contributing area ($A$) greater than 1 km² are deemed "stream cells" in which additional sources include groundwater discharge to streams.
-
-#### Sub-basin parameters
-
-Groundwater processes in the model are conceptualized at the sub-basin scale and so much of the groundwater parameterization is implimented here.
-
-#### Cell-based parameters
-
-Each cell is classified according to (i) surficial geology and (ii) land use mapping where each class is parameterized independently. "Look-up tables" are used to distribute model parameters accordin to their classification.
-
-##### Parameters:
-- impervious fraction
-- retention/storage capacity
-- depression storage
-- percolation rates
-
-## Parameters
-> (merge with above)
-
-#### globally applied, cell-base parameters
-
-- $D_\text{inc}$: depth of incised channel relative to cell elevation [m] (note, while it is possibile to assing this parameter on a cell basis, it was treated here as a global "tuning" parameter.)
-- $f_\text{casc}$: cascade fractions are based on a pre-determined relationship with local gradients.
-
-#### regional (sub-watershed based)
-
-- $m$: TOPMODEL groundwater scaling factor [m]
-
-#### land use based
-
-- $F_\text{imp}$: fraction of impervious cover
-- $F_\text{can}$: fraction of canopy cover
-- $\phi$: porosity
-- $F_c$: field capacity
-- $d_\text{ext}$: extinction depth of soil, where evapotranspiration cease to occur.
-
-#### surficial geology based
-
-- $K_\text{sat}$: hydraulic conductivity as saturation
-
-## Glossary
-
-- masl - metres above sea level
-
-- ECCC - Environment Canada and Climate Change
-
-- atmospheric yeild: term used to describe water (in liquid form) that is actively altering the hydrologic state at a particular location.
-
-
-
-
-# Inputs
+# Parameterization
 
 The model's structure is defined rather simply by at least 5 raster data sets. Given these data, the model's pre-processor will generate additional information based on these data:
 
@@ -175,6 +133,41 @@ The model's structure is defined rather simply by at least 5 raster data sets. G
 1. land use index (with parameter lookup table)
 1. surficial geology index (with parameter lookup table)
 1. groundwater system index
+
+Although a distributed model, the procedures applied at the cell scale are quite parsimonious. There is no separate treatment of interception, depression storage, nor soil water retention, rather it is assumed that these processes respond to environmental factors (e.g., evaporation) in parallel and thus can be treated in bulk.
+
+From the top down perspective, viewing some 12.1 million 50x50m cells covering 30,000 km², it seems rather overcomplicated (possibly frivolous) to account water any more than to total mass present at any particular (lateral) location.
+
+#### globally applied, cell-based parameters
+
+Cells with a contributing area ($A$) greater than 1 km² are deemed "stream cells" in which additional sources include groundwater discharge to streams.
+
+- $D_\text{inc}$: depth of incised channel relative to cell elevation [m] (note, while it is possible to assign this parameter on a cell basis, it was treated here as a global "tuning" parameter.)
+- $f_\text{casc}$: cascade fractions are based on a pre-determined relationship with local gradients.
+
+#### Sub-basin based parameters
+
+Groundwater processes in the model are conceptualized at the sub-basin scale and so much of the groundwater parameterization is implemented here.
+
+- $m$: TOPMODEL groundwater scaling factor [m]
+
+#### Land use based parameters
+
+Each cell is classified according to (i) surficial geology and (ii) land use mapping where each class is parameterized independently. "Look-up tables" are used to distribute model parameters accordin to their classification.
+
+
+- $F_\text{imp}$: fraction of impervious cover
+- $F_\text{can}$: fraction of canopy cover
+- $\phi$: porosity
+- $F_c$: field capacity
+- $d_\text{ext}$: extinction depth of soil, where evapotranspiration cease to occur.
+<!-- - retention/storage capacity -->
+<!-- - depression storage -->
+
+#### Surficial geology based
+
+- $K_\text{sat}$: hydraulic conductivity as saturation (i.e., percolation rates)
+
 
 
 # Model Variables
@@ -188,22 +181,49 @@ The extent of the model combined with the resolution of the processes simulated 
 
 
 
-# Theory
+# Input Data
+
+to th sub-basin...
+
+<iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 
 
 * **[Input data and Preprocessing](/interpolants/modelling/waterbudget/data.html)**
     * **[Evaporation calibration $(E_a)$](/interpolants/modelling/waterbudget/data.html#atmospheric-demand-e_a)**
-    * **[Critical temperature evaluation $(T_c)$](https://owrc.github.io/interpolants/modelling/waterbudget/data.html#rainfall-p_r)**    
+    * **[Critical temperature evaluation $(T_c)$](/interpolants/modelling/waterbudget/data.html#rainfall-p_r)**    
     * **[Snowmelt $(P_M)$](/interpolants/modelling/waterbudget/data.html#sub-daily-from-daily-snowmelt)**
+
+
+
+# Theory
+
+
 * **[Shallow groundwater](/interpolants/modelling/waterbudget/gw.html)**
 * **[Soil moisture accounting](/interpolants/modelling/waterbudget/sma.html)**
 * **[Overland flow routing](/interpolants/modelling/waterbudget/overlandflow.html)**
+
+
+## Calibration
 * **[Model Parameters and Sampling](/interpolants/modelling/waterbudget/parameters.html)**
+
+
+
+## Code
 * **[Model Structure](/interpolants/modelling/waterbudget/structure.html)**
+
+
+## Future plans
 * **[Future plans](/interpolants/modelling/waterbudget/future.html)**
 
 
 
+# Glossary
+
+- masl - metres above sea level
+
+- ECCC - Environment Canada and Climate Change
+
+- atmospheric yield $(Y_a)$: term used to describe water (in liquid form) that is actively altering the hydrologic state at a particular location.
 
 
 # References
@@ -291,18 +311,18 @@ The extent of the model combined with the resolution of the processes simulated 
 
 
 <!-- EXTRA?? (need to check) -->
-Beven, K.J.; Kirkby, M. J. (1979). "A physically based, variable contributing area model of basin hydrology". Hydrological Science Bulletin. 24 (1): 43–69. doi:10.1080/02626667909491834
+- Beven, K.J.; Kirkby, M. J. (1979). "A physically based, variable contributing area model of basin hydrology". Hydrological Science Bulletin. 24 (1): 43–69. doi:10.1080/02626667909491834
 
-Garbrecht Martz 1997 The assignment of drainage direction over flat surfaces in raster digital elevation models
-
-Gupta etal 2009 Decomposition of the mean squared error and NSE performance criteria- Implications for improving hydrological modelling
-
-Monteith, J.L., 1965. Evaporation and environment. Symposia of the Society for Experimental Biology 19: 205–224.
-
-National Operational Hydrologic Remote Sensing Center. 2004. Snow Data Assimilation System (SNODAS) Data Products at NSIDC, Version 1. [Indicate subset used]. Boulder, Colorado USA. NSIDC: National Snow and Ice Data Center. doi: https://doi.org/10.7265/N5TB14TC. [Date Accessed]
-
-Ontario Ministry of Natural Resources and Forestry, 2015. GTA DEM 2002 User Guide. Queen’s Printer for Ontario. 14pp.
-
-Penman, H.L., 1948. Natural evaporation from open water, bare soil and grass. Proceedings of the Royal Society of London. Series A, Mathematical and Physical Sciences 193(1032): 120-145.
-
-Wang, L., H. Liu, 2006. An efficient method for identifying and filling surface depressions in digital elevation models for hydrologic analysis and modelling. International Journal of Geographical Information Science 20(2): 193-213.
+- Garbrecht Martz 1997 The assignment of drainage direction over flat surfaces in raster digital elevation models
+ 
+- Gupta etal 2009 Decomposition of the mean squared error and NSE performance criteria- Implications for improving hydrological modelling
+ 
+- Monteith, J.L., 1965. Evaporation and environment. Symposia of the Society for Experimental Biology 19: 205–224.
+ 
+- National Operational Hydrologic Remote Sensing Center. 2004. Snow Data Assimilation System (SNODAS) Data Products at NSIDC, Version 1. [Indicate subset used]. Boulder, Colorado USA. NSIDC: National Snow and Ice Data Center. doi: https://doi.org/10.7265/N5TB14TC. [Date Accessed]
+ 
+- Ontario Ministry of Natural Resources and Forestry, 2015. GTA DEM 2002 User Guide. Queen’s Printer for Ontario. 14pp.
+ 
+- Penman, H.L., 1948. Natural evaporation from open water, bare soil and grass. Proceedings of the Royal Society of London. Series A, Mathematical and Physical Sciences 193(1032): 120-145.
+ 
+- Wang, L., H. Liu, 2006. An efficient method for identifying and filling surface depressions in digital elevation models for hydrologic analysis and modelling. International Journal of Geographical Information Science 20(2): 193-213.
