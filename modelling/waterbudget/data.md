@@ -6,12 +6,20 @@ output: html_document
 ---
 
 
-The model considers the greater role the atmosphere has on its 30,000 km² extent. The atmosphere, taking a top-down perspective, requires consideration of PBL (Oke, 1987) as it represents the barrier from which mass must transfer when surface evaporation is captured by the atmosphere. This is particularity so when considering mass transfer over rough surfaces, where surface evaporation becomes coupled with advective (vapour deficit) flux through the PBL (Bailey et.al., 1997).
-
-Model input (i.e., "climate forcing") data required by the model are termed *atmospheric yield* $(Y_a)$ and *atmospheric demand* $(E_a)$. These are provided on a 6-hourly timestep. These data have been distributed to [some 3,000 10km² sub-watersheds](https://owrc.github.io/interpolants/interpolation/subwatershed.html). 
+**A top-down approach**
 
 
+In an attempt to make most of computational efficiency, many processes that are typically computed as part of a hydrological model have been pre-built as input to the ORMGP water balance model.  Processes such as snowmelt and potential evapotranspiration can modelled independently of the rainfall-runoff-recharge process and thus much computational gains can be made if these processes are pre-determined.
 
+Two products (i.e., model inputs/forcings/variables) are created through this process, namely 
+
+1. Atmospheric Demand $(E_a)$ is the "drying power" of the near-surface atmosphere, also known as the Planetary Boundary Layer (PBL­­­­-­­­Oke, 1987); and
+1. Atmospheric Yield $(Y_a)$ water in its liquid form released either as rainfall or snowmelt onto the land surface.
+
+
+The model considers the greater role the atmosphere has on its ORMGP region. The *Planetary Boundary Layer* (Oke, 1987) is conceptualized as the barrier from which mass must transfer when surface evaporation is captured by the atmosphere and when liquid water originating from the atmosphere is released onto the land surface. 
+
+The model input (i.e., "climate forcing") data are provided on a 6-hourly timestep. These data have been distributed to [some 3,000 10km² sub-watersheds](https://owrc.github.io/interpolants/interpolation/subwatershed.html). They reflect the sources and sinks, respectively, of liquid (read: mobile) water on the land surface.
 
 
 
@@ -50,7 +58,7 @@ Both scalar (i.e., point) data and gridded data are then interpolated to each of
 
 
 ### Precipitation and Snowmelt
-The 6-hourly CaPA-RDPA precipitation $(P)$ and the daily SNODAS snowmelt $(P_M)$ fields are both gridded rasters that are routinely scraped of open web resources and proportioned to the sub-watersheds using the Delft-FEWS transformation ["Interpolation: SpatialAverage"](https://publicwiki.deltares.nl/display/FEWSDOC/InterpolationSpatialAverage)
+The 6-hourly CaPA-RDPA precipitation $(P)$ and the daily SNODAS snowmelt $(P_M)$ fields are both gridded rasters that are routinely scraped of open web resources and proportioned to the sub-watersheds using the Delft-FEWS transformation [Interpolation: SpatialAverage](https://publicwiki.deltares.nl/display/FEWSDOC/InterpolationSpatialAverage).
 
 ### Temperature, Pressure, Humidity and Wind Speed
 These hourly datasets offered by the MSC are scalar, in that they are ground measurements taken at station locations. Spatial interpolation includes:
@@ -87,7 +95,7 @@ The time step of the model has been set to 6 hour steps. All other data sets hav
 
 Historical hourly measurements of air temperature, pressure, relative humidity and wind speed were retrieved from the [ECCC website](https://climate.weather.gc.ca/historical_data/search_historic_data_e.html). In total, 46 stations with varying periods of record length and quality were collected.
 
-The hourly time-series interpolated to each sub-watershed was then aggregated to the 6-hourly-UTC time stepping scheme described above. Aggregation of all metrics was accomplished using the Delft-FEWS transformation ["Aggregation: MeanToMean"](https://publicwiki.deltares.nl/display/FEWSDOC/Aggregation+MeanToMean) for $T_a$, $p_a$, $r$ and $u$.
+The hourly time-series interpolated to each sub-watershed was then aggregated to the 6-hourly-UTC time stepping scheme described above. Aggregation of all metrics was accomplished using the Delft-FEWS transformation [Aggregation: MeanToMean](https://publicwiki.deltares.nl/display/FEWSDOC/Aggregation+MeanToMean) for $T_a$, $p_a$, $r$ and $u$.
 
 The [Accumulative aggregation](https://publicwiki.deltares.nl/display/FEWSDOC/Aggregation+Accumulative) Delft-FEWS transformation was applied for $E_a$
 
@@ -113,19 +121,14 @@ Snowmelt is acquired at a daily timestep that represents the "*total of 24 per h
 
 # Pre-processing
 
-In an attempt to make most of computational efficiency, many processes that are typically computed as part of a hydrological model have been pre-built as input to the ORMGP water balance model.  Processes such as snowmelt and potential evapotranspiration can modelled independently of the rainfall-runoff-recharge process and thus much computational gains can be made if these processes are pre-determined.
 
-Two products (i.e., model inputs/forcings/variables) are created through this process, namely 
-
-1. Atmospheric Demand $(E_a)$ is the "drying power" of the near-surface atmosphere, also known as the Planetary Boundary Layer (PBL­­­­-­­­Oke, 1987); and
-1. Atmospheric Yield $(Y_a)$ water in its liquid form released either as rainfall or snowmelt onto the land surface.
 
 
 
 ## Atmospheric Demand $(E_a)$
 
 
-Within the ORMGP, it is evident that vapour deficits offer a great predictor to advective flux (evaporation) when relating pan evaporation to strictly aerodynamic variables, temperature and humidity, simulated at an hourly timestep. For instance, using the advective term [kg/m²/s] of Penman (1948):
+Within the ORMGP, it is evident that vapour deficits offer a great predictor to advective flux (evaporation) when relating pan evaporation to strictly aerodynamic variables, temperature and humidity, simulated at an hourly timestep. When mass transfer occurs over rough surfaces, surface evaporation becomes coupled with advective (vapour deficit) flux through the PBL (Bailey et.al., 1997). So, using the advective term [kg/m²/s] of Penman (1948):
 
 $$
   E_a=\rho_a \frac{\varepsilon}{p_a} d_a \cdot f(u)
@@ -182,10 +185,11 @@ Snowmelt, is acquired at a daily timestep and is [disaggregated to the 6-hourly 
 
 
 
-<!-- # Source Data
 
-- [`asdf.nc`]() asdf -->
 
+# Conclusion and Source Data
+
+The workflow described above produced a 20-year, 6-hourly time series dataset for 2,813 10km² sub-watersheds.
 
 
 
