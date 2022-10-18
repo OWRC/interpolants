@@ -111,7 +111,7 @@ _Time-series data, updated nightly_
    * Atmospheric pressure
    * Precipitation (rainfall and snowfall)
    * Snowmelt
-   * Potential evaporation ([computed]())
+   * Potential evaporation ([computed](/interpolants/interpolation/calc/panET/PanEvaporation.html))
    <!-- * Solar irradiation -->
 * [**Hourly data**](/interpolants/interpolation/hourly.html), updated every 6-hours, including:
    * Air temperature
