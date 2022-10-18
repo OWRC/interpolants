@@ -151,6 +151,9 @@ Combined, these two tools will provide all water groundwater resources needs for
 * [Multiphase flow through porous media:](/interpolants/modelling/eventbased/pmflow.html) a one-dimensional fully-implicit multi-layer solution to multi-phase flow through porous media used to investigate infiltration, evaporation and runoff generation.
 
 
+## Other
+* [Geothermal transport modelling.](https://owrc.github.io/info/geothermal/)
+
 
 <!-- * [Input data](/interpolants/modelling/waterbudget/data.html) -->
 <!-- * [Soil moisture accounting](/interpolants/modelling/waterbudget/sma.html) -->
