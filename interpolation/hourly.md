@@ -4,20 +4,38 @@ author: M.Marchildon
 output: html_document
 ---
 
-The [ORMGP](https://maps.oakridgeswater.ca/) maintains a current, continuous 6-hourly climatology dataset beginning 2001.
+
 
 * TOC
 {:toc}
 
 
+# Introduction
+The [ORMGP](https://maps.oakridgeswater.ca/) maintains a current, continuous 6-hourly climatology dataset beginning 1901. The data are interpolated to [some 3,000 ~10km² sub-watersheds](/interpolants/interpolation/subwatershed.html) and are made available through our [web portal](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP). 
 
+<iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
+
+*2,813 ~10km² sub-watersheds delineated within the ORMGP jurisdiction with their topological relationships defined. In addition to climate data, these sub-watersheds have aggregated land use characteristics.*
+<br><br>
+
+Currently, the data offered are:
+- Rainfall
+- Snowfall
+- Snowmelt
+- Air temperature
+- Air pressure
+- Wind speed
+- Wind direction
+- Potential evaporation
+
+All interpolated (i.e., “vector”) data are automatically updated and maintained using the [ORMGP-FEWS system](/interpolants/interpolation/fews.html) system.
 
 # Interpolation of Hourly scalars to Sub-daily Basins
 > workflow: `preprocessMSCtoBasinsHourly.xml`
 
 
 ## MSC scalars
-1. Scrape MSC for recent data, executed from [FEWS](https://owrc.github.io/interpolants/interpolation/fews.html).
+1. Scrape MSC for recent data, executed from [FEWS](/interpolants/interpolation/fews.html).
 1. Import scraped MSC hourly scalars into FEWS.
 1. Export hourly MSC NetCDF file (*.nc) from FEWS, from 1989-10-01 
     
@@ -25,7 +43,7 @@ The [ORMGP](https://maps.oakridgeswater.ca/) maintains a current, continuous 6-h
 
 1. Interpolate to 10km sub-watersheds, using a python script executed from config file `pyMSChourliesToBasin.xml` that executes: `ncMSCtoHourlyBasinNetCDF.py`.
     - Air temperature $(T_a)$, relative humidity $(r)$ and wind speeds $(u)$ are interpolated using a [radial basis function (RBF)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.Rbf.html) (with a cubic kernel and a  smoothing factor $\lambda=1/1000$ to prevent singular matrices).
-    - Air/barometric pressure $(p_a)$ are first [corrected for elevation](https://owrc.github.io/interpolants/interpolation/barometry.html) then interpolated using the same cubic RBF. 
+    - Air/barometric pressure $(p_a)$ are first [corrected for elevation](/interpolants/interpolation/barometry.html) then interpolated using the same cubic RBF. 
     - Wind directions $(u_\alpha)$ are split into their x-y components, each interpolated separately using a cubic RBF before returned to an angle. A sample result is shown below:
     ![](/interpolants/interpolation/fig/windir.png)
 

@@ -219,3 +219,100 @@ func Parse(tims []time.Time, waterYearMelt map[int]float64, p, t []float64, sid 
 1. $P_M$ to remaining 6-hourly variables $T_a, p_a, r, u, E_a, P_R, P_S$, save to a set of .bin files. Will be converted to $Y_a$ and $E_a$ for model input forcings.
 
 1. Using `readGolang.py` convert .bin's to NetCDF `(202009301800-sixHourlyFinal.nc)` for import back to FEWS.
+
+	```python
+	import numpy as np
+	import pandas as pd
+	from pymmio import files
+	from netCDF4 import Dataset, date2num
+
+
+	idir = "E:/Sync/@dev/go/src/FEWS/precipCritTemperature/bins"
+
+
+	# time
+	tims = np.fromfile(idir+"/time.bin", dtype=np.int64) * 1000000000
+	tims = tims.astype('datetime64[ns]') # np.datetime64) #
+	def tstr(t): return pd.to_datetime(str(t)).strftime('%Y-%m-%d %H:%M:%S')
+	def getTimesteps(ts):
+		tu = []
+		for t in ts: 
+			t2 = pd.to_datetime(tstr(t))
+			tu.append(t2)
+		return np.unique(tu)
+	tims = getTimesteps(tims)
+	nts = len(tims)
+
+
+
+
+	#station
+	sids = np.fromfile(idir+"/station_id.bin", dtype=np.int32)
+	nsta = len(sids)
+
+	# variables
+	acoll = {}
+	for fp in files.dirList(idir,"bin"):
+		pnam = files.getFileName(fp)
+		if pnam=="time" or pnam=="station_id": continue
+		if "Daily" in pnam: continue
+		print(pnam)
+		aa = np.fromfile(fp, dtype=np.float64).reshape((nsta,nts))
+		aa[aa<-998] = np.nan
+		acoll[pnam] = aa
+		
+
+
+
+	print("creating NetCDF..")
+	t0 = 2
+	units = {"rainfall_amount":"mm",
+			"snowfall_amount":"mm", 
+			"air_temperature":"oC", 
+			"air_pressure":"Pa", 
+			"relative_humidity":"-", 
+			"wind_speed":"m/s", 
+			"water_potential_evaporation_amount":"mm", 
+			"surface_snow_melt_amount":"mm"}  # these are CF standard names
+	# https://unidata.github.io/python-training/workshop/Bonus/netcdf-writing/
+	with Dataset(idir+"/"+max(tims).strftime("%Y%m%d%H%M")+"-sixHourlyFinal.nc",mode='w',format='NETCDF4') as ncfile: # a container for dimensions, variables, and attributes.
+
+		ncfile.title = "ORMGP 6-hourly climatology field (final)"
+		ncfile.subtitle = "built using readGolang.py after rdpaCritTemperature.go"
+		ncfile.Conventions = 'CF-1.8'
+
+		# create dimensions
+		ncfile.createDimension('time', nts-t0)
+		ncfile.createDimension('stations', nsta)
+		ncfile.createDimension('char_leng_id', 64)
+
+		# sid = ncfile.createVariable('station_id', np.int32, ('stations'))
+		sid = ncfile.createVariable('station_id', 'S1', ('stations','char_leng_id'))
+		sid.long_name = 'station identification code'
+		sid.cf_role = 'timeseries_id'
+		ss = [ list(str(k)) + ['\00']*(64-len(str(k))) for k in sids ] # pad with ascii NULs
+		ss = np.array(ss, dtype='S1').reshape((nsta,64))
+		sid[:,:] = ss
+
+		# lat = ncfile.createVariable('lat', np.float32, ('stations'))
+		# lat.units = 'degrees_north'
+		# lat.long_name = 'latitude'
+		# lat[:] = yi
+		# lon = ncfile.createVariable('lon', np.float32, ('stations'))
+		# lon.units = 'degrees_east'
+		# lon.long_name = 'longitude'
+		# lon[:] = xi
+
+		nctim = ncfile.createVariable('time', np.float64, ('time',))
+		nctim.units = 'minutes since 1969-12-31 19:00:00.0 -0500' #'hours since 1800-01-01'
+		nctim.long_name = 'time'
+		nctim[:] = date2num(tims[t0:], nctim.units)
+
+		# Define 2D variablea to hold data
+
+		for pnam, a in acoll.items():
+			ncvar = ncfile.createVariable(pnam,np.float32,('time','stations')) # note: unlimited dimension is leftmost
+			ncvar.units = units[pnam]
+			ncvar.standard_name = pnam
+			ncvar[:,:] = np.array(a, dtype=np.float32).T[t0:]
+	```
