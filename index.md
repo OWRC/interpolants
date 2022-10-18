@@ -9,7 +9,11 @@ output: html_document
 
 
 # Introduction
-The [Oak Ridges Moraine Groundwater Program (ORMGP)](https://www.oakridgeswater.ca/) maintains an authoritative understanding of: i) the geological layering for the area; ii) the groundwater flow system; and iii) its linkage to the region's surface waters and climatologies. 
+The [Oak Ridges Moraine Groundwater Program (ORMGP)](https://www.oakridgeswater.ca/) maintains an authoritative understanding of: 
+
+1. the geological layering for the area; 
+1. the groundwater flow system; and
+1. its linkage to the region's surface waters and climatologies. 
 
 **_TODO: There's a need for an introduction here, highlighting the need to:_**
 * coordinate disparate datasets so that correlation among environmental phenomena can be investigated
@@ -66,6 +70,7 @@ A number of open-source and proprietary data analysis tools have been employed i
 # Web Applications
 ## Web mapping/data portal
 * [**oakridgeswater.ca**](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP)
+
 ## Timeseries analysis
 * [**R-Shiny apps**](https://owrc.github.io/shinyapps-manual/)
    * [Automatic hydrograph separation](https://owrc.github.io/education/hydrographseparation/)
@@ -119,7 +124,7 @@ _Time-series data, updated nightly_
 
 
 
-# Numerical Modelling hydrological analysis tools
+# Numerical Modelling
 
 Numerical modelling are applied in two ways: 
 

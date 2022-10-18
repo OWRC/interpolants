@@ -49,7 +49,7 @@ The following is a description of the water budget tool located on our website, 
 
 
 # Model Structure
-## Model components:
+## Model components
 
 1. use of regional climate fields (model inputs—precipitation, temperature, snowmelt, etc.)
 1. explicit soil moisture accounting scheme
@@ -203,16 +203,16 @@ to th sub-basin...
 * **[Overland flow routing](/interpolants/modelling/waterbudget/overlandflow.html)**
 
 
-## Calibration
+# Calibration
 * **[Model Parameters and Sampling](/interpolants/modelling/waterbudget/parameters.html)**
 
 
 
-## Code
+# Code
 * **[Model Structure](/interpolants/modelling/waterbudget/structure.html)**
 
 
-## Future plans
+# Future plans
 * **[Future plans](/interpolants/modelling/waterbudget/future.html)**
 
 
