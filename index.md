@@ -34,7 +34,7 @@ The ORMGP data systems described below are active, in that they are [automatical
 # Technologies
 A number of open-source and proprietary data analysis tools have been employed in our overall data management system. In contribution to the open-source community, much of our work has also left open [on our Github](https://github.com/OWRC).
 
-## Tools
+## Tools (external links)
 * [Github pages](https://pages.github.com/) — the hosting of technical information, like what you see now.
 * [Python](https://www.python.org/)
    * [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) — web scraping
@@ -49,7 +49,7 @@ A number of open-source and proprietary data analysis tools have been employed i
    * [ggplot2](https://ggplot2.tidyverse.org/) — data visualization
    * [dygraphs for R](https://rstudio.github.io/dygraphs/) — dynamic timeseries visualization
 
-## Databases
+## Databases (external links)
 * [MSSQL](https://www.microsoft.com/en-us/sql-server/sql-server-2019)
 * [Delft-FEWS](https://www.deltares.nl/app/uploads/2015/01/Delft-FEWS_brochure-2017.pdf)
 
@@ -76,9 +76,12 @@ A number of open-source and proprietary data analysis tools have been employed i
    * [Automatic hydrograph separation](https://owrc.github.io/education/hydrographseparation/)
    * [Hydrograph disaggregation](/interpolants/modelling/hydroparse.html)
 
+*and many more (TODO)*
 
 
-# Products
+
+
+# Open Products
 
 ## Geospatial Layers
 _Static 2D fields, updated frequently_
@@ -91,7 +94,7 @@ _Static 2D fields, updated frequently_
     * wetland cover
     * open water
     * relative permeability
-* additional spatial "themes" and data "views" [hosted online](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP)
+* additional [spatial "themes" and data "views"](https://owrc.github.io/webmapping/) all [hosted online](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP)
 
 ## Drainage and Topology
 * [Overland drainage pathways](/interpolants/interpolation/overland.html)
