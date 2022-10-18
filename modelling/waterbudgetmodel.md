@@ -172,19 +172,18 @@ The extent of the model combined with the resolution of the processes simulated 
 # Input Data
 
 
-The aim of the model design is to simultaneously reduce the amount of computational processes and leverage near-realtime data assimilation products. It is recognized from a hydrological model design perspective, that the primary driver of watershed moisture distribution is the *"Atmospheric Yield"*, that is water sourced from the atmosphere in liquid/mobile form.
+The aim of the model design is to simultaneously reduce the amount of computational processes and leverage near-realtime data assimilation products. It is recognized from a hydrological model design perspective, that the primary driver of watershed moisture distribution is the *"Atmospheric Yield"*, that is water sourced from the atmosphere in its liquid/mobile form.
 
 
 $$\text{Atmospheric Yield} = \text{Rainfall} + \text{Snowmelt}$$
 
 
-Similarity, the "atmosphere" (rather the Planetary Boundary Layer-Oke, 1987) also has a drying power, a sink termed *"Atmospheric Demand"*. 
+Similarity, the "atmosphere" (specifically the Planetary Boundary Layer---Oke, 1987) also has a drying power, a sink termed *"Atmospheric Demand"*. 
 
-It is matter of perspective that dictates the terminology here. The model was designed from a top-down viewpoint. Terms like "potential evaporation", which speaks to the evaporation occurring on a surface with unlimited water supply is instead termed "atmospheric demand", that is the capacity for the PBL to remove moisture from the regional land surface.
+It is matter of perspective that dictates the terminology here. The model was designed from a top-down viewpoint. Terms like "potential evaporation", which speaks to the evaporation occurring on a surface with unlimited water supply is instead termed "atmospheric demand", that is the capacity for the PBL to remove moisture from a rough land surface.
 
 
-
-Only, snowmelt, rainfall and evaporation are not readily available in a distributed form and need to be determined. The model is integrated with [the ORMGP data management platform](/interpolants/). Below is an interactive map of the climate forcing distribution used in the model.
+Only snowmelt, rainfall and evaporation are not readily available in a distributed form and need to be determined. The model is integrated with [the ORMGP data management platform](/interpolants/). Below is an interactive map of the climate forcing distribution used in the model from the top-down perspective. Total model coverage ~30,000km².
 
 
 <iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" target="_blank" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
