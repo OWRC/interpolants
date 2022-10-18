@@ -1,6 +1,7 @@
 ---
-title: Regionally-distributed runoff-recharge model
-author: M.Marchildon
+title: Long Term Water Budget
+subtitle: A regionally-distributed runoff-recharge model
+author: M. Marchildon
 output: html_document
 ---
 
@@ -9,20 +10,9 @@ A regionally-distributed runoff/recharge model has been developed to simulate hy
 
 The model's primary intention is to project land surface moisture distribution for the purposes of estimating regional groundwater recharge. It utilized hydrological model procedures that are amenable to local data availability. While the model can simulate stream flow discharge and overland runoff at any point in space, the model is not optimized, nor intended to serve as your typical rainfall runoff model. Outputs from this model will most often be used to constrain regional groundwater models within the 30,000km² Oak Ridges Moraine Groundwater Program jurisdiction of southern Ontario.
 
-This model is currently in beta mode, and its use for practical application should proceed with caution. Users should be aware that model results posted online will always be subject to change. Ultimately, the intent of this model is to produced ranges of long-term (monthly average) water budget metrics (precipitation, runoff, evaporation, recharge, moisture state, etc.) as a hydrological reference for the [partners of the ORMGP](https://www.oakridgeswater.ca/).
+This model is currently in beta mode, and its use for practical application should proceed with caution. Users should be aware that model results posted online will always be subject to change. Ultimately, the intent of this model is to produced ranges of long-term (monthly average) water budget metrics (precipitation, runoff, evaporation, recharge, moisture state, etc.) as a hydrological reference for the [partners of the ORMGP](https://www.oakridgeswater.ca/). It maintains as a real-time reference, [updated by ORMGP servers.](/interpolants/#servers)
 
-The model is *physically based* in that mass is conserved and it is not constrained to any particular timestep. The model conceptualization has maintained parameters that speaks to the common physical hydrology lexicon, with parameters such as percent impervious, conductivity of surficial soils, etc.
-
-
-
-
-
-
-
-
-
-
-
+The model is physically based in that mass is conserved and processes are not constrained to any particular timestep. The model conceptualization has maintained parameters that speaks to the common physical hydrology lexicon, with parameters such as percent impervious, conductivity of surficial soils, etc. The source code is [open and free to use](https://github.com/maseology/rdrr). Below is a comprehensive description of the model procedures that have been codified.
 
 
 * TOC
@@ -30,11 +20,9 @@ The model is *physically based* in that mass is conserved and it is not constrai
 
 
 
-
-
-
-
 # Modelling Summary
+**_to fix_**
+
 - model run from the hydrological water year 2010 (2009-10-01) through water year 2020. 
 - Precipitation was collected from [CaPA-RDPA](https://eccc-msc.github.io/open-data/msc-data/nwp_hrdpa/readme_hrdpa_en/)
 - Snowmelt was collected from [SNODAS]()
@@ -183,15 +171,32 @@ The extent of the model combined with the resolution of the processes simulated 
 
 # Input Data
 
-to th sub-basin...
+Meteorological data acquisition, management, aggregation and interpolation was largely accomplished using [Delft-FEWS](https://www.deltares.nl/en/software/flood-forecasting-system-delft-fews-2/) (ver.2019.02 build.39845) a flood forecasting system offered (at no cost, only license agreement) by [Deltares](https://www.deltares.nl/en/). <!-- Configuration files for the Delft-FEWS system build can be found here: BLAH. -->
+Model input (i.e., "climate forcing") data required by the model are termed *atmospheric yield* $(Y_a)$ and *atmospheric demand* $(E_a)$. These are provided on a 6-hourly timestep. These data have been distributed to [some 3,000 10km² sub-watersheds](https://owrc.github.io/interpolants/interpolation/subwatershed.html). 
 
-<iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 
+Below is an interactive map of the climate forcing distribution used in the model.
+
+<iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" target="_blank" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
+
+
+
+
+The model was designed to remain amenable to data availability and new technologies; for instance, [SNODAS](https://nsidc.org/data/g02158) can avoid the need to model snowmelt explicitly and leverage these online resources.
 
 * **[Input data and Preprocessing](/interpolants/modelling/waterbudget/data.html)**
     * **[Evaporation calibration $(E_a)$](/interpolants/modelling/waterbudget/data.html#atmospheric-demand-e_a)**
     * **[Critical temperature evaluation $(T_c)$](/interpolants/modelling/waterbudget/data.html#rainfall-p_r)**    
     * **[Snowmelt $(P_M)$](/interpolants/modelling/waterbudget/data.html#sub-daily-from-daily-snowmelt)**
+
+
+
+
+
+
+
+
+
 
 
 
