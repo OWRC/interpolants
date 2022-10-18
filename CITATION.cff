@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+type: dataset
+message: "For general use of our interpolated data, please cite as below."
+authors:
+  - name: "Oak Ridges Moraine Groundwater Program"
+    alias: "ORMGP"
+    city: Toronto
+    website: oakridgeswater.ca
+title: "Interpolated spatial and temporal data products"
+date-released: 2022-10-06
+url: "https://github.com/OWRC/interpolants"

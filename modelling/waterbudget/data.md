@@ -1,26 +1,12 @@
 ---
-title: Model Input Data Processing
-author: M.Marchildon
+title: Long Term Water Budget
+subtitle: Data sources, transformations and pre-processing
+author: M. Marchildon
 output: html_document
 ---
 
-
-
-Meteorological data acquisition, management, aggregation and interpolation was largely accomplished using [Delft-FEWS](https://www.deltares.nl/en/software/flood-forecasting-system-delft-fews-2/) (ver.2019.02 build.39845) a flood forecasting system offered (at no cost, only license agreement) by [Deltares](https://www.deltares.nl/en/). <!-- Configuration files for the Delft-FEWS system build can be found here: BLAH. -->
-Model input (i.e., "climate forcing") data required by the model are termed *atmospheric yield* $(Y_a)$ and *atmospheric demand* $(E_a)$. These are provided on a 6-hourly timestep. These data have been distributed to [some 3,000 10km² sub-watersheds](https://owrc.github.io/interpolants/interpolation/subwatershed.html). 
-
-
-<iframe src="https://golang.oakridgeswater.ca/pages/subwatersheds.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
-
-
-The model was designed to remain amenable to data availability and new technologies; for instance, [SNODAS](https://nsidc.org/data/g02158) can avoid the need to model snowmelt explicitly and leverage these online resources.
-
-
-
-
 * TOC
 {:toc}
-
 
 
 
