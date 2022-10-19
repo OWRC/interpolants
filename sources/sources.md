@@ -19,9 +19,20 @@ output: html_document
 
 ## Web Data Scrapers
 
-On a nightly basis, scheduled tasks are used to automatically download and insert new data into the [ORMGP database](https://owrc.github.io/database-manual/Contents/TOC.html), a process called ["web scraping"](https://en.wikipedia.org/wiki/Web_scraping). So, in addition to hydrogeologic information, the database maintains a realtime hydrometeorological dataset at the **daily** time scale. This means that, for the most part, information scraped below do not enter the database as they are sub-daily resolution. Rather, the higher-resolution data, including the gridded data, are maintained running [Delft-FEWS](https://oss.deltares.nl/web/delft-fews/about-delft-fews) on a dedicated server.
+On a nightly basis, scheduled tasks are used to automatically download and insert new data into the [ORMGP database](https://owrc.github.io/database-manual/Contents/TOC.html), a process called ["web scraping"](https://en.wikipedia.org/wiki/Web_scraping). So, in addition to hydrogeologic information, the database maintains a realtime hydrometeorological dataset at the **daily** time scale. 
+
+[*more info here*](/interpolants/sources/webscraping.html)
+
+### Groundwater monitoring
+
+Groundwater monitoring data, [like those collected by the ORMGP](https://owrc.github.io/monitoring/), are kept in their time-scale, typically in the order of 10 min to hours, and inserted into the database.
+
+
+### Climate data and Streamflow
+For the most part, information scraped below do not enter the database as they are sub-daily resolution. Rather, the higher-resolution data, including the gridded data, are maintained running [Delft-FEWS](https://oss.deltares.nl/web/delft-fews/about-delft-fews).
 
 The objective is to maintain a **daily** hydrometeorological dataset spatially distributed over the 30,000km² ORMGP management area, going back at least a century.  Data collected are "near" realtime in that they are what is reported when the scheduled task was run (the night prior). The web tools we maintain and numerical models we archive depend on this dataset.
+
 
 
 ### Current data sources
@@ -50,12 +61,3 @@ Below is a list data sources used in deriving many of the interpolation products
       > *SNODAS models Snow Water Equivalent, the liquid water content of the snowpack. SWE is a much more robust statistic than Depth, which changes the minute the snowflakes hit the ground. A twelve-inch snowfall slumps to eight inches after a day of sunshine and wind as the snowpack compresses and metamorphs, without any change to the SWE value. Depth is computed after that fact, by multiplying SWE against an independent estimate of Snow Density.* [Tim Szeliga, NOHRSC, 2012](https://gis.stackexchange.com/questions/34871/extracting-data-from-snodas-file-using-qgis).
 
       > SNODAS is a modeling and data assimilation system developed by OHRSC to provide the best possible estimates of snow cover and associated parameters to support hydrologic modeling and analysis. The aim of SNODAS is to provide a physically consistent framework to integrate snow data from satellite, airborne platforms, and ground stations with model estimates of snow cover (Carroll et al. 2001).
-
-## Partners' data
-
-A number of our partners maintain internal databases. Attempts are being made to integrate these sources to our workflow without the need for data duplication through API setup on the partners' end. This work is in progress and so far ties have been made to the following:
-
-* TRCA
-* CVC
-* CLOCA
-* York Region

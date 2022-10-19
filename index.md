@@ -101,8 +101,8 @@ _Static 2D fields, updated frequently_
 * [Watercourses](/interpolants/interpolation/watercourses.html)
 * [Sub-watersheds](/interpolants/interpolation/subwatershed.html)
 
-## Bulk data export
-* [**"Clip 'n Ship"**](/interpolants/sources/clipnship.html) — spatial data export system, by geographic extent. Includes many of the products listed below.
+## **Clip 'n Ship**
+* [**"Clip 'n Ship"**](/interpolants/sources/clipnship.html) — A bulk spatial data export system, by geographic extent. Includes many of the products listed below.
 
 ## Near real-time data, spatially interpolated
 _Time-series data, updated nightly_
