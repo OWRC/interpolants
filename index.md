@@ -56,23 +56,24 @@ A number of open-source and proprietary data analysis tools have been employed i
    * [R-Shiny](https://shiny.rstudio.com/) — online, real-time data analytics
    * [Leaflet for R](https://rstudio.github.io/leaflet/) — web mapping
    * [ggplot2](https://ggplot2.tidyverse.org/) — data visualization
-   * [dygraphs for R](https://rstudio.github.io/dygraphs/) — dynamic timeseries visualization
+   * [dygraphs for R](https://rstudio.github.io/dygraphs/) — dynamic time-series visualization
 
 ## Databases (external links)
 * [MSSQL](https://www.microsoft.com/en-us/sql-server/sql-server-2019)
 * [Delft-FEWS](https://www.deltares.nl/app/uploads/2015/01/Delft-FEWS_brochure-2017.pdf)
 
 
-## Servers
-### Web scraping
-* ORMGP-cron: a linux server with scheduled [web-scraping tasks mostly written in Python](/interpolants/sources/webscraping.html).
-* [ORMGP-FEWS](/interpolants/interpolation/fews.html): our operational Delft-FEWS system that scrapes, stores, interpolates and regenerates data served on ORMGP-cron.
+## **ORMGP Servers**
 
 ### Databases and APIs
 * **[Our main MSSQL Server database](/database-manual/Contents/TOC.html)**
 * [VertiGIS Studio/Geocortex](https://www.vertigis.com/vertigis-studio/) — Our principle [web mapping server](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP) used by partners to access our database and products.
 * golang server — multi-functional REST API serving a variety of data products and interpolation tools.
 
+
+### Web scraping
+* ORMGP-cron: a linux server with scheduled [web-scraping tasks mostly written in Python](/interpolants/sources/webscraping.html).
+* [ORMGP-FEWS](/interpolants/interpolation/fews.html): our operational Delft-FEWS system that scrapes, stores, interpolates and regenerates data served on ORMGP-cron.
 
 
 
@@ -95,18 +96,23 @@ The [ORMGP Geocortex Mapping hub has been divided into various Theme Maps](/webm
 
 
 ## Timeseries analysis
-* [**R-Shiny apps**](/shinyapps-manual/)
+* [**R-Shiny apps**]
+   * [Help](/HydrographExplorerHelp/)
+   * [Manual](/shinyapps-manual/)
 * [Automatic hydrograph separation](/info/hydrographseparation/)
 * [Hydrograph disaggregation](/interpolants/modelling/hydroparse.html)
 
 <!-- *and many more (TODO)* -->
 
-
+<!-- ADD SNAP SHOTS HERE -->
 
 
 
 
 # Open Data Products
+
+## Metadata
+[Our metadata repository, Table of Contents.](https://owrc.github.io/metadata/content/toc.html)
 
 ## Geospatial Layers
 _Static 2D fields, updated frequently_
@@ -128,6 +134,9 @@ _Static 2D fields, updated frequently_
 
 ## **Clip 'n Ship**
 * [**"Clip 'n Ship"**](/interpolants/sources/clipnship.html) — A bulk spatial data export system, by geographic extent. Includes many of the products listed below.
+
+
+
 
 ## Spatially interpolated, near real-time data
 
