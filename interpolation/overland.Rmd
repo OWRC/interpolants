@@ -138,11 +138,13 @@ Locations of 96 current and historical stream flow gauges are used to compare dr
 
 ## Contributing area delineation
 
-One (of many) APIs (application programming interfaces) hosted by the ORMGP leverages the drainage topology computed in the area. Now, users have the ability to have returned a delineated catchment area polygon for any given point that lies within the HDEM extent. Try below:
+One (of many) APIs (application programming interfaces) hosted by the ORMGP leverages the drainage topology computed in the area. Now, users have the ability to have returned a delineated catchment area polygon for any given point that lies within the HDEM extent. <!-- Try below: -->
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE, out.height='600px', out.width='100%', fig.cap="ORMGP v.2020 HDEM. Click anywhere (within our jurisdiction) to return its contributing area. *Hint: best to click along a watercourse*"}
-knitr::include_app("https://owrc.shinyapps.io/CAdemo/", height = "600px")
-```
+
+<!-- ```{r, echo=FALSE, message=FALSE, warning=FALSE, out.height='600px', out.width='100%', fig.cap="ORMGP v.2020 HDEM. Click anywhere (within our jurisdiction) to return its contributing area. *Hint: best to click along a watercourse*"} -->
+<!-- knitr::include_app("https://owrc.shinyapps.io/CAdemo/", height = "600px") -->
+<!-- ``` -->
+
 
 # References
 

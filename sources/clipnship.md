@@ -27,4 +27,48 @@ Rasters are provided in a [**band interleaved by line** (\*.bil)](https://deskto
 Vector files (in particular polylines and polygons) are provided in [**GeoJson**](https://geojson.org/) (\*.geojson) format.  This is an all-encompassing ascii-format file which is flexible, but slow. It is suggested that files be converted to shapefiles (\*.shp) when performance is desired.
 
 ### Points
-Point data, database queries, are provided in [**comma-separated value**]() (\*.csv) format.
+Point data, database queries, are provided in **comma-separated value** (\*.csv) format.
+
+
+# Metadata
+[*our metadata repository*](/metadata/content/toc.html)
+
+# How to Cite
+*see below*
+
+# Data description
+
+## Geology
+
+### Layers
+
+- __*TODO*__
+
+### database queries (*.csv)
+
+- V_CON_DOCUMENT
+- V_CON_GENERAL
+- V_CON_GEOLOGY
+- V_CON_HYDROGEOLOGY
+- V_CON_PTTW
+
+## Hydrogeology
+
+- Water Table Mapping [*(more info here)*](/watertable/)
+    - `DP_WL_DEPTH_Final_20210824.bil`
+    - `DP_WL_ELEV_Final_corr_20210824.bil`
+    - `SH_WL_DEPTH_BHS_20210615.bil`
+    - `SH_WL_DEPTH_Combined_Final_20210708b.bil`
+    - `SH_WL_ELEV_BHS_Final_20210615.bil`
+    - `SH_WL_ELEV_BHS_Final_DA_20210615.bil`
+    - `SH_WL_ELEV_Combined_Final_20210708b.bil`
+
+## Hydrology
+
+- [Interpolated daily climatology](/interpolants/interpolation/daily.html) given to the centroid of the area selected, tabular (*.csv) format.
+- `owrc20-50-noGreatLake-HC-observations-trim-FINAL-elevation.bil`---["Hydrologically corrected" digital elevation model](/interpolants/interpolation/overland.html). 
+- Land use [*(data sources)*](/interpolants/interpolation/landuse.html)
+    - `solrisv3_10_infilled_50_percov.bil`---fraction canopy cover
+    - `solrisv3_10_infilled_50_perimp.bil`---fraction impervious cover
+    - `solrisv3_10_infilled_50_perow.bil`---fraction open water cover
+    - `solrisv3_10_infilled_50_perwl.bil`---fraction wetland cover
