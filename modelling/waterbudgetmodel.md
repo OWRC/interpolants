@@ -8,11 +8,11 @@ output: html_document
 
 A regionally-distributed runoff/recharge model has been developed to simulate hydrologic processes at a fine (grid-based) scale. The model code is written to support large-scale and high-resolution distributed processed optimized for implementation on parallel computer architectures. No process of the model is in any way novel, rather a suite of existing model structures have been combined into one platform chosen specifically for their ease of implementation, practical applicability and computational efficiency and scalability.
 
-The model's primary intention is to project land surface moisture distribution for the purposes of estimating regional groundwater recharge. It utilized hydrological model procedures that are amenable to local data availability. While the model can simulate stream flow discharge and overland runoff at any point in space, the model is not optimized, nor intended to serve as your typical rainfall runoff model. Outputs from this model will most often be used to constrain regional groundwater models within the 30,000km² Oak Ridges Moraine Groundwater Program jurisdiction of southern Ontario.
+The model's primary intention is to project land surface moisture distribution for the purposes of estimating regional groundwater recharge. It utilizes hydrological model procedures that are amenable to local data availability. While the model can simulate stream flow discharge and overland runoff at any point in space, the model is not intended for rainfall runoff modelling; outputs from this model will be used to constrain regional groundwater models within the 30,000km² Oak Ridges Moraine Groundwater Program jurisdiction of southern Ontario. That said, mean daily streamflow remains the primary calibration target.
 
 This model is currently in beta mode, and its use for practical application should proceed with caution. Users should be aware that model results posted online will always be subject to change. Ultimately, the intent of this model is to produced ranges of long-term (monthly average) water budget metrics (precipitation, runoff, evaporation, recharge, moisture state, etc.) as a hydrological reference for the [partners of the ORMGP](https://www.oakridgeswater.ca/). It maintains as a real-time reference, [updated by ORMGP servers.](/interpolants/#servers)
 
-The model is physically based in that mass is conserved and processes are not constrained to any particular timestep. The model conceptualization has maintained parameters that speaks to the common physical hydrology lexicon, with parameters such as percent impervious, conductivity of surficial soils, etc. The source code is [open and free to use](https://github.com/maseology/rdrr). Below is a comprehensive description of the model procedures that have been codified.
+The model is physically based in that mass is conserved and processes are not constrained to any particular timestep. The model conceptualization has maintained parameters that speaks to the common physical hydrology lexicon, with parameters such as percent impervious, conductivity of surficial soils, etc. The model is a hydrological model integrated with a TOPMODEL groundwater system. The source code is [open and free to use](https://github.com/maseology/rdrr). Below is the description of the model procedures that have been codified.
 
 
 * TOC
@@ -20,35 +20,50 @@ The model is physically based in that mass is conserved and processes are not co
 
 
 
-# Modelling Summary
+# Executive Summary
 **_to fix_**
 
+- Integrated groundwater surface water numerical model
+- Built for fast computation
 - model run from the hydrological water year 2010 (2009-10-01) through water year 2020. 
 - Precipitation was collected from [CaPA-RDPA](https://eccc-msc.github.io/open-data/msc-data/nwp_hrdpa/readme_hrdpa_en/)
 - Snowmelt was collected from [SNODAS]()
 - $T_a$, $r$, $u$ from MSC
 - Potential evaporation $(E_a)$ determined using the [empirical wind functions of Penman (1948)]()
 - 12.1M x 50x50 m cells x 6-hourly ts x 10 years
-
+- use of regional climate fields (model inputs—precipitation, temperature, snowmelt, etc.)
+- explicit soil moisture accounting scheme
+- cold content energy balance snowpack model
+- distribution function-based shallow groundwater model with groundwater feedback mechanisms
+<!-- - a one-dimensional first-order kinematic overland flow module	 -->
 The following is a description of the water budget tool located on our website, hereinafter referred to as the "*model*".
 
 
 
 
 
+
+
+
 # Model Structure
-## Model components
 
-1. use of regional climate fields (model inputs—precipitation, temperature, snowmelt, etc.)
-1. explicit soil moisture accounting scheme
-1. cold content energy balance snowpack model
-1. distribution function-based shallow groundwater model with groundwater feedback mechanisms
-<!-- 1. a one-dimensional first-order kinematic overland flow module	 -->
+## Terminology
 
-
-## Computational Elements
-
+### Computational Elements
 Model grids in the model represent a homogenized area on the land surface, similar to the concept of a Hydrologic Response Unit, or HRU. The term HRU will be avoided here as the concept itself is not well defined and the term *"computational element"* (CE) will be used herein to avoid ambiguity. All processes within the computational element are assumed to be zero-dimensional, that is processes are modelled at the point-scale, which effectively represents the "average" condition within the grid cell. The spatial proximity of each computational element is maintained, meaning that runoff occurring from an up-gradient CE will runon to an adjacent down-gradient CE, thus preserving the spatial distribution of land surface moisture.
+
+### Model Domain
+The overarching model code employs an object called the "Model Domain". Here, all necessary model data are digitized and self-contained, including:
+
+1. Structure (`STRC`): Hold all the spatial and topological constraints to grid cells, including their physical dimensions and drainage direction
+1. Mapper (`MAPR`): Parameter collections for a set of [land-surface and groundwater reservoir types](/interpolants/interpolation/landuse.html). Also contains a *cell-to-type* cross-reference map to distribute model parameters, such as percolation rates, soil zone depth, depression storage, etc.
+1. Forcings (`FORC`): Input (variable) data, generally climate forcings: $Y_a$ and $E_a$.
+1. Router (`RTR`): *not used currently* Provides the model with optimal order of processing, ensuring a down stream process.
+
+
+
+
+
 
 
 
