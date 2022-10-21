@@ -79,35 +79,43 @@ $$
 	\overline{D}_t = \frac{1}{A}\sum_i A_i D_i - G_{t-1} + B_{t-1},
 $$
 
-where $G_{t-1}$ is the total groundwater recharge computed during the previous time step [m], and $B_{t-1}$ is the normalized groundwater discharge to streams, also computed during the previous time step [m]. The volumetric rate of groundwater discharge to streams $Q_b$ [m³/s] is given by:
-
-$$
-	Q_b = \frac{AB}{\Delta t} = \sum_{i=1}^Ml_iq_i,
-$$
-
-and $l_i$ is length of channel in stream cell $i$, here assumed constant and equivalent to the uniform cell width $(w)$ times a sinuosity factor $(\Omega)$, $\Delta t$ is the model time step and $M$ is the total number of model cells containing mapped streams within the sub-watershed. 
-
-<!-- For every stream cell, groundwater flux to stream cells $h_b$ [m/s] at time $t$ is given by:
-
-$$
-  h_{b,i}=\frac{l_iq_i}{A_i}=Q_o\exp\left(\frac{D_\text{inc}-D}{m}\right) \qquad i \in \text{streams}
-$$
-
-where discharge to stream cell $i$ at saturated conditions $(D_\text{inc}-D=0)$:
-
-$$
-  Q_o=\Omega\cdot \frac{T_o\tan\beta}{w}
-$$
-
-and thus basin-wide groundwater discharge to streams:
+where $G_{t-1}$ is the total groundwater recharge computed during the previous time step [m], and $B_{t-1}$ is the basin-wide (normalized) groundwater discharge to streams, also computed during the previous time step [m]:
 
 $$
   B = \Delta t \sum_{i=1}^M h_{b,i}
 $$
 
-where $D_\text{inc}$ is an offset, meant to accommodate the degree of channel incision (i.e., the difference between channel elevation and cell elevation). -->
+and $h_{b,i}$ is the channel seepage rate [m/s] in stream cell $i$ and $\Delta t$ is the model time step.
+
+### Groundwater discharge to streams 
+
+The volumetric rate of groundwater discharge to streams $Q_b$ [m³/s] for the entire model domain is given by:
+
+$$
+	Q_b = \frac{AB}{\Delta t} = \sum_{i=1}^Ml_iq_i,
+$$
+
+and $l_i$ is length of channel in stream cell $i$, here assumed constant and equivalent to the uniform cell width $(w)$ times a sinuosity factor $(\Omega)$ and $M$ is the total number of model cells containing mapped stream channels (i.e., "stream cells"). Stream cells were identified as cells having a contributing area greater than a set threshold of 1000 cells $\approx$ 2.5km². For every stream cell $i$, groundwater flux to stream cells $h_b$ [m/s] at time $t$ is given by:
+
+$$
+  h_{b,i}=\frac{l_iq_i}{A_i}=h_o\exp\left(\frac{D_\text{inc}-D}{m}\right) \qquad i \in \text{streams}
+$$
+
+where groundwater flux to stream cell $i$ at saturated conditions $(D_\text{inc}-D=0)$:
+
+$$
+  h_o=\Omega\cdot \frac{T_o\tan\beta}{w}=\Omega\cdot \tan\beta \cdot K_\text{sat}
+$$
+
+
+
+$D_\text{inc}$ is added as an offset, meant to accommodate the degree of channel incision (i.e., the difference between channel thalweg elevation and mean cell elevation).
+
+
+
 
 It should be noted that the above formulation is the very similar to the linear decay groundwater storage model, except here, TOPMODEL allows for an approximation of spatial soil moisture distribution, which will, in turn, determine spatial recharge patterns, as $D_i\leq 0$ will prevent recharge from occurring at cell $i$. 
+
 
 
 ### Initial conditions
