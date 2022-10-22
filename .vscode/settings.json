@@ -4,6 +4,7 @@
         "hydrogeological",
         "neighbour",
         "timeseries",
-        "timestep"
+        "timestep",
+        "watertable"
     ]
 }

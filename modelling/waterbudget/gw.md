@@ -18,13 +18,20 @@ The groundwater model structure employed here follows the TOPMODEL structure of 
 
 Assumptions to TOPMODEL are that the groundwater reservoir is lumped meaning it is equivalently and instantaneously connected over its entire spatial extent. This assumption implies that recharge computed to a groundwater reservoir is uniformly applied to its water table. The groundwater reservoir is thought to be a shallow, single-layered, unconfined aquifer whose hydraulic gradient can be approximated by local surface slope.
 
-Lateral (downslope) transmissivity $(T)$ is then assumed to scale exponentially with soil moisture deficit $(D)$ or depth to the watertable $(z_\text{wt})$ by:
+Lateral (downslope) transmissivity $(T)$ is then assumed to scale exponentially with soil moisture deficit $(D)$ by:
 
 $$
-	T = T_o\exp{\left(\frac{-D}{m}\right)} = T_o\exp{\left(\frac{-\phi z_\text{wt}}{m}\right)}, 
+	T = T_o\exp{\left(\frac{-D}{m}\right)},
+	% T = T_o\exp{\left(\frac{-D}{m}\right)} = T_o\exp{\left(\frac{-\phi z_\text{wt}}{m}\right)}, 
 $$
 
-where $T_o=wK_\text{sat}$ is the saturated lateral transmissivity perpendicular to an iso-potential contour of unit length $(w)$ [m²/s] that occurs when no soil moisture deficit exists (i.e., $D=0$). $\phi$ is effective porosity, and $m$ is a scaling factor [m]. Consequently, recharge computed in the distributed sense is aggregated when added to the lumped reservoir, yet discharge to surface remains distributed according to the soil-topographic index. For additional discussion on theory and assumptions, please refer to Beven et.al., (1995), Ambroise et.al., (1996) and Beven (2012).
+where $T_o=wK_\text{sat}$ is the saturated lateral transmissivity perpendicular to an iso-potential contour of unit length $(w)$ [m²/s] that occurs when no soil moisture deficit exists (i.e., $D=0$) and $m$ is a scaling factor [m]. Consequently, recharge computed in the distributed sense is aggregated when added to the lumped reservoir, yet discharge to surface remains distributed according to the soil-topographic index and stream location. For additional discussion on theory and assumptions, please refer to Beven et.al., (1995), Ambroise et.al., (1996) and Beven (2012).
+
+Under the assumption that the groundwater reservoir is unconfined lends the model the ability to predict the depth to the water table $(z_{wt})$ when porosity $(\phi)$ is known and $D>0$:
+
+$$
+	D=\phi z_{wt}
+$$
 
 At the regional scale, multiple TOPMODEL reservoirs have been established to represent groundwater dynamics in greater physiographic regions, where it is assumed that material properties are functionally similar and groundwater dynamics are locally in sync. Groundwater discharge estimates from each TOPMODEL reservoir instantaneously contributes lateral discharge to stream channel cells according to Darcy's law:
 
@@ -36,8 +43,7 @@ $$
 	q = T\tan\beta = T_o\tan\beta\cdot e^{\left(\frac{-D}{m}\right)},
 $$ -->
 
-where $q$ is interpreted here as groundwater discharge per unit length of stream [m²/s], and $\tan\beta$ is the surface slope angle in the downslope direction, assumed representative of the saturated zone's hydraulic gradient. The sub-surface storage deficit ($D_i$) at some location $i$ is determined using the distribution function:
-
+where $q$ is interpreted here as groundwater discharge per unit length of stream/iso-potential contour [m²/s], and $\tan\beta$ is the surface slope angle in the downslope direction, assumed representative of the saturated zone's hydraulic gradient. The sub-surface storage deficit $(D_i)$ at grid cell $i$ is determined using the distribution function:
 
 $$
 	D_i = \overline{D} + m \left(\gamma - \zeta_i\right),
@@ -47,7 +53,7 @@ $$
 	D_i = \overline{D} + m \left[\gamma - \ln\left(\frac{a}{T_o \tan \beta}\right)_i\right],
 $$ -->
 
-where $\zeta_i$ is the soil-topologic index at cell $i$, defined by $\zeta=\ln(a/T_o \tan \beta)$ and $a_i$ is the unit contributing area defined here as the total contributing area to cell $i$ divided by the cell's width.  $\gamma$ is the catchment average soil-topologic index:
+where $\zeta_i$ is the soil-topologic index at cell $i$, defined by $\zeta=\ln(a/T_o \tan \beta)$ and $a_i$ is the unit contributing area defined here as the total contributing area to cell $i$ divided by the cell's width $w$.  The catchment average soil-topologic index:
 
 $$
 	\gamma = \frac{1}{A}\sum_i A_i\zeta_i,
@@ -59,7 +65,7 @@ $$ -->
 
 where $A$ and $A_i$ is the sub-watershed and grid cell areas, respectively. 
 
-<!-- Rearranging the above terms, keeping non-variable terms on the $RHS$:
+<!-- Rearranging the above terms, keeping parametric terms on the $RHS$ gives:
 
 $$
   \delta D_i=D_i-\overline{D}=m\left(\gamma - \zeta_i\right)
@@ -71,56 +77,68 @@ $$
  D_{i,t} = \delta D_i+\overline{D}_t
 $$ -->
 
-### Time stepping 
 
-Before every time step, average moisture deficit of every groundwater reservoir is updated at time $t$ by:
+## Groundwater exchange
+#### Ponded conditions
+
+Although plausible, TOPMODEL can be allowed to have negative local soil moisture deficits $(\text{i.e., } D_i<0)$, meaning that water has ponded and overland flow is being considered. For the current model however, ponded water and overland flow are being handled by an [explicit soil moisture accounting (SMA) scheme](/interpolants/modelling/waterbudget/sma.html) and a [lateral shallow water movement](/interpolants/modelling/waterbudget/overlandflow.html) module, respectively. 
+
+Conditions where $D_i<0$ for any grid cell will have its excess water $(x=-D_i)$ added to the SMA system and $D_i$ will be reset to zero. Under these conditions, no recharge will occur at this cell as upward gradients are being assumed. TOPMODEL may continue discharge groundwater to streams (see below).
+
+This exchange, in addition to groundwater discharge to streams, represents the distributed interaction the groundwater system has on the surface. With recharge $(g)$ at the model grid cell computed by the SMA when deficits are present, net basin groundwater exchange $(G)$ is determined by:
 
 $$
-	\overline{D}_t = \frac{1}{A}\sum_i A_i D_i - G_{t-1} + B_{t-1},
+  G = \sum_i(g-x)_i.
 $$
 
-where $G_{t-1}$ is the total groundwater recharge computed during the previous time step [m], and $B_{t-1}$ is the basin-wide (normalized) groundwater discharge to streams, also computed during the previous time step [m]:
+Therefore, when $G>0$, the groundwater system is being recharged.
 
-$$
-  B = \Delta t \sum_{i=1}^M h_{b,i}
-$$
 
-and $h_{b,i}$ is the channel seepage rate [m/s] in stream cell $i$ and $\Delta t$ is the model time step.
+## Groundwater discharge to streams
+#### Baseflow
 
-### Groundwater discharge to streams 
-
-The volumetric rate of groundwater discharge to streams $Q_b$ [m³/s] for the entire model domain is given by:
+The volumetric flow rate of groundwater discharge to streams $Q_b$ [m³/s] for the entire model domain is given by:
 
 $$
 	Q_b = \frac{AB}{\Delta t} = \sum_{i=1}^Ml_iq_i,
 $$
 
-and $l_i$ is length of channel in stream cell $i$, here assumed constant and equivalent to the uniform cell width $(w)$ times a sinuosity factor $(\Omega)$ and $M$ is the total number of model cells containing mapped stream channels (i.e., "stream cells"). Stream cells were identified as cells having a contributing area greater than a set threshold of 1000 cells $\approx$ 2.5km². For every stream cell $i$, groundwater flux to stream cells $h_b$ [m/s] at time $t$ is given by:
+where $B$ is the total groundwater discharge to streams occurring over a time step $\Delta t$, $l_i$ is length of channel in grid cell $i$, here assumed constant and equivalent to the uniform cell width $(w)$ times a sinuosity factor $(\Omega)$, and $M$ is the total number of model cells containing stream channels (termed "stream cells"). Stream cells were identified as cells having a contributing area greater than a set threshold of 1000 cells $\approx$ 2.5km², but could have easily been determined from watercourse mapping. 
+
+For every stream cell $i$, groundwater flux to stream cells $b$ [m] during timestep $\Delta t$ is given by:
 
 $$
-  h_{b,i}=\frac{l_iq_i}{A_i}=h_o\exp\left(\frac{D_\text{inc}-D}{m}\right) \qquad i \in \text{streams}
+  b_i=\frac{l_iq_i}{A_i}\Delta t=b_{o,i}\exp\left(\frac{D_\text{inc}-D_i}{m}\right) \qquad i \in \text{streams}
 $$
 
-where groundwater flux to stream cell $i$ at saturated conditions $(D_\text{inc}-D=0)$:
+where $b_o$ groundwater flux at stream cell $i$ when the watertable is above the base of the channel, nearly at saturated conditions $(D_\text{inc}-D=0)$ and is defined by:
 
 $$
-  h_o=\Omega\cdot \frac{T_o\tan\beta}{w}=\Omega\cdot \tan\beta \cdot K_\text{sat}
+%   b_o=\Omega\cdot \frac{T_o\tan\beta}{w}\Delta t=\Omega\cdot \tan\beta \cdot K_\text{sat}\cdot \Delta t
+	b_o=\Omega\cdot \tan\beta \cdot K_\text{sat}\cdot \Delta t
 $$
-
 
 
 $D_\text{inc}$ is added as an offset, meant to accommodate the degree of channel incision (i.e., the difference between channel thalweg elevation and mean cell elevation).
 
+Finally, basin-wide groundwater discharge to streams
+
+$$
+  B = \sum_i b_i.
+$$
 
 
 
-It should be noted that the above formulation is the very similar to the linear decay groundwater storage model, except here, TOPMODEL allows for an approximation of spatial soil moisture distribution, which will, in turn, determine spatial recharge patterns, as $D_i\leq 0$ will prevent recharge from occurring at cell $i$. 
 
 
 
-### Initial conditions
 
-Initial watershed average soil moisture deficit can also be determined from streamflow records by re-arranging equations in Beven (2012):
+
+
+
+## Initial conditions
+
+Initial watershed average soil moisture deficit can, in principle, be determined from streamflow records by re-arranging equations in Beven (2012):
 
 $$
 	%\overline{D}_{t=0} = -m \ln\left(\frac{Q_{t=0}}{Q_o}\right),
@@ -128,20 +146,26 @@ $$
 	\overline{D}_{t=0} = -m\left[\gamma +\ln\left(\frac{Q_{t=0}}{A}\right)\right],
 $$
 
-where $Q_{t=0}$ is the measured stream flow known at the beginning of the model run. The parameter $m$ can be pre-determined from baseflow recession analysis (Beven et.al., 1995; Beven, 2012).
+where $Q_{t=0}$ is the measured stream flow known at the beginning of the model run. The parameter $m$ can be pre-determined from baseflow recession analysis (Beven et.al., 1995; Beven, 2012) and has been incorperated into the [ORMGP R-shiny recession analysis](https://owrc.github.io/shinyapps-manual/) tools.
 
 
-### Ponded conditions
 
-Although plausible (and argued for), TOPMODEL can be allowed to have negative soil moisture deficits (i.e., $D_i<0$), meaning that water has ponded and overland flow is being considered. For the current model, ponded water and overland flow is being handled by the [explicit soil moisture accounting (SMA) system](/interpolants/modelling/waterbudget/sma.html) and the [lateral shallow water movement](/interpolants/modelling/waterbudget/overlandflow.html) modules, respectively. 
 
-Conditions where $D_i<0$ for any grid cell will have the excess water $(x)$ removed and added to the SMA system and $D_i$ will be set to zero. Under these conditions, no recharge will occur at this cell. The TOPMODEL portion of the model will only be used to represent groundwater discharge to streams.
 
-This exchange, in addition to groundwater discharge to streams, represents the distributed interaction the groundwater system has on the surface. With cell-based recharge $(g)$ computed by the SMA, basin recharge $(G)$ at time $t$ is updated to determine net groundwater exchange:
+
+
+## Time stepping 
+
+Before every time step, average moisture deficit of every groundwater reservoir is updated at time $t$ by:
 
 $$
-  G_{t} = G_{t-1}+\sum_i(g-x)_i
+	\overline{D}_t = \frac{1}{A}\sum_i A_i D_i - G_{t-1} + B_{t-1} - Q_{t-1},
 $$
+
+where $G_{t-1}$ is the total groundwater recharge computed during the previous time step [m], $B_{t-1}$ is the basin-wide (normalized) groundwater discharge to streams, also computed during the previous time step [m], and $Q_{t-1}$ are any additional sources(+)/sinks(-) such as groundwater pumping or exchange between other groundwater reservoirs.
+
+
+
 
 
 
@@ -152,6 +176,11 @@ $$
 $$
 
 where $a$ is the contributing area [m²], $R$ is the  -->
+
+
+## Notes
+
+It should be noted that the above formulation is the very similar to the linear decay groundwater storage model, except here, TOPMODEL allows for an approximation of spatial soil moisture distribution, which will, in turn, determine spatial recharge patterns, as $D_i\leq 0$ will prevent recharge from occurring at cell $i$. 
 
 
 
