@@ -167,13 +167,13 @@ It should first be noted that the above formulation is the very similar to the l
 Rearranging the above terms gives:
 
 $$
-  \delta D_i=D_i-\overline{D}=m\left(\gamma - \zeta_i\right)
+  D_i-\overline{D} = m\left(\gamma - \zeta_i\right) = \delta D_i m
 $$
 
 where $\delta D_i$ is the groundwater deficit relative to the regional mean, and is independent of time, and therefore can be parameterized. From this, at any time $t$, the local deficit is thus:
 
 $$
- D_{i,t} = \delta D_i+\overline{D}_t
+ D_{i,t} = \delta D_i m + \overline{D}_t
 $$
 
 
@@ -185,6 +185,6 @@ Beven, K.J., 1986. Hillslope runoff processes and flood frequency characteristic
 
 Beven, K.J., R. Lamb, P.F. Quinn, R. Romanowicz, and J. Freer, 1995. TOPMODEL. In Singh V.P. editor, Computer Models of Watershed Hydrology. Water Resources Publications, Highland Ranch, CO: pp. 627—668.
 
-Beven, K.J. and M.J. Kirkby, 1979. A physically based variable contributing area model of basin hydrology. Hydrological Science Bulleton 24(1):43—69.
+Beven, K.J. and M.J. Kirkby, 1979. A physically based variable contributing area model of basin hydrology. Hydrological Science Bulletin 24(1):43—69.
 
 Beven, K.J., 2012. Rainfall-Runoff modelling: the primer, 2nd ed. John Wiley & Sons, Ltd. 457pp.
