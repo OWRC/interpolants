@@ -187,8 +187,10 @@ Combined, these two tools will provide all water groundwater resources needs for
 * [Numerical Model Custodianship Program](/snapshots/md/numerical-model-custodianship-program.html) — model archive.
 * [*A Guide for Actively Managing Watershed-Scale Numerical Models in Ontario*](https://www.oakridgeswater.ca/_files/ugd/4a0a6e_c41c71a481ea4657806e1fbb0c912f7a.pdf) — model management guidance (2017)
 
+
 ## Regional **Water Budget**, Long-term and Continuous
-* [Regionally-distributed runoff-recharge model:](/interpolants/modelling/waterbudgetmodel.html) Long-term continuos water budgeting of the ORMGP jurisdiction.
+* Fine-resolution (2,500 m²) **Water Budgeting** using a  [regionally-distributed runoff-recharge model](/interpolants/modelling/waterbudgetmodel.html) for Long-term (>20 years) continuos 6-hourly hydrological modelling of the ORMGP jurisdiction.
+
 
 ## Short-term/event-based hydrology
 * [Lateral water movement:](/interpolants/modelling/eventbased/lateral.html) a local inertial approximation of the shallow water equation for lateral movement of water.

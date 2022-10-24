@@ -65,17 +65,6 @@ $$ -->
 
 where $A$ and $A_i$ is the sub-watershed and grid cell areas, respectively. 
 
-<!-- Rearranging the above terms, keeping parametric terms on the $RHS$ gives:
-
-$$
-  \delta D_i=D_i-\overline{D}=m\left(\gamma - \zeta_i\right)
-$$
-
-where $\delta D_i$ is the groundwater deficit relative to the regional mean. From this, at any time $t$, the local deficit is thus:
-
-$$
- D_{i,t} = \delta D_i+\overline{D}_t
-$$ -->
 
 
 ## Groundwater exchange
@@ -108,7 +97,7 @@ where $B$ is the total groundwater discharge to streams occurring over a time st
 For every stream cell $i$, groundwater flux to stream cells $b$ [m] during timestep $\Delta t$ is given by:
 
 $$
-  b_i=\frac{l_iq_i}{A_i}\Delta t=b_{o,i}\exp\left(\frac{D_\text{inc}-D_i}{m}\right) \qquad i \in \text{streams}
+  b_i=\Omega\frac{l_iq_i}{A_i}\Delta t=b_{o,i}\exp\left(\frac{D_\text{inc}-D_i}{m}\right) %\qquad i \in \text{streams}
 $$
 
 where $b_o$ groundwater flux at stream cell $i$ when the watertable is above the base of the channel, nearly at saturated conditions $(D_\text{inc}-D=0)$ and is defined by:
@@ -128,14 +117,6 @@ $$
 $$
 
 
-
-
-
-
-
-
-
-
 ## Initial conditions
 
 Initial watershed average soil moisture deficit can, in principle, be determined from streamflow records by re-arranging equations in Beven (2012):
@@ -146,7 +127,7 @@ $$
 	\overline{D}_{t=0} = -m\left[\gamma +\ln\left(\frac{Q_{t=0}}{A}\right)\right],
 $$
 
-where $Q_{t=0}$ is the measured stream flow known at the beginning of the model run. The parameter $m$ can be pre-determined from baseflow recession analysis (Beven et.al., 1995; Beven, 2012) and has been incorperated into the [ORMGP R-shiny recession analysis](https://owrc.github.io/shinyapps-manual/) tools.
+where $Q_{t=0}$ is the measured stream flow known at the beginning of the model run. The parameter $m$ can be pre-determined from baseflow recession analysis (Beven et.al., 1995; Beven, 2012) and has been incorporated into the [ORMGP R-shiny recession analysis](https://owrc.github.io/shinyapps-manual/) tools.
 
 
 
@@ -178,10 +159,22 @@ $$
 where $a$ is the contributing area [m²], $R$ is the  -->
 
 
-## Notes
+## Model-code implementation
 
-It should be noted that the above formulation is the very similar to the linear decay groundwater storage model, except here, TOPMODEL allows for an approximation of spatial soil moisture distribution, which will, in turn, determine spatial recharge patterns, as $D_i\leq 0$ will prevent recharge from occurring at cell $i$. 
+It should first be noted that the above formulation is the very similar to the linear decay groundwater storage model, except here, TOPMODEL allows for an approximation of spatial soil moisture distribution, which will, in turn, determine spatial recharge patterns, as $D_i\leq 0$ will prevent recharge from occurring at cell $i$. 
 
+
+Rearranging the above terms gives:
+
+$$
+  \delta D_i=D_i-\overline{D}=m\left(\gamma - \zeta_i\right)
+$$
+
+where $\delta D_i$ is the groundwater deficit relative to the regional mean. From this, at any time $t$, the local deficit is thus:
+
+$$
+ D_{i,t} = \delta D_i+\overline{D}_t
+$$
 
 
 # References

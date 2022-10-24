@@ -25,6 +25,7 @@ The model is physically based in that mass is conserved and processes are not co
 
 - Integrated groundwater surface water numerical model
 - Built for fast computation
+- simulates evaporation, runoff, infiltration, watertable elevations, groundwater recharge occurring after a rainfall and/or snowmelt event.
 - model run from the hydrological water year 2010 (2009-10-01) through water year 2020. 
 - Precipitation was collected from [CaPA-RDPA](https://eccc-msc.github.io/open-data/msc-data/nwp_hrdpa/readme_hrdpa_en/)
 - Snowmelt was collected from [SNODAS]()
