@@ -116,7 +116,7 @@ The time step of the model has been set to 6 hour steps on 00:00 UTC, yielding t
 
 The Greater Toronto Area 2002 DEM (OMNRF, 2015) was re-sampled to the model's 50x50m grid cell resolution. Surface depressions were removed using Wang and Liu (2006) and flat regions were corrected using Martz (1997).
 
-Drainage directions and flowpaths of the now "hydrologically correct" DEM were were assigned based on the direction of steepest decent (D8).Cell gradients ($b$) and slope aspects were calculated based on a 9-cell planar interpolation routine. The unit contributing area $a=A/w$ topographic wetness index $ln\frac{a}{\tan b}$ (Beven and Kirkby, 1979--CHECK) were computed for every cell.
+Drainage directions and flow-paths of the now "hydrologically correct" DEM were were assigned based on the direction of steepest decent (D8).Cell gradients ($b$) and slope aspects were calculated based on a 9-cell planar interpolation routine. The unit contributing area $a=A/w$ topographic wetness index $ln\frac{a}{\tan b}$ (Beven and Kirkby, 1979--CHECK) were computed for every cell.
 
 ### Sub-basins
 
@@ -131,25 +131,36 @@ The 30,000 km² model area has been sub divided into 2,813 approximately 10 km²
 
 # Parameterization
 
-The model's structure is defined rather simply by at least 5 raster data sets. Given these data, the model's pre-processor will generate additional information based on these data:
+The model's structure is defined rather simply by at least 5 raster data sets. The model's input data pre-processor will generate additional information based on these data:
 
 1. digital elevation model
 1. land use index (with parameter lookup table)
 1. surficial geology index (with parameter lookup table)
 1. groundwater system index
 
-Although a distributed model, the procedures applied at the cell scale are quite parsimonious. There is no separate treatment of interception, depression storage, nor soil water retention, rather it is assumed that these processes respond to environmental factors (e.g., evaporation) in parallel and thus can be treated in bulk.
+Being a distributed model, the procedures applied at the cell scale are quite parsimonious. There is no separate treatment of interception, depression storage, nor soil water retention, rather it is assumed that these processes respond to environmental factors (e.g., evaporation) in parallel and thus can be treated in bulk.
 
-From the top down perspective, viewing some 12.1 million 50x50m cells covering 30,000 km², it seems rather overcomplicated (possibly frivolous) to account water any more than to total mass present at any particular (lateral) location.
+From the top down perspective, viewing some 12.1 million 50x50m cells covering 30,000 km², it seems rather overcomplicated (possibly frivolous) to account water any more than to total mass present at any particular location.
 
-#### globally applied, cell-based parameters
 
-Cells with a contributing area ($A$) greater than 1 km² are deemed "stream cells" in which additional sources include groundwater discharge to streams.
+#### pre-defined parameters
 
-- $D_\text{inc}$: depth of incised channel relative to cell elevation [m] (note, while it is possible to assign this parameter on a cell basis, it was treated here as a global "tuning" parameter.)
-- $f_\text{casc}$: cascade fractions are based on a pre-determined relationship with local gradients.
+The following are determined using a topographical analysis, and are thus are data-driven:
 
-#### Sub-basin based parameters
+- $\tan\beta$: slope angle of a model grid cell [rad]
+- $\delta D_i$: relative saturation ([see more](/interpolants/modelling/waterbudget/gw.html)) [m]
+- $f_\text{casc}$: cascade fractions are based on a pre-determined relationship with local gradients [-]
+
+
+#### globally applied parameters
+
+Cells with a contributing area greater than 1 km² are deemed "stream cells" in which additional sources include groundwater discharge to streams.
+
+- $D_\text{inc}$: depth of incised channel relative to cell elevation [m] (note, while it is possible to assign this parameter on a cell basis, it was treated here as a global "tuning" parameter.) [m]
+- $\Omega$: channel sinuosity [-]
+
+
+#### Regional groundwater parameters
 
 Groundwater processes in the model are conceptualized at the sub-basin scale and so much of the groundwater parameterization is implemented here.
 
@@ -157,20 +168,24 @@ Groundwater processes in the model are conceptualized at the sub-basin scale and
 
 #### Land use based parameters
 
-Each cell is classified according to (i) surficial geology and (ii) land use mapping where each class is parameterized independently. "Look-up tables" are used to distribute model parameters accordin to their classification.
+Each cell is classified according to (i) surficial geology and (ii) land use mapping where each class is parameterized independently. "Look-up tables" are used to distribute model parameters according to their classification.
 
 
 - $F_\text{imp}$: fraction of impervious cover
 - $F_\text{can}$: fraction of canopy cover
-- $\phi$: porosity
-- $F_c$: field capacity
-- $d_\text{ext}$: extinction depth of soil, where evapotranspiration cease to occur.
+
+
+The following are used to compute the overall retention/storage capacity:
+- $\phi$: porosity [-]
+- $F_c$: field capacity [-]
+- $d_\text{ext}$: extinction depth of soil, where evapotranspiration cease to occur. [m]
+
 <!-- - retention/storage capacity -->
 <!-- - depression storage -->
 
 #### Surficial geology based
 
-- $K_\text{sat}$: hydraulic conductivity as saturation (i.e., percolation rates)
+- $K_\text{sat}$: hydraulic conductivity as saturation (i.e., percolation rates) [m/s]
 
 
 
