@@ -56,8 +56,8 @@ Model grids in the model represent a homogenized area on the land surface, simil
 ### Model Domain
 The overarching model code employs an object called the "Model Domain". Here, all necessary model data are digitized and self-contained, including:
 
-1. Structure (`STRC`): Hold all the spatial and topological constraints to grid cells, including their physical dimensions and drainage direction
-1. Mapper (`MAPR`): Parameter collections for a set of [land-surface and groundwater reservoir types](/interpolants/interpolation/landuse.html). Also contains a *cell-to-type* cross-reference map to distribute model parameters, such as percolation rates, soil zone depth, depression storage, etc.
+1. Structure (`STRC`): Hold all the geometrical and topological constraints to grid cells, including the physical dimensions of cells and knowledge of where runoff is to be routed.
+1. Mapper (`MAPR`): Parameter collections for a set of [land-surface and groundwater reservoir types](/interpolants/interpolation/landuse.html). Also contains a *cell-to-type* cross-reference map to distribute model parameters, such as percolation rates, soil zone depth, depression storage, etc. The Mapper *projects* parameter selection onto the grid space domain based on their local (an often unique) land type.
 1. Forcings (`FORC`): Input (variable) data, generally climate forcings: $Y_a$ and $E_a$.
 1. Router (`RTR`): *not used currently* Provides the model with optimal order of processing, ensuring a down stream process.
 

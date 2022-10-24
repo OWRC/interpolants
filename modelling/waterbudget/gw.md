@@ -127,10 +127,10 @@ $$
 	\overline{D}_{t=0} = -m\left[\gamma +\ln\left(\frac{Q_{t=0}}{A}\right)\right],
 $$
 
-where $Q_{t=0}$ is the measured stream flow known at the beginning of the model run. The parameter $m$ can be pre-determined from baseflow recession analysis (Beven et.al., 1995; Beven, 2012) and has been incorporated into the [ORMGP R-shiny recession analysis](https://owrc.github.io/shinyapps-manual/) tools.
+where $Q_{t=0}$ is the measured stream flow known at the beginning of the model run. The parameter $m$ can be pre-determined from baseflow recession analysis (Beven et.al., 1995; Beven, 2012) and has been incorporated into the [ORMGP R-shiny recession analysis](/shinyapps-manual/) tools.
 
 
-
+![](https://raw.githubusercontent.com/OWRC/info/main/recessioncoefficient/fig/topmodel_m.png)
 
 
 
@@ -161,7 +161,7 @@ where $a$ is the contributing area [m²], $R$ is the  -->
 
 ## Model-code implementation
 
-It should first be noted that the above formulation is the very similar to the linear decay groundwater storage model, except here, TOPMODEL allows for an approximation of spatial soil moisture distribution, which will, in turn, determine spatial recharge patterns, as $D_i\leq 0$ will prevent recharge from occurring at cell $i$. 
+It should first be noted that the above formulation is the very similar to the linear decay groundwater storage model, except here, TOPMODEL allows for an approximation of spatial soil moisture distribution, which will, in turn, determine the recharge-runoff distribution that includes *groundwater feedback*, a mechanism instrumental to integrated groundwater surface water modelling.
 
 
 Rearranging the above terms gives:
@@ -170,7 +170,7 @@ $$
   \delta D_i=D_i-\overline{D}=m\left(\gamma - \zeta_i\right)
 $$
 
-where $\delta D_i$ is the groundwater deficit relative to the regional mean. From this, at any time $t$, the local deficit is thus:
+where $\delta D_i$ is the groundwater deficit relative to the regional mean, and is independent of time, and therefore can be parameterized. From this, at any time $t$, the local deficit is thus:
 
 $$
  D_{i,t} = \delta D_i+\overline{D}_t
