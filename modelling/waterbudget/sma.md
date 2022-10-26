@@ -51,7 +51,7 @@ $$
 	\Delta S_k=k_\text{in}+f_h+b-\left(a_k+f_k+k_\text{out}\right),
 $$
 
-where $k = q\frac{\Delta t}{w}$ is the volumetric discharge in $( _\text{in})$ and out $( _\text{out})$ of the grid cell and $f_k$ is the volume of mobile storage infiltrating the soil zone; all units are [m]. (Note that groundwater discharge to streams---$b$---only occurs at stream cells and is only a gaining term.) Also note that $k_\text{out}$ only occurs when water stored in $S_k$ exceeds its capacity.
+where $k = q\frac{\Delta t}{w}$ is the volumetric discharge in $(\_\text{in})$ and out $(\_\text{out})$ of the grid cell and $f_k$ is the volume of mobile storage infiltrating the soil zone; all units are [m]. (Note that groundwater discharge to streams---$b$---only occurs at stream cells and is only a gaining term.) Also note that $k_\text{out}$ only occurs when water stored in $S_k$ exceeds its capacity.
 
 Change in retention storage [m]:
 
