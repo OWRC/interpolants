@@ -19,13 +19,13 @@ It is important to note that the interpretation of the use of the LIA to the SWE
 
 The shallow water (i.e., depth-averaged) approximation of incompressible fluid flow in two-dimension can be solved using the following system of equations (de Almeda et.al., 2013):
 
-### Conservation of mass:
+### Conservation of mass
 
 $$
 	\frac{\partial h}{\partial t} + \frac{\partial q_x}{\partial x} + \frac{\partial q_y}{\partial y} = 0
 $$
 
-### Conservation of momentum:
+### Conservation of momentum
 
 $$
 	\underbrace{\frac{\partial q_x}{\partial t}}_{\substack{\text{local} \\\text{acceleration}}} 

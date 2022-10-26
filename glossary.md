@@ -12,25 +12,33 @@ output: html_document
 
 $E_a$   atmospheric demand/potential evaporation (mm)
 
-$P_R$   Precipitation in the form of rain (mm)
+$G$ *net* groundwater exchange $(\text{recharge}-\text{discharge})$
 
-$P_S$   Precipitation in the form of snow (mm snow water equivalent)
+$K_\text{sat}$ saturated hydraulic conductivity (m/s)
 
-$P_M$ Snowmelt/drainage from snowpack (mm)
+$P_R$   precipitation in the form of rain (mm)
+
+$P_S$   precipitation in the form of snow (mm snow water equivalent---SWE)
+
+$P_M$ snowmelt/drainage from snowpack (mm)
+
+$R$ runoff, generated at a particular location
 
 $T_a$   temperature of air (°C)
 
-$T_c$   critical air temperature (°C) where precipition likely falls as snow
+$T_c$   critical air temperature (°C) where precipitation likely falls as snow
 
-$T_n$   minimum daily air temperature
+$T_n$   minimum daily air temperature (°C)
 
-$T_x$   maximum daily air temperature
+$T_x$   maximum daily air temperature (°C)
+
+$Y_a$   atmospheric yield, i.e., precipitation in its liquid/mobile form: $Y_a=P_R+P_M$
 
 
 
 ## lower case
 
-$p_a$   atmospheirc pressure (Pa)
+$p_a$   atmospheric pressure (Pa)
 
 $r$ relative humidity (-)
 
@@ -46,3 +54,7 @@ $e$ vapour pressure of water in air (Pa)
 $e_s$ saturation vapour pressure of water in air (Pa)
 
 $\alpha_u$ wind direction (degrees CW north)
+
+$\phi$ porosity (-)
+
+$\theta_\text{fc}$ water content at field capacity (-)

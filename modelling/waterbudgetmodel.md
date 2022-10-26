@@ -269,7 +269,7 @@ Finally, the model was designed to remain amenable to data availability and new 
 
 - ECCC - Environment Canada and Climate Change
 
-- atmospheric yield $(Y_a)$: term used to describe water (in liquid form) that is actively altering the hydrologic state at a particular location.
+- atmospheric yield $(Y_a)$: term used to describe water (in liquid form) that is actively altering the hydrological state at a particular location.
 
 
 # References

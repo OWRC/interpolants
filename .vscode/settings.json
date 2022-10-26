@@ -3,8 +3,11 @@
         "climatologies",
         "hydrogeological",
         "neighbour",
+        "runoff",
+        "snowmelt",
         "timeseries",
         "timestep",
-        "watertable"
+        "watertable",
+        "windspeed"
     ]
 }
