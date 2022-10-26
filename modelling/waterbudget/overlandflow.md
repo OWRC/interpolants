@@ -29,7 +29,6 @@ fun.4 <- function(x) 1-exp(-a*x^2)
 fun.5 <- function(x) 1-exp(-a*x^2/1.5^2)
 
 ggplot(data.frame(x = 0),aes(x=x)) + # dummy dataframe
-  theme_bw() +
   stat_function(fun = fun.1) + 
   stat_function(fun = fun.2) + 
   stat_function(fun = fun.3) + 
@@ -40,7 +39,7 @@ ggplot(data.frame(x = 0),aes(x=x)) + # dummy dataframe
   annotate("text", label = "r=.75", x = .3, y = .69) +
   annotate("text", label = "r=1", x = .415, y = .66) +
   annotate("text", label = "r=1.5", x = .555, y = .57) +
-  xlim(0,1) + labs(x="gradient",y=expression(f["casc"]))
+  xlim(0,1) + labs(title="Proportion of mobile water leaving cell (a=5)", x="gradient",y=expression(f["casc"]))
 ``` -->
 
 <!-- Special conditions are set for $f_\text{casc}$: All stream cells have $f_\text{casc}=1$, meaning that the the mobile water store remains 100% mobile. Here $b_\text{casc}=1$. -->
