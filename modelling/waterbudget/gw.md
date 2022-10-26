@@ -130,7 +130,9 @@ $$
 where $Q_{t=0}$ is the measured stream flow known at the beginning of the model run. The parameter $m$ can be pre-determined from baseflow recession analysis (Beven et.al., 1995; Beven, 2012) and has been incorporated into the [ORMGP R-shiny recession analysis](/shinyapps-manual/) tools.
 
 
-![](https://raw.githubusercontent.com/OWRC/info/main/recessioncoefficient/fig/topmodel_m.png)
+<!-- ![](https://raw.githubusercontent.com/OWRC/info/main/recessioncoefficient/fig/topmodel_m.png) -->
+
+<img src="https://raw.githubusercontent.com/OWRC/info/main/recessioncoefficient/fig/topmodel_m.png" width="100%">
 
 
 
