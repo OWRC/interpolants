@@ -7,7 +7,7 @@ output: html_document
 
 
 
-The explicit soil moisture accounting (SMA—see Todini and Wallis, 1977; O'Connell, 1991) algorithm used is intentionally simplified. Where this conceptualization differs from typical SMA schemes is that here there is no distinction made among a variety of storage reservoirs commonly conceptualized in established models. For example, all of interception storage, depression storage and soil storage (i.e., soil moisture below field capacity) is assumed representative by a single aggregate store, thus reducing model parameterization. This conceptualization is allowed by the fact that this model is intended for regional-scale application $(\gg1000\text{\,km²})$ at a high spatial resolution $(\text{i.e., }50\times 50\text{\,m² cells})$. Users must consider the results of the model from a "*bird's-eye view*," where water retained at surface is indistinguishable from the many stores typically conceptualized in hydrological models. The SMA overall water balance is given as:
+The explicit soil moisture accounting (SMA—see Todini and Wallis, 1977; O'Connell, 1991) algorithm used is intentionally simplified. Where this conceptualization differs from typical SMA schemes is that here there is no distinction made among a variety of storage reservoirs commonly conceptualized in established models. For example, all of interception storage, depression storage and soil storage (i.e., soil moisture below field capacity) is assumed representative by a single aggregate store, thus reducing model parameterization. This conceptualization is allowed by the fact that this model is intended for regional-scale application $(\gg1000\text{ km²})$ at a high spatial resolution $(\text{i.e., }50\times 50\text{ m² cells})$. Users must consider the results of the model from a "*bird's-eye view*," where water retained at surface is indistinguishable from the many stores typically conceptualized in hydrological models. The SMA overall water balance is given as:
 
 $$
 	\Delta S = P-E-R-G,
@@ -38,11 +38,13 @@ Although conceptual, storage capacities may be related to common hydrological co
 $$
   S_h=(\phi-\theta_\text{fc}) z_\text{ext}
 $$
+
 and
 
 $$
   S_k=\theta_\text{fc} z_\text{ext}+f_\text{imp} h_\text{dep}+f_\text{can}\cdot h_\text{can}\cdot\text{LAI}
 $$
+
 where $\phi$ and $\theta_\text{fc}$ are the water contents at saturation (porosity) and field capacity, respectively; $f_\text{imp}$ and $f_\text{can}$ are the fractional cell coverage of impervious area and tree canopy, respectively; $h_\text{dep}$ and $h_\text{can}$ are the capacities of impervious depression and interception stores, respectively; $\text{LAI}$ is the leaf area index and $z_\text{ext}$ is the extinction depth (i.e., the depth of which evaporative loss becomes negligible). Change in detention storage at any time is defined by:
 
 $$
@@ -74,7 +76,7 @@ $$
 $$
 
 <!-- ![Schematic diagram of a computational element.](fig/CE-WB_sketch.png) -->
-<img src="https://raw.githubusercontent.com/OWRC/interpolants/main/modelling/fig/sma1.pdf" alt="Conceptual soil moisture accounting scheme." width="100%">
+<img src="https://raw.githubusercontent.com/OWRC/interpolants/main/modelling/fig/sma1.svg" alt="Conceptual soil moisture accounting scheme." width="100%">
 
 
 
@@ -86,6 +88,6 @@ $$
   g=\min\left(S_h,K_\text{sat}\Delta t\right)+S_k^+\left[1-\exp\left(-\frac{K_\text{sat}}{L}\Delta t\right)\right].
 $$
 
-It is important that the second term of the groundwater recharge equation remain to control so-called _**cascade towers**_ which occur when confluences in the [cascade network](/interpolants/modelling/waterbudget/overlandflow.html#Cascade-network) create unrealistically high stages. (This is mainly a consequence of the simplicity of the overland flow scheme applied here---normally, the [pressure term](/interpolants/modelling/eventbased/lateral.html#Conservation-of-momentum) in the shallow water equations provides this control physically.) Here the interface length $L=10\text{\,cm}$ globally.
+It is important that the second term of the groundwater recharge equation remain to control so-called _**cascade towers**_ which occur when confluences in the [cascade network](/interpolants/modelling/waterbudget/overlandflow.html#Cascade-network) create unrealistically high stages. (This is mainly a consequence of the simplicity of the overland flow scheme applied here---normally, the [pressure term](/interpolants/modelling/eventbased/lateral.html#Conservation-of-momentum) in the shallow water equations provides this control physically.) Here the interface length $L=10\text{ cm}$ globally.
 
 

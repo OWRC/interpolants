@@ -12,6 +12,7 @@ Laterally moving water leaving the cell $(k_\text{out})$ is corrected (primarily
 $$
   k_\text{out}=f_\text{casc}S_k^+,
 $$
+
 where $S_k^+>0$ is water in the detention store in excess of the store's capacity, and:
 
 $$
