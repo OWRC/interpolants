@@ -51,7 +51,7 @@ $$
 	\Delta S_k=k_\text{in}+f_h+b-\left(a_k+f_k+k_\text{out}\right),
 $$
 
-where $k = q\frac{\Delta t}{w}$ is the volumetric discharge in $(_\text{in})$ and out $(_\text{out})$ of the grid cell and $f_k$ is the volume of mobile storage infiltrating the soil zone; all units are [m]. (Note that groundwater discharge to streams---$b$---only occurs at stream cells and is only a gaining term.) Also note that $k_\text{out}$ only occurs when water stored in $S_k$ exceeds its capacity.
+where $k = q\frac{\Delta t}{w}$ is the volumetric discharge in $( _\text{in})$ and out $( _\text{out})$ of the grid cell and $f_k$ is the volume of mobile storage infiltrating the soil zone; all units are [m]. (Note that groundwater discharge to streams---$b$---only occurs at stream cells and is only a gaining term.) Also note that $k_\text{out}$ only occurs when water stored in $S_k$ exceeds its capacity.
 
 Change in retention storage [m]:
 
@@ -67,6 +67,14 @@ $$
 	\Delta S_g = g-\left(x+b\right).
 $$
 
+<br>
+
+<!-- ![Schematic diagram of a computational element.](fig/CE-WB_sketch.png) -->
+<img src="https://raw.githubusercontent.com/OWRC/interpolants/main/modelling/fig/sma1.png" alt="Conceptual soil moisture accounting scheme." width="85%">
+
+<br>
+
+
 ### Water balance
 
 The overall **water balance**, with $a=a_h+a_k$, over each **grid cell** is then given by:
@@ -74,10 +82,6 @@ The overall **water balance**, with $a=a_h+a_k$, over each **grid cell** is then
 $$
 	\Delta S_k+\Delta S_h+\Delta S_g=y+k_\text{in}-\left(a+k_\text{out}\right).
 $$
-
-<!-- ![Schematic diagram of a computational element.](fig/CE-WB_sketch.png) -->
-<img src="https://raw.githubusercontent.com/OWRC/interpolants/main/modelling/fig/sma1.svg" alt="Conceptual soil moisture accounting scheme." width="100%">
-
 
 
 ## Groundwater recharge
@@ -88,6 +92,6 @@ $$
   g=\min\left(S_h,K_\text{sat}\Delta t\right)+S_k^+\left[1-\exp\left(-\frac{K_\text{sat}}{L}\Delta t\right)\right].
 $$
 
-It is important that the second term of the groundwater recharge equation remain to control so-called _**cascade towers**_ which occur when confluences in the [cascade network](/interpolants/modelling/waterbudget/overlandflow.html#Cascade-network) create unrealistically high stages. (This is mainly a consequence of the simplicity of the overland flow scheme applied here---normally, the [pressure term](/interpolants/modelling/eventbased/lateral.html#Conservation-of-momentum) in the shallow water equations provides this control physically.) Here the interface length $L=10\text{ cm}$ globally.
+It is important that the second term of the groundwater recharge equation remain to control so-called _**cascade towers**_ which occur when confluences in the [cascade network](/interpolants/modelling/waterbudget/overlandflow.html#cascade-network) create unrealistically high stages. (This is mainly a consequence of the simplicity of the overland flow scheme applied here---normally, the [pressure term](/interpolants/modelling/eventbased/lateral.html#conservation-of-momentum) in the shallow water equations provides this control physically.) Here the interface length $L=10\text{ cm}$ globally.
 
 
