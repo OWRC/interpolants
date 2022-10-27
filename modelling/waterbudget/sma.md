@@ -69,11 +69,11 @@ $$
 
 <br>
 
-![Schematic diagram of a computational element.](../fig/sma.svg)
+<!-- ![Schematic diagram of a computational element.](../fig/sma.svg) -->
 
-<!-- CE-WB_sketch -->
-
-<!-- <img src="https://raw.githubusercontent.com/OWRC/interpolants/main/modelling/fig/sma.png" alt="Conceptual soil moisture accounting scheme." width="85%"> -->
+<p align="center">
+<img src="https://raw.githubusercontent.com/OWRC/interpolants/main/modelling/fig/sma.svg" alt="Conceptual soil moisture accounting scheme." width="85%">
+</p>
 
 <br>
 
