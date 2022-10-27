@@ -43,7 +43,11 @@ $$
 	q = T\tan\beta = T_o\tan\beta\cdot e^{\left(\frac{-D}{m}\right)},
 $$ -->
 
-where $q$ is interpreted here as groundwater discharge per unit length of stream/iso-potential contour [m²/s], and $\tan\beta$ is the surface slope angle in the downslope direction, assumed representative of the saturated zone's hydraulic gradient. The sub-surface storage deficit $(D_i)$ at grid cell $i$ is determined using the distribution function:
+where $q$ is interpreted here as groundwater discharge per unit length of stream/iso-potential contour [m²/s], and $\tan\beta$ is the surface slope angle in the downslope direction, assumed representative of the saturated zone's hydraulic gradient. 
+
+<!-- ![](../fig/histo-tanbeta.png) -->
+
+The sub-surface storage deficit $(D_i)$ at grid cell $i$ is determined using the distribution function:
 
 $$
 	D_i = \overline{D} + m \left(\gamma - \zeta_i\right),
