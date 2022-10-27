@@ -25,13 +25,13 @@ $$
         - \underbrace{R|_{S>S_\text{max}}}_{\text{excess}}
 $$
 
-[*see glossary*](glossary.html)
+[*see glossary*](/interpolants/glossary.html)
 
 
 # Reservoirs
 
 
-Each model cell consists of a retention reservoir $S_h$ (where water has the potential to drain) and a detention reservoir $S_k$ (where water is held locally); both with a predefined capacity and susceptible to evaporation loss. In addition, any number of cells can be grouped which share a semi-infinite conceptual groundwater store $(S_g)$.
+Each model cell consists of a retention reservoir $S_h$ (where water has the potential to drain) and a detention reservoir $S_k$ (where water is held locally but is still considered "mobile" in that if conditions are met, lateral movement would occur); both with a predefined capacity and susceptible to evaporation loss. In addition, any number of cells can be grouped which share a semi-infinite conceptual groundwater store $(S_g)$.
 
 Although conceptual, storage capacities may be related to common hydrological concepts, for instance:
 
@@ -42,10 +42,10 @@ $$
 and
 
 $$
-  S_k=\theta_\text{fc} z_\text{ext}+f_\text{imp} h_\text{dep}+f_\text{can}\cdot h_\text{can}\cdot\text{LAI}
+  S_k=\theta_\text{fc} z_\text{ext}+F_\text{imp} h_\text{dep}+F_\text{can} h_\text{can}\cdot\text{LAI}
 $$
 
-where $\phi$ and $\theta_\text{fc}$ are the water contents at saturation (porosity) and field capacity, respectively; $f_\text{imp}$ and $f_\text{can}$ are the fractional cell coverage of impervious area and tree canopy, respectively; $h_\text{dep}$ and $h_\text{can}$ are the capacities of impervious depression and interception stores, respectively; $\text{LAI}$ is the leaf area index and $z_\text{ext}$ is the extinction depth (i.e., the depth of which evaporative loss becomes negligible). Change in detention storage at any time is defined by:
+where $\phi$ and $\theta_\text{fc}$ are the water contents at saturation (porosity) and field capacity, respectively; $F_\text{imp}$ and $F_\text{can}$ are the fractional cell coverage of impervious area and tree canopy, respectively; $h_\text{dep}$ and $h_\text{can}$ are the capacities of impervious depression and interception stores, respectively; $\text{LAI}$ is the leaf area index and $z_\text{ext}$ is the extinction depth (i.e., the depth of which evaporative loss becomes negligible). Change in detention storage at any time is defined by:
 
 $$
 	\Delta S_k=k_\text{in}+f_h+b-\left(a_k+f_k+k_\text{out}\right),
@@ -69,8 +69,11 @@ $$
 
 <br>
 
-<!-- ![Schematic diagram of a computational element.](fig/CE-WB_sketch.png) -->
-<img src="https://raw.githubusercontent.com/OWRC/interpolants/main/modelling/fig/sma1.png" alt="Conceptual soil moisture accounting scheme." width="85%">
+![Schematic diagram of a computational element.](../fig/sma.svg)
+
+<!-- CE-WB_sketch -->
+
+<!-- <img src="https://raw.githubusercontent.com/OWRC/interpolants/main/modelling/fig/sma.png" alt="Conceptual soil moisture accounting scheme." width="85%"> -->
 
 <br>
 

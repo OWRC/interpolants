@@ -3,7 +3,7 @@ Title: Oak Ridges Moraine Groundwater Program
 author: Oak Ridges Moraine Groundwater Program
 output: html_document
 ---
-The [Oak Ridges Moraine Groundwater Program (ORMGP)](https://www.oakridgeswater.ca/) maintains an authoritative understanding of: 
+The [**Oak Ridges Moraine Groundwater Program (ORMGP)**](https://www.oakridgeswater.ca/) maintains an authoritative understanding of: 
 
 1. the geological layering for the area; 
 1. the groundwater flow system; and
