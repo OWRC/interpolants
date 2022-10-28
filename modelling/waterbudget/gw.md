@@ -173,13 +173,13 @@ It should first be noted that the above formulation is the very similar to the l
 Rearranging the above terms gives:
 
 $$
-  D_i-\overline{D} = m\left(\gamma - \zeta_i\right) = \delta D_i m
+  \delta D_i = D_i-\overline{D} = m\left(\gamma - \zeta_i\right)
 $$
 
 where $\delta D_i$ is the groundwater deficit relative to the regional mean, and is independent of time, and therefore can be parameterized. From this, at any time $t$, the local deficit is thus:
 
 $$
- D_{i,t} = \delta D_i m + \overline{D}_t
+ D_{i,t} = \delta D_i + \overline{D}_t
 $$
 
 
