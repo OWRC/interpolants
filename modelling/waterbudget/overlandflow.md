@@ -7,19 +7,28 @@ output: html_document
 
 
 
-Laterally moving water leaving the cell $(k_\text{out})$ is corrected (primarily) based on land surface slope and roughness. Water leaving a cell can only be directed to a single cell, but any cell can receive from multiple cells. A "*cascade factor*", $F_\text{casc}=f(\text{slope},\text{roughness},\text{etc.})$, where $0\leq F_\text{casc} \leq 1$, is applied to the current volume stored in the mobile store (in the form of a linear reservoir):
+Laterally moving water leaving the cell $(k_\text{out})$ is corrected (primarily) based on land surface slope and roughness. Water leaving a cell can only be directed to a single cell, but any cell can receive from multiple cells. A "*cascade factor*", $F_\text{casc}\approx f(\text{slope},\text{roughness},\text{etc.})$, where $0\leq F_\text{casc} \leq 1$, is applied to the current volume stored in the mobile store (in the form of a linear reservoir):
 
 $$
   k_\text{out}=F_\text{casc}S_k^+,
 $$
 
-where $S_k^+>0$ is water in the detention store in excess of the store's capacity, and:
+where $S_k^+>0$ is water in the detention store in excess of the store's capacity. $F_\text{casc}$ is related to land surface gradient by:
 
 $$
+  F_\text{casc}=1-\exp\left(\frac{\beta^2}{-a}\right),
+$$
+
+<!-- $$
   F_\text{casc}=1-\exp\left(-a\frac{\beta^2}{r^2}\right),
-$$
+$$ -->
 
-where $\beta$ is land surface gradient, $r$ is called the "range" (note that the above equation is identical to the Gaussian variogram model), and $a$ is a scaling factor applied to the range such that it's value approaches unity at $r$. <!-- ; Below are examples with $a\approx 5$: -->
+<!-- where $\beta$ is land surface gradient, $r$ is called the "range" (note that the above equation is identical to the Gaussian variogram model), and $a$ is a scaling factor applied to the range such that it's value approaches unity at $r$. ; Below are examples with $a\approx 5$: -->
+
+
+where $\beta$ is land surface gradient and $a$ is a scaling factor (note that the above equation is identical to the Gaussian variogram kernel with a unit range).
+
+
 
 <!-- ```{r fcasc, echo=FALSE, fig.width=6,fig.height=4,fig.align='center'}
 a = 5
@@ -52,7 +61,8 @@ ggplot(data.frame(x = 0),aes(x=x)) + # dummy dataframe
 TODO
 
 
-
+- stream cells: $F_\text{casc}=1$
+- urban cells: $F_\text{casc}=1$ assumes drainage network
 
 
 

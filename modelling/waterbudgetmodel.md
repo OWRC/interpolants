@@ -158,6 +158,7 @@ Cells with a contributing area greater than 1 km² are deemed "stream cells" in 
 
 - $D_\text{inc}$: depth of incised channel relative to cell elevation [m] (note, while it is possible to assign this parameter on a cell basis, it was treated here as a global "tuning" parameter.) [m]
 - $\Omega$: channel sinuosity [-]
+- $a$: scaling parameter for determing $F_\text{casc}$
 
 
 #### Regional groundwater parameters
