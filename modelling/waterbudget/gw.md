@@ -131,13 +131,13 @@ $$
 	\overline{D}_{t=0} = -m\left[\gamma +\ln\left(\frac{Q_{t=0}}{A}\right)\right],
 $$
 
-where $Q_{t=0}$ is the measured stream flow known at the beginning of the model run. The parameter $m$ can be pre-determined from baseflow recession analysis (Beven et.al., 1995; Beven, 2012) and has been incorporated into the [ORMGP R-shiny recession analysis](/shinyapps-manual/) tools.
+where $Q_{t=0}$ is the measured stream flow known at the beginning of the model run. The parameter $m$ can be pre-determined from baseflow [**recession analysis**](/info/recessioncoefficient/) (Beven et.al., 1995; Beven, 2012) and has been incorporated into [ORMGP R-shiny](/shinyapps-manual/).
 
+$$ \frac{1}{Q}-\frac{1}{Q_0}=\frac{t}{m} $$
 
 <!-- ![](https://raw.githubusercontent.com/OWRC/info/main/recessioncoefficient/fig/topmodel_m.png) -->
 
 <img src="https://raw.githubusercontent.com/OWRC/info/main/recessioncoefficient/fig/topmodel_m.png" width="100%">
-
 
 
 
