@@ -194,8 +194,8 @@ Combined, these two tools will provide all water groundwater resources needs for
 
 
 ## Short-term/event-based hydrology
-* [Lateral water movement:](/interpolants/modelling/eventbased/lateral.html) a local inertial approximation of the shallow water equation for lateral movement of water.
-* [Multiphase flow through porous media:](/interpolants/modelling/eventbased/pmflow.html) a one-dimensional fully-implicit multi-layer solution to multi-phase flow through porous media used to investigate infiltration, evaporation and runoff generation.
+* [Lateral water movement:](/info/lia/) a local inertial approximation of the shallow water equation for lateral movement of water.
+* [Multiphase flow through porous media:](/info/pmflow/) a one-dimensional fully-implicit multi-layer solution to multi-phase flow through porous media used to investigate infiltration, evaporation and runoff generation.
 
 
 ## Other
