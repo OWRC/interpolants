@@ -8,21 +8,6 @@ output: html_document
 {:toc}
 
 
-## nomenclature
-
-Certain parameter pairs are present typically in upper- and lower-case form. This is mainly used to differentiate data distributed at the regional scale *(upper)* vs. processed occurring at a point in space, for instance:
-
-$$
-    Y_a \longmapsto y
-$$
-
-$$
-    E \longmapsto a
-$$
-
-$$
-    G \longmapsto g
-$$
 
 ## upper case 
 
@@ -92,3 +77,23 @@ $\phi$ porosity (-)
 
 $\theta_\text{fc}$ water content at field capacity (-)
 
+
+
+
+## nomenclature
+
+Certain parameter pairs are present typically in upper- and lower-case form. This is mainly used to differentiate data distributed at the regional **scale** *(upper)* vs. processed occurring at a point in space *(lower)*, for instance:
+
+$$
+    Y_a \longmapsto y
+$$
+
+meaning [atmospheric yield collected within the ORMGP region](/interpolants/modelling/waterbudget/data.html#atmospheric-yield-y_a) *maps to* any particular point in space. Similarity: 
+
+$$
+    E \longmapsto a
+$$
+
+$$
+    G \longmapsto g
+$$
