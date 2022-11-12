@@ -88,7 +88,7 @@ $$
     Y_a \longmapsto y
 $$
 
-meaning [atmospheric yield collected within the ORMGP region](/interpolants/modelling/waterbudget/data.html#atmospheric-yield-y_a) *maps to* any particular point in space. Similarity: 
+meaning [atmospheric yield collected within the ORMGP region](/interpolants/modelling/waterbudget/data.html#atmospheric-yield-y_a) *maps to* any particular point in space. Similarly: 
 
 $$
     E \longmapsto a
