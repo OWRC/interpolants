@@ -41,43 +41,6 @@ The ORMGP data systems described below are active, in that they are automaticall
 
 
 
-# Technologies
-A number of open-source and proprietary data analysis tools have been employed in our overall data management system. In contribution to the open-source community, much of our work has also left open [on our Github](https://github.com/OWRC).
-
-## Tools (external links)
-* [Github pages](https://pages.github.com/) — the hosting of technical information, like what you see now.
-* [Python](https://www.python.org/)
-   * [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) — web scraping
-   * [NumPy](https://numpy.org/), [Pandas](https://pandas.pydata.org/) — data manipulation
-   * (and many more)
-* [Go](https://go.dev/)
-* FORTRAN/C++
-* VB.NET/C#
-* [R](https://www.r-project.org/) and [RStudio](https://www.rstudio.com/) — a free, open-source "...software environment for statistical computing and graphics."
-   * [R-Shiny](https://shiny.rstudio.com/) — online, real-time data analytics
-   * [Leaflet for R](https://rstudio.github.io/leaflet/) — web mapping
-   * [ggplot2](https://ggplot2.tidyverse.org/) — data visualization
-   * [dygraphs for R](https://rstudio.github.io/dygraphs/) — dynamic time-series visualization
-
-## Databases (external links)
-* [MSSQL](https://www.microsoft.com/en-us/sql-server/sql-server-2019)
-* [Delft-FEWS](https://www.deltares.nl/app/uploads/2015/01/Delft-FEWS_brochure-2017.pdf)
-
-
-## **ORMGP Servers**
-
-### Databases and APIs
-* **[Our main MSSQL Server database](/database-manual/Contents/TOC.html)**
-* [VertiGIS Studio/Geocortex](https://www.vertigis.com/vertigis-studio/) — Our principle [web mapping server](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP) used by partners to access our database and products.
-* golang server — multi-functional REST API serving a variety of data products and interpolation tools.
-
-
-### Web scraping
-* ORMGP-cron: a linux server with scheduled [web-scraping tasks mostly written in Python](/interpolants/sources/webscraping.html).
-* [ORMGP-FEWS](/interpolants/interpolation/fews.html): our operational Delft-FEWS system that scrapes, stores, interpolates and regenerates data served on ORMGP-cron.
-
-
-
 
 
 
@@ -212,6 +175,44 @@ Combined, these two tools will provide all water groundwater resources needs for
 <!-- * [Overland flow routing](/interpolants/modelling/waterbudget/overlandflow.html) -->
 <!-- * [References](/interpolants/modelling/waterbudgetmodel.html#references) -->
    
+
+
+
+# Technologies
+A number of open-source and proprietary data analysis tools have been employed in our overall data management system. In contribution to the open-source community, much of our work has also left open [on our Github](https://github.com/OWRC).
+
+## Tools (external links)
+* [Github pages](https://pages.github.com/) — the hosting of technical information, like what you see now.
+* [Python](https://www.python.org/)
+   * [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) — web scraping
+   * [NumPy](https://numpy.org/), [Pandas](https://pandas.pydata.org/) — data manipulation
+   * (and many more)
+* [Go](https://go.dev/)
+* FORTRAN/C++
+* VB.NET/C#
+* [R](https://www.r-project.org/) and [RStudio](https://www.rstudio.com/) — a free, open-source "...software environment for statistical computing and graphics."
+   * [R-Shiny](https://shiny.rstudio.com/) — online, real-time data analytics
+   * [Leaflet for R](https://rstudio.github.io/leaflet/) — web mapping
+   * [ggplot2](https://ggplot2.tidyverse.org/) — data visualization
+   * [dygraphs for R](https://rstudio.github.io/dygraphs/) — dynamic time-series visualization
+
+## Databases (external links)
+* [MSSQL](https://www.microsoft.com/en-us/sql-server/sql-server-2019)
+* [Delft-FEWS](https://www.deltares.nl/app/uploads/2015/01/Delft-FEWS_brochure-2017.pdf)
+
+
+## **ORMGP Servers**
+
+### Databases and APIs
+* **[Our main MSSQL Server database](/database-manual/Contents/TOC.html)**
+* [VertiGIS Studio/Geocortex](https://www.vertigis.com/vertigis-studio/) — Our principle [web mapping server](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP) used by partners to access our database and products.
+* golang server — multi-functional REST API serving a variety of data products and interpolation tools.
+
+
+### Web scraping
+* ORMGP-cron: a linux server with scheduled [web-scraping tasks mostly written in Python](/interpolants/sources/webscraping.html).
+* [ORMGP-FEWS](/interpolants/interpolation/fews.html): our operational Delft-FEWS system that scrapes, stores, interpolates and regenerates data served on ORMGP-cron.
+
 
 
 
