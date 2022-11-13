@@ -34,15 +34,20 @@ The following is an index to the data maintained and produced by the ORMGP. All 
 
 The ORMGP data systems described below are active, in that they are automatically updated at near real-time. From hourly and daily intervals, a series of "web-scraper" routines have been written to access open data made available from many sources including international, federal, provincial, municipal and conservation authority agencies. The objective is to "centralize" hydrogeological data for the south-central Ontario (Canada) jurisdiction that currently makes-up the ORMGP. [**_Data sources: more details._**](/interpolants/sources/sources.html)
 
-<iframe src="https://golang.oakridgeswater.ca/pages/ycdb-locations.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
-<br>
-
+## Geology
 * [Geology](/info/md/geology.html)
     * [Drilling](/info/md/drilling.html)
     * [Bedrock Geology](/info/md/bedrock.html)
     * [Sedimentology](/info/md/sedimentology.html)
-    * Picks database
+    * Geologic Pick database
+
+## Hydrogeology
 * [Monitoring](/monitoring/)
+
+
+<iframe src="https://golang.oakridgeswater.ca/pages/ycdb-locations.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
+<br>
+
 
 
 
