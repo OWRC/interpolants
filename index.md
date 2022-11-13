@@ -37,8 +37,12 @@ The ORMGP data systems described below are active, in that they are automaticall
 <iframe src="https://golang.oakridgeswater.ca/pages/ycdb-locations.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 <br>
 
-
-
+* [Geology](/info/md/geology.html)
+    * [Drilling](/info/md/drilling.html)
+    * [Bedrock Geology](/info/md/bedrock.html)
+    * [Sedimentology](/info/md/sedimentology.html)
+    * Picks database
+* [Monitoring](/monitoring/)
 
 
 
@@ -112,7 +116,7 @@ _Distributed time-series data, updated nightly_
    * Min/max daily temperature
    * Atmospheric pressure
    * Precipitation (rainfall and snowfall)
-   * Snowmelt
+   * Snowmelt ([sourced and computed](/interpolants/modelling/waterbudget/data.html#sub-daily-from-daily-snowmelt))
    * Potential evaporation ([computed](/interpolants/interpolation/calc/panET/PanEvaporation.html))
    <!-- * Solar irradiation -->
 * [**Hourly data**](/interpolants/interpolation/hourly.html), updated every 6-hours, including:
