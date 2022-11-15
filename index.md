@@ -39,7 +39,7 @@ The ORMGP data systems described below are active, in that they are automaticall
     * [Drilling](/info/md/drilling.html)
     * [Bedrock Geology](/info/md/bedrock.html)
     * [Sedimentology](/info/md/sedimentology.html)
-    * Geologic Pick database
+    * [Geologic Pick database](/snapshots/md/picks.html)
 
 ## Hydrogeology
 * [Monitoring](/monitoring/)
@@ -73,7 +73,7 @@ The [ORMGP Geocortex Mapping hub has been divided into various Theme Maps](/webm
    * [Help](/HydrographExplorerHelp/)
    * [Manual](/shinyapps-manual/)
 * [Automatic hydrograph separation](/info/hydrographseparation/)
-* [Hydrograph disaggregation](/interpolants/modelling/hydroparse.html)
+* [Hydrograph disaggregation](/info/hydrographdisaggregation/)
 
 <!-- *and many more (TODO)* -->
 
@@ -105,6 +105,11 @@ _Static 2D fields, updated frequently_
 * [Watercourses](/interpolants/interpolation/watercourses.html)
 * [Sub-watersheds](/interpolants/interpolation/subwatershed.html)
 
+<iframe src="https://golang.oakridgeswater.ca/pages/sws-characterization.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
+_Sub-watershed characterization and flow topology_
+<br>
+
+
 ## **Clip 'n Ship**
 * [**"Clip 'n Ship"**](/interpolants/sources/clipnship.html) — A bulk spatial data export system, by geographic extent. Includes many of the products listed below.
 
@@ -114,8 +119,8 @@ _Static 2D fields, updated frequently_
 ## Spatially interpolated, near real-time data
 
 <iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
-<br>
 _Distributed time-series data, updated nightly_
+<br>
 
 * [**Daily data**](/interpolants/interpolation/daily.html), updated nightly, including:
    * Min/max daily temperature

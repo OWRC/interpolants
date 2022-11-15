@@ -43,7 +43,32 @@ The following is a description of the water budget tool located on our website, 
 
 
 
+# Physical Constraints
 
+### Digital Elevation Model
+
+The Greater Toronto Area 2002 DEM (OMNRF, 2015) was re-sampled to the model's 50x50m grid cell resolution. Surface depressions were removed using Wang and Liu (2006) and flat regions were corrected using Martz (1997).
+
+Drainage directions and flow-paths of the now "hydrologically correct" DEM were were assigned based on the direction of steepest decent (D8).Cell gradients ($b$) and slope aspects were calculated based on a 9-cell planar interpolation routine. The unit contributing area $a=A/w$ topographic wetness index $ln\frac{a}{\tan b}$ (Beven and Kirkby, 1979--CHECK) were computed for every cell.
+
+### Sub-basins
+
+The 30,000 km² model area has been sub divided into 2,813 approximately 10 km² sub-basins. Within these sub-basins:
+1. Meteorological forcings from external sources are aggregated applied uniformly within the sub-basin (via a pre-processing routine); and
+1. Local shallow water response is assumed to act uniformly (the shallow subsurface catchment area).
+
+
+<iframe src="https://golang.oakridgeswater.ca/pages/sws-characterization.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
+
+<br>
+
+### Land use and Surficial geology
+
+- Southern Ontario Land Resource Information System (SOLRIS) Version 3.0 Landuse
+- OGS (2010) Surficial geology of southern Ontario
+
+
+[*read more*](/interpolants/interpolation/landuse.html)
 
 
 # Model Structure
@@ -108,24 +133,6 @@ The time step of the model has been set to 6 hour steps on 00:00 UTC, yielding t
 
 
 
-
-
-# Physical Constraints
-
-### Digital Elevation Model
-
-The Greater Toronto Area 2002 DEM (OMNRF, 2015) was re-sampled to the model's 50x50m grid cell resolution. Surface depressions were removed using Wang and Liu (2006) and flat regions were corrected using Martz (1997).
-
-Drainage directions and flow-paths of the now "hydrologically correct" DEM were were assigned based on the direction of steepest decent (D8).Cell gradients ($b$) and slope aspects were calculated based on a 9-cell planar interpolation routine. The unit contributing area $a=A/w$ topographic wetness index $ln\frac{a}{\tan b}$ (Beven and Kirkby, 1979--CHECK) were computed for every cell.
-
-### Sub-basins
-
-The 30,000 km² model area has been sub divided into 2,813 approximately 10 km² sub-basins. Within these sub-basins:
-1. Meteorological forcings from external sources are aggregated applied uniformly within the sub-basin (via a pre-processing routine); and
-1. Local shallow water response is assumed to act uniformly (the shallow subsurface catchment area).
-
-
-<iframe src="https://golang.oakridgeswater.ca/pages/subwatersheds.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 
 
 
