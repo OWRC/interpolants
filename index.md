@@ -46,8 +46,18 @@ The ORMGP data systems described below are active, in that they are automaticall
 
 
 <iframe src="https://golang.oakridgeswater.ca/pages/ycdb-locations.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
+_Locations with >35 monitoring dates_
 <br>
 
+
+## Drainage and Topology
+* [Overland drainage pathways](/interpolants/interpolation/overland.html)
+* [Watercourses](/interpolants/interpolation/watercourses.html)
+* [Sub-watersheds](/interpolants/interpolation/subwatershed.html)
+
+<iframe src="https://golang.oakridgeswater.ca/pages/sws-characterization.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
+_Sub-watershed characterization and flow topology_
+<br>
 
 
 
@@ -100,14 +110,6 @@ _Static 2D fields, updated frequently_
     * relative permeability
 
 
-## Drainage and Topology
-* [Overland drainage pathways](/interpolants/interpolation/overland.html)
-* [Watercourses](/interpolants/interpolation/watercourses.html)
-* [Sub-watersheds](/interpolants/interpolation/subwatershed.html)
-
-<iframe src="https://golang.oakridgeswater.ca/pages/sws-characterization.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
-_Sub-watershed characterization and flow topology_
-<br>
 
 
 ## **Clip 'n Ship**
@@ -160,10 +162,13 @@ Combined, these two tools will provide all water groundwater resources needs for
 
 ## Existing numerical model files, output and sharing
 
-<iframe src="https://golang.oakridgeswater.ca/pages/numerical-model-custodianship-program.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
-
 * [Numerical Model Custodianship Program](/snapshots/md/numerical-model-custodianship-program.html) — model archive.
 * [*A Guide for Actively Managing Watershed-Scale Numerical Models in Ontario*](https://www.oakridgeswater.ca/_files/ugd/4a0a6e_c41c71a481ea4657806e1fbb0c912f7a.pdf) — model management guidance (2017)
+
+<iframe src="https://golang.oakridgeswater.ca/pages/numerical-model-custodianship-program.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
+_Set of numerical models maintained in the custodianship program_
+<br>
+
 
 
 ## Regional **Water Budget**, Long-term and Continuous
@@ -232,4 +237,5 @@ A number of open-source and proprietary data analysis tools have been employed i
 
 
 
-# [**Glossary**](glossary.html)
+# **Glossary**
+[*click here*](glossary.html)

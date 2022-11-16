@@ -67,6 +67,14 @@ $x$     saturation excess (L)
 
 $z_\text{ext}$ extinction depth (m): depth where evaporation becomes negligible.
 
+
+
+## upper case Greek
+
+$\Delta t$ model timestep (s)
+
+
+
 ## lower case Greek
 
 $\alpha_u$ wind direction (degrees CW north)

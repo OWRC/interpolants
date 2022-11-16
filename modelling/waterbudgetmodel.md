@@ -43,6 +43,60 @@ The following is a description of the water budget tool located on our website, 
 
 
 
+
+
+
+# Theory
+
+
+* **[Shallow groundwater](/interpolants/modelling/waterbudget/gw.html)**
+* **[Soil moisture accounting](/interpolants/modelling/waterbudget/sma.html)**
+* **[Overland flow routing](/interpolants/modelling/waterbudget/overlandflow.html)**
+
+
+
+
+
+# Input Data
+
+
+The aim of the model design is to simultaneously reduce the amount of computational processes and leverage near-realtime data assimilation products. It is recognized from a hydrological model design perspective, that the primary driver of watershed moisture distribution is the *"Atmospheric Yield"*, that is water sourced from the atmosphere in its liquid/mobile form.
+
+
+$$\text{Atmospheric Yield} = \text{Rainfall} + \text{Snowmelt}$$
+
+
+Similarity, the "atmosphere" (specifically the Planetary Boundary Layer---Oke, 1987) also has a drying power, a sink termed *"Atmospheric Demand"*. 
+
+It is matter of perspective that dictates the terminology here. The model was designed from a top-down viewpoint. Terms like "potential evaporation", which speaks to the evaporation occurring on a surface with unlimited water supply is instead termed "atmospheric demand", that is the capacity for the PBL to remove moisture from a rough land surface.
+
+
+Only snowmelt, rainfall and evaporation are not readily available in a distributed form and need to be determined. The model is integrated with [the ORMGP data management platform](/interpolants/). Below is an interactive map of the climate forcing distribution used in the model from the top-down perspective. Total model coverage ~30,000km².
+
+
+<iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" target="_blank" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
+
+
+Finally, the model was designed to remain amenable to data availability and new technologies; for instance, [SNODAS](https://nsidc.org/data/g02158) can avoid the need to model snowmelt explicitly and leverage these online resources.
+
+
+* **[Data sources, transformations and pre-processing](/interpolants/modelling/waterbudget/data.html)**
+    * **[Atmospheric Demand $(E_a)$](/interpolants/modelling/waterbudget/data.html#atmospheric-demand-e_a)**
+    * **[Atmospheric Yield $(Y_a)$](/interpolants/modelling/waterbudget/data.html#atmospheric-yield-y_a)**    
+    <!-- * **[Snowmelt $(P_M)$](/interpolants/modelling/waterbudget/data.html#sub-daily-from-daily-snowmelt)** -->
+
+
+
+[*see glossary*](glossary.html)
+
+
+
+
+
+
+
+
+
 # Physical Constraints
 
 ### Digital Elevation Model
@@ -208,53 +262,8 @@ The extent of the model combined with the resolution of the processes simulated 
 
 
 
-# Input Data
 
 
-The aim of the model design is to simultaneously reduce the amount of computational processes and leverage near-realtime data assimilation products. It is recognized from a hydrological model design perspective, that the primary driver of watershed moisture distribution is the *"Atmospheric Yield"*, that is water sourced from the atmosphere in its liquid/mobile form.
-
-
-$$\text{Atmospheric Yield} = \text{Rainfall} + \text{Snowmelt}$$
-
-
-Similarity, the "atmosphere" (specifically the Planetary Boundary Layer---Oke, 1987) also has a drying power, a sink termed *"Atmospheric Demand"*. 
-
-It is matter of perspective that dictates the terminology here. The model was designed from a top-down viewpoint. Terms like "potential evaporation", which speaks to the evaporation occurring on a surface with unlimited water supply is instead termed "atmospheric demand", that is the capacity for the PBL to remove moisture from a rough land surface.
-
-
-Only snowmelt, rainfall and evaporation are not readily available in a distributed form and need to be determined. The model is integrated with [the ORMGP data management platform](/interpolants/). Below is an interactive map of the climate forcing distribution used in the model from the top-down perspective. Total model coverage ~30,000km².
-
-
-<iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" target="_blank" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
-
-
-
-
-Finally, the model was designed to remain amenable to data availability and new technologies; for instance, [SNODAS](https://nsidc.org/data/g02158) can avoid the need to model snowmelt explicitly and leverage these online resources.
-
-
-* **[Data sources, transformations and pre-processing](/interpolants/modelling/waterbudget/data.html)**
-    * **[Atmospheric Demand $(E_a)$](/interpolants/modelling/waterbudget/data.html#atmospheric-demand-e_a)**
-    * **[Atmospheric Yield $(Y_a)$](/interpolants/modelling/waterbudget/data.html#atmospheric-yield-y_a)**    
-    <!-- * **[Snowmelt $(P_M)$](/interpolants/modelling/waterbudget/data.html#sub-daily-from-daily-snowmelt)** -->
-
-
-
-[*see glossary*](glossary.html)
-
-
-
-
-
-
-
-
-# Theory
-
-
-* **[Shallow groundwater](/interpolants/modelling/waterbudget/gw.html)**
-* **[Soil moisture accounting](/interpolants/modelling/waterbudget/sma.html)**
-* **[Overland flow routing](/interpolants/modelling/waterbudget/overlandflow.html)**
 
 
 # Calibration
