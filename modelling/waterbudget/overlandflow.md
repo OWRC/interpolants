@@ -38,10 +38,10 @@ $$
 where $S_k^+>0$ is water in the detention store in excess of the store's capacity. $F_\text{casc}$ is related to land surface gradient by:
 
 $$
-  F_\text{casc}=1-\exp\left(\frac{\beta^2}{-a}\right),
+  F_\text{casc}=1-\exp\left(\frac{\beta^2}{-\alpha}\right),
 $$
 
-where $\beta$ is land surface gradient and $a$ is a scaling parameter (note that the above equation is identical to the Gaussian variogram kernel with a unit range).
+where $\beta$ is land surface gradient and $\alpha$ is a scaling parameter (note that the above equation is identical to the Gaussian variogram kernel with a unit range).
 
 
 <!-- $$
@@ -73,7 +73,7 @@ Urban areas that are assumed serviced also have $F_\text{casc}=1$ but also have 
 The $D8$ algorithm produces a dendritic network of overland flow paths whose rate of discharge depends on $F_\text{casc}$:
 - stream cells: $F_\text{casc}=1$
 - urban cells: $F_\text{casc}=1$ (assumes serviced areas)
-- all else $F_\text{casc}=1-\exp\left(\frac{\beta^2}{-a}\right)$, $(\beta=\text{surface gradient})$
+- all else $F_\text{casc}=1-\exp\left(\frac{\beta^2}{-\alpha}\right)$, $(\beta=\text{surface gradient})$
 
 
 A property of the cascade is that when it involved a sequence of many linear reservoirs, the movement of water resembles a kinetic system, a concept known as the Nash model (Nash, 1957). Consequently, the model cannot have any back-water effects or inertial effects.

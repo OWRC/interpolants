@@ -95,6 +95,6 @@ $$
   g=\min\left(S_h,K_\text{sat}\Delta t\right)+S_k^+\left[1-\exp\left(\frac{-K_\text{sat}}{L}\Delta t\right)\right].
 $$
 
-It is important that the second term of the groundwater recharge equation remain to control so-called _**cascade towers**_ which occur when confluences in the [cascade network](/interpolants/modelling/waterbudget/overlandflow.html#cascade-network) create unrealistically high stages. (This is mainly a consequence of the simplicity of the overland flow scheme applied here---normally, the [pressure term](/interpolants/modelling/eventbased/lateral.html#conservation-of-momentum) in the shallow water equations provides this control physically.) Here the interface length $L=10\text{ cm}$ globally.
+It is important that the second term of the groundwater recharge equation remain to control so-called _**cascade towers**_ which occur when confluences in the [cascade network](/interpolants/modelling/waterbudget/overlandflow.html#cascade-network) create unrealistically high stages. (This is mainly a consequence of the simplicity of the overland flow scheme applied here---normally, the [pressure term](/info/lia/#conservation-of-momentum) in the shallow water equations provides this control physically.) Here the interface length $L=10\text{ cm}$ globally.
 
 

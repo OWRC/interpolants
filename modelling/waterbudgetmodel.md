@@ -21,21 +21,21 @@ The model is physically based in that mass is conserved and processes are not co
 
 
 # Executive Summary
-**_to fix_**
 
 - Integrated groundwater surface water numerical model
 - Built for fast computation
 - simulates evaporation, runoff, infiltration, watertable elevations, groundwater recharge occurring after a rainfall and/or snowmelt event.
-- model run from the hydrological water year 2010 (2009-10-01) through water year 2020. 
+- model run from the hydrological water year 2002 (2001-10-01) through water year 2020. 
 - Precipitation was collected from [CaPA-RDPA](https://eccc-msc.github.io/open-data/msc-data/nwp_hrdpa/readme_hrdpa_en/)
-- Snowmelt was collected from [SNODAS]()
+- Snowmelt was collected from [SNODAS](https://nsidc.org/data/g02158/versions/1)
 - $T_a$, $r$, $u$ from MSC
-- Potential evaporation $(E_a)$ determined using the [empirical wind functions of Penman (1948)]()
-- 12.1M x 50x50 m cells x 6-hourly ts x 10 years
+- Potential evaporation $(E_a)$ determined using the [empirical wind functions of Penman (1948)](/interpolants/modelling/waterbudget/data.html#atmospheric-demand-e_a)
+- 12.1M x 50x50 m cells x 6-hourly ts x 20 years
 - use of regional climate fields (model inputs—precipitation, temperature, snowmelt, etc.)
 - explicit soil moisture accounting scheme
-- cold content energy balance snowpack model
-- distribution function-based shallow groundwater model with groundwater feedback mechanisms
+- cold content energy balance snowpack model when SNODAS was unavailable (pre-2010)
+- distribution function-based shallow groundwater model with groundwater feedback mechanisms following TOPMODEL
+- a cascade overland flow routing
 <!-- - a one-dimensional first-order kinematic overland flow module	 -->
 The following is a description of the water budget tool located on our website, hereinafter referred to as the "*model*".
 
@@ -50,8 +50,12 @@ The following is a description of the water budget tool located on our website, 
 
 
 * **[Shallow groundwater](/interpolants/modelling/waterbudget/gw.html)**
+    $$ \zeta=\ln\frac{a}{T_o\tan\beta} $$
 * **[Soil moisture accounting](/interpolants/modelling/waterbudget/sma.html)**
+    $$ \Delta S=P-E-R-G $$
 * **[Overland flow routing](/interpolants/modelling/waterbudget/overlandflow.html)**
+    $$ F_\text{casc}=1-\exp(\frac{\beta}{-\alpha}) $$
+
 
 
 
@@ -143,31 +147,13 @@ The overarching model code employs an object called the "Model Domain". Here, al
 
 
 
-
-
-
-
-## Runoff
+<!-- ## Runoff
 
 Runoff is conceptualized as being generated through the saturation excess (Dunne, 1975 CHECK) mechanism. Land area that has the capacity to retain water (through interception, soil retention, depression/rill storage, etc.) must be satisfied. The saturation excess mechanism is dependent on topography and it's interaction with the groundwater system; thus the model is distributed (cell-based) and has an integrated (albeit conceptual) groundwater system.
 
 Surface water-groundwater integration is viewed from the hydrologists' perspective: areas where is the groundwater system limiting infiltration (shallow groundwater table) and even contributing to overland runoff (springs/seepage areas). As a model output, this can be quantified as a net groundwater exchange field (groundwater recharge and discharge)
 
-
-
-dunnian processes.
-
-
-
-The purpose of the model is to have a 
-
-
-
-The purpose of the model is to account for the water balance  estimate the spatial and temporal distribution of water on the landscape.
-
-
-
-The basis of the model is that topography is paramount to the lateral movement of water yielding runoff. The model is deemed regional, in that it covers a large areal extent, yet is kept to a fine resolution to ensure that observed geomorphic flow patterns are represented in the model.
+The basis of the model is that topography is paramount to the lateral movement of water yielding runoff. The model is deemed regional, in that it covers a large areal extent, yet is kept to a fine resolution to ensure that observed geomorphic flow patterns are represented in the model. -->
 
 
 ## Time-stepping
@@ -219,7 +205,7 @@ Cells with a contributing area greater than 1 km² are deemed "stream cells" in 
 
 - $D_\text{inc}$: depth of incised channel relative to cell elevation [m] (note, while it is possible to assign this parameter on a cell basis, it was treated here as a global "tuning" parameter.) [m]
 - $\Omega$: channel sinuosity [-]
-- $a$: scaling parameter for determing $F_\text{casc}$
+- $\alpha$: scaling parameter for determining $F_\text{casc}$
 
 
 #### Regional groundwater parameters
