@@ -18,6 +18,9 @@ Then the **ship** feature requires our server to package the clipped data into a
 # Data formats
 The data format chosen for the exports are provided in a format that is most compressible, maintaining efficient file transfer. The files formats are thus less less common; yet are general enough that they'll open on common GIS platforms.
 
+Data are compressed into a *tar.gz* file, which can opened using free and open software such as [7-Zip](https://www.7-zip.org/) and [WinRAR](https://www.win-rar.com/).
+
+
 ## File Formats
 
 ### Rasters
@@ -42,7 +45,11 @@ Point data, database queries, are provided in **comma-separated value** (\*.csv)
 
 ### Layers
 
-- __*TODO*__
+Geologic Model layers follow a pattern: *WB_2021_`LayerNo`\_`LayerName`\_`LayerType`\_`dateCreated`-crop.bil*.
+
+For example
+- `WB_2021_01_GROUND_SURFACE_20211027.bil` is the first layer (from the top) and is the ground surface
+- `WB_2021_09C_THORNCLIFFE_ISOPACH_20220808-crop` is the isopach of the Thorncliffe unit.
 
 ### database queries (*.csv)
 
