@@ -24,7 +24,7 @@ Data are compressed into a *tar.gz* file, which can opened using free and open s
 ## File Formats
 
 ### Rasters
-Rasters are provided in a [**band interleaved by line** (\*.bil)](https://desktop.arcgis.com/en/arcmap/10.5/manage-data/raster-and-images/bil-bip-and-bsq-raster-files.htm) format.  This file is in a raw binary format and is accompanied by header file (\*.hdr) and a projection file (\*.prj).  Files will open in [ArcGIS](https://www.arcgis.com/index.html), [QGIS](https://www.qgis.org/en/site/), and load as a [NumPy](https://numpy.org/) array.
+Rasters are provided in a [**band interleaved by line** (\*.bil)](https://desktop.arcgis.com/en/arcmap/10.5/manage-data/raster-and-images/bil-bip-and-bsq-raster-files.htm) format.  This file is in a raw binary format and is accompanied by header file (\*.hdr) and a projection file (\*.prj).  Files will open in [ArcGIS](https://www.arcgis.com/index.html), [QGIS](https://www.qgis.org/en/site/), [Surfer](https://surferhelp.goldensoftware.com/subsys/subsys_band_interleaved_file_descr.htm) and load as a [NumPy](https://numpy.org/) array.
 
 ### Vectors
 Vector files (in particular polylines and polygons) are provided in [**GeoJson**](https://geojson.org/) (\*.geojson) format.  This is an all-encompassing ascii-format file which is flexible, but slow. It is suggested that files be converted to shapefiles (\*.shp) when performance is desired.
