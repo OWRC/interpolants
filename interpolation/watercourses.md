@@ -1,23 +1,19 @@
 ---
 title: Watercourse Topology of the ORMGP region
-author: M. Marchildon
-date: Last compiled 2022-04-14
-output: 
-  html_document:
-    toc: true
-    toc_float: true
+author: Oak Ridges Moraine Groundwater Program
+output: html_document
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
 
 * Much of our analysis involves relating monitoring (point data) to stream flow, which exists along linear features
 * Below describes an algorithm used to take an arbitrary watercourse map and determine its topology, that this the connectivity and flow direction of linearly mapped watercourse features (i.e., defining downstream vs. upstream directions).
  
+<br>
+* TOC
+{:toc}
 
-## Data Source
+
+# Data Source
 
 [Ontario Hydro Network (OHN) - Watercourse](https://geohub.lio.gov.on.ca/datasets/a222f2996e7c454f9e8d028aa05995d3_26/about) provides the location of watercourses in Ontario and is offered by the Ontario Ministry of Natural Resources and Forestry.
 
@@ -28,7 +24,7 @@ From this, a subset of streams found within our study area is exported:
 
 
 
-## Manual Adjustments
+# Manual Adjustments
 
 In a total of 44 locations, stream segments were manually removed in order to prevent "unnatural" flow connectivity. For instance, Mitchel Lake is the topographical high along the Trent-Severn Waterway. Naturally, water would run away in either direction toward Lake Simcoe to the West and Lake Ontario to the south. Because it's a navigable waterway it is mapped, thus connecting the headwaters of two divergent watersheds.
 
@@ -36,7 +32,7 @@ In a total of 44 locations, stream segments were manually removed in order to pr
 
 > data set shown above can be found here: [OHN_WATERCOURSE-export.geojson](https://www.dropbox.com/s/6vstocu2d2sm3ta/OHN_WATERCOURSE-export.7z?dl=1)
 
-## Defining Outlets
+# Defining Outlets
 
 The above figure also shows 6 "shoreline" locations, from which the [algorithm](https://github.com/OWRC/interpolants/tree/main/interpolation/drainTopology) searches for any watercourse segments are touching any of these polygons.
 
@@ -49,7 +45,7 @@ By defining watercourse topology, watercourse properties such as the the Hortonâ
 > Topologically-correct watercourse layer: [OHN_WATERCOURSE-export-segments.shp](https://www.dropbox.com/s/e470r6duqc5nb56/OHN_WATERCOURSE-export-segments.7z?dl=1) 
 
 
-## Simplification
+# Simplification
 
 For computation efficiency, the Douglas-Peucker *Simplify* algorithm found in [QGIS](https://www.qgis.org) was applied to the watercourse layer. The simplify process has the effect dampening sinuosity, thereby shortening stream lengths. In the case, on average, segment lengths shrunk by 2%.
 
@@ -58,7 +54,7 @@ The simplification was set by trial and error to a 10m threshold, reducing the d
 > Topologically-correct watercourse layer (simplified): [OHN_WATERCOURSE-export-segments-simplWGS.geojson](https://www.dropbox.com/s/nielu61qkb6j3zc/OHN_WATERCOURSE-export-segments-simplWGS.geojson?dl=1) (epsg: 4326)
 
 
-## Vertex to vertex
+# Vertex to vertex
 
 For operational purposes, the topological watercourse map has been further reduced to a set of 2-point "line segments", one for every vertex (X-Y location) used to define the entire simplified ORMGP watercourse network.
 
