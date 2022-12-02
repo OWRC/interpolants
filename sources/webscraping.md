@@ -7,7 +7,9 @@ output: html_document
 > Web scraping is the process of extracting data from websites
 
 On a nightly basis, data are extracted from a number of open data sources, whether they be:
-- **"APIs"**---That is databases that can be directly queried by sending a web-address (URL)
+- **"APIs"**---That is databases that can be directly queried by sending a web-address (URL), fuch as:
+  - [KISTERS](https://www.kisters.de/en/) Services (KiWIS)
+  - AQUARIUS Time-Series Software, [Aquatic Informatics Inc.](https://aquaticinformatics.com/)
 - **File repositories**---Typically an FTP server hosting a number of general use files, like comma-separated-values (.csv) files
 - **HTML tables**---Readable tables posted online are converted into a dataframe---a form needed insert into our database. *This is the least reliable and thus the most effort required option.*
 
@@ -27,6 +29,7 @@ A number of our partners maintain internal databases. Attempts are continuing to
 
 ### APIs
 
+- Region of Peel
 - TRCA
 - CVC 
 - CLOCA 

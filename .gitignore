@@ -22,6 +22,7 @@
 *.geojson
 *-script.txt
 
+overland-drainage-areas/
 input/
 old/
 png*

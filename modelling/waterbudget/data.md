@@ -6,26 +6,6 @@ output: html_document
 ---
 
 
-> A top-down approach
-
-
-In an attempt to make most of computational efficiency, many processes that are typically computed as part of a hydrological model have been pre-built as input to the ORMGP water balance model.  Processes such as snowmelt and potential evapotranspiration can modelled independently of the rainfall-runoff-recharge process and thus much computational gains can be made if these processes are pre-determined.
-
-Two products (i.e., model inputs/forcings/variables) are created through this process, namely 
-
-1. Atmospheric Demand $(E_a)$ is the "drying power" of the near-surface atmosphere, also known as the Planetary Boundary Layer (PBL­­­­-­­­Oke, 1987); and
-1. Atmospheric Yield $(Y_a)$ water in its liquid form released either as rainfall or snowmelt onto the land surface.
-
-
-The model considers the greater role the atmosphere has on its ORMGP region. The *Planetary Boundary Layer* (Oke, 1987) is conceptualized as the barrier from which mass must transfer when surface evaporation is captured by the atmosphere and when liquid water originating from the atmosphere is released onto the land surface. 
-
-The model input (i.e., "climate forcing") data are provided on a 6-hourly timestep. These data have been distributed to [some 3,000 10km² sub-watersheds](https://owrc.github.io/interpolants/interpolation/subwatershed.html). They reflect the sources and sinks, respectively, of liquid (read: mobile) water on the land surface.
-
-
-
-
-
-
 
 * TOC
 {:toc}

@@ -50,10 +50,15 @@ The following is a description of the water budget tool located on our website, 
 
 
 * **[Shallow groundwater](/interpolants/modelling/waterbudget/gw.html)**
+
     $$ \zeta=\ln\frac{a}{T_o\tan\beta} $$
+
 * **[Soil moisture accounting](/interpolants/modelling/waterbudget/sma.html)**
+
     $$ \Delta S=P-E-R-G $$
+
 * **[Overland flow routing](/interpolants/modelling/waterbudget/overlandflow.html)**
+
     $$ F_\text{casc}=1-\exp(\frac{\beta}{-\alpha}) $$
 
 
@@ -64,18 +69,25 @@ The following is a description of the water budget tool located on our website, 
 # Input Data
 
 
+
+In an attempt to make most of computational efficiency, many processes that are typically computed as part of a hydrological model have been pre-built as input to the ORMGP water balance model.  Processes such as snowmelt and potential evapotranspiration can modelled independently of the rainfall-runoff-recharge process and thus much computational gains can be made if these processes are pre-determined.
+
+> A top-down approach
+
+The model considers the greater role the atmosphere has on its ORMGP region. The *Planetary Boundary Layer* (Oke, 1987) is conceptualized as the barrier from which mass must transfer when surface evaporation is captured by the atmosphere and when liquid water originating from the atmosphere is released onto the land surface. 
+
+The model input (i.e., "climate forcing") data are provided on a 6-hourly timestep. These data have been distributed to [some 3,000 10km² sub-watersheds](https://owrc.github.io/interpolants/interpolation/subwatershed.html). They reflect the sources and sinks, respectively, of liquid (read: mobile) water on the land surface.
+
 The aim of the model design is to simultaneously reduce the amount of computational processes and leverage near-realtime data assimilation products. It is recognized from a hydrological model design perspective, that the primary driver of watershed moisture distribution is the *"Atmospheric Yield"*, that is water sourced from the atmosphere in its liquid/mobile form.
 
-
 $$\text{Atmospheric Yield} = \text{Rainfall} + \text{Snowmelt}$$
-
 
 Similarity, the "atmosphere" (specifically the Planetary Boundary Layer---Oke, 1987) also has a drying power, a sink termed *"Atmospheric Demand"*. 
 
 It is matter of perspective that dictates the terminology here. The model was designed from a top-down viewpoint. Terms like "potential evaporation", which speaks to the evaporation occurring on a surface with unlimited water supply is instead termed "atmospheric demand", that is the capacity for the PBL to remove moisture from a rough land surface.
 
-
 Only snowmelt, rainfall and evaporation are not readily available in a distributed form and need to be determined. The model is integrated with [the ORMGP data management platform](/interpolants/). Below is an interactive map of the climate forcing distribution used in the model from the top-down perspective. Total model coverage ~30,000km².
+
 
 
 <iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" target="_blank" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
@@ -85,8 +97,8 @@ Finally, the model was designed to remain amenable to data availability and new 
 
 
 * **[Data sources, transformations and pre-processing](/interpolants/modelling/waterbudget/data.html)**
-    * **[Atmospheric Demand $(E_a)$](/interpolants/modelling/waterbudget/data.html#atmospheric-demand-e_a)**
-    * **[Atmospheric Yield $(Y_a)$](/interpolants/modelling/waterbudget/data.html#atmospheric-yield-y_a)**    
+    * **[Atmospheric Demand $(E_a)$](/interpolants/modelling/waterbudget/data.html#atmospheric-demand-e_a)** is the "drying power" of the near-surface atmosphere, also known as the Planetary Boundary Layer (PBL­­­­-­­­Oke, 1987); and
+    * **[Atmospheric Yield $(Y_a)$](/interpolants/modelling/waterbudget/data.html#atmospheric-yield-y_a)** is water in its liquid form released either as rainfall or snowmelt onto the land surface.
     <!-- * **[Snowmelt $(P_M)$](/interpolants/modelling/waterbudget/data.html#sub-daily-from-daily-snowmelt)** -->
 
 
