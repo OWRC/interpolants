@@ -62,6 +62,24 @@ _Sub-watershed characterization and flow topology_
 
 
 
+## Climatology
+
+* [**Daily data**](/interpolants/interpolation/daily.html), updated nightly, including:
+   * Min/max daily temperature
+   * Atmospheric pressure
+   * Precipitation (rainfall and snowfall)
+   * Snowmelt ([sourced and computed](/interpolants/modelling/waterbudget/data.html#sub-daily-from-daily-snowmelt))
+   * Potential evaporation ([computed](/interpolants/interpolation/calc/panET/PanEvaporation.html))
+   <!-- * Solar irradiation -->
+* [**Hourly data**](/interpolants/interpolation/hourly.html), updated every 6-hours, including:
+   * Air temperature
+   * Atmospheric pressure
+   * Relative humidity
+   * Windspeed and direction
+   * Potential evaporation flux
+
+
+
 
 # Web Applications
 ## **Geocortex data portal**
@@ -124,19 +142,7 @@ _Static 2D fields, updated frequently_
 _Distributed time-series data, updated nightly_
 <br>
 
-* [**Daily data**](/interpolants/interpolation/daily.html), updated nightly, including:
-   * Min/max daily temperature
-   * Atmospheric pressure
-   * Precipitation (rainfall and snowfall)
-   * Snowmelt ([sourced and computed](/interpolants/modelling/waterbudget/data.html#sub-daily-from-daily-snowmelt))
-   * Potential evaporation ([computed](/interpolants/interpolation/calc/panET/PanEvaporation.html))
-   <!-- * Solar irradiation -->
-* [**Hourly data**](/interpolants/interpolation/hourly.html), updated every 6-hours, including:
-   * Air temperature
-   * Atmospheric pressure
-   * Relative humidity
-   * Windspeed and direction
-   * Potential evaporation flux
+* [Climate data](/interpolants/modelling/waterbudget/data.html)
 * [Barometry](/interpolants/interpolation/barometry.html) elevation-corrected and projected to a 2km regional grid.
 
 
