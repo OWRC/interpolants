@@ -1,18 +1,26 @@
 ---
 title: Long Term Water Budget
 subtitle: A regionally-distributed runoff-recharge model
-author: M. Marchildon
+author: Oak Ridges Moraine Groundwater Program
 output: html_document
 ---
 
 
 A regionally-distributed runoff/recharge model has been developed to simulate hydrologic processes at a fine (grid-based) scale. The model code is written to support large-scale and high-resolution distributed processed optimized for implementation on parallel computer architectures. No process of the model is in any way novel, rather a suite of existing model structures have been combined into one platform chosen specifically for their ease of implementation, practical applicability and computational efficiency and scalability.
 
-The model's primary intention is to project land surface moisture distribution for the purposes of estimating regional groundwater recharge. It utilizes hydrological model procedures that are amenable to local data availability. While the model can simulate stream flow discharge and overland runoff at any point in space, the model is not intended for rainfall runoff modelling; outputs from this model will be used to constrain regional groundwater models within the 30,000km² Oak Ridges Moraine Groundwater Program jurisdiction of southern Ontario. That said, mean daily streamflow remains the primary calibration target.
+The model represents the computational part of our *data assimilation system* ([DAS](https://ldas.gsfc.nasa.gov/)), meaning it's not intended to be a predictive tool, rather a means to gain the most information contained with readily available public data. Ultimately the goal is to have at near-realtime, gridded hydro-climatological data, at daily time-steps that includes estimates of distributed:
+- precipitation (rainfall and snowfall)
+- Atmospheric states (temperature, humidity, pressure, and wind)
+- snowmelt
+- total evaporation
+- soil moisture
+- infiltration
+- runoff, and
+- groundwater recharge
 
-This model is currently in beta mode, and its use for practical application should proceed with caution. Users should be aware that model results posted online will always be subject to change. Ultimately, the intent of this model is to produced ranges of long-term (monthly average) water budget metrics (precipitation, runoff, evaporation, recharge, moisture state, etc.) as a hydrological reference for the [partners of the ORMGP](https://www.oakridgeswater.ca/). It maintains as a real-time reference, [updated by ORMGP servers.](/interpolants/#servers)
+These parameters are calculated every 6 hours, to 12.1M model cells (on a 50 $\times$ 50 m² grid). Parameters can be offered at daily, monthly, seasonal, annual, or long-term average time-scales; at the original 50m grid or aggregated to 10km² sub-watersheds.
 
-The model is physically based in that mass is conserved and processes are not constrained to any particular timestep. The model conceptualization has maintained parameters that speaks to the common physical hydrology lexicon, with parameters such as percent impervious, conductivity of surficial soils, etc. The model is a hydrological model integrated with a TOPMODEL groundwater system. The source code is [open and free to use](https://github.com/maseology/rdrr). Below is the description of the model procedures that have been codified.
+
 
 
 * TOC
@@ -40,7 +48,11 @@ The model is physically based in that mass is conserved and processes are not co
 The following is a description of the water budget tool located on our website, hereinafter referred to as the "*model*".
 
 
+The model's primary intention is to project land surface moisture distribution for the purposes of estimating regional groundwater recharge. It utilizes hydrological model procedures that are amenable to local data availability. While the model can simulate stream flow discharge and overland runoff at any point in space, the model is not intended for rainfall runoff modelling; outputs from this model will be used to constrain regional groundwater models within the 30,000km² Oak Ridges Moraine Groundwater Program jurisdiction of southern Ontario. That said, mean daily streamflow remains the primary calibration target.
 
+This model is currently in beta mode, and its use for practical application should proceed with caution. Users should be aware that model results posted online will always be subject to change. Ultimately, the intent of this model is to produced ranges of long-term (monthly average) water budget metrics (precipitation, runoff, evaporation, recharge, moisture state, etc.) as a hydrological reference for the [partners of the ORMGP](https://www.oakridgeswater.ca/). It maintains as a real-time reference, [updated by ORMGP servers.](/interpolants/#servers)
+
+The model is physically based in that mass is conserved and processes are not constrained to any particular timestep. The model conceptualization has maintained parameters that speaks to the common physical hydrology lexicon, with parameters such as percent impervious, conductivity of surficial soils, etc. The model is a hydrological model integrated with a TOPMODEL groundwater system. The source code is [open and free to use](https://github.com/maseology/rdrr). Below is the description of the model procedures that have been codified.
 
 
 
@@ -91,7 +103,7 @@ Only snowmelt, rainfall and evaporation are not readily available in a distribut
 
 
 <iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" target="_blank" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
-
+*Every sub-watershed shown above consists of roughly 4000 model cells*
 
 Finally, the model was designed to remain amenable to data availability and new technologies; for instance, [SNODAS](https://nsidc.org/data/g02158) can avoid the need to model snowmelt explicitly and leverage these online resources.
 
