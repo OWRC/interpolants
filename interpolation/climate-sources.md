@@ -9,7 +9,7 @@ output: html_document
 
 
 # Introduction
-The [ORMGP](https://maps.oakridgeswater.ca/) maintains a current, continuous daily climatology dataset beginning 1901. The data are interpolated to [some 3,000 ~10km² sub-watersheds](/interpolants/interpolation/subwatershed.html) and are made available through our [web portal](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP). 
+The [ORMGP](https://maps.oakridgeswater.ca/) maintains a current, continuous daily climatology dataset beginning 1901. The data are interpolated to [some 3,000 ~10km² sub-watersheds](/interpolants/interpolation/subwatershed.html) and are made available through our [web portal](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP). All interpolated (i.e., "vector") data are automatically updated and maintained using the [ORMGP-FEWS system](/interpolants/interpolation/fews.html) system.
 
 <iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 
@@ -20,8 +20,11 @@ Currently, the data offered are:
 - Rainfall
 - Snowfall
 - Snowmelt
-- Minimum and Maximum temperatures
+- Air temperatures
 - Atmospheric pressure
+- Wind speed
+- Wind direction
+- Potential evaporation
 
 The data serve many purposes from basic overlay with other disparate data sets (such as hydrographs) to providing input to hydrological and groundwater-integrated models. 
 

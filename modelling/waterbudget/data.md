@@ -19,9 +19,15 @@ Meteorological data acquisition, management, aggregation and interpolation was l
 
 Forcings data to the model processed by [ORMGP-FEWS](/interpolants/interpolation/fews.html) include:
 
-1. [CaPA-RDPA](https://weather.gc.ca/grib/grib2_RDPA_ps10km_e.html) 10/15km gridded precipitation fields, yielding 6-hourly precipitation totals, acquired from [CaSPAr](https://caspar-data.ca/);
-1. [SNODAS](https://nsidc.org/data/g02158) (NOHRSC, 2004) ~1km gridded 24-hour (UTC 06-06) snowmelt totals; and
-1. [Meteorological Service of Canada (MSC)](http://climate.weather.gc.ca/historical_data/search_historic_data_e.html) hourly mean temperature and pressure.
+### Regional Deterministic Precipitation Analysis (CaPA-RDPA)
+[CaPA-RDPA](https://weather.gc.ca/grib/grib2_RDPA_ps10km_e.html) 10/15km gridded precipitation fields, yielding 6-hourly precipitation totals, acquired from [CaSPAr](https://caspar-data.ca/);
+
+### Snow Data Assimilation System (SNODAS)
+[SNODAS](https://nsidc.org/data/g02158) (NOHRSC, 2004) ~1km gridded 24-hour (UTC 06-06) snowmelt totals
+
+
+### Meteorological Service of Canada (MSC) hourly
+[Meteorological Service of Canada (MSC)](http://climate.weather.gc.ca/historical_data/search_historic_data_e.html) hourly mean temperature and pressure.
 
 [*more info here*](/interpolants/modelling/waterbudgetmodel.html#climatology)
 

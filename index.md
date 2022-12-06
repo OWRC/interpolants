@@ -64,21 +64,22 @@ _Sub-watershed characterization and flow topology_
 
 ## Climatology
 
-* [**Daily data**](/interpolants/interpolation/daily.html), updated nightly, including:
-   * Min/max daily temperature
-   * Atmospheric pressure
-   * Precipitation (rainfall and snowfall)
-   * Snowmelt ([sourced and computed](/interpolants/modelling/waterbudget/data.html#sub-daily-from-daily-snowmelt))
-   * Potential evaporation ([computed](/interpolants/interpolation/calc/panET/PanEvaporation.html))
-   <!-- * Solar irradiation -->
-* [**Hourly data**](/interpolants/interpolation/hourly.html), updated every 6-hours, including:
-   * Air temperature
-   * Atmospheric pressure
-   * Relative humidity
-   * Windspeed and direction
-   * Potential evaporation flux
+* [**Near-realtime Data sources**](/interpolants/interpolation/climate-sources.html), updated nightly, including:
+   * Daily data
+      * Min/max daily temperature
+      * Atmospheric pressure
+      * Precipitation (rainfall and snowfall)
+      * Snowmelt ([sourced and computed](/interpolants/modelling/waterbudget/data.html#sub-daily-from-daily-snowmelt))
+      * Potential evaporation ([computed](/interpolants/interpolation/calc/panET/PanEvaporation.html))
+      <!-- * Solar irradiation -->
+   * Hourly data, updated every 6-hours, including:
+      * Air temperature
+      * Atmospheric pressure
+      * Relative humidity
+      * Windspeed and direction
+      * Potential evaporation flux
 
-
+* [**Climate interpolation**](/interpolants/interpolation/climate-interpolation.html)
 
 
 # Web Applications

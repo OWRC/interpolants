@@ -1,5 +1,5 @@
 ---
-title: Near Real-time Sub-Daily Climatology
+title: Spatial interpolation of point data
 author: M.Marchildon
 output: html_document
 ---
@@ -10,31 +10,13 @@ output: html_document
 {:toc}
 
 
-# Introduction
-The [ORMGP](https://maps.oakridgeswater.ca/) maintains a current, continuous 6-hourly climatology dataset beginning 1901. The data are interpolated to [some 3,000 ~10km² sub-watersheds](/interpolants/interpolation/subwatershed.html) and are made available through our [web portal](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP). 
-
-<iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
-
-*2,813 ~10km² sub-watersheds delineated within the ORMGP jurisdiction with their topological relationships defined. In addition to climate data, these sub-watersheds have aggregated land use characteristics.*
-<br><br>
-
-Currently, the data offered are:
-- Rainfall
-- Snowfall
-- Snowmelt
-- Air temperature
-- Air pressure
-- Wind speed
-- Wind direction
-- Potential evaporation
-
-All interpolated (i.e., “vector”) data are automatically updated and maintained using the [ORMGP-FEWS system](/interpolants/interpolation/fews.html) system.
-
 # Interpolation of Hourly scalars to Sub-daily Basins
+Bolow is an itemized description of the interpolation process, with open data access.  All interpolated (i.e., "vector") data are automatically updated and maintained using the [ORMGP-FEWS system](/interpolants/interpolation/fews.html) system.
+
 > workflow: `preprocessMSCtoBasinsHourly.xml`
 
 
-## MSC scalars
+## Meteorological Service of Canada (MSC) scalars
 1. Scrape MSC for recent data, executed from [FEWS](/interpolants/interpolation/fews.html).
 1. Import scraped MSC hourly scalars into FEWS.
 1. Export hourly MSC NetCDF file (*.nc) from FEWS, from 1989-10-01 
