@@ -26,6 +26,8 @@ Currently, the data offered are:
 - Wind direction
 - Potential evaporation
 
+
+#### **The need**
 The data serve many purposes from basic overlay with other disparate data sets (such as hydrographs) to providing input to hydrological and groundwater-integrated models. 
 
 Clearly, data collection is constrained by public/private funding, open data sharing policies and technology; so the data served are a compilation of what is deemed the best for *our* needs and thus originate from a number of sources. Specifically, we are concerned about climatology at the *regional scale*. We cover a 3 Million hectare jurisdiction and based on our experience, compiling a continuous interpolated climate dataset requires greater emphasis on the spatial distribution of climatology over quality of data collected at climate stations.  That's not to say that this is a general rule, but for our needs in our humid region with a significant winter presence, attention to how weather distributes is of paramount importance.
@@ -37,12 +39,8 @@ Below is a description of the datasets used in our overall climatology package. 
 It's also worth noting that the density of [active meteorological stations present in our jurisdiction has been in decline since the 1970s](/snapshots/md/gantt-met.html). Understandably, much of the recent investment in meteorological station operation has been dedicated to Canada's north, a large geographical region that has been grossly overlooked yet is most susceptible to a changing climate.
 
 
-
-
 <!-- # Daily climatologies -->
 Below, the data types that are collected, interpolated and delivered through our web portal are described in chronological order. For the most part, the most recent datasets supersede the oldest.
-
-All interpolated (i.e., "vector") data are automatically updated and maintained using the [ORMGP-FEWS system](/interpolants/interpolation/fews.html). 
 
 
 # Precipitation
@@ -153,22 +151,32 @@ Snow water equivalent (SWE) and snowmelt must be derived from snowpack ablation 
 When unavailable (and prior to 2010), a [cold content energy balance snowpack model](/interpolants/modelling/waterbudget/snowmeltCCF.html) is applied relying on interpolated precipitation and temperatures.
 
 
+# Air Temperature
 
-# Minimum and Maximum daily Temperature
 Elevations within the ORMGP region range from 75-400 masl and thus orographic effects to temperatures were deemed negligible. The spatial distribution of minimum/maximum daily temperature is then interpolated from meteorological stations using an inverse squared-distance methodology.
 
-## Meteorological Service of Canada (*1901—present*)
 All temperature data are acquired from the Meteorological Service of Canada.
 
+## Meteorological Service of Canada
+#### Minimum and Maximum daily Temperature (*1901—present*)
+#### Hourlies (*1953—present*)
 
 
 # Atmospheric Pressure
 ## Meteorological Service of Canada (*1953—present*)
 Atmospheric pressure data are acquired from Meteorological Service of Canada, which come in as hourly averages. In contrast to temperatures, [elevation does have am impact on pressure distribution and thus corrections are made](/interpolants/interpolation/barometry.html). Once corrected, the hourly data are then aggregated to daily averages.
 
+# Relative Humidity
+## Meteorological Service of Canada
+#### Hourlies (*1953—present*)
+Relative Humidity data are acquired from Meteorological Service of Canada
 
 
-<!-- # Wind Speed and Direction -->
+# Wind Speed and Direction
+## Meteorological Service of Canada
+#### Hourlies (*1953—present*)
+Wind speed and direction data are acquired from Meteorological Service of Canada
+
 
 <!-- # Pan Evaporation -->
 

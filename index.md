@@ -79,7 +79,7 @@ _Sub-watershed characterization and flow topology_
       * Windspeed and direction
       * Potential evaporation flux
 
-* [**Climate interpolation**](/interpolants/interpolation/climate-interpolation.html)
+* [**Spatial and Temporal interpolation**](/interpolants/interpolation/climate-interpolation.html)
 
 
 # Web Applications
