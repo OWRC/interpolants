@@ -1,15 +1,16 @@
 ---
-title: Near Real-time Daily Climatology
+title: Near Real-time Interpolated Climatology
 author: M.Marchildon
 output: html_document
 ---
+
 
 * TOC
 {:toc}
 
 
 # Introduction
-The [ORMGP](https://maps.oakridgeswater.ca/) maintains a current, continuous daily climatology dataset beginning 1901. The data are interpolated to [some 3,000 ~10km² sub-watersheds](/interpolants/interpolation/subwatershed.html) and are made available through our [web portal](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP). All interpolated (i.e., "vector") data are automatically updated and maintained using the [ORMGP-FEWS system](/interpolants/interpolation/fews.html) system.
+The [ORMGP](https://maps.oakridgeswater.ca/) maintains a current, continuous daily climatology dataset beginning 1901. The data are [web-scraped](/interpolants/sources/webscraping.html), [interpolated](/interpolants/interpolation/climate-interpolation.html) to [some 3,000 ~10km² sub-watersheds](/interpolants/interpolation/subwatershed.html) and are made available through our [web portal](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP). All interpolated (i.e., "vector") data are automatically updated and maintained using the [ORMGP-FEWS system](/interpolants/interpolation/fews.html) system.
 
 <iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 
@@ -27,7 +28,7 @@ Currently, the data offered are:
 - Potential evaporation
 
 
-#### **The need**
+### the need
 The data serve many purposes from basic overlay with other disparate data sets (such as hydrographs) to providing input to hydrological and groundwater-integrated models. 
 
 Clearly, data collection is constrained by public/private funding, open data sharing policies and technology; so the data served are a compilation of what is deemed the best for *our* needs and thus originate from a number of sources. Specifically, we are concerned about climatology at the *regional scale*. We cover a 3 Million hectare jurisdiction and based on our experience, compiling a continuous interpolated climate dataset requires greater emphasis on the spatial distribution of climatology over quality of data collected at climate stations.  That's not to say that this is a general rule, but for our needs in our humid region with a significant winter presence, attention to how weather distributes is of paramount importance.
@@ -163,8 +164,10 @@ All temperature data are acquired from the Meteorological Service of Canada.
 
 
 # Atmospheric Pressure
-## Meteorological Service of Canada (*1953—present*)
+## Meteorological Service of Canada
+#### Hourlies (*1953—present*)
 Atmospheric pressure data are acquired from Meteorological Service of Canada, which come in as hourly averages. In contrast to temperatures, [elevation does have am impact on pressure distribution and thus corrections are made](/interpolants/interpolation/barometry.html). Once corrected, the hourly data are then aggregated to daily averages.
+
 
 # Relative Humidity
 ## Meteorological Service of Canada
@@ -181,6 +184,12 @@ Wind speed and direction data are acquired from Meteorological Service of Canada
 <!-- # Pan Evaporation -->
 
 <!-- # Solar Irradiation -->
+
+
+# Data interpolation
+
+The above data are automatically [interpolated to the 10km² sub-watershed scale](/interpolants/interpolation/climate-interpolation.html)
+
 
 
 # References
