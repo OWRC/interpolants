@@ -17,7 +17,8 @@ output: html_document
 
 Meteorological data acquisition, management, aggregation and interpolation was largely accomplished using [Delft-FEWS](https://www.deltares.nl/en/software/flood-forecasting-system-delft-fews-2/) (ver.2019.02 build.39845) a flood forecasting system offered (at no cost, only license agreement) by [Deltares](https://www.deltares.nl/en/). <!-- Configuration files for the Delft-FEWS system build can be found here: BLAH. -->
 
-Forcings data to the model processed by [ORMGP-FEWS](/interpolants/interpolation/fews.html) include:
+Forcings data to the model processed by [ORMGP-FEWS](/interpolants/interpolation/fews.html), specific to the water budgeting are detailed below. Full list of data managed by the ORMGP are detailed [here](https://owrc.github.io/interpolants/interpolation/climate-sources.html).
+
 
 ### Regional Deterministic Precipitation Analysis (CaPA-RDPA)
 [CaPA-RDPA](https://weather.gc.ca/grib/grib2_RDPA_ps10km_e.html) 10/15km gridded precipitation fields, yielding 6-hourly precipitation totals, acquired from [CaSPAr](https://caspar-data.ca/);
@@ -41,7 +42,7 @@ Forcings data to the model processed by [ORMGP-FEWS](/interpolants/interpolation
 
 ## Interpolation (spatial scale)
 
-Both scalar (i.e., point) data and gridded data are then interpolated to each of the [~10 km² sub-watersheds](/interpolants/modelling/waterbudgetmodel.html#sub-basins). Model elevations range from 75-400 masl and orographic effects related to temperature were deemed negligible beyond the spatial distribution meteorological stations.
+Both scalar (i.e., point) data and gridded data are then [interpolated](/interpolants/interpolation/climate-interpolation.html) to each of the [~10 km² sub-watersheds](/interpolants/modelling/waterbudgetmodel.html#sub-basins). Model elevations range from 75-400 masl and orographic effects related to temperature were deemed negligible beyond the spatial distribution meteorological stations.
 
 
 ### Precipitation and Snowmelt

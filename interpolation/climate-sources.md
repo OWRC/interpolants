@@ -188,7 +188,7 @@ Wind speed and direction data are acquired from Meteorological Service of Canada
 
 # Data interpolation
 
-The above data are automatically [interpolated to the 10km² sub-watershed scale](/interpolants/interpolation/climate-interpolation.html)
+The above data are automatically [interpolated to the 10km² sub-watershed scale](/interpolants/interpolation/climate-interpolation.html). For use in our water budgeting, [click here](/interpolants/modelling/waterbudget/data.html#data-sources).
 
 
 
