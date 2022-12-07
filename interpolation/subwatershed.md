@@ -36,11 +36,18 @@ The hydrologically-corrected digital elevation model (HDEM) is further process t
 
 
 
-# Summary
+# Product
 
 The ORMGP jurisdiction discretized into ~3000 ~10km² sub-watersheds. Below is an interactive map whereby *Clicking* at any sub-watershed will return a number of properties. In the figure below, sub-watersheds are colour-coded according to their degree of impervious cover, for instance.
 
 
 <iframe src="https://golang.oakridgeswater.ca/pages/sws-characterization.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 _Sub-watershed characterization and flow topology_
+
 <br>
+
+<br>
+
+# Source Data
+
+Sub watershed shapefile: [`owrc20-50a_SWS10-final.geojson`](https://www.dropbox.com/s/ro16gg6zi4kqbc0/owrc20-50a_SWS10-final.geojson?dl=1)

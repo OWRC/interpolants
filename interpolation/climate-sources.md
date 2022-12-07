@@ -16,7 +16,8 @@ The [ORMGP](https://maps.oakridgeswater.ca/) maintains a current, continuous dai
 *2,813 ~10km² sub-watersheds delineated within the ORMGP jurisdiction with their topological relationships defined. In addition to climate data, these sub-watersheds have aggregated land use characteristics.*
 <br><br>
 
-Currently, the data offered are:
+Currently, the data offered are listed below:
+
 <!-- - Rainfall
 - Snowfall
 - Snowmelt
@@ -204,7 +205,9 @@ Wind speed and direction data are acquired from Meteorological Service of Canada
 
 The above data are automatically [interpolated to the 10km² sub-watershed scale](/interpolants/interpolation/climate-interpolation.html). 
 
-For use in our water budgeting service, [click here](/interpolants/modelling/waterbudget/data.html#data-sources).
+
+### **Waterbudget**
+For use of climate data in our water budgeting service, [click here](/interpolants/modelling/waterbudget/data.html).
 
 
 

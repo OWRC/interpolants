@@ -179,6 +179,8 @@ Snowmelt, is acquired at a daily timestep and is [disaggregated to the 6-hourly 
 
 The workflow described above produced a 20-year, 6-hourly time series dataset for 2,813 10km² sub-watersheds. [`202009301800-sixHourlyFinal.nc`](https://www.dropbox.com/s/jsjqzj1mvl479pt/202009301800-sixHourlyFinal.nc?dl=1)
 
+Reference sub watersheds: [`owrc20-50a_SWS10-final.geojson`](https://www.dropbox.com/s/ro16gg6zi4kqbc0/owrc20-50a_SWS10-final.geojson?dl=1). Full description [here](/interpolants/interpolation/subwatershed.html).
+
 
 
 # References
