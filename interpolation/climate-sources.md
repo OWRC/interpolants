@@ -49,8 +49,13 @@ It's also worth noting that the density of [active meteorological stations prese
 <!-- # Daily climatologies -->
 Below, the data types that are collected, interpolated and delivered through our web portal are described in chronological order. For the most part, the most recent datasets supersede the oldest.
 
+<br>
 
-# Precipitation
+<br>
+
+
+
+# **Rainfall and Snowfall**
 
 ## Meteorological Service of Canada
 #### (*1901—present*)
@@ -60,13 +65,13 @@ These data are collected at (point/local/scalar) weather stations and require sp
 
 Precipitation is offered as rainfall and snowfall amounts to the tenth of a millimetre.
 
-## Environment Canada: Regional Deterministic Precipitation Analysis (RDPA)
+## ECCC: Regional Deterministic Precipitation Analysis (RDPA)
 <!-- #### (*2002—present, over a sequence of versions*) -->
 The [Regional Deterministic Precipitation Analysis (RDPA)](https://weather.gc.ca/grib/grib2_RDPA_ps10km_e.html), which is based on the [Canadian Precipitation Analysis (CaPA) system](https://collaboration.cmc.ec.gc.ca/cmc/cmoi/product_guide/docs/lib/capa_information_leaflet_20141118_en.pdf), provides a country-wide field of 6-hourly precipitation accumulations. The CaPA-RDPA products has gone through a number of version changes since the turn of the century. The data are updated in near real-time, meaning that the current state of precipitation patterns can be made immediately available.
 
 Simply put, CaPA-RDPA is an amalgamation of near-cast weather model predictions corrected by RADAR data and ground-truthed using a select set of weather stations. Essentially, CaPA-RDPA is a [*data assimilation system* (DAS)](https://www.ecmwf.int/en/research/data-assimilation) that provides users with the best-possible spatial distribution of precipitation, necessary for analyzing hydrology at the regional scale like the ORMGP jurisdiction.
 
-Recently (2017), a high-resolution format of the RDPA system was released. The HRPDA ([High Resolution Deterministic Precipitation Analysis](https://eccc-msc.github.io/open-data/msc-data/nwp_hrdpa/readme_hrdpa_en/)) supplies a ~2.5km resolution 6-hourly precipitation field, in contrast to the ~10-15km resolution of the original RDPA product.
+Recently (2017), a high-resolution format of the RDPA system was released. The **HRPDA** ([High Resolution Deterministic Precipitation Analysis](https://eccc-msc.github.io/open-data/msc-data/nwp_hrdpa/readme_hrdpa_en/)) supplies a ~2.5km resolution 6-hourly precipitation field, in contrast to the ~10-15km resolution of the original RDPA product.
 
 
 While the CaPA-RDPA vector data fields can be acquired from Environment Canada in GRIB2 format, the ORMGP has sourced their data from the [Canadian Surface Prediction Archive (CaSPAr)](https://caspar-data.ca/), as their archive holds the original raw data (EC's GRIB2 format is re-interpolated to a polar-stereographic grid) and the CaSPAr platform allows users to crop their area of interest. 
@@ -147,7 +152,7 @@ At 2 locations, where the sub-watershed makes up the entirety of a small island,
 
 
 
-# Snowmelt
+# **Snowmelt**
 ## U.S. National Oceanic and Atmospheric Administration (NOAA) 
 #### SNODAS daily (*2010—present*)
 Snow water equivalent (SWE) and snowmelt must be derived from snowpack ablation models. These models come in a variety of forms and sophistication. The primary source of such information comes from the [Snow Data Assimilation System (SNODAS)](https://nsidc.org/data/g02158) system (NOHRSC, 2004), which offers ~1km gridded 24-hour (UTC 06-06) snowmelt totals, published freely in near real-time. The advantage of SNODAS is that we can avoid the need to model snowmelt explicitly, and leverage existing resources. The data cover our jurisdiction from 2009—present.
@@ -167,7 +172,7 @@ When unavailable (and prior to 2010), a [cold content energy balance snowpack mo
 
 
 
-# Air Temperature
+# **Air Temperature**
 
 Elevations within the ORMGP region range from 75-400 masl and thus orographic effects to temperatures were deemed negligible. The spatial distribution of minimum/maximum daily temperature is then interpolated from meteorological stations using an inverse squared-distance methodology.
 
@@ -178,27 +183,33 @@ All temperature data are acquired from the Meteorological Service of Canada.
 #### Hourlies (*1953—present*)
 
 
-# Atmospheric Pressure
+# **Atmospheric Pressure**
 ## Meteorological Service of Canada
 #### Hourlies (*1953—present*)
 Atmospheric pressure data are acquired from Meteorological Service of Canada, which come in as hourly averages. In contrast to temperatures, [elevation does have am impact on pressure distribution and thus corrections are made](/interpolants/interpolation/barometry.html). Once corrected, the hourly data are then aggregated to daily averages.
 
 
-# Relative Humidity
+# **Relative Humidity**
 ## Meteorological Service of Canada
 #### Hourlies (*1953—present*)
 Relative Humidity data are acquired from Meteorological Service of Canada
 
 
-# Wind Speed and Direction
+# **Wind Speed and Direction**
 ## Meteorological Service of Canada
 #### Hourlies (*1953—present*)
 Wind speed and direction data are acquired from Meteorological Service of Canada
 
 
-<!-- # Pan Evaporation -->
+# **Pan Evaporation**
+## Meteorological Service of Canada
+#### (*1962—1996*)
+[*more info here*](/interpolants/interpolation/calc/panET/PanEvaporation.html)
 
-<!-- # Solar Irradiation -->
+
+<!-- # **Solar Irradiation** -->
+
+
 
 
 # Data interpolation
@@ -207,7 +218,7 @@ The above data are automatically [interpolated to the 10km² sub-watershed scale
 
 
 ### **Waterbudget**
-For use of climate data in our water budgeting service, [click here](/interpolants/modelling/waterbudget/data.html).
+For use of interpolated climate data in our water budgeting service including access to data, [click here](/interpolants/modelling/waterbudget/data.html).
 
 
 
