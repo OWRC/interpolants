@@ -1,12 +1,11 @@
 ---
-title: Near Real-time Interpolated Climatology
+title: Near Real-time Climatology
 author: M.Marchildon
 output: html_document
 ---
 
 
-* TOC
-{:toc}
+
 
 
 # Introduction
@@ -18,14 +17,20 @@ The [ORMGP](https://maps.oakridgeswater.ca/) maintains a current, continuous dai
 <br><br>
 
 Currently, the data offered are:
-- Rainfall
+<!-- - Rainfall
 - Snowfall
 - Snowmelt
 - Air temperatures
 - Atmospheric pressure
 - Wind speed
 - Wind direction
-- Potential evaporation
+- Potential evaporation -->
+
+
+* TOC
+{:toc}
+
+
 
 
 ### the need
@@ -52,19 +57,25 @@ Meteorological Service of Canada is a division of Environment Canada. Their [onl
 
 These data are collected at (point/local/scalar) weather stations and require spatial interpolation. Here, the nearest neighbour (i.e., Thiessen polygon) method is applied.
 
-Precipitation is offered as rainfall and snowfall amounts to the tenth of a millimeter.
+Precipitation is offered as rainfall and snowfall amounts to the tenth of a millimetre.
 
-## Environment Canada Regional Deterministic Precipitation Analysis
+## Environment Canada: Regional Deterministic Precipitation Analysis (RDPA)
 <!-- #### (*2002—present, over a sequence of versions*) -->
 The [Regional Deterministic Precipitation Analysis (RDPA)](https://weather.gc.ca/grib/grib2_RDPA_ps10km_e.html), which is based on the [Canadian Precipitation Analysis (CaPA) system](https://collaboration.cmc.ec.gc.ca/cmc/cmoi/product_guide/docs/lib/capa_information_leaflet_20141118_en.pdf), provides a country-wide field of 6-hourly precipitation accumulations. The CaPA-RDPA products has gone through a number of version changes since the turn of the century. The data are updated in near real-time, meaning that the current state of precipitation patterns can be made immediately available.
 
 Simply put, CaPA-RDPA is an amalgamation of near-cast weather model predictions corrected by RADAR data and ground-truthed using a select set of weather stations. Essentially, CaPA-RDPA is a [*data assimilation system* (DAS)](https://www.ecmwf.int/en/research/data-assimilation) that provides users with the best-possible spatial distribution of precipitation, necessary for analyzing hydrology at the regional scale like the ORMGP jurisdiction.
 
+Recently (2017), a high-resolution format of the RDPA system was released. The HRPDA ([High Resolution Deterministic Precipitation Analysis](https://eccc-msc.github.io/open-data/msc-data/nwp_hrdpa/readme_hrdpa_en/)) supplies a ~2.5km resolution 6-hourly precipitation field, in contrast to the ~10-15km resolution of the original RDPA product.
+
+
 While the CaPA-RDPA vector data fields can be acquired from Environment Canada in GRIB2 format, the ORMGP has sourced their data from the [Canadian Surface Prediction Archive (CaSPAr)](https://caspar-data.ca/), as their archive holds the original raw data (EC's GRIB2 format is re-interpolated to a polar-stereographic grid) and the CaSPAr platform allows users to crop their area of interest. 
 
 ![CaPA-RDPA sample1](fig/FEWS-CaPA-RDPA-sample1.gif)
+*CaPA-RDPA field animated in Delft-FEWS*
 
-### Data Corrections
+<br>
+
+### Rainfall-snowfall parsing
 The CaPA data are collected in their 6-hourly steps and are aggregated to daily accumulations. [(The 6-hourly fields are maintained for the sub-daily fields described here.)](/interpolants/interpolation/hourly.html) The precipitation fields are proportioned into rainfall and snowfall amounts based using an "optimized critical temperature" approach where precipitation fields are proportioned into rainfall and snowfall amounts based using the "critical temperature" $ (T_\text{crit}) $ approach:
 
 $$
@@ -107,49 +118,52 @@ The latest iteration of CaPA is the [High Resolution Deterministic Precipitation
 ### Missing Dates
 The CaPA RDPA products used do have periods of no data. Listed below are the dates found. Where no data are found, the API reports the [data interpolated from point locations](/interpolants/interpolation/daily.html#meteorological-service-of-canada).
 
-#### CaPA-RDPA
-- 2001-12-30
-- 2001-12-31
-- 2002-01-01
-- 2006-04-27
-- 2006-04-30
-- 2006-07-10
-- 2008-04-15
-- 2019-09-26
-- 2019-09-27
-- 2019-10-25
-- 2020-03-16
-- 2020-03-17
-- 2020-04-21
-- 2020-04-22
-- 2020-10-01
-- 2020-10-02
 
-#### CaPA-HRDPA
-- 2019-12-14
-- 2019-12-15
-- 2019-12-16
-- 2019-12-17
-- 2021-01-01
-- 2022-01-01
-- 2022-06-20
+| CaPA-RDPA | CaPA-HRDPA |
+| --- | --- |
+| 2001-12-30 | 2019-12-14 |
+| 2001-12-31 | 2019-12-15 |
+| 2002-01-01 | 2019-12-16 |
+| 2006-04-27 | 2019-12-17 |
+| 2006-04-30 | 2021-01-01 |
+| 2006-07-10 | 2022-01-01 |
+| 2008-04-15 | 2022-06-20 |
+| 2019-09-26 |            |
+| 2019-09-27 |            |
+| 2019-10-25 |            |
+| 2020-03-16 |            |
+| 2020-03-17 |            |
+| 2020-04-21 |            |
+| 2020-04-22 |            |
+| 2020-10-01 |            |
+| 2020-10-02 |            |
 
 
 ### Missing Locations
-At 2 locations, where the sub-watershed makes up the entirety of a small island, the Delft-FEWS interpolation scheme appears to overlook, and return a no-data value. When this occurres, the value given to nearby subwatersheds are adopted.
+At 2 locations, where the sub-watershed makes up the entirety of a small island, the Delft-FEWS interpolation scheme appears to overlook, and return a no-data value. When this occurs, the value given to nearby sub-watersheds are adopted.
 
 
 
 
 
 # Snowmelt
-## SNODAS (*2010—present*)
+## U.S. National Oceanic and Atmospheric Administration (NOAA) 
+#### SNODAS daily (*2010—present*)
 Snow water equivalent (SWE) and snowmelt must be derived from snowpack ablation models. These models come in a variety of forms and sophistication. The primary source of such information comes from the [Snow Data Assimilation System (SNODAS)](https://nsidc.org/data/g02158) system (NOHRSC, 2004), which offers ~1km gridded 24-hour (UTC 06-06) snowmelt totals, published freely in near real-time. The advantage of SNODAS is that we can avoid the need to model snowmelt explicitly, and leverage existing resources. The data cover our jurisdiction from 2009—present.
+
+#### SNODAS 6-hourly (*2020—present*)
+SNODAS is also offered in 6-hourly states, however offered only for the past month, so some automated web-scraping would be requires. Here, the [ORMGP-FEWS](https://owrc.github.io/interpolants/interpolation/fews.html) system imports and crops the data nightly.
 
 ![SNODAS sample](fig/nsm_depth_2016011505_National.jpg)
 
-## Cold Content Energy Balance Snowpack Model (*1901—present*)
+
+
+## Cold Content Energy Balance Snowpack Model
+#### (*1901—present*)
 When unavailable (and prior to 2010), a [cold content energy balance snowpack model](/interpolants/modelling/waterbudget/snowmeltCCF.html) is applied relying on interpolated precipitation and temperatures.
+
+
+
 
 
 # Air Temperature
@@ -188,7 +202,9 @@ Wind speed and direction data are acquired from Meteorological Service of Canada
 
 # Data interpolation
 
-The above data are automatically [interpolated to the 10km² sub-watershed scale](/interpolants/interpolation/climate-interpolation.html). For use in our water budgeting, [click here](/interpolants/modelling/waterbudget/data.html#data-sources).
+The above data are automatically [interpolated to the 10km² sub-watershed scale](/interpolants/interpolation/climate-interpolation.html). 
+
+For use in our water budgeting service, [click here](/interpolants/modelling/waterbudget/data.html#data-sources).
 
 
 
