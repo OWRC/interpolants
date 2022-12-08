@@ -88,6 +88,38 @@
         </header>
     </div>
 
+    <!-- SIDEBAR -->
+    <div class="side-bar">
+      <div class="site-header">
+        <a href="{{ '/' | absolute_url }}" class="site-title lh-tight">{% include title.html %}</a>
+        <a href="#" id="menu-button" class="site-button">
+          <svg viewBox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg>
+        </a>
+      </div>
+      <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav">
+        {% if site.just_the_docs.collections %}
+          {% assign collections_size = site.just_the_docs.collections | size %}
+          {% for collection_entry in site.just_the_docs.collections %}
+            {% assign collection_key = collection_entry[0] %}
+            {% assign collection_value = collection_entry[1] %}
+            {% assign collection = site[collection_key] %}
+            {% if collection_value.nav_exclude != true %}
+              {% if collections_size > 1 %}
+                <div class="nav-category">{{ collection_value.name }}</div>
+              {% endif %}
+              {% include nav.html pages=collection %}
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          {% include nav.html pages=site.html_pages %}
+        {% endif %}
+      </nav>
+      <footer class="site-footer">
+        <p class="text-small text-grey-dk-100">See a problem? Submit <a href="https://github.com/opendistro/for-elasticsearch-docs/issues">issues</a> or <a href="https://github.com/opendistro/for-elasticsearch-docs/edit/master/{{ page.path }}">edit this page</a> on <a href="https://github.com/opendistro/for-elasticsearch-docs">GitHub</a>.</p>
+        <p class="text-small text-grey-dk-100 mb-0">© {{ 'now' | date: "%Y" }} Amazon Web Services, Inc. or its affiliates. All rights reserved.</p>
+      </footer>
+    </div>
+
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">    
       {% include toc.html html=content %}
