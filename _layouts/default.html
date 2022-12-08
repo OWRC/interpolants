@@ -93,7 +93,8 @@
       <section id="main_content" class="inner">
         <p class="title">{{ page.title }}</p>
         <p class="subtitle">{{ page.subtitle }}</p>
-        {{ content }}        
+        {{ content }}
+		{% include toc.html html=content %}
       </section>
     </div>
 
