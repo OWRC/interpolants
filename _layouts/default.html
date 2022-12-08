@@ -90,11 +90,11 @@
 
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">    
+      {% include toc.html html=content %}
       <section id="main_content" class="inner">
         <p class="title">{{ page.title }}</p>
         <p class="subtitle">{{ page.subtitle }}</p>
         {{ content }}
-		{% include toc.html html=content %}
       </section>
     </div>
 
