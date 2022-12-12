@@ -63,15 +63,15 @@ The model is physically based in that mass is conserved and processes are not co
 
 ### [Shallow groundwater](/interpolants/modelling/waterbudget/gw.html)
 
-    $$ \zeta=\ln\frac{a}{T_o\tan\beta} $$
+$$ \zeta=\ln\frac{a}{T_o\tan\beta} $$
 
 ### [Soil moisture accounting](/interpolants/modelling/waterbudget/sma.html)
 
-    $$ \Delta S=P-E-R-G $$
+$$ \Delta S=P-E-R-G $$
 
 ### [Overland flow routing](/interpolants/modelling/waterbudget/overlandflow.html)
 
-    $$ F_\text{casc}=1-\exp(\frac{\beta}{-\alpha}) $$
+$$ F_\text{casc}=1-\exp(\frac{\beta}{-\alpha}) $$
 
 
 
