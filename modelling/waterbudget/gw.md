@@ -57,7 +57,11 @@ $$
 	D_i = \overline{D} + m \left[\gamma - \ln\left(\frac{a}{T_o \tan \beta}\right)_i\right],
 $$ -->
 
-where $\zeta_i$ is the soil-topologic index at cell $i$, defined by $\zeta=\ln(a/T_o \tan \beta)$ and $a_i$ is the unit contributing area defined here as the total contributing area to cell $i$ divided by the cell's width $w$.  The catchment average soil-topologic index:
+where $\zeta_i$ is the soil-topographic index at cell $i$ defined by:
+
+$$\zeta=\ln\left(\frac{a}{T_o \tan \beta}\right)$$
+
+and $a_i$ is the unit contributing area defined here as the total contributing area to cell $i$ divided by the cell's width $w$.  The catchment average soil-topographic index:
 
 $$
 	\gamma = \frac{1}{A}\sum_i A_i\zeta_i,
@@ -101,14 +105,14 @@ where $B$ is the total groundwater discharge to streams occurring over a time st
 For every stream cell $i$, groundwater flux to stream cells $b$ [m] during timestep $\Delta t$ is given by:
 
 $$
-  b_i=\Omega\frac{l_iq_i}{A_i}\Delta t=b_{o,i}\exp\left(\frac{D_\text{inc}-D_i}{m}\right) %\qquad i \in \text{streams}
+  b_i=\Omega\frac{l_iq_i}{A_i}\Delta t=b_{0,i}\exp\left(\frac{D_\text{inc}-D_i}{m}\right) \Delta t %\qquad i \in \text{streams}
 $$
 
-where $b_o$ groundwater flux at stream cell $i$ when the watertable is above the base of the channel, nearly at saturated conditions $(D_\text{inc}-D=0)$ and is defined by:
+where $b_0$ groundwater flux at stream cell $i$ when the watertable is above the channel bed at saturated conditions $(D_\text{inc}-D=0)$ and is defined by:
 
 $$
-%   b_o=\Omega\cdot \frac{T_o\tan\beta}{w}\Delta t=\Omega\cdot \tan\beta \cdot K_\text{sat}\cdot \Delta t
-	b_o=\Omega\cdot \tan\beta \cdot K_\text{sat}\cdot \Delta t
+%   b_0=\Omega\cdot \frac{T_o\tan\beta}{w}=\Omega\cdot \tan\beta \cdot K_\text{sat}
+	b_0=\Omega\cdot \tan\beta \cdot K_\text{sat}
 $$
 
 

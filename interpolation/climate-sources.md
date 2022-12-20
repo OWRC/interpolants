@@ -116,7 +116,7 @@ Version 2.4 brings a number of improvements by incorporating more ground-truthin
 #### CaPA-RDPA version versions 4+ and 5+ (*2015—present*)
 Further improvements, still at a ~10km resolution. 
 
-#### CaPA-HRDPA (*2017—present*)
+#### CaPA-HRDPA (*2019—present*)
 The latest iteration of CaPA is the [High Resolution Deterministic Precipitation Analysis (CaPA-HRDPA)](https://eccc-msc.github.io/open-data/msc-data/nwp_hrdpa/readme_hrdpa_en/) refined to a ~2.5km resolution.
 
 
