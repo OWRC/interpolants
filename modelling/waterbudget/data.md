@@ -17,7 +17,7 @@ output: html_document
 
 Meteorological data acquisition, management, aggregation and interpolation was largely accomplished using [Delft-FEWS](https://www.deltares.nl/en/software/flood-forecasting-system-delft-fews-2/) (ver.2019.02 build.39845) a flood forecasting system offered (at no cost, only license agreement) by [Deltares](https://www.deltares.nl/en/). <!-- Configuration files for the Delft-FEWS system build can be found here: BLAH. -->
 
-Forcings data to the model processed by [ORMGP-FEWS](/interpolants/interpolation/fews.html), specific to the water budgeting are detailed below. Full list of data managed by the ORMGP are detailed [here](https://owrc.github.io/interpolants/interpolation/climate-sources.html).
+Forcings data to the model processed by [ORMGP-FEWS](/interpolants/interpolation/fews.html), specific to the water budgeting are detailed below. Full list of data managed by the ORMGP are detailed [here](/interpolants/modelling/waterbudget/data.html).
 
 
 ### Regional Deterministic Precipitation Analysis (CaPA-RDPA)

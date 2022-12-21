@@ -9,7 +9,11 @@ output: html_document
 
 
 # Introduction
-The [ORMGP](https://maps.oakridgeswater.ca/) maintains a current, continuous daily climatology dataset beginning 1901. The data are [web-scraped](/interpolants/sources/webscraping.html), [interpolated](/interpolants/interpolation/climate-interpolation.html) to [some 3,000 ~10km² sub-watersheds](/interpolants/interpolation/subwatershed.html) and are made available through our [web portal](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP). All interpolated (i.e., "vector") data are automatically updated and maintained using the [ORMGP-FEWS system](/interpolants/interpolation/fews.html) system.
+The [ORMGP](https://oakridgeswater.ca/) maintains a current, continuous daily climatology dataset beginning 1901 and a 6-hourly data from 2001. The data are [web-scraped](/interpolants/sources/webscraping.html), [interpolated](/interpolants/interpolation/climate-interpolation.html) to [some 3,000 ~10km² sub-watersheds](/interpolants/interpolation/subwatershed.html) and are made available through our [public web portal](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP). All interpolated data are automatically updated and maintained using the [ORMGP-FEWS system](/interpolants/interpolation/fews.html) system.
+
+Reference to the external data acquired and discussed below [***are detailed here***](/interpolants/sources/sources.html).
+
+<br>
 
 <iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 

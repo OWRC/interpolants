@@ -48,23 +48,27 @@ The ORMGP data systems described below are active, in that they are automaticall
 
 <iframe src="https://golang.oakridgeswater.ca/pages/ycdb-locations.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 _Locations with >35 monitoring dates_
+
 <br>
 
 
 ## Drainage and Topology
 * [Overland drainage pathways](/interpolants/interpolation/overland.html)
+   * [Sub-watersheds](/interpolants/interpolation/subwatershed.html)
 * [Watercourses](/interpolants/interpolation/watercourses.html)
-* [Sub-watersheds](/interpolants/interpolation/subwatershed.html)
+
+<br>
 
 <iframe src="https://golang.oakridgeswater.ca/pages/sws-characterization.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 _Sub-watershed characterization and flow topology_
+
 <br>
 
 
 
 
 ## Climatology
-
+* [**Data source References**](/interpolants/sources/sources.html)
 * [**Near-realtime Data sources**](/interpolants/interpolation/climate-sources.html), updated nightly, including:
    * Daily data
       * Min/max daily temperature
@@ -144,7 +148,7 @@ _Static 2D fields, updated frequently_
 _Distributed time-series data, updated nightly_
 <br>
 
-* [Climate data](/interpolants/modelling/waterbudget/data.html)
+* ["Cleansed" climate data](/interpolants/modelling/waterbudget/data.html)
 * [Barometry](/interpolants/interpolation/barometry.html) elevation-corrected and projected to a 2km regional grid.
 
 

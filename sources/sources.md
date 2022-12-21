@@ -1,6 +1,5 @@
 ---
-title: Data Sources
-author: M.Marchildon
+title: Data Source Reference
 output: html_document
 ---
 
