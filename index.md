@@ -35,12 +35,14 @@ The following is an index to the data maintained and produced by the ORMGP. All 
 
 The ORMGP data systems described below are active, in that they are automatically updated at near real-time. From hourly and daily intervals, a series of "web-scraper" routines have been written to access open data made available from many sources including international, federal, provincial, municipal and conservation authority agencies. The objective is to "centralize" hydrogeological data for the south-central Ontario (Canada) jurisdiction that currently makes-up the ORMGP. [**_Data sources: more details._**](/interpolants/sources/sources.html)
 
+
 ## Geology
 * [Geology](/info/md/geology.html)
     * [Drilling](/info/md/drilling.html)
     * [Bedrock Geology](/info/md/bedrock.html)
     * [Sedimentology](/info/md/sedimentology.html)
     * [Geologic Pick database](/snapshots/md/picks.html)
+
 
 ## Hydrogeology
 * [Monitoring](/monitoring/)
@@ -68,8 +70,8 @@ _Sub-watershed characterization and flow topology_
 
 
 ## Climatology
-* [**Data source References**](/interpolants/sources/sources.html)
-* [**Near-realtime Data sources**](/interpolants/interpolation/climate-sources.html), updated nightly, including:
+* [**Data source reference**](/interpolants/sources/sources.html#climate-data-and-streamflow)
+* [**Near-realtime Data acquisition**](/interpolants/interpolation/climate-sources.html), updated nightly, including:
    * Daily data
       * Min/max daily temperature
       * Atmospheric pressure
@@ -84,8 +86,7 @@ _Sub-watershed characterization and flow topology_
       * Windspeed and direction
       * Potential evaporation flux
 
-* [**Spatial and Temporal interpolation**](/interpolants/interpolation/climate-interpolation.html)
-
+<br>
 
 # Web Applications
 ## **Geocortex data portal**
@@ -93,11 +94,15 @@ _Sub-watershed characterization and flow topology_
 The [ORMGP Geocortex Mapping hub has been divided into various Theme Maps](/webmapping/) to allow users to quickly hone in on the information they might be seeking. For example, the Documents Theme Map provides access to the program’s library of reports, The Boreholes Theme Map focuses on providing access to borehole specific information, and the Geology Theme Map provides access to all of the ORMGP geologically related mapping. The Theme Maps group specific related data sets or interpreted products ([more info here](/webmapping/)).
 
 ![](fig/geocortex-surfacewater.png)
+
 *Our current [web-mapping system](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP) relies on Geocortex*
 
-### [oakridgeswater.ca](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP)
+
+### [maps.oakridgeswater.ca](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP)
 *our main web mapping system*
 
+### [sHydrology](https://owrc.shinyapps.io/shydrologymap/)
+R-Shiny-Leaflet mapping with access to our monitoring dataset.
 
 
 
@@ -111,10 +116,12 @@ The [ORMGP Geocortex Mapping hub has been divided into various Theme Maps](/webm
 
 <!-- *and many more (TODO)* -->
 
-<!-- ADD SNAP SHOTS HERE -->
+
+<!-- ADD SNAPSHOTS HERE -->
 
 
 
+<br>
 
 # Open Data Products
 
@@ -144,14 +151,16 @@ _Static 2D fields, updated frequently_
 
 ## Spatially interpolated, near real-time data
 
-<iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
-_Distributed time-series data, updated nightly_
-<br>
-
-* ["Cleansed" climate data](/interpolants/modelling/waterbudget/data.html)
+* ["Cleansed" climate data](/interpolants/modelling/waterbudget/data.html) for use in our [water budget product](#regional-water-budget-long-term-and-continuous) which includes the computation of [potential evaporation](/interpolants/interpolation/calc/panET/PanEvaporation.html), [snowmelt](/interpolants/modelling/waterbudget/data.html#sub-daily-from-daily-snowmelt), etc. from available data.
+* [Spatial and Temporal interpolation](/interpolants/interpolation/climate-interpolation.html) of point/scalar data.
 * [Barometry](/interpolants/interpolation/barometry.html) elevation-corrected and projected to a 2km regional grid.
 
+<br>
 
+<iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
+_Distributed time-series data, updated nightly_
+
+<br>
 
 
 
@@ -238,6 +247,7 @@ A number of open-source and proprietary data analysis tools have been employed i
 * **[Our main MSSQL Server database](/database-manual/Contents/TOC.html)**
 * [VertiGIS Studio/Geocortex](https://www.vertigis.com/vertigis-studio/) — Our principle [web mapping server](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP) used by partners to access our database and products.
 * golang server — multi-functional REST API serving a variety of data products and interpolation tools.
+* fews server — home for the [ORMGP-FEWS](/interpolants/interpolation/fews.html) data management system.
 
 
 ### Web scraping
@@ -252,5 +262,3 @@ A number of open-source and proprietary data analysis tools have been employed i
 # **Glossary**
 [*click here*](glossary.html)
 
-
-[*see also snapshots*](https://golang.oakridgeswater.ca/snapshots/)
