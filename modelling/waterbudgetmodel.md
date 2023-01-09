@@ -1,5 +1,5 @@
 ---
-title: Long Term Water Budget
+title: Long Term Water Budget Model
 subtitle: A regionally-distributed runoff-recharge model
 author: Oak Ridges Moraine Groundwater Program
 output: html_document
