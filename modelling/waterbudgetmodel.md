@@ -96,16 +96,16 @@ $$\text{Atmospheric Yield} = \text{Rainfall} + \text{Snowmelt}$$
 
 Similarity, the "atmosphere" (specifically the Planetary Boundary Layer---Oke, 1987) also has a drying power, a sink termed *"Atmospheric Demand"*. 
 
-It is matter of perspective that dictates the terminology here. The model was designed from a top-down viewpoint. Terms like "potential evaporation", which speaks to the evaporation occurring on a surface with unlimited water supply is instead termed "atmospheric demand", that is the capacity for the PBL to remove moisture from a rough land surface.
+It is matter of perspective that dictates the terminology here. The model was designed from a top-down viewpoint. Terms like "potential evaporation", which speaks to the evaporation occurring on a surface with unlimited water supply is instead termed "atmospheric demand", that is the capacity for the atmosphere to remove moisture from a rough land surface.
 
 Only snowmelt, rainfall and evaporation are not readily available in a distributed form and need to be determined. The model is integrated with [the ORMGP data management platform](/interpolants/). Below is an interactive map of the climate forcing distribution used in the model from the top-down perspective. Total model coverage ~30,000km².
 
 
 
 <iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" target="_blank" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
-*Every sub-watershed shown above consists of roughly 4000 model cells*
+*Note: sub-watersheds shown above each consists of roughly 4000 model grid cells*
 
-Finally, the model was designed to remain amenable to data availability and new technologies; for instance, [SNODAS](https://nsidc.org/data/g02158) can avoid the need to model snowmelt explicitly and leverage these online resources.
+Finally, the model was designed to remain amenable to data availability and new technologies; for instance, [SNODAS](https://nsidc.org/data/g02158) can avoid the need to model snowmelt explicitly and leverage these online resources. [CaPA-RDPA](https://weather.gc.ca/grib/grib2_RDPA_ps10km_e.html) eliminates the need for spatial interpolation of precipitation.
 
 
 * **[Data sources, transformations and pre-processing](/interpolants/modelling/waterbudget/data.html)**

@@ -93,7 +93,7 @@ The [Accumulative aggregation](https://publicwiki.deltares.nl/display/FEWSDOC/Ag
 
 
 ### Sub-daily from daily Snowmelt
-Estimates of 24-hour snowmelt accumulation is recovered from the [Snow Data Assimilation System (SNODAS) data product](https://nsidc.org/data/g02158), a (near-)real-time service that returns gridded data at a ~30m resolution. The [NSIDC](https://nsidc.org/) also maintains continuous estimates covering our jurisdiction since September, 2010. [Prior to 2010-09-01, snowmelt estimation computed using a Cold-Content Function (CCF) model.](/interpolants/modelling/waterbudget/snowmeltCCF.html) 
+Archived 24-hour snowmelt accumulation is recovered from the [Snow Data Assimilation System (SNODAS) data product](https://nsidc.org/data/g02158), a (near-)real-time service that returns gridded data at a ~30m resolution. The [NSIDC](https://nsidc.org/) also maintains continuous estimates covering our jurisdiction since September, 2010. As of 2021, 6-hourly SNODAS fields are scraped regularily. [Prior to September 2010, snowmelt estimation computed using a Cold-Content Function (CCF) model.](/interpolants/modelling/waterbudget/snowmeltCCF.html) 
 
 Snowmelt is acquired at a daily timestep that represents the "*total of 24 per hour melt rates, 06:00 UTC-06:00 UTC ... integrated for the previous 24 hours, giving daily totals*" (NOHRSC, 2004), is disaggregated to a 6-hourly time step based on the following rules:
 
