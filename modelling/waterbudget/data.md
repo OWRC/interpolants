@@ -42,8 +42,12 @@ Forcings data to the model processed by [ORMGP-FEWS](/interpolants/interpolation
 
 ## Interpolation (spatial scale)
 
-Both scalar (i.e., point) data and gridded data are then [interpolated](/interpolants/interpolation/climate-interpolation.html) to each of the [~10 km² sub-watersheds](/interpolants/modelling/waterbudgetmodel.html#sub-basins). Model elevations range from 75-400 masl and orographic effects related to temperature were deemed negligible beyond the spatial distribution meteorological stations.
+Both scalar (i.e., point) data and gridded data are then [interpolated](/interpolants/interpolation/climate-interpolation.html) to each of the [~10 km² sub-watersheds](/interpolants/interpolation/subwatershed.html). Model elevations range from 75-400 masl and orographic effects related to temperature were deemed negligible beyond the spatial distribution meteorological stations.
 
+<iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" target="_blank" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
+*Every sub-watershed shown above consists of roughly 4000 model cells*
+
+<br>
 
 ### Precipitation and Snowmelt
 The 6-hourly CaPA-RDPA precipitation $(P)$ and the daily SNODAS snowmelt $(P_M)$ fields are both gridded rasters that are routinely scraped of open web resources and proportioned to the sub-watersheds using the Delft-FEWS transformation [Interpolation: SpatialAverage](https://publicwiki.deltares.nl/display/FEWSDOC/InterpolationSpatialAverage).

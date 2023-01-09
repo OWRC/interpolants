@@ -135,7 +135,7 @@ Drainage directions and flow-paths of the now "hydrologically correct" DEM were 
 
 ### Sub-basins
 
-The 30,000 km² model area has been sub divided into 2,813 approximately 10 km² sub-basins. Within these sub-basins:
+The 30,000 km² model area has been sub divided into [2,813 approximately 10 km² sub-basins](/interpolants/interpolation/subwatershed.html). Within these sub-basins:
 1. Meteorological forcings from external sources are aggregated applied uniformly within the sub-basin (via a pre-processing routine); and
 1. Local shallow water response is assumed to act uniformly (the shallow subsurface catchment area).
 
