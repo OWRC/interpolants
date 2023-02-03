@@ -105,10 +105,10 @@ where $B$ is the total groundwater discharge to streams occurring over a time st
 For every stream cell $i$, groundwater flux to stream cells $b$ [m] during timestep $\Delta t$ is given by:
 
 $$
-  b_i=\Omega\frac{l_iq_i}{A_i}\Delta t=b_{0,i}\exp\left(\frac{D_\text{inc}-D_i}{m}\right) \Delta t %\qquad i \in \text{streams}
+  b_i=\Omega\frac{l_iq_i}{A_i}\Delta t=b_{0,i}\exp\left(\frac{-D_i}{m}\right) \Delta t %\qquad i \in \text{streams}
 $$
 
-where $b_0$ groundwater flux at stream cell $i$ when the watertable is above the channel bed at saturated conditions $(D_\text{inc}-D=0)$ and is defined by:
+where $b_0$ groundwater flux at stream cell $i$ when the watertable is above the channel bed at saturated conditions $(D=0)$ and is defined by:
 
 $$
 %   b_0=\Omega\cdot \frac{T_o\tan\beta}{w}=\Omega\cdot \tan\beta \cdot K_\text{sat}
@@ -116,7 +116,7 @@ $$
 $$
 
 
-$D_\text{inc}$ is added as an offset, meant to accommodate the degree of channel incision (i.e., the difference between channel thalweg elevation and mean cell elevation).
+<!-- $D_\text{inc}$ is added as an offset, meant to accommodate the degree of channel incision (i.e., the difference between channel thalweg elevation and mean cell elevation). -->
 
 Finally, basin-wide groundwater discharge to streams
 

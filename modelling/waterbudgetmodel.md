@@ -227,7 +227,7 @@ The following are determined using a topographical analysis, and are thus are da
 
 Cells with a contributing area greater than 1 km² are deemed "stream cells" in which additional sources include groundwater discharge to streams.
 
-- $D_\text{inc}$: depth of incised channel relative to cell elevation [m] (note, while it is possible to assign this parameter on a cell basis, it was treated here as a global "tuning" parameter.) [m]
+<!-- - $D_\text{inc}$: depth of incised channel relative to cell elevation [m] (note, while it is possible to assign this parameter on a cell basis, it was treated here as a global "tuning" parameter.) [m] -->
 - $\Omega$: channel sinuosity [-]
 - $\alpha$: scaling parameter for determining $F_\text{casc}$
 
@@ -250,7 +250,8 @@ Each cell is classified according to (i) surficial geology and (ii) land use map
 The following are used to compute the overall retention/storage capacity:
 - $\phi$: porosity [-]
 - $F_c$: field capacity [-]
-- $d_\text{ext}$: extinction depth of soil, where evapotranspiration cease to occur. [m]
+- $d_\text{ext}$: extinction depth of soil, where evapotranspiration cease to occur [m]
+- $E_\text{fact}$: evaporation factor for open-air surfaces [-]
 
 <!-- - retention/storage capacity -->
 <!-- - depression storage -->

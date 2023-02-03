@@ -28,71 +28,31 @@ $$
 [*see glossary*](/interpolants/glossary.html)
 
 
-# Reservoirs
+# rdrr Reservoirs
 
 
-Each model cell consists of a retention reservoir $S_h$ (where water has the potential to drain) and a detention reservoir $S_k$ (where water is held locally but is still considered "mobile" in that if conditions are met, lateral movement would occur); both with a predefined capacity and susceptible to evaporation loss. In addition, any number of cells can be grouped which share a semi-infinite conceptual groundwater store $(S_g)$.
+Every model cell consists of a retention reservoir $S$ (where water is held locally that has the potential to drain but is still considered "mobile" in that if conditions are met, lateral movement would occur). The reservoir has a predefined capacity and susceptible to evaporation loss. In addition, any number of cells can be grouped which share a semi-infinite conceptual groundwater store $(S_g)$.
 
 Although conceptual, storage capacities may be related to common hydrological concepts, for instance:
 
 $$
-  S_h=(\phi-\theta_\text{fc}) z_\text{ext}
+  S_\text{max}=\theta_\text{fc} z_\text{ext}+F_\text{imp} h_\text{dep}+F_\text{can} h_\text{can}\cdot\text{LAI}
 $$
 
-and
+where $\phi$ and $\theta_\text{fc}$ are the water contents at saturation (porosity) and field capacity, respectively; $F_\text{imp}$ and $F_\text{can}$ are the fractional cell coverage of impervious area and tree canopy, respectively; $h_\text{dep}$ and $h_\text{can}$ are the capacities of impervious depression and interception stores, respectively; $\text{LAI}$ is the leaf area index and $z_\text{ext}$ is the extinction depth (i.e., the depth of which evaporative loss becomes negligible). Change in storage at any time is defined by:
 
 $$
-  S_k=\theta_\text{fc} z_\text{ext}+F_\text{imp} h_\text{dep}+F_\text{can} h_\text{can}\cdot\text{LAI}
+	\Delta S=y_a+k_\text{in}+b-\left(a+g+k_\text{out}\right),
 $$
 
-where $\phi$ and $\theta_\text{fc}$ are the water contents at saturation (porosity) and field capacity, respectively; $F_\text{imp}$ and $F_\text{can}$ are the fractional cell coverage of impervious area and tree canopy, respectively; $h_\text{dep}$ and $h_\text{can}$ are the capacities of impervious depression and interception stores, respectively; $\text{LAI}$ is the leaf area index and $z_\text{ext}$ is the extinction depth (i.e., the depth of which evaporative loss becomes negligible). Change in detention storage at any time is defined by:
-
-$$
-	\Delta S_k=k_\text{in}+f_h+b-\left(a_k+f_k+k_\text{out}\right),
-$$
-
-where $k = q\frac{\Delta t}{w}$ is the volumetric discharge in $(\_\text{in})$ and out $(\_\text{out})$ of the grid cell and $f_k$ is the volume of mobile storage infiltrating the soil zone; all units are [m]. (Note that groundwater discharge to streams---$b$---only occurs at stream cells and is only a gaining term.) Also note that $k_\text{out}$ only occurs when water stored in $S_k$ exceeds its capacity.
-
-Change in retention storage [m]:
-
-$$
-	\Delta S_h = y+f_k+x-\left(a_h+f_h+g\right),
-$$
-
-where $y$ is the atmospheric yield (rainfall + snowmelt), $x$ is groundwater infiltration (i.e., saturation excess) into the soil zone from a high watertable, $a$ is evapotranspiration, and $g$ is groundwater recharge.
-
-And the change in groundwater storage [m] (i.e., *net* groundwater exchange---positive: recharge; negative: discharge):
-
-$$
-	\Delta S_g = g-\left(x+b\right).
-$$
-
-<br>
-
-<!-- ![Schematic diagram of a computational element.](../fig/sma.svg) -->
-
-<p align="center">
-<img src="https://raw.githubusercontent.com/OWRC/interpolants/main/modelling/fig/sma.svg" alt="Conceptual soil moisture accounting scheme." width="85%">
-</p>
-
-<br>
-
-
-### Water balance
-
-The overall **water balance**, with $a=a_h+a_k$, over each **grid cell** is then given by:
-
-$$
-	\Delta S_k+\Delta S_h+\Delta S_g=y+k_\text{in}-\left(a+k_\text{out}\right).
-$$
-
+where $y_a$ is atmospheric yield (rainfall + snowmelt), $k = q\frac{\Delta t}{w}$ is the volumetric discharge in $(\_\text{in})$ and out $(\_\text{out})$ of the grid cell and $f_k$ is the volume of mobile storage infiltrating the soil zone; all units are [m]. (Note that groundwater discharge to streams---$b$---only occurs at stream cells and is only a gaining term.) Also note that $k_\text{out}$ only occurs when water stored in $S_k$ exceeds its capacity.
 
 ## Groundwater recharge
 
 Groundwater recharge at cell $i$ is computed as:
 
 $$
-  g=\min\left(S_h,K_\text{sat}\Delta t\right)+S_k^+\left[1-\exp\left(\frac{-K_\text{sat}}{L}\Delta t\right)\right].
+  g=S^+\left[1-\exp\left(\frac{-K_\text{sat}}{L}\Delta t\right)\right].
 $$
 
 It is important that the second term of the groundwater recharge equation remain to control so-called _**cascade towers**_ which occur when confluences in the [cascade network](/interpolants/modelling/waterbudget/overlandflow.html#cascade-network) create unrealistically high stages. (This is mainly a consequence of the simplicity of the overland flow scheme applied here---normally, the [pressure term](/info/lia/#conservation-of-momentum) in the shallow water equations provides this control physically.) Here the interface length $L=10\text{ cm}$ globally.

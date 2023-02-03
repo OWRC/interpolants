@@ -15,7 +15,7 @@ The overland flow model is dependent on [topography](/interpolants/interpolation
 
 Hydrological correction has been applied to the digital elevation model (DEM) which means that the derived routing model will always drain to a model boundary, and land surface swales are always assumed to drain. (*This is matter of choice, and is not a limitation to the routing model; only users should be aware of the issues arising from swales in a cascade network.*)
 
-From the [Soil Moisture Accounting scheme](/interpolants/modelling/waterbudget/sma.html), the water budget of the "mobile storage" reservoir is defined as:
+<!-- From the [Soil Moisture Accounting scheme](/interpolants/modelling/waterbudget/sma.html), the water budget of the "mobile storage" reservoir is defined as:
 
 $$
   \Delta S_k=k_\text{in}+f_h+b-\left(a_k+f_k+k_\text{out}\right)
@@ -25,7 +25,7 @@ $$
 <img src="https://raw.githubusercontent.com/OWRC/interpolants/main/modelling/fig/sma.svg" alt="Conceptual soil moisture accounting scheme." width="85%">
 </p>
 
-<br>
+<br> -->
 
 # Runoff coefficient
 
