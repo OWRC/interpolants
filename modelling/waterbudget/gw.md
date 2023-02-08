@@ -35,15 +35,19 @@ $$
 
 At the regional scale, multiple TOPMODEL reservoirs have been established to represent groundwater dynamics in greater physiographic regions, where it is assumed that material properties are functionally similar and groundwater dynamics are locally in sync. Groundwater discharge estimates from each TOPMODEL reservoir instantaneously contributes lateral discharge to stream channel cells according to Darcy's law:
 
-$$
+<!-- $$
 	q = T\tan\beta,
-$$
+$$ -->
 
 <!-- $$
 	q = T\tan\beta = T_o\tan\beta\cdot e^{\left(\frac{-D}{m}\right)},
 $$ -->
 
-where $q$ is interpreted here as groundwater discharge per unit length of stream/iso-potential contour [m²/s], and $\tan\beta$ is the surface slope angle in the downslope direction, assumed representative of the saturated zone's hydraulic gradient. 
+$$
+	q_i = T_o\tan\beta\exp(-D_i/m),
+$$
+
+where $q_i$ is interpreted here as groundwater discharge per unit length of stream/iso-potential contour [m²/s] at grid cell $i$, and $\tan\beta$ is the surface slope angle in the downslope direction, assumed representative of the saturated zone's hydraulic gradient. 
 
 <!-- ![](../fig/histo-tanbeta.png) -->
 
@@ -185,6 +189,15 @@ where $\delta D_i$ is the groundwater deficit relative to the regional mean, and
 $$
  D_{i,t} = \delta D_i + \overline{D}_t
 $$
+
+
+"Groundwater discharge" occurs in any saturated areas $(D_i<0)$ and is given by:
+
+$$
+	b_i = \frac{wq_i}{A} = \frac{q_i}{w} = \frac{T_o\tan\beta\exp(-D_i/m)}{w} = K_\text{sat}\tan\beta\exp(-D_i/m)
+$$
+
+
 
 
 # References

@@ -16,7 +16,9 @@
 
 *.qgz
 *.old
+*.zip
 *.7z
+*.rar
 
 *watercourse_*
 *.geojson
@@ -29,8 +31,6 @@ png*
 *.bil
 *.hdr
 *.prj
-*.rar
-*.7z
 *.nc
 *.csv
 *.xlsx
