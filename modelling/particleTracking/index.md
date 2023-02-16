@@ -14,9 +14,5 @@ Particle tracking can prove important and useful from a number of perspectives:
 - Ecological studies, where aquatic organisms are of interest, could also make use of particle tracking.  By examining the backward particle tracking from streams, existing or proposed land uses that might affect stream water quality can be assessed, and potential mitigation proposed. Ecologically Significant Groundwater Recharge areas make use of such particle tracks to link recharge to discharge areas.  If new important ecological stream reaches are identified, then preliminary delineation of ESGRAs can be made using the tool.  This can lead to early mitigation activities.
 
 
-# Particle Tracking Tool
-
-The ORMGP particle tracking tool shows both the forward or backward particle tracking from a site that is being studied.  The tool is built upon [numerical models](/snapshots/md/numerical-model-custodianship-program.html) which have organized, synthesized and interpreted a wealth of hydrogeological information (e.g., boreholes, geological mapping, previous studies, etc.). 
-
 
 
