@@ -5,10 +5,23 @@ author: Oak Ridges Moraine Groundwater Program
 output: html_document
 ---
 
+A regionally-distributed runoff/recharge model has been developed to simulate regional-scale (>30k km²) hydrologic processes at a fine (50m grid) resolution. The model code is written to support large-scale and high-resolution distributed processes while remaining amenable to multi-threaded computer architectures. No process of the model is in any way novel, rather a suite of existing model structures have been chosen and coded to minimize model run times, while maintaining an ease of implementation, practical applicability and scalability.
 
-A regionally-distributed runoff/recharge model has been developed to simulate hydrologic processes at a fine (grid-based) scale. The model code is written to support large-scale and high-resolution distributed processed optimized for implementation on multi-threaded computer architectures. No process of the model is in any way novel, rather a suite of existing model structures have been chosen and codified primarily to minimize model run times, while maintaining an ease of implementation, practical applicability and scalability.
 
-The model represents the computational part of our [*data assimilation system*](https://ldas.gsfc.nasa.gov/) (DAS), meaning it's not intended to be a predictive tool, rather a means to gain information (runoff, recharge etc.) from readily available data. Ultimately the goal is to have at near-realtime, distributed hydro-climatological data, at sub-daily time-steps that includes estimates of:
+Model performance has been maximized in three ways:
+
+1. Code selection \
+    The model is written in [**_Go_**](https://go.dev/), an open source, free, cross-platform, self-dependent language. The Go language is inherently *concurrent*, meaning it has potential to create models that optimize computer resources.
+
+1. Queuing and Topology \
+    Conceptually, the model relies heavily on inferred causal relationships, such as *runoff from a particular location moves in a downhill direction, where it may infiltrate and cease being runoff at downslope locations*. From these relationships, the causal ordering of runoff processes is realized. This order is the model's topology and gives rise to performance gains like recursive algorithms and queuing/load balancing.
+
+1. Procedural selection (hydrological process simulation) \
+    Having a concurrent language alone isn't enough, rather it is hydrological processes that have been selected and coded into numerical procedures. Probably the biggest limitation to this model, is the strict avoidance of any numerical procedure that can't be solved analytically.
+
+
+
+The model represents a computational part of our [*data assimilation system*](https://ldas.gsfc.nasa.gov/) (DAS), meaning it's not intended to be a predictive tool, rather a means to gain information (runoff, recharge etc.) from readily available data. Ultimately the goal is to have at near-realtime, distributed hydro-climatological data, at sub-daily time-steps that includes estimates of:
 - precipitation (rainfall and snowfall)
 - Atmospheric states (temperature, humidity, pressure, and wind)
 - snowmelt
@@ -278,21 +291,25 @@ The following are used to compute the overall retention/storage capacity:
 
 
 
+# Testing
+
+As a simple expression of the model's ability to squeeze everything from the computer, this is what happens when 12.1M model cells running at a 6-hourly timestep:
+
+![](fig/rdrr-taskman.png)
 
 
 
-
-# Calibration
-* **[Model Parameters and Sampling](/interpolants/modelling/waterbudget/parameters.html)**
-
+<!-- # Calibration
+* **[Model Parameters and Sampling](/interpolants/modelling/waterbudget/parameters.html)** -->
 
 
-# Code
-* **[Model Structure](/interpolants/modelling/waterbudget/structure.html)**
+
+<!-- # Code
+* **[Model Structure](/interpolants/modelling/waterbudget/structure.html)** -->
 
 
-# Future plans
-* **[Future plans](/interpolants/modelling/waterbudget/future.html)**
+<!-- # Future plans
+* **[Future plans](/interpolants/modelling/waterbudget/future.html)** -->
 
 
 
