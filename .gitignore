@@ -27,6 +27,7 @@
 overland-drainage-areas/
 input/
 old/
+tiles/
 png*
 *.bil
 *.hdr
