@@ -4,6 +4,10 @@ author: Oak Ridges Moraine Groundwater Program
 output: html_document
 ---
 
+![](fig/ORMGP_3D.png)
+
+<br>
+
 The [**Oak Ridges Moraine Groundwater Program (ORMGP)**](https://www.oakridgeswater.ca/) maintains an authoritative understanding of: 
 
 1. the geological layering for the area; 
