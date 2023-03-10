@@ -10,6 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 library(dplyr)
 library(ggplot2)
+library(ggspatial)
 library(sf)
 library(rgdal)
 library(rnaturalearth)
@@ -60,14 +61,17 @@ Particle tracking can prove important and useful from a number of perspectives:
 
 # Numerical Model Selection
 
-```{r mapModels, echo=FALSE}
+```{r mapModels, echo=FALSE, message=FALSE, warning=FALSE}
 basemapGL +
+  annotation_map_tile(zoom=8) +
   geom_sf(data=model.bounds, fill='blue', alpha=.3) +
   geom_sf_label(data=model.bounds, aes(label = Name)) +
   coord_sf(default_crs = st_crs(4326),
            ylim = c(43.2, 44.9),
            xlim = c(-80.25, -77.5),
-           expand = TRUE)
+           expand = TRUE) +
+  theme(axis.ticks = element_blank()) +
+  labs(x=NULL,y=NULL)
 ```
 
 

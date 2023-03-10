@@ -61,7 +61,7 @@ For example
 
 ## Hydrogeology
 
-- Water Table Mapping [*(more info here)*](/watertable/)
+- Water Table Mapping [*(more info here)*](/watertable/) [*(metadata here)*](/metadata/surfaces/water_table.html)
     - `DP_WL_DEPTH_Final_20210824.bil`
     - `DP_WL_ELEV_Final_corr_20210824.bil`
     - `SH_WL_DEPTH_BHS_20210615.bil`
