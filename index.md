@@ -189,6 +189,20 @@ Combined, these two tools will provide all water groundwater resources needs for
 
 ## Existing numerical model files, output and sharing
 
+We have established a numerical modelling sharing process to assist consultants in moving forward on various projects by making use of previous interpretations/work.  The mission of the [**ORMGP numerical model custodianship program**](/snapshots/md/numerical-model-custodianship-program.html) is to provide numerical models to any consultant undertaking work within our partners' jurisdiction.  
+
+Users (e.g., consultants) are expected to review the shared models' suitability to their intended application. Considering the age of the models, the expertise who constructed the model, the model's original intent, etc., it is the responsibility of the user to determine whether there is an approach more suitable than just using the model files as delivered. For instants, some consultants have only selected specific model file components (i.e. hydraulic conductivity distribution or geological layering, thicknesses etc.) to complete their task.
+
+Users are free to update/modify the model in the hopes that the refinements are shared in return and knowledge preserved.
+
+Often, within any geographical area of a new/proposed consulting project, there are several models that could be used to aid the new project. Given the nature of the proposed project (e.g. water supply, contamination investigation, proposed land development, etc.) we could make suggestions the most appropriate model or the consultant is free to select any or all models, where available.  
+
+The idea is that model sharing could perhaps reduce duplication of effort, thereby lowering consulting costs by providing previous modelling insights in a transferable digital format.  Given that every project is different, the likelihood that a model can be transferred to address the needs of a another study may be quite low.
+
+  
+
+
+
 * [Numerical Model Custodianship Program](/snapshots/md/numerical-model-custodianship-program.html) — model archive.
 * [*A Guide for Actively Managing Watershed-Scale Numerical Models in Ontario*](https://www.oakridgeswater.ca/_files/ugd/4a0a6e_c41c71a481ea4657806e1fbb0c912f7a.pdf) — model management guidance (2017)
 
@@ -217,6 +231,7 @@ The ORMGP particle tracking tool shows both the forward or backward particle tra
 ## Other
 * [Geothermal transport modelling.](/info/geothermal/)
 * Urban water balance, Low Impact Design (LID) modelling, groundwater *I&I*, etc. using [_**GSFLOWurban**_](https://github.com/maseology/GSFLOWurban).
+* [Artificial Neural Network Machine Learning hydrograph simulation.](/info/ann/)
 
 
 <!-- * [Input data](/interpolants/modelling/waterbudget/data.html) -->
