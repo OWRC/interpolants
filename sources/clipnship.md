@@ -35,7 +35,7 @@ Point data, database queries, are provided in **comma-separated value** (\*.csv)
 [*our metadata repository*](/metadata/content/toc.html)
 
 # **How to Cite**
-*see below*
+"Oak Ridges Moraine Groundwater Program Website (Oakridgeswater.ca) 2023. Accessed mm/dd/yyyy"
 
 # **Data Description**
 
@@ -56,15 +56,15 @@ Each geologic layer includes a set of _bil_, _hdr_, and _prj_ files for both the
 
 The following five _csv_ files provide results from database queries for the user-selected polygon.
 
-- V_CON_DOCUMENT.csv
+- `V_CON_DOCUMENT.csv`
    - Contains a list of all georeferenced documents and includes information such as: report name, year, author and location coordinates
-- V_CON_GENERAL.csv
+- `V_CON_GENERAL.csv`
    - Contains a list of all locations. This table includes information such as: location ID and names, type, top/bottom elevation, coordinates
-- V_CON_GEOLOGY.csv
+- `V_CON_GEOLOGY.csv`
    - Contains geologic records at locations within the selected polygon including: location ID, geologic descriptions, geologic interval top/botton elevation, location coordinates
-- V_CON_HYDROGEOLOGY.csv
+- `V_CON_HYDROGEOLOGY.csv`
    - Contains hydrogeological data at locations within the selected area including: location ID, screen interval, geologic formation, location coordinates
-- V_CON_PTTW.scv
+- `V_CON_PTTW.scv`
    - Contains a list of information of all permits to take water (PTTWs) with the selected area including: location ID, location coordiantes, maximum permitted rate, date issued
   
 ## Hydrogeology
