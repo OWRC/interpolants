@@ -4,7 +4,7 @@ author: Oak Ridges Moraine Groundwater Program
 output: html_document
 ---
 
-The ORMGP is previewing a service where partners can easily gain access to the spatial layers we produce.  Imagine a *cookie-cutter* taking a 3D block within which the data are provided.
+ORMGP partners can gain access to the spatial layers we produce.  Users specify a small, rectangular ara, inside which a 3D block of the geologic data is provided.
 
 The first part is the **clipping** function. This is where the user supplies the areal extent of their data request, and the return is all the data available within those extents.
 
@@ -12,19 +12,17 @@ The first part is the **clipping** function. This is where the user supplies the
 [*ArcMAP Clip function*](https://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/clip.htm)
 
 
-Then the **ship** feature requires our server to package the clipped data into a compressed file for download.  
+Then the **ship** feature provides a compressed file with all available data for download.  
 
 
-# Data formats
-The data format chosen for the exports are provided in a format that is most compressible, maintaining efficient file transfer. The files formats are thus less less common; yet are general enough that they'll open on common GIS platforms.
-
-Data are compressed into a *tar.gz* file, which can opened using free and open software such as [7-Zip](https://www.7-zip.org/) and [WinRAR](https://www.win-rar.com/).
+# **Data Formats**
+The data format chosen for the exports is compressible and efficient. The files formats are thus less less common; yet are general enough that they'll open on common GIS platforms. Data are compressed into a *tar.gz* file, which can be opened using free and open software such as [7-Zip](https://www.7-zip.org/) and [WinRAR](https://www.win-rar.com/).
 
 
 ## File Formats
 
 ### Rasters
-Rasters are provided in a [**band interleaved by line** (\*.bil)](https://desktop.arcgis.com/en/arcmap/10.5/manage-data/raster-and-images/bil-bip-and-bsq-raster-files.htm) format.  This file is in a raw binary format and is accompanied by header file (\*.hdr) and a projection file (\*.prj).  Files will open in [ArcGIS](https://www.arcgis.com/index.html), [QGIS](https://www.qgis.org/en/site/), [Surfer](https://surferhelp.goldensoftware.com/subsys/subsys_band_interleaved_file_descr.htm) and load as a [NumPy](https://numpy.org/) array.
+Rasters are provided in a [**band interleaved by line** (\*.bil)](https://desktop.arcgis.com/en/arcmap/10.5/manage-data/raster-and-images/bil-bip-and-bsq-raster-files.htm) format.  This is a raw binary format and is accompanied by header file (\*.hdr) and a projection file (\*.prj).  Files will open in [ArcGIS](https://www.arcgis.com/index.html), [QGIS](https://www.qgis.org/en/site/), [Surfer](https://surferhelp.goldensoftware.com/subsys/subsys_band_interleaved_file_descr.htm) and will load as a [NumPy](https://numpy.org/) array.
 
 ### Vectors
 Vector files (in particular polylines and polygons) are provided in [**GeoJson**](https://geojson.org/) (\*.geojson) format.  This is an all-encompassing ascii-format file which is flexible, but slow. It is suggested that files be converted to shapefiles (\*.shp) when performance is desired.
@@ -33,13 +31,13 @@ Vector files (in particular polylines and polygons) are provided in [**GeoJson**
 Point data, database queries, are provided in **comma-separated value** (\*.csv) format.
 
 
-# Metadata
+# **Metadata**
 [*our metadata repository*](/metadata/content/toc.html)
 
-# How to Cite
+# **How to Cite**
 *see below*
 
-# Data description
+# **Data Description**
 
 ## Geology
 
