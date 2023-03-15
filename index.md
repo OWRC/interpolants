@@ -87,6 +87,7 @@ _Sub-watershed characterization and flow topology_
 <br>
 
 # ** Web Applications **
+
 ## Geocortex Data Portal
 
 The [ORMGP Geocortex Mapping hub has been divided into various Theme Maps](/webmapping/) to allow users to quickly hone in on the information they might be seeking. For example, the Documents Theme Map provides access to the program’s library of reports, The Boreholes Theme Map focuses on providing access to borehole specific information, and the Geology Theme Map provides access to all of the ORMGP geologically related mapping. The Theme Maps group specific related data sets or interpreted products ([more info here](/webmapping/)).
