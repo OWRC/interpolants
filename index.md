@@ -62,8 +62,8 @@ _Sub-watershed characterization and flow topology_
 <br>
 
 ## Climatology 
-* [**Data source reference**](/interpolants/sources/sources.html#climate-data-and-streamflow)
-* [**Near-realtime Data acquisition**](/interpolants/interpolation/climate-sources.html), updated nightly, including:
+* [**Data Source Reference**](/interpolants/sources/sources.html#climate-data-and-streamflow)
+* [**Near-Real-Time Data Acquisition**](/interpolants/interpolation/climate-sources.html), updated nightly, including:
    * Daily data
       * Min/max daily temperature
       * Atmospheric pressure
@@ -94,7 +94,7 @@ The [ORMGP Geocortex Mapping hub has been divided into various Theme Maps](/webm
 ## [sHydrology](https://owrc.shinyapps.io/shydrologymap/)
 R-Shiny-Leaflet mapping with access to our monitoring dataset.
 
-## Timeseries Analysis
+## Time-Series Analysis
 * [**R-Shiny apps**]
    * [Help](/HydrographExplorerHelp/)
    * [Manual](/shinyapps-manual/)
@@ -129,7 +129,7 @@ _Static 2D fields, updated frequently_
 
 ## Spatially interpolated, near real-time data
 
-* [**"Cleansed" climate data**](/interpolants/modelling/waterbudget/data.html) for use in our water budget product which includes the computation of [potential evaporation](/interpolants/interpolation/calc/panET/PanEvaporation.html), [snowmelt](/interpolants/modelling/waterbudget/data.html#sub-daily-from-daily-snowmelt), etc. from available data.
+* [**Cleansed Climate Data**](/interpolants/modelling/waterbudget/data.html) for use in our water budget product which includes the computation of [potential evaporation](/interpolants/interpolation/calc/panET/PanEvaporation.html), [snowmelt](/interpolants/modelling/waterbudget/data.html#sub-daily-from-daily-snowmelt), etc. from available data.
 * [Spatial and Temporal interpolation](/interpolants/interpolation/climate-interpolation.html) of point/scalar data.
 * [Barometry](/interpolants/interpolation/barometry.html) elevation-corrected and projected to a 2km regional grid.
 
@@ -148,15 +148,14 @@ _Distributed time-series data, updated nightly_
 
 Numerical modelling are applied in two ways: 
 
-The first is a long-term data assimilation system that utilizes hydrological analysis tools (i.e., models) and leverages the ORMGP's database. What amounts to *data assimilation system* (DAS) utilized modelling technology to provide real-time *interpolation* of the hydrological system, data we have access to. The computational structure of the DAS is specifically tailored to run as fast as possible, such that thousands of model "projections" made continuously on [ORMGP servers](/interpolants/#servers). The results from this analysis will likely be offered as monthly ranges in long term seasonal water balance estimates.
-
-Other tools are intended for predictive use, but are restricted to short-term (less than 30 days) projections. The design of these models is more physically rigorous but will always be dependent on other models (existing groundwater models or the DAS described here) to prescribe the antecedent conditions. While computational time for this model is orders of magnitudes greater than that of the DAS, it continuous to share the philosophy of designed whereby computation efficiency is paramount.
+1. A long-term data assimilation system that uses hydrological analysis tools (i.e., models) and leverages the ORMGP's database. What amounts to *data assimilation system* (DAS) utilized modelling technology to provide real-time *interpolation* of the hydrological system, data we have access to. The computational structure of the DAS is specifically tailored to run as fast as possible, such that thousands of model "projections" made continuously on [ORMGP servers](/interpolants/#servers). The results from this analysis will likely be offered as monthly ranges in long term seasonal water balance estimates.
+2. Other tools are intended for predictive use, but are restricted to short-term (less than 30 days) projections. The design of these models is more physically rigorous but will always be dependent on other models (existing groundwater models or the DAS described here) to prescribe the antecedent conditions. While computational time for this model is orders of magnitudes greater than that of the DAS, it continuous to share the philosophy of designed whereby computation efficiency is paramount.
 
 Combined, these two tools will provide all water groundwater resources needs for the ORMGP partners in order to:
 
 1. utilize readily available datasets provided daily by government agencies of Canada and the United States without the need for [data pre-processing](/interpolants/modelling/waterbudget/data.html)
-1. capture long-term hydrological water budget estimates with an emphasis on its certainty
-1. project near-term hydrological response given a known antecedent state
+2. capture long-term hydrological water budget estimates with an emphasis on its certainty
+3. project near-term hydrological response given a known antecedent state
 
 
 ## Existing numerical model files, output and sharing
@@ -248,7 +247,7 @@ A number of open-source and proprietary data analysis tools have been employed i
 * fews server — home for the [ORMGP-FEWS](/interpolants/interpolation/fews.html) data management system.
 
 
-### Web scraping
+### Web Scraping
 * ORMGP-cron: a linux server with scheduled [web-scraping tasks mostly written in Python](/interpolants/sources/webscraping.html).
 * [ORMGP-FEWS](/interpolants/interpolation/fews.html): our operational Delft-FEWS system that scrapes, stores, interpolates and regenerates data served on ORMGP-cron.
 
