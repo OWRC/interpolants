@@ -46,9 +46,9 @@ Point data, database queries, are provided in **comma-separated value** (\*.csv)
 Geologic Model layers follow a pattern: *WB_2021_`LayerNo`\_`LayerName`\_`LayerType`\_`dateCreated`-crop.bil*.
 
 For example
-- `WB_2021_01_GROUND_SURFACE_20211027-crop.bil` is the first, or uppermost geologic layer (01, from the top) and represents the ground surface
-- `WB_2021_02_HALTON_TILL_EQUIV_20211027-crop.bil` is the top of the ssecond geologic layer (02) and represents the top of the Halton Till
-- `WB_2021_09C_THORNCLIFFE_ISOPACH_20220808-crop.bil` is the isopach of the Thorncliffe unit 
+- `WB_2021_01_GROUND_SURFACE_20211027-crop.bil` is the first, or uppermost geologic layer (01) and represents the ground surface
+- `WB_2021_02_HALTON_TILL_EQUIV_20211027-crop.bil` is the top of the second geologic layer (02) and represents the top of the Halton Till
+- `WB_2021_09C_THORNCLIFFE_ISOPACH_20220808-crop.bil` is the isopach (thickness) map of the Thorncliffe llayer (09) 
 
 Each geologic layer includes a set of _bil_, _hdr_, and _prj_ files for both the layer top and the isopach. 
 
@@ -56,14 +56,17 @@ Each geologic layer includes a set of _bil_, _hdr_, and _prj_ files for both the
 
 The following five _csv_ files provide results from database queries for the user-selected polygon.
 
-- V_CON_DOCUMENT
-   - Contains a list of all georeferenced documents and includes information such as:  
-- V_CON_GENERAL
-   - Contains a list of all locations. This table includes information such as: location ID and names, type, top/bottom, coordinates. 
-- V_CON_GEOLOGY
-- V_CON_HYDROGEOLOGY
-- V_CON_PTTW
-
+- V_CON_DOCUMENT.csv
+   - Contains a list of all georeferenced documents and includes information such as: report name, year, author and location coordinates
+- V_CON_GENERAL.csv
+   - Contains a list of all locations. This table includes information such as: location ID and names, type, top/bottom elevation, coordinates
+- V_CON_GEOLOGY.csv
+   - Contains geologic records at locations within the selected polygon including: location ID, geologic descriptions, geologic interval top/botton elevation, location coordinates
+- V_CON_HYDROGEOLOGY.csv
+   - Contains hydrogeological data at locations within the selected area including: location ID, screen interval, geologic formation, location coordinates
+- V_CON_PTTW.scv
+   - Contains a list of information of all permits to take water (PTTWs) with the selected area including: location ID, location coordiantes, maximum permitted rate, date issued
+  
 ## Hydrogeology
 
 - Water Table Mapping [*(more info here)*](/watertable/) [*(metadata here)*](/metadata/surfaces/water_table.html)
