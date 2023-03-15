@@ -30,16 +30,11 @@ The following is an index to the data maintained and produced by the ORMGP. All 
 * TOC
 {:toc}
 
-
-
-
-
-
 # **Data Sources**
 
-## **Database**
+## Database
 
-[Our main MSSQL Server database](/database-manual/Contents/TOC.html) is our prime central database that holds all the information needed to support our decision-making tools. The ORMGP data systems are *active*, in that they are automatically updated at near real-time. From hourly and daily intervals, a series of "web-scraper" routines have been written to access open data made available from many sources including international, federal, provincial, municipal and conservation authority agencies. The objective is to "centralize" hydrogeological data for the south-central Ontario (Canada) jurisdiction that currently makes-up the ORMGP. [**_Data sources: more details._**](/interpolants/sources/sources.html)
+[Our main MSSQL Server database](/database-manual/Contents/TOC.html) is our central database that holds all the information needed to support our decision-making tools. The ORMGP data systems are *active*, in that they are automatically updated at near real-time. From hourly and daily intervals, a series of web-scraping routines have been written to access open data made available from many sources including international, federal, provincial, municipal and conservation authority agencies. The objective is to centralize hydrogeological and hydrological data for the south-central Ontario (Canada) jurisdiction that currently makes-up the ORMGP. [**_Data sources: more details._**](/interpolants/sources/sources.html)
 
 
 ## Geology
@@ -72,9 +67,6 @@ _Sub-watershed characterization and flow topology_
 
 <br>
 
-
-
-
 ## Climatology
 * [**Data source reference**](/interpolants/sources/sources.html#climate-data-and-streamflow)
 * [**Near-realtime Data acquisition**](/interpolants/interpolation/climate-sources.html), updated nightly, including:
@@ -95,7 +87,7 @@ _Sub-watershed characterization and flow topology_
 <br>
 
 # Web Applications
-## **Geocortex data portal**
+## Geocortex Data Portal
 
 The [ORMGP Geocortex Mapping hub has been divided into various Theme Maps](/webmapping/) to allow users to quickly hone in on the information they might be seeking. For example, the Documents Theme Map provides access to the program’s library of reports, The Boreholes Theme Map focuses on providing access to borehole specific information, and the Geology Theme Map provides access to all of the ORMGP geologically related mapping. The Theme Maps group specific related data sets or interpreted products ([more info here](/webmapping/)).
 
@@ -110,10 +102,7 @@ The [ORMGP Geocortex Mapping hub has been divided into various Theme Maps](/webm
 ### [sHydrology](https://owrc.shinyapps.io/shydrologymap/)
 R-Shiny-Leaflet mapping with access to our monitoring dataset.
 
-
-
-
-## Timeseries analysis
+### Timeseries Analysis
 * [**R-Shiny apps**]
    * [Help](/HydrographExplorerHelp/)
    * [Manual](/shinyapps-manual/)
@@ -122,11 +111,7 @@ R-Shiny-Leaflet mapping with access to our monitoring dataset.
 
 <!-- *and many more (TODO)* -->
 
-
 <!-- ADD SNAPSHOTS HERE -->
-
-
-
 <br>
 
 # Open Data Products
