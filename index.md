@@ -12,7 +12,7 @@ The [**Oak Ridges Moraine Groundwater Program (ORMGP)**](https://www.oakridgeswa
 
 1. the geological layering for the area; 
 1. the groundwater flow system; and
-1. its linkage to the region's surface waters and climatologies. 
+1. linkages to the region's surface waters and climatologies. 
 
 
 **The ORMGP has the need to:**
@@ -114,7 +114,7 @@ R-Shiny-Leaflet mapping with access to our monitoring dataset.
 <!-- ADD SNAPSHOTS HERE -->
 <br>
 
-# ** Open Data Products **
+# ** Open Data Products ** 
 
 ## Metadata
 [Our metadata repository, Table of Contents.](https://owrc.github.io/metadata/content/toc.html)
