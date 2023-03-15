@@ -23,18 +23,12 @@ The [**Oak Ridges Moraine Groundwater Program (ORMGP)**](https://www.oakridgeswa
 
 The following is an index to the data maintained and produced by the ORMGP. All data can be cited by a link below.
 
-
-
-
-
 * TOC
 {:toc}
 
 # **Data Sources**
-
 ## Database
-
-[Our main MSSQL Server database](/database-manual/Contents/TOC.html) is our central database that holds all the information needed to support our decision-making tools. The ORMGP data systems are *active*, in that they are automatically updated at near real-time. From hourly and daily intervals, a series of web-scraping routines have been written to access open data made available from many sources including international, federal, provincial, municipal and conservation authority agencies. The objective is to centralize hydrogeological and hydrological data for the south-central Ontario (Canada) jurisdiction that currently makes-up the ORMGP. [**_Data sources: more details._**](/interpolants/sources/sources.html)
+[Our main MSSQL Server database](/database-manual/Contents/TOC.html) holds all the information to support our decision-making tools. The ORMGP data systems are *active*, in that they are automatically updated at near real-time. From hourly and daily intervals, a series of web-scraping routines have been written to access open data made available from many sources including international, federal, provincial, municipal and conservation authority agencies. The objective is to centralize hydrogeological and hydrological data for the south-central Ontario (Canada) jurisdiction that currently makes-up the ORMGP. [**_Data sources: more details._**](/interpolants/sources/sources.html)
 
 
 ## Geology
@@ -88,7 +82,7 @@ _Sub-watershed characterization and flow topology_
 
 # **Web Applications**
 
-## Geocortex Data Portal
+## [Geocortex Data Portal](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP)
 
 The [ORMGP Geocortex Mapping hub has been divided into various Theme Maps](/webmapping/) to allow users to quickly hone in on the information they might be seeking. For example, the Documents Theme Map provides access to the program’s library of reports, The Boreholes Theme Map focuses on providing access to borehole specific information, and the Geology Theme Map provides access to all of the ORMGP geologically related mapping. The Theme Maps group specific related data sets or interpreted products ([more info here](/webmapping/)).
 
@@ -97,13 +91,10 @@ The [ORMGP Geocortex Mapping hub has been divided into various Theme Maps](/webm
 *Our current [web-mapping system](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP) relies on Geocortex*
 
 
-### [maps.oakridgeswater.ca](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP)
-*our main web mapping system*
-
-### [sHydrology](https://owrc.shinyapps.io/shydrologymap/)
+## [sHydrology](https://owrc.shinyapps.io/shydrologymap/)
 R-Shiny-Leaflet mapping with access to our monitoring dataset.
 
-### Timeseries Analysis
+## Timeseries Analysis
 * [**R-Shiny apps**]
    * [Help](/HydrographExplorerHelp/)
    * [Manual](/shinyapps-manual/)
@@ -113,6 +104,7 @@ R-Shiny-Leaflet mapping with access to our monitoring dataset.
 <!-- *and many more (TODO)* -->
 
 <!-- ADD SNAPSHOTS HERE -->
+<!-- shikaze: should we keep snapshots on a separate github to keep things simpler? -->
 <br>
 
 # **Open Data Products** 
@@ -132,14 +124,8 @@ _Static 2D fields, updated frequently_
     * open water
     * relative permeability
 
-
-
-
 ## **Clip 'n Ship**
 * [**"Clip 'n Ship"**](/interpolants/sources/clipnship.html) — A bulk spatial data export system, by geographic extent. Includes many of the products listed below.
-
-
-
 
 ## Spatially interpolated, near real-time data
 
@@ -186,9 +172,6 @@ Often, within any geographical area of a new/proposed consulting project, there 
 The idea is that model sharing could perhaps reduce duplication of effort, thereby lowering consulting costs by providing previous modelling insights in a transferable digital format.  Given that every project is different, the likelihood that a model can be transferred to address the needs of a another study may be quite low.
 
   
-
-
-
 * [Numerical Model Custodianship Program](/snapshots/md/numerical-model-custodianship-program.html) — model archive.
 * [*A Guide for Actively Managing Watershed-Scale Numerical Models in Ontario*](https://www.oakridgeswater.ca/_files/ugd/4a0a6e_c41c71a481ea4657806e1fbb0c912f7a.pdf) — model management guidance (2017)
 
