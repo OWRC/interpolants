@@ -39,10 +39,10 @@ The following is an index to the data maintained and produced by the ORMGP. All 
 
 ## Geology
 * [Geology](/info/md/geology.html)
-    * [Drilling](/info/md/drilling.html)
-    * [Bedrock Geology](/info/md/bedrock.html)
-    * [Sedimentology](/info/md/sedimentology.html)
-    * [Geologic Pick database](/snapshots/md/picks.html)
+* [Drilling](/info/md/drilling.html)
+* [Bedrock Geology](/info/md/bedrock.html)
+* [Sedimentology](/info/md/sedimentology.html)
+* [Geologic Pick database](/snapshots/md/picks.html)
 
 
 ## Hydrogeology
@@ -67,7 +67,7 @@ _Sub-watershed characterization and flow topology_
 
 <br>
 
-## Climatology
+## Climatology 
 * [**Data source reference**](/interpolants/sources/sources.html#climate-data-and-streamflow)
 * [**Near-realtime Data acquisition**](/interpolants/interpolation/climate-sources.html), updated nightly, including:
    * Daily data
@@ -86,7 +86,7 @@ _Sub-watershed characterization and flow topology_
 
 <br>
 
-# Web Applications
+# ** Web Applications **
 ## Geocortex Data Portal
 
 The [ORMGP Geocortex Mapping hub has been divided into various Theme Maps](/webmapping/) to allow users to quickly hone in on the information they might be seeking. For example, the Documents Theme Map provides access to the program’s library of reports, The Boreholes Theme Map focuses on providing access to borehole specific information, and the Geology Theme Map provides access to all of the ORMGP geologically related mapping. The Theme Maps group specific related data sets or interpreted products ([more info here](/webmapping/)).
@@ -114,7 +114,7 @@ R-Shiny-Leaflet mapping with access to our monitoring dataset.
 <!-- ADD SNAPSHOTS HERE -->
 <br>
 
-# Open Data Products
+# ** Open Data Products **
 
 ## Metadata
 [Our metadata repository, Table of Contents.](https://owrc.github.io/metadata/content/toc.html)
@@ -157,7 +157,7 @@ _Distributed time-series data, updated nightly_
 
 
 
-# Numerical Modelling
+# ** Numerical Modelling **
 
 Numerical modelling are applied in two ways: 
 
