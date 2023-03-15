@@ -46,13 +46,20 @@ Point data, database queries, are provided in **comma-separated value** (\*.csv)
 Geologic Model layers follow a pattern: *WB_2021_`LayerNo`\_`LayerName`\_`LayerType`\_`dateCreated`-crop.bil*.
 
 For example
-- `WB_2021_01_GROUND_SURFACE_20211027.bil` is the first layer (from the top) and is the ground surface
-- `WB_2021_09C_THORNCLIFFE_ISOPACH_20220808-crop` is the isopach of the Thorncliffe unit.
+- `WB_2021_01_GROUND_SURFACE_20211027-crop.bil' is the first, or uppermost geologic layer (01, from the top) and represents the ground surface
+- -WB_2021_02_HALTON_TILL_EQUIV_20211027-crop.bil' is the top of the ssecond geologic layer (02) and represents the top of the Halton Till
+- `WB_2021_09C_THORNCLIFFE_ISOPACH_20220808-crop.bil` is the isopach of the Thorncliffe unit 
 
-### database queries (*.csv)
+Each geologic layer includes a set of _bil_, _hdr_, and _prj_ files for both the layer top and the isopach. 
+
+### Database Queries (*.csv)
+
+The following five _csv_ files provide results from database queries for the user-selected polygon.
 
 - V_CON_DOCUMENT
+   - Contains a list of all georeferenced documents and includes information such as:  
 - V_CON_GENERAL
+   - Contains a list of all locations. This table includes information such as: location ID and names, type, top/bottom, coordinates. 
 - V_CON_GEOLOGY
 - V_CON_HYDROGEOLOGY
 - V_CON_PTTW
