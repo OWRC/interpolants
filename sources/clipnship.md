@@ -46,8 +46,8 @@ Point data, database queries, are provided in **comma-separated value** (\*.csv)
 Geologic Model layers follow a pattern: *WB_2021_`LayerNo`\_`LayerName`\_`LayerType`\_`dateCreated`-crop.bil*.
 
 For example
-- `WB_2021_01_GROUND_SURFACE_20211027-crop.bil' is the first, or uppermost geologic layer (01, from the top) and represents the ground surface
-- -WB_2021_02_HALTON_TILL_EQUIV_20211027-crop.bil' is the top of the ssecond geologic layer (02) and represents the top of the Halton Till
+- `WB_2021_01_GROUND_SURFACE_20211027-crop.bil` is the first, or uppermost geologic layer (01, from the top) and represents the ground surface
+- `WB_2021_02_HALTON_TILL_EQUIV_20211027-crop.bil` is the top of the ssecond geologic layer (02) and represents the top of the Halton Till
 - `WB_2021_09C_THORNCLIFFE_ISOPACH_20220808-crop.bil` is the isopach of the Thorncliffe unit 
 
 Each geologic layer includes a set of _bil_, _hdr_, and _prj_ files for both the layer top and the isopach. 
