@@ -86,7 +86,7 @@ _Sub-watershed characterization and flow topology_
 
 <br>
 
-# ** Web Applications **
+# **Web Applications**
 
 ## Geocortex Data Portal
 
@@ -115,7 +115,7 @@ R-Shiny-Leaflet mapping with access to our monitoring dataset.
 <!-- ADD SNAPSHOTS HERE -->
 <br>
 
-# ** Open Data Products ** 
+# **Open Data Products** 
 
 ## Metadata
 [Our metadata repository, Table of Contents.](https://owrc.github.io/metadata/content/toc.html)
@@ -158,7 +158,7 @@ _Distributed time-series data, updated nightly_
 
 
 
-# ** Numerical Modelling **
+# **Numerical Modelling**
 
 Numerical modelling are applied in two ways: 
 
@@ -233,7 +233,7 @@ The ORMGP particle tracking tool shows both the forward or backward particle tra
 
 
 
-# Technologies
+# **Technologies**
 A number of open-source and proprietary data analysis tools have been employed in our overall data management system. In contribution to the open-source community, much of our work has also left open [on our Github](https://github.com/OWRC).
 
 ## Tools (external links)
