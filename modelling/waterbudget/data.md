@@ -118,9 +118,11 @@ Snowmelt is acquired at a daily timestep that represents the "*total of 24 per h
 
 
 ## Atmospheric Demand $(E_a)$
+Total evaporation, including plant transpiration, evaporation from land surface, soil pores and interception stores, is dependent on soil moisture storage relative to the soil moisture capacity, the depth to the ground water table and potential evapotranspiration $(E_p)$, which is interpreted as the capacity for the atmosphere to remove moisture from a saturated and replenishable surface.
 
+Within the ORMGP, it is evident that vapour deficits are the best predictor to advective flux (evaporation) when relating pan evaporation to strictly aerodynamic variables, wind speeds, temperature and humidity, computed at an hourly timestep. 
 
-Within the ORMGP, it is evident that vapour deficits offer a great predictor to advective flux (evaporation) when relating pan evaporation to strictly aerodynamic variables, temperature and humidity, simulated at an hourly timestep. When mass transfer occurs over rough surfaces, surface evaporation becomes coupled with advective (vapour deficit) flux through the PBL (Bailey et.al., 1997). So, using the advective term [kg/m²/s] of Penman (1948):
+When mass transfer occurs over rough surfaces, surface evaporation becomes coupled with advective (vapour deficit) flux through the planetary boundary layer (PBL--Bailey et.al., 1997). So, taking the advective term [kg/m²/s] of Penman (1948):
 
 $$
   E_a=\rho_a \frac{\varepsilon}{p_a} d_a \cdot f(u)
@@ -134,11 +136,9 @@ $$
 
 where $E_a$ is now given in [m/s] for water. 
 
-<!-- This is the power form of open water evaporation $(E_o)$ used by Penman (1948). It is worth noting that this is modified from Penman (1948) in that it is assumed $T_s \approx T_a$, that is the relationship between surface temperature and air temperature is captured by this empirical equation. -->
+Considering its simplicity, the Penman advective term performs well against observation. [24,641 data-days from 17 MSC daily pan evaporation stations were gathered for validation](/interpolants/interpolation/calc/panET/PanEvaporation.html). With $u$ [m/s] and $d_a$ [Pa], $a=9.3\times 10^{-3}$ and $b=7.8\times 10^{-4}$ resulted in a globally weighted Nash-Sutcliffe efficiency of 0.41 and 0.90 for daily and monthly pan evaporation estimation, respectively. 
 
-While considering its simplicity, the Penman advective term performs well against observation. [24,641 data-days from 17 MSC daily pan evaporation stations were gathered for validation](/interpolants/interpolation/calc/panET/PanEvaporation.html). With $u$ [m/s] and $d_a$ [Pa], $a=9.3\times 10^{-3}$ and $b=7.8\times 10^{-4}$ resulted in a globally weighted Nash-Sutcliffe efficiency of 0.41 and 0.90 for daily and monthly pan evaporation estimation, respectively. 
-
-The advantage here is the ability to neglect No need for for the radiative terms used in Penman-Monteith (1965), Priestly-Taylor (1972), Jensen-Haise (1963), etc. A *rare* data set that is hard to interpolate due to the influence of cloud cover; good to avoid.
+The advantage here is the ability to neglect No need for for the radiative terms used in Penman-Monteith (1965), Priestly-Taylor (1972), Jensen-Haise (1963), etc. A *rare* data set that is hard to interpolate due to the influence of cloud cover--good to avoid.
 
 
 
