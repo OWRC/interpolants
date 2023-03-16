@@ -110,7 +110,15 @@ R-Shiny-Leaflet mapping with access to our monitoring dataset.
 # **Open Data Products** 
 
 ## Metadata
-[Our metadata repository, Table of Contents.](https://owrc.github.io/metadata/content/toc.html)
+
+[Our metadata repository, Table of Contents.](/metadata/content/toc.html)
+
+#### Surfaces
+ - [Potential Discharge Areas - Metadata](/metadata/surfaces/potential_discharge.html)
+ - [Potentiometric Surface - Metadata](/metadata/surfaces/potentiometric_surface.html)
+ - [Water Table - Metadata](/metadata/surfaces/water_table.html)
+
+
 
 ## Geospatial Layers
 _Static 2D fields, updated frequently_
