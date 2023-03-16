@@ -142,6 +142,15 @@ The advantage here is the ability to neglect No need for for the radiative terms
 
 
 
+## Land surface corrections
+
+From the high resolution of the model domain, $E_a$ is adjusted by considering the fractional daylight hours exposed to a sloping model cell using solar irradition theory.
+
+
+
+
+
+
 
 ## Atmospheric Yield $(Y_a)$
 A single forcing termed *Atmospheric Yield* $(Y_a)$ is inputted in the model distributed to the 10km sub-watersheds.
