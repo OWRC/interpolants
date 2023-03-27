@@ -81,7 +81,7 @@ The following five _csv_ files provide results from database queries for the use
     - The first code is either DP (deep) or SH (shallow) water levels
     - The second code is WL (for water levels)
     - The third term is either ELEV (for the water level elevation) or DEPTH (for water level depth below ground surface)
-    - The next term is either BHS (for the [*(WTO surface)*](https://owrc.github.io/watertable/) ) or Combined (For the [*(WTO surface)*](https://owrc.github.io/watertable/)). Note that for the deep (DP) water levels, this term is not included). 
+    - The next term is either BHS (for the [*(WTO surface)*](https://owrc.github.io/watertable/) ) or Combined (For the [*(WT1 surface)*](https://owrc.github.io/watertable/)). Note that for the deep (DP) water levels, this term is not included). 
     - DA refers to potential discharge areas. 
 
 ## Hydrology
