@@ -4,7 +4,7 @@ author: Oak Ridges Moraine Groundwater Program
 output: html_document
 ---
 
-ORMGP partners can gain access to the spatial layers we produce.  Users specify a small, rectangular ara, inside which a 3D block of the geologic data is provided.
+ORMGP partners can gain access to the spatial layers we produce.  Users specify a small, rectangular area, inside which a 3D block of the geologic data is provided. The specified area must not exceed 18 square kilometre (the user will get a warning if the specified rectangular area exceedss this). 
 
 The first part is the **clipping** function. This is where the user supplies the areal extent of their data request, and the return is all the data available within those extents.
 
@@ -12,11 +12,11 @@ The first part is the **clipping** function. This is where the user supplies the
 [*ArcMAP Clip function*](https://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/clip.htm)
 
 
-Then the **ship** feature provides a compressed file with all available data for download.  
+The **ship** feature then provides a compressed file with all available data for download.  
 
 
 # **Data Formats**
-The data format chosen for the exports is compressible and efficient. The files formats are thus less less common; yet are general enough that they'll open on common GIS platforms. Data are compressed into a *tar.gz* file, which can be opened using free and open software such as [7-Zip](https://www.7-zip.org/) and [WinRAR](https://www.win-rar.com/).
+The data format chosen for the exports is compressible and efficient. The files formats are thus less common, yet are general enough that they'll open on common GIS platforms. Data are compressed into a *tar.gz* file, which can be opened using free and open software such as [7-Zip](https://www.7-zip.org/) and [WinRAR](https://www.win-rar.com/).
 
 
 ## File Formats
@@ -77,6 +77,12 @@ The following five _csv_ files provide results from database queries for the use
     - `SH_WL_ELEV_BHS_Final_20210615.bil`
     - `SH_WL_ELEV_BHS_Final_DA_20210615.bil`
     - `SH_WL_ELEV_Combined_Final_20210708b.bil`
+ - The naming convention is as follows:
+    - The first code is either DP (deep) or SH (shallow) water levels
+    - The second code is WL (for water levels)
+    - The third term is either ELEV (for the water level elevation) or DEPTH (for water level depth below ground surface)
+    - The next term is either BHS (for the WTO surface) or Combined (For the WT1 surface). Note that for the deep (DP) water levels, this term is not included). 
+    - DA refers to potential discharge areas. 
 
 ## Hydrology
 
