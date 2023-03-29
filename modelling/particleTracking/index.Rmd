@@ -93,3 +93,14 @@ The steady state flux field of the above models were computed by running each mo
 at every active model cell/element, a particle was placed at the cells centroid (or top of water surface whichever less) and tracked forward and backward using the Pollock method for the MODFLOW models, and a vector triangulation scheme for the FEFLOW models
 
 
+
+
+
+
+# notes
+
+
+particle tracking isn't modelling, rather its an analysis of a model output, taken at a static/steady state.
+
+
+POlease note that there are many mehtodologies tha can be applied to particale traning, we have chosen what most convienient.  Also take not of the numerocal model cell/element size/orientation as this too will have effects on the particla pathline calculation
