@@ -4,7 +4,6 @@ import (
 	"encoding/gob"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"math"
 	"os"
 	"time"
@@ -98,7 +97,7 @@ func main() {
 	for i, n := range reachesCrop {
 		n.I = append(n.I, i) // I[4]: reach ID
 		if len(n.I) != 5 {
-			log.Fatalln("unequal index count")
+			panic("unequal index count")
 		}
 	}
 	printNetwork(mmio.RemoveExtension(strmsFP)+"-segments.geojson", reachesCrop)
@@ -107,16 +106,16 @@ func main() {
 func getStreams(fp string) [][][3]float64 {
 	fstreams, err := ioutil.ReadFile(fp)
 	if err != nil {
-		log.Fatalf("%v\n", err)
+		panic(err)
 	}
 	gstreams, err := geojson.UnmarshalFeatureCollection(fstreams)
 	if err != nil {
-		log.Fatalf("%v\n", err)
+		panic(err)
 	}
 	streams, nf := [][][3]float64{}, 0
 	for _, f := range gstreams.Features {
 		if f.Geometry.Type != "MultiLineString" {
-			log.Fatalln("todo")
+			panic("todo")
 		}
 		for _, ln := range f.Geometry.MultiLineString {
 			ml := make([][3]float64, len(ln))
@@ -126,7 +125,7 @@ func getStreams(fp string) [][][3]float64 {
 				ml[i][2] = -9999.
 				nf++
 				if len(c) != 2 {
-					log.Fatalln("todo")
+					panic("todo")
 				}
 			}
 			streams = append(streams, ml)
@@ -139,33 +138,49 @@ func getStreams(fp string) [][][3]float64 {
 func getOutlets(fp string) [][][3]float64 {
 	foutlet, err := ioutil.ReadFile(fp)
 	if err != nil {
-		log.Fatalf("%v\n", err)
+		panic(err)
 	}
 	goutlet, err := geojson.UnmarshalFeatureCollection(foutlet)
 	if err != nil {
-		log.Fatalf("%v\n", err)
+		panic(err)
 	}
 	outlets := [][][3]float64{}
 	for _, f := range goutlet.Features {
-		if f.Geometry.Type != "MultiPolygon" {
-			log.Fatalln("todo")
-		}
-		for _, pgn := range f.Geometry.MultiPolygon {
-			if len(pgn) != 1 {
-				log.Fatalln("todo")
-			}
-			for _, part := range pgn {
-				ml := make([][3]float64, len(part))
-				for i, c := range part {
+		switch f.Geometry.Type {
+		case "Polygon":
+			for _, pgn := range f.Geometry.Polygon {
+				ml := make([][3]float64, len(pgn))
+				for i, c := range pgn {
 					ml[i][0] = c[0]
 					ml[i][1] = c[1]
 					ml[i][2] = -9999.
 					if len(c) != 2 {
-						log.Fatalln("todo")
+						panic("todo")
 					}
 				}
 				outlets = append(outlets, ml)
 			}
+
+		case "MultiPolygon":
+			for _, pgn := range f.Geometry.MultiPolygon {
+				if len(pgn) != 1 {
+					panic("todo")
+				}
+				for _, part := range pgn {
+					ml := make([][3]float64, len(part))
+					for i, c := range part {
+						ml[i][0] = c[0]
+						ml[i][1] = c[1]
+						ml[i][2] = -9999.
+						if len(c) != 2 {
+							panic("todo")
+						}
+					}
+					outlets = append(outlets, ml)
+				}
+			}
+		default:
+			panic("todo1")
 		}
 	}
 	return outlets
@@ -213,16 +228,16 @@ func saveAMgob(fp string, strms [][][3]float64, am [][]int, epf, epl [][3]float6
 	}{S: strms, A: am, F: epf, L: epl, R: radius}
 	f, err := os.Create(fp)
 	if err != nil {
-		log.Fatalf("saveAMgob: %v", err)
+		panic(err)
 	}
 	enc := gob.NewEncoder(f)
 	err = enc.Encode(d)
 	if err != nil {
-		log.Fatalf("saveAMgob: %v", err)
+		panic(err)
 	}
 	err = f.Close()
 	if err != nil {
-		log.Fatalf("saveAMgob: %v", err)
+		panic(err)
 	}
 }
 
@@ -235,16 +250,16 @@ func loadAMgob(fp string) (strms [][][3]float64, am [][]int, epf, epl [][3]float
 	}{}
 	f, err := os.Open(fp)
 	if err != nil {
-		log.Fatalf("loadAMgob: %v", err)
+		panic(err)
 	}
 	enc := gob.NewDecoder(f)
 	err = enc.Decode(&d)
 	if err != nil {
-		log.Fatalf("routing/build.go loadAMgob: %v", err)
+		panic(err)
 	}
 	err = f.Close()
 	if err != nil {
-		log.Fatalf("routing/build.go loadAMgob: %v", err)
+		panic(err)
 	}
 	return d.S, d.A, d.F, d.L
 }
@@ -286,9 +301,9 @@ func printNetwork(fp string, nds []*tp.Node) {
 	}
 	rawJSON, err := fc.MarshalJSON()
 	if err != nil {
-		log.Fatalf("routing.PrintSegments: %v\n", err)
+		panic(err)
 	}
 	if err := ioutil.WriteFile(fp, rawJSON, 0644); err != nil {
-		log.Fatalf("routing.PrintSegments: %v\n", err)
+		panic(err)
 	}
 }

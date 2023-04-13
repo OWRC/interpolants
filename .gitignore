@@ -44,3 +44,7 @@ rosm.cache
 *.wind_speed
 *.water_*
 *.lnk
+
+
+# temporary (files here may be too big)
+grids/
