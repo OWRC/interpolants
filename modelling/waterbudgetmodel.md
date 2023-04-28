@@ -5,8 +5,47 @@ author: Oak Ridges Moraine Groundwater Program
 output: html_document
 ---
 
-A regionally-distributed runoff/recharge model has been developed to simulate regional-scale (>30k km²) hydrologic processes at a fine (50m grid) resolution. The model code is written to support large-scale and high-resolution distributed processes while remaining amenable to multi-threaded computer architectures. No process of the model is in any way novel, rather a suite of existing model structures have been chosen and coded to minimize model run times, while maintaining an ease of implementation, practical applicability and scalability.
 
+> A regionally-distributed runoff/recharge model has been developed to simulate regional-scale (>10k km²) hydrologic processes at a fine (50m grid) resolution. The model code is written in an attempt to simulate large-scale/hight resolution distributed hydrological phenomena while remaining amenable to multi-threaded computer architectures. No process of the model is in any way novel, rather a suite of existing model structures have been chosen and coded to minimize model run times, while maintaining an ease of implementation, practical applicability and scalability.
+
+
+__Executive Summary__
+
+- Integrated groundwater surface water numerical model
+- Built for fast computation
+- 12.1M x 50x50 m cells x 6-hourly time-step x 20 years
+- Simulates evaporation, runoff, infiltration, watertable elevations, groundwater discharge and recharge occurring in response to a rainfall and/or snowmelt event.
+- Model simulates from the hydrological water year 2002 (Oct 10, 2001) 
+- Runs on regional climate data-fields:
+    - ECCC Precipitation collected from [CaPA-RDPA](https://eccc-msc.github.io/open-data/msc-data/nwp_hrdpa/readme_hrdpa_en/)
+    - NOAA Snowmelt collected from [SNODAS](https://nsidc.org/data/g02158/versions/1)
+    - $T_a$, $r$, $u$ interpolated from [MSC](http://climate.weather.gc.ca/historical_data/search_historic_data_e.html)
+    - Potential evaporation $(E_a)$ determined using the [empirical wind functions of Penman (1948)](/interpolants/modelling/waterbudget/data.html#atmospheric-demand-e_a)
+
+- Explicit soil moisture accounting (SMA) scheme
+- Cold content energy balance snowpack model when SNODAS was unavailable (pre-2010)
+- Distribution function based shallow groundwater model with groundwater feedback mechanisms, following TOPMODEL
+- Steepest decent cascade overland flow routing
+
+
+
+
+* TOC
+{:toc}
+
+
+# Introduction
+The following is a description of the regionally-distributed runoff/recharge model, the water budget tool located on our website, hereinafter referred to as the "*model*".
+
+
+The model's primary intention is to project land surface moisture distribution for the purposes of estimating regional groundwater recharge. It utilizes hydrological model procedures that are amenable to local data availability. While the model can simulate stream flow discharge and overland runoff at any point in space, the model is not intended for rainfall runoff modelling; outputs from this model will be used to constrain regional groundwater models within the 30,000km² Oak Ridges Moraine Groundwater Program jurisdiction of southern Ontario. That said, mean daily streamflow remains the primary calibration target.
+
+This model is currently in beta mode, and its use for practical application should proceed with caution. Users should be aware that model results posted online will always be subject to change. Ultimately, the intent of this model is to produced ranges of long-term (monthly average) water budget metrics (precipitation, runoff, evaporation, recharge, moisture state, etc.) as a hydrological *reference* for the [partners of the ORMGP](https://www.oakridgeswater.ca/). This reference is maintained in real-time, [updated by the ORMGP server center](/interpolants/#servers).
+
+The model is physically based in that mass is conserved and processes are not constrained to any particular timestep. The model conceptualization has maintained parameters that speaks to the common physical hydrology lexicon, with parameters such as percent impervious, conductivity of surficial soils, etc. The model is a hydrological model integrated with a TOPMODEL groundwater system. The source code is [open and free to use](https://github.com/maseology/rdrr). Below is the description of the model procedures that have been codified.
+
+
+## Codiefication
 
 Model performance has been maximized in three ways:
 
@@ -36,43 +75,6 @@ These variables/states are calculated every 6 hours, to 12.1M model cells (on a 
 
 
 
-* TOC
-{:toc}
-
-
-
-# Executive Summary
-
-- Integrated groundwater surface water numerical model
-- Built for fast computation
-- simulates evaporation, runoff, infiltration, watertable elevations, groundwater recharge occurring after a rainfall and/or snowmelt event.
-- model returns data from the hydrological water year 2002 (2001-10-01) 
-- Use of regional climate fields:
-    - Precipitation was collected from [CaPA-RDPA](https://eccc-msc.github.io/open-data/msc-data/nwp_hrdpa/readme_hrdpa_en/)
-    - Snowmelt was collected from [SNODAS](https://nsidc.org/data/g02158/versions/1)
-- $T_a$, $r$, $u$ interpolated from [MSC](http://climate.weather.gc.ca/historical_data/search_historic_data_e.html)
-- Potential evaporation $(E_a)$ determined using the [empirical wind functions of Penman (1948)](/interpolants/modelling/waterbudget/data.html#atmospheric-demand-e_a)
-- 12.1M x 50x50 m cells x 6-hourly time-step x 20 years
-- explicit soil moisture accounting scheme
-- cold content energy balance snowpack model when SNODAS was unavailable (pre-2010)
-- distribution function-based shallow groundwater model with groundwater feedback mechanisms following TOPMODEL
-- Cascade overland flow routing
-<!-- - a one-dimensional first-order kinematic overland flow module	 -->
-
-## Description
-The following is a description of the regionally-distributed runoff/recharge model, the water budget tool located on our website, hereinafter referred to as the "*model*".
-
-
-The model's primary intention is to project land surface moisture distribution for the purposes of estimating regional groundwater recharge. It utilizes hydrological model procedures that are amenable to local data availability. While the model can simulate stream flow discharge and overland runoff at any point in space, the model is not intended for rainfall runoff modelling; outputs from this model will be used to constrain regional groundwater models within the 30,000km² Oak Ridges Moraine Groundwater Program jurisdiction of southern Ontario. That said, mean daily streamflow remains the primary calibration target.
-
-This model is currently in beta mode, and its use for practical application should proceed with caution. Users should be aware that model results posted online will always be subject to change. Ultimately, the intent of this model is to produced ranges of long-term (monthly average) water budget metrics (precipitation, runoff, evaporation, recharge, moisture state, etc.) as a hydrological reference for the [partners of the ORMGP](https://www.oakridgeswater.ca/). It maintains as a real-time reference, [updated by ORMGP servers.](/interpolants/#servers)
-
-The model is physically based in that mass is conserved and processes are not constrained to any particular timestep. The model conceptualization has maintained parameters that speaks to the common physical hydrology lexicon, with parameters such as percent impervious, conductivity of surficial soils, etc. The model is a hydrological model integrated with a TOPMODEL groundwater system. The source code is [open and free to use](https://github.com/maseology/rdrr). Below is the description of the model procedures that have been codified.
-
-
-
-
-
 # Theory
 
 
@@ -86,7 +88,7 @@ $$ \Delta S=P-E-R-G $$
 
 ### [Overland flow routing](/interpolants/modelling/waterbudget/overlandflow.html)
 
-$$ F_\text{casc}=1-\exp(\frac{\beta}{-\alpha}) $$
+$$ F_\text{casc}=1-\exp\left(\frac{\beta}{-\alpha}\right) $$
 
 
 

@@ -40,14 +40,15 @@ basemapGL <- ggplot() +
 ```
 
 ```{r geospatial, include=FALSE}
-model.bounds <- st_as_sf(readOGR("shp/230306-models.geojson",verbose = FALSE))
+model.bounds <- st_as_sf(readOGR("shp/230428-models.geojson",verbose = FALSE))
 ```
 
 
 ## Introduction
 
-The ORMGP particle tracking web-tool shows both the forward or backward particle tracking from a site that is being studied.  The tool is built upon [numerical models](/snapshots/md/numerical-model-custodianship-program.html) which have organized, synthesized and interpreted a wealth of hydrogeological information (e.g., boreholes, geological mapping, previous studies, etc.). 
+The [ORMGP particle tracking web-tool](https://www.oakridgeswater.ca/) returns both forward and backward sub-surface particle tracks from a user-selected location.  The tool is built upon [existing numerical groundwater models](/snapshots/md/numerical-model-custodianship-program.html) which in themselves have organized, synthesized and interpreted a wealth of hydrogeological information (e.g., boreholes, geological mapping, previous studies, etc.) to gain an understanding of the groundwater flow system. 
 
+Here, the results from running these models to a steady state are collected. From these states, a virtual particle can be released in the model domain and its path can be traced.
 
 Particle tracking can prove important and useful from a number of perspectives:
 
@@ -60,6 +61,18 @@ Particle tracking can prove important and useful from a number of perspectives:
 
 
 # Numerical Model Selection
+
+As of the date listed above, the following models have been made live:
+
+1. Regional model (MODFLOW)
+1. Halton Tier-3 (FEFLOW)
+<!-- 1. South Halton (MODFLOW) -->
+<!-- 1. CVC (FEFLOW) -->
+<!-- 1. NVCA-SSEA (FEFLOW) -->
+<!-- 1. Ramara Whites Talbot (MODFLOW) -->
+<!-- 1. York Tier-3 (MODFLOW) -->
+<!-- 1. Durham (MODFLOW) -->
+
 
 ```{r mapModels, echo=FALSE, message=FALSE, warning=FALSE}
 basemapGL +
@@ -77,30 +90,70 @@ basemapGL +
 
 
 
-### 7 models used:
-
-1. Regional model (MODFLOW)
-1. South Halton (MODFLOW)
-1. CVC (FEFLOW)
-1. NVCA-SSEA (FEFLOW)
-1. Ramara Whites Talbot (MODFLOW)
-1. York Tier-3 (MODFLOW)
-1. Durham (MODFLOW)
-
-
-The steady state flux field of the above models were computed by running each model
-
-at every active model cell/element, a particle was placed at the cells centroid (or top of water surface whichever less) and tracked forward and backward using the Pollock method for the MODFLOW models, and a vector triangulation scheme for the FEFLOW models
 
 
 
 
 
-
-# notes
-
-
-particle tracking isn't modelling, rather its an analysis of a model output, taken at a static/steady state.
+# Methodology
 
 
-POlease note that there are many mehtodologies tha can be applied to particale traning, we have chosen what most convienient.  Also take not of the numerocal model cell/element size/orientation as this too will have effects on the particla pathline calculation
+A "Long-term average" flux field of the above models were computed by running each model to steady state. This is a standard numerical model *output*.
+
+At every model prismatic cell (or element), a virtual particle was placed at its centroid (or top of water surface whichever less) and tracked forward and backward using the Pollock method for the MODFLOW models, and a vector triangulation scheme for the FEFLOW models. [Source code for the particle tracking can be found here](https://github.com/maseology/ptrack).
+
+
+There are 2 fundamental model "types" that are present in our custodianship program: Finite Difference (FD) models (i.e., MODFLOW) and Finite Element (FE) models (i.e., FEFLOW, HydroGeoSphere). In source water protection, both types have proved more than sufficient to meet provincial guidance and planning demands.  However, when it comes to particle tracking, the type plays a large role in how model results are to be interpreted.
+
+
+For Finite Difference (FD) models, the semi-analytical method of Pollock (1989) is applied. The spatial extent of an FD model can be thought of as a stacking of rectilinear blocks, leaving no gaps in its interior.
+
+
+
+Finite Elements (FE) used in groundwater modelling in southern Ontario are entirely built using a triangulated irregular network covering the land surface. From this FE mesh, hydrostratigraphic layers are built, resulting in a stacking of triangular prisms. Here a 3D flux vector computed at the element centroid is extracted from the model and is assumed constant throughout the spatial extent of the prismatic element. This is here termed the "vector-based" method.
+
+
+Please note that there are many particle tracking methodologies and algorithms, we have chosen what most convenient.
+
+Numerical model cell/element size/orientation will have effects on the particle pathline calculation.
+
+
+
+# "Centoidal" Particles
+
+For the sake brevity, the term "model cell" can be interpreted as either an FD grid cell or an FE prism. The centroid is the center of mass of the cell.
+
+Particles are tracked both backwards and forwards from the centroid of every grid cell in the model.  In all, this results in *a collection of particle pathlines that pass through the centroid of at least one model cell*.
+
+
+Particles are attributed with:
+
+
+
+## Data Compression
+
+To improve user performance, particle pathlines from larger models (>1M cells) have to be simplified to reduce data size (i.e., data compression). As a rule of thumb, the particle tracking web tool performs best when the pathline file remains less than 2GB memory. 
+
+These pathline files (outputted as a _"gob file"_ or [Go Binary](https://pkg.go.dev/encoding/binary): _\*.gob_) consist of a set of vertices each with knowledge of their neighbour vertices (either up and down gradient of the current location). It is these relationships that define the pathlines yet enable the user to take any point along a centroidal pathline and track from there.
+
+There are three ways these data can be compressed either by:
+
+1. removing excess detail, such as vertices in close proximity, an using polyline smoothing schemes.
+    - here the so-called Ramer-Douglas-Peucker algorithm algorithm was applied with a 10m threshold
+  
+1. removing pathlines originating from cells in "pinched-out" layers
+
+1. systematically removing whole pathlines
+    - random pull: simply removing every n$^{th}$ pathline at random
+    - area threshold (full exclusion, or random pull)
+    - quality thresholds (FE meshes only, aspect ratios, Delaunay criterion, etc.)
+
+
+
+
+
+
+
+# References
+
+Pollock, D.W., 1989, Documentation of a computer program to compute and display pathlines using results from the U.S. Geological Survey modular three-dimensional finite-difference ground-water flow model: U.S. Geological Survey Open-File Report 89–381.
