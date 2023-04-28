@@ -6,10 +6,10 @@ output: html_document
 ---
 
 
-> A regionally-distributed runoff/recharge model has been developed to simulate regional-scale (>10k km²) hydrologic processes at a fine (50m grid) resolution. The model code is written in an attempt to simulate large-scale/hight resolution distributed hydrological phenomena while remaining amenable to multi-threaded computer architectures. No process of the model is in any way novel, rather a suite of existing model structures have been chosen and coded to minimize model run times, while maintaining an ease of implementation, practical applicability and scalability.
+> A regionally-distributed runoff/recharge model has been developed to simulate regional-scale (>>10k km²) hydrologic processes at a fine (50m grid) resolution. The model code is written in an attempt to simulate large-scale/hight resolution distributed hydrological phenomena while remaining amenable to multi-threaded computer architectures. No process of the model is in any way novel, rather a suite of existing model structures have been chosen and coded to minimize model run times, while maintaining an ease of implementation, practical applicability and scalability.
 
 
- # Executive Summary
+# Executive Summary
 
 - Integrated groundwater surface water numerical model
 - Built for fast computation
@@ -45,7 +45,7 @@ This model is currently in beta mode, and its use for practical application shou
 The model is physically based in that mass is conserved and processes are not constrained to any particular timestep. The model conceptualization has maintained parameters that speaks to the common physical hydrology lexicon, with parameters such as percent impervious, conductivity of surficial soils, etc. The model is a hydrological model integrated with a TOPMODEL groundwater system. The source code is [open and free to use](https://github.com/maseology/rdrr). Below is the description of the model procedures that have been codified.
 
 
-## Codiefication
+# Codification
 
 Model performance has been maximized in three ways:
 
