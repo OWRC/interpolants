@@ -11,6 +11,8 @@ output: html_document
 
 ## upper case 
 
+$B$     groundwater discharge to streams (L/T)
+
 $D$     soil moisture deficit (L)
 
 $E$     total evaporation (L)
@@ -31,7 +33,7 @@ $P_M$   snowmelt/drainage from snowpack (L)
 
 $R$     runoff, generated at a particular location
 
-$S$     a storage reservoir with know capacity (L)
+$S$     storage reservoir with known capacity $S_\text{max}$ (L)
 
 $T_a$   temperature of air (°C)
 
@@ -54,6 +56,8 @@ $e$ vapour pressure of water in air (Pa)
 $e_s$ saturation vapour pressure of water in air (Pa)
 
 $f$     infiltration (L)
+
+$k_\text{in(out)}$   later movement of water into (out of) the model cell (L)
 
 $p_a$   atmospheric pressure (Pa)
 

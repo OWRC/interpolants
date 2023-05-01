@@ -13,7 +13,16 @@ The overland flow process is built for performance. While, many liberties are ta
 
 The overland flow model is dependent on [topography](/interpolants/interpolation/overland.html) both in terms of it's lateral direction of flow and rate if discharge. It is called a *__"cascade"__* model because runoff from a model cell is routed and become *__"runon"__* to a downslope cell. Routing following the $D8$ algorithm (O'Callaghan and Mark, 1984) takes runoff computed at a cell, and adds it as runon to the adjacent model cell having the steepest decent.
 
-Hydrological correction has been applied to the digital elevation model (DEM) which means that the derived routing model will always drain to a model boundary, and land surface swales are always assumed to drain. (*This is matter of choice, and is not a limitation to the routing model; only users should be aware of the issues arising from swales in a cascade network.*)
+Hydrological correction has been applied to the digital elevation model (DEM) which means that the derived routing model will always drain to a model boundary, and land surface swales are always assumed to drain. (*This is matter of choice, and is not a limitation to the routing model; only users should be aware of the issues arising from swales in a cascade network. See cascade-towers discussion below.*)
+
+A property of the cascade is that when it involved a sequence of many linear reservoirs, the movement of water resembles a kinetic system, a concept known as the Nash model (Nash, 1957). Consequently, the model cannot have any back-water effects or inertial effects.
+
+<br>
+
+![Engineer Manual, 1994](../fig/A-concept-of-a-Nash-model-cascade-of-linear-reservoirs-Engineer-Manual-1994_W640.jpg)
+*The "Nash Cascade" (after USACE, 1994).*
+
+<br>
 
 <!-- From the [Soil Moisture Accounting scheme](/interpolants/modelling/waterbudget/sma.html), the water budget of the "mobile storage" reservoir is defined as:
 
@@ -29,13 +38,13 @@ $$
 
 # Runoff coefficient
 
-Laterally moving water leaving the cell $(k_\text{out})$ is corrected based on land surface slope. Water leaving a cell can only be directed to a single cell, but any cell can receive from multiple cells. A "*cascade factor*", $F_\text{casc}\approx f(\text{slope},\text{roughness},\text{etc.})$, where $0\leq F_\text{casc} \leq 1$, is applied to the current volume stored in the mobile store (in the form of a *linear reservoir*):
+Laterally moving water leaving the cell $(k_\text{out})$ is corrected based on land surface slope. Water leaving a cell can only be directed to a single cell, but any cell can receive from multiple cells. A "*cascade factor*", $F_\text{casc}\propto f(\text{slope},\text{roughness},\text{etc.})$, where $0\leq F_\text{casc} \leq 1$, is applied to the excess volume stored in the mobile store (in the form of a *linear reservoir*):
 
 $$
-  k_\text{out}=F_\text{casc}S_k^+,
+  k_\text{out}=F_\text{casc}S^+,
 $$
 
-where $S_k^+>0$ is water in the detention store in excess of the store's capacity. $F_\text{casc}$ is related to land surface gradient by:
+where $S^+>0$ is water in the detention store in excess of the store's capacity. $F_\text{casc}$ is related to land surface gradient by:
 
 $$
   F_\text{casc}=1-\exp\left(\frac{\beta^2}{-\alpha}\right),
@@ -49,6 +58,28 @@ where $\beta$ is land surface gradient and $\alpha$ is a scaling parameter (note
 $$
 
 where $\beta$ is land surface gradient, $r$ is called the "range" (note that the above equation is identical to the Gaussian variogram model), and $a$ is a scaling factor applied to the range such that it's value approaches unity at $r$. ; Below are examples with $a\approx 5$: -->
+
+
+<br>
+
+![](../fig/rdrr-fcasc.png)
+
+
+
+## Constrained $F_\text{casc}$
+
+As applied to the model, $F_\text{casc}$ is further constrained to a subset of $[0,1]$ using the linear re-scaling:
+
+$$
+  \hat{F}_\text{casc}=(F_\text{cx}-F_\text{cn})F_\text{casc}+F_\text{cn}
+$$
+
+$$
+  0 < F_\text{cn} < F_\text{cx} <1 
+$$
+
+meaning the model will always maintain some (small) runoff $(\hat{F}_\text{casc}=F_\text{cn}\approx 0.001)$ and $F_\text{cx}$ can be applied as a **_runoff coefficient_**.
+
 
 
 
@@ -70,13 +101,15 @@ Urban areas that are assumed serviced also have $F_\text{casc}=1$ but also have 
 
 <br>
 
+
+## In Summary
+
 The $D8$ algorithm produces a dendritic network of overland flow paths whose rate of discharge depends on $F_\text{casc}$:
 - stream cells: $F_\text{casc}=1$
 - urban cells: $F_\text{casc}=1$ (assumes serviced areas)
 - all else $F_\text{casc}=1-\exp\left(\frac{\beta^2}{-\alpha}\right)$, $(\beta=\text{surface gradient})$
 
 
-A property of the cascade is that when it involved a sequence of many linear reservoirs, the movement of water resembles a kinetic system, a concept known as the Nash model (Nash, 1957). Consequently, the model cannot have any back-water effects or inertial effects.
 
 
 ![](../fig/rdrr-beta-1.png)
@@ -101,4 +134,6 @@ where $K_\text{sat}$ is saturated hydraulic conductivity of the surficial soils,
 
 Nash, J.E., 1957. The form of the instantaneous unit hydrograph. IAHS Publication 45(3), 114–121.
 
-O'Callaghan, J.F., and D.M. Mark, 1984. The extraction of drainage net-works from digital elevation data, Comput. Vision Graphics Image Process., 28, pp. 328-344.
+O'Callaghan, J.F., and D.M. Mark, 1984. The extraction of drainage net-works from digital elevation data, Comput. Vision Graphics Image Process., 28, pp 328-344.
+
+USACE, 1994: Engineering and Design – Flood-Runoff Analysis, Department of the Army U.S. Army Corps ofEngineers Washington, DC 20314-1000
