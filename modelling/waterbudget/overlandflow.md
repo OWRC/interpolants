@@ -20,6 +20,7 @@ A property of the cascade is that when it involved a sequence of many linear res
 <br>
 
 ![Engineer Manual, 1994](../fig/A-concept-of-a-Nash-model-cascade-of-linear-reservoirs-Engineer-Manual-1994_W640.jpg)
+
 *The "Nash Cascade" (after USACE, 1994).*
 
 <br>

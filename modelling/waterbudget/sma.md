@@ -68,8 +68,10 @@ $$
   g=S^+\left[1-\exp\left(\frac{-K_\text{sat}}{L}\Delta t\right)\right].
 $$
 
-It is important that the second term of the groundwater recharge equation remain to control so-called _**"cascade towers"**_ which occur when confluences in the [cascade network](/interpolants/modelling/waterbudget/overlandflow.html#cascade-network) create unrealistically high stages. (This is mainly a consequence of the simplicity of the overland flow scheme applied here---normally, the [pressure term](/info/lia/#conservation-of-momentum) in the shallow water equations provides this control physically.) Here the interface length $L=1\text{ mm}$ globally an gives the function form (at $\Delta t=$).
+It is important that the second term of the groundwater recharge equation remain to control so-called _**"cascade towers"**_ which occur when confluences in the [cascade network](/interpolants/modelling/waterbudget/overlandflow.html#cascade-network) create unrealistically high stages. (This is mainly a consequence of the simplicity of the overland flow scheme applied here---normally, the [pressure term](/info/lia/#conservation-of-momentum) in the shallow water equations provides this control physically.) Here the interface length $L=1\text{ mm}$ globally an gives the function form (at $\Delta t=21600 \text{ sec}$).
 
 <br>
 
 ![](../fig/rdrr-sma-recharge.png)
+
+*Visual interpretation of the above function. Characteristic length $L$ can clearly be used as a scaling factor, showing here how it varies from $L=1\text{ mm}$. $(\Delta t=21600 \text{ sec}.)$*
