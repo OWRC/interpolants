@@ -65,7 +65,10 @@ where $\beta$ is land surface gradient, $r$ is called the "range" (note that the
 
 ![](../fig/rdrr-fcasc.png)
 
+*$F_\text{casc}$ is assigned as a function of slope. Above shows the affect of varying $\alpha$ within the range of gradients found local to the ORMGP (see histogram below).*
 
+
+<br>
 
 ## Constrained $F_\text{casc}$
 
@@ -98,6 +101,7 @@ Urban areas that are assumed serviced also have $F_\text{casc}=1$ but also have 
 ## Cascade network
 
 ![](../fig/cascade.png)
+
 *Model close-up showing the granularity of the overland flow routing scheme. Flow primarily runs along the purple tracks, but in serviced areas, runoff is directly routed to streams (red).*
 
 <br>
@@ -114,6 +118,7 @@ The $D8$ algorithm produces a dendritic network of overland flow paths whose rat
 
 
 ![](../fig/rdrr-beta-1.png)
+
 *When comparing the distribution of land surface gradient to a calibrated cascade factor function it's apparent that lateral movement of overland flow is not a dominant process for most of the landscape.*
 
 <br>
