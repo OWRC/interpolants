@@ -6,7 +6,7 @@ output: html_document
 ---
 
 
-> A regionally-distributed runoff/recharge model has been developed to simulate regional-scale (>>10k km²) hydrologic processes at a fine (50m grid) resolution. The model code is written in an attempt to simulate large-scale/hight resolution distributed hydrological phenomena while remaining amenable to multi-threaded computer architectures. No process of the model is in any way novel, rather a suite of existing model structures have been chosen and coded to minimize model run times, while maintaining an ease of implementation, practical applicability and scalability.
+> A regionally-distributed runoff/recharge model has been developed to simulate regional-scale (>>10k km²) hydrologic processes at a fine (50m grid) resolution. The model code is written in an attempt to simulate large-scale/high resolution distributed hydrological phenomena while remaining amenable to multi-threaded computer architectures. No process of the model is in any way novel, rather a suite of existing model structures have been chosen and coded to minimize model run times, while maintaining an ease of implementation, practical applicability and scalability.
 
 
 # Executive Summary
