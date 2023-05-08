@@ -180,18 +180,18 @@ It should first be noted that the above formulation is the very similar to the l
 
 Rearranging the above terms gives:
 
-$$
-  \delta D_i = D_i-\overline{D} = m\left(\gamma - \zeta_i\right)
-$$
+<!-- $$ \delta D_i = D_i-\overline{D} = m\left(\gamma - \zeta_i\right) $$ -->
+
+$$ \delta D_i = \frac{D_i-\overline{D}}{m} = \gamma - \zeta_i $$
 
 where $\delta D_i$ is the groundwater deficit relative to the regional mean, and is independent of time, and therefore can be parameterized. From this, at any time $t$, the local deficit is thus:
 
-$$
- D_{i,t} = \delta D_i + \overline{D}_t
-$$
+<!-- $$ D_{i,t} = \delta D_i + \overline{D}_t $$ -->
+
+$$ D_{i,t} = m\cdot \delta D_i + \overline{D}_t $$
 
 
-"Groundwater discharge" occurs in any saturated areas $(D_i<0)$ and is given by:
+Groundwater discharge occurs in any saturated areas $(D_i<0)$ and is given by:
 
 $$
 	b_i = \frac{wq_i}{A} = \frac{q_i}{w} = \frac{T_o\tan\beta\exp(-D_i/m)}{w} = K_\text{sat}\tan\beta\exp(-D_i/m)
