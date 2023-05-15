@@ -122,10 +122,10 @@ R-Shiny-Leaflet mapping with access to our monitoring dataset.
 
 ## Geospatial Layers
 _Static 2D fields, updated frequently_
-* Bedrock
-* Hydro-stratigraphic units.
-* [**Water Table Mapping**](/watertable/)
-* [Land use](/interpolants/interpolation/landuse.html), including:
+### Bedrock
+### Hydro-stratigraphy
+### [**Water Table Mapping**](/watertable/)
+### [Land use](/interpolants/interpolation/landuse.html)
     * impervious cover
     * canopy cover
     * wetland cover
