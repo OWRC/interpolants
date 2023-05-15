@@ -126,11 +126,11 @@ _Static 2D fields, updated frequently_
 ### Hydro-stratigraphy
 ### [**Water Table Mapping**](/watertable/)
 ### [Land use](/interpolants/interpolation/landuse.html)
-    * impervious cover
-    * canopy cover
-    * wetland cover
-    * open water
-    * relative permeability
+#### impervious cover
+#### canopy cover
+#### wetland cover
+#### open water
+#### relative permeability
 
 ## **Clip 'n Ship**
 * [**"Clip 'n Ship"**](/interpolants/sources/clipnship.html) — A bulk spatial data export system, by geographic extent. Includes many of the products listed below.
