@@ -121,7 +121,9 @@ R-Shiny-Leaflet mapping with access to our monitoring dataset.
 
 
 ## Geospatial Layers
-_Static 2D fields, updated frequently_
+
+> _Static 2D fields, updated frequently_
+
 ### Bedrock
 ### Hydro-stratigraphy
 ### [**Water Table Mapping**](/watertable/)
