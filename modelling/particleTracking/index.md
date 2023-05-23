@@ -76,6 +76,12 @@ Particles vertices are attributed with:
 1. Particle startpoint
 
 
+## Example
+
+![](img/clicked-location1.png)
+
+![](img/clicked-location2.png)
+
 ## Data Compression
 
 To improve user performance, particle pathlines from larger models (>1M cells) have to be simplified to reduce data size (i.e., data compression). As a rule of thumb, the particle tracking web tool performs best when the pathline file remains less than 2GB memory. 
@@ -98,7 +104,7 @@ There are three ways these data can be compressed either by:
 
 # System test
 
-<iframe src="https://owrc.shinyapps.io/ptrack/" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://owrc.shinyapps.io/ptrack/" frameborder="0" allowfullscreen></iframe>
 
 
 

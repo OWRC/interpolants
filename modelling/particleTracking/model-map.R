@@ -41,7 +41,7 @@ basemapGL <- ggplot() +
 
 #############################
 
-model.bounds <- st_as_sf(readOGR("shp/230428-models.geojson",verbose = FALSE))
+model.bounds <- st_as_sf(readOGR("shp/230523-models.geojson",verbose = FALSE))
 
 
 basemapGL +
@@ -55,4 +55,4 @@ basemapGL +
   theme(axis.ticks = element_blank()) +
   labs(x=NULL,y=NULL)
 
-ggsave('img/models.png')
+ggsave('img/models.png', bg = "transparent")
