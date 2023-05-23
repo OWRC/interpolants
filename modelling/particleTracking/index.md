@@ -14,7 +14,7 @@ Particle tracking can prove important and useful from a number of perspectives:
 - Ecological studies, where aquatic organisms are of interest, could also make use of particle tracking.  By examining the backward particle tracking from streams, existing or proposed land uses that might affect stream water quality can be assessed, and potential mitigation proposed. Ecologically Groundwater Recharge Areas (EGRA, *formerly ESGRA*) make use of such particle tracks to link recharge to discharge areas.  If new important ecological stream reaches are identified, then preliminary delineation of EGRAs can be made using the tool.  This can lead to early mitigation activities.
 
 
-<!-- [![Watch the video](https://img.youtube.com/vi/m5RBTuPPgR8/maxresdefault.jpg)](https://www.youtube.com/watch?v=m5RBTuPPgR8) -->
+[![Watch the video](https://img.youtube.com/vi/45YLaUxdFF8/maxresdefault.jpg)](https://youtu.be/45YLaUxdFF8)
 
 
 # Numerical Model Selection
