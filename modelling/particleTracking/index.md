@@ -14,6 +14,8 @@ Particle tracking can prove important and useful from a number of perspectives:
 - Ecological studies, where aquatic organisms are of interest, could also make use of particle tracking.  By examining the backward particle tracking from streams, existing or proposed land uses that might affect stream water quality can be assessed, and potential mitigation proposed. Ecologically Groundwater Recharge Areas (EGRA, *formerly ESGRA*) make use of such particle tracks to link recharge to discharge areas.  If new important ecological stream reaches are identified, then preliminary delineation of EGRAs can be made using the tool.  This can lead to early mitigation activities.
 
 
+<!-- [![Watch the video](https://img.youtube.com/vi/m5RBTuPPgR8/maxresdefault.jpg)](https://www.youtube.com/watch?v=m5RBTuPPgR8) -->
+
 
 # Numerical Model Selection
 
@@ -21,12 +23,13 @@ As of the date listed above, the particle tracking from the following models hav
   
 1. Regional model (MODFLOW)
 1. Halton Tier-3 (FEFLOW)
+1. Oro-Hawkestone (MODFLOW)
 <!-- 1. South Halton (MODFLOW) -->
-  <!-- 1. CVC (FEFLOW) -->
-  <!-- 1. NVCA-SSEA (FEFLOW) -->
-  <!-- 1. Ramara Whites Talbot (MODFLOW) -->
-  <!-- 1. York Tier-3 (MODFLOW) -->
-  <!-- 1. Durham (MODFLOW) -->
+<!-- 1. CVC (FEFLOW) -->
+<!-- 1. NVCA-SSEA (FEFLOW) -->
+<!-- 1. Ramara Whites Talbot (MODFLOW) -->
+<!-- 1. York Tier-3 (MODFLOW) -->
+<!-- 1. Durham (MODFLOW) -->
 
 
 
@@ -77,10 +80,18 @@ Particles vertices are attributed with:
 
 
 ## Example
+The Regional model is a large (14,500 km²) coarse (240 m cell) 5-layer MODFLOW model that covers the bulk our our jurisdiction. In all, the model consists of 1.3M FD "cells", from each a particle was released at its centroid.  
+
+The next 2 figures show the results of a cell being clicked by a user on our mapping tools:
 
 ![](img/clicked-location1.png)
 
+And zooming into the particle tracks:
+
 ![](img/clicked-location2.png)
+
+Now, even though there are only 5 centroidal pathlines originating at this cell (one for every layer), many (of the 1.3M) pathlines originating from cells not clicked appear to cross the clicked cell; the particle tracking API captures any pathline that crosses a clicked cell. This gives a nice way to see many pathlines that originate from a particular cell without explicitly computing them.
+
 
 ## Data Compression
 
