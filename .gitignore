@@ -44,6 +44,7 @@ rosm.cache
 *.wind_speed
 *.water_*
 *.lnk
+*.uhdem
 
 
 # temporary (files here may be too big)
