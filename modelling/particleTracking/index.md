@@ -135,7 +135,9 @@ And zooming in around the particle tracks:
 
 Now, even though there are only 5 centroidal pathlines originating at this clicked location/cell (one for every layer), many (of the 1.3M) pathlines originating from cells not clicked appear to cross the clicked cell; the particle tracking API captures all pathlines that cross this clicked cell. This gives a nice way to see a number of pathlines that could originate from a particular cell without explicitly computing them.
 
+![](img/443405-3D.html)
 
+<br>
 
 ## Data Compression
 
@@ -159,7 +161,7 @@ There are three ways these data are compressed:
 
 # System test
 
-<iframe src="https://owrc.shinyapps.io/ptrack/" frameborder="0" allowfullscreen style="width:100%;height:100%;"></iframe>
+<iframe src="https://owrc.shinyapps.io/ptrack/" frameborder="0" allowfullscreen style="width:100%;height:400;"></iframe>
 
 
 
@@ -167,9 +169,9 @@ There are three ways these data are compressed:
 
 # References
 
-Diersch, HJ.G. (2014). Discrete Feature Modeling of Flow, Mass and Heat Transport Processes. In: FEFLOW. Springer, Berlin, Heidelberg. https://doi.org/10.1007/978-3-642-38739-5_14
+Diersch, HJ.G. (2014). Discrete Feature Modeling of Flow, Mass and Heat Transport Processes. In: FEFLOW. Springer, Berlin, Heidelberg. [https://doi.org/10.1007/978-3-642-38739-5_14](https://doi.org/10.1007/978-3-642-38739-5_14)
 
-Langevin, C.D., Hughes, J.D., Banta, E.R., Niswonger, R.G., Panday, Sorab, and Provost, A.M., 2017, Documentation for the MODFLOW 6 Groundwater Flow Model: U.S. Geological Survey Techniques and Methods, book 6, chap. A55, 197 p., https://doi.org/10.3133/tm6A55.
+Langevin, C.D., Hughes, J.D., Banta, E.R., Niswonger, R.G., Panday, Sorab, and Provost, A.M., 2017, Documentation for the MODFLOW 6 Groundwater Flow Model: U.S. Geological Survey Techniques and Methods, book 6, chap. A55, 197 p., [https://doi.org/10.3133/tm6A55](https://doi.org/10.3133/tm6A55).
 
 Pollock, D.W., 1989, Documentation of a computer program to compute and display pathlines using results from the U.S. Geological Survey modular three-dimensional finite-difference ground-water flow model: U.S. Geological Survey Open-File Report 89–381.
 
