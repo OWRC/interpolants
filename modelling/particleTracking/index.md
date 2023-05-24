@@ -135,7 +135,7 @@ And zooming in around the particle tracks:
 
 Now, even though there are only 5 centroidal pathlines originating at this clicked location/cell (one for every layer), many (of the 1.3M) pathlines originating from cells not clicked appear to cross the clicked cell; the particle tracking API captures all pathlines that cross this clicked cell. This gives a nice way to see a number of pathlines that could originate from a particular cell without explicitly computing them.
 
-<iframe src="https://golang.oakridgeswater.ca/pages/443405-3D.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
+<iframe src="https://golang.oakridgeswater.ca/pages/443405-3D.html" width="100%" height="700" scrolling="no" allowfullscreen></iframe>
 
 <br>
 
@@ -161,9 +161,9 @@ There are three ways these data are compressed:
 
 # System test
 
-<iframe src="https://owrc.shinyapps.io/ptrack/" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
+<iframe src="https://owrc.shinyapps.io/ptrack/" width="100%" height="500" scrolling="no" allowfullscreen></iframe>
 
-
+[open in fullscreen](https://owrc.shinyapps.io/ptrack/)
 
 <br>
 
