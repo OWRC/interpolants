@@ -137,6 +137,8 @@ Now, even though there are only 5 centroidal pathlines originating at this click
 
 <iframe src="https://golang.oakridgeswater.ca/pages/443405-3D.html" width="100%" height="700" scrolling="no" allowfullscreen></iframe>
 
+[open in fullscreen](https://golang.oakridgeswater.ca/pages/443405-3D.html)
+
 <br>
 
 ## Data Compression
@@ -163,7 +165,6 @@ There are three ways these data are compressed:
 
 <iframe src="https://owrc.shinyapps.io/ptrack/" width="100%" height="500" scrolling="no" allowfullscreen></iframe>
 
-[open in fullscreen](https://owrc.shinyapps.io/ptrack/)
 
 <br>
 
