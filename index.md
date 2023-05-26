@@ -66,7 +66,7 @@ _Sub-watershed characterization and flow topology_
 * [**Near-Real-Time Data Acquisition**](/interpolants/interpolation/climate-sources.html), updated nightly, including:
    * Daily data
       * Min/max daily temperature
-      * Atmospheric pressure
+      * [Atmospheric pressure](/interpolants/interpolation/barometry.html)
       * Precipitation (rainfall and snowfall)
       * Snowmelt ([sourced and computed](/interpolants/modelling/waterbudget/data.html#sub-daily-from-daily-snowmelt))
       * Potential evaporation ([computed](/interpolants/interpolation/calc/panET/PanEvaporation.html))
