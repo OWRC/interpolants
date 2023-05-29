@@ -1,4 +1,6 @@
 
+<meta name="image" property="og:image" content="https://raw.githubusercontent.com/OWRC/interpolants/main/modelling/particleTracking/img/clicked-location2.png">
+
 # Introduction
 
 The [ORMGP particle tracking web-tool](https://www.oakridgeswater.ca/) returns both forward and backward sub-surface particle tracks from a user-selected location.  The tool is built upon existing numerical groundwater models which in themselves have organized, synthesized and interpreted a wealth of hydrogeological information (e.g., boreholes, geological mapping, previous studies, etc.) to gain an understanding of the groundwater flow system. 
@@ -165,6 +167,7 @@ There are three ways these data are compressed:
 
 <iframe src="https://owrc.shinyapps.io/ptrack/" width="100%" height="500" scrolling="no" allowfullscreen></iframe>
 
+[*open in new tab*](https://owrc.shinyapps.io/ptrack/)
 
 <br>
 

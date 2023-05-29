@@ -67,7 +67,6 @@ _Sub-watershed characterization and flow topology_
    * Daily data
       * Min/max daily temperature
       * Atmospheric/Barometric pressure
-         * [synthetic/interpolated](/interpolants/interpolation/barometry.html)
       * Precipitation (rainfall and snowfall)
       * Snowmelt ([sourced and computed](/interpolants/modelling/waterbudget/data.html#sub-daily-from-daily-snowmelt))
       * Potential evaporation ([computed](/interpolants/interpolation/calc/panET/PanEvaporation.html))
@@ -78,6 +77,10 @@ _Sub-watershed characterization and flow topology_
       * Relative humidity
       * Windspeed and direction
       * Potential evaporation flux
+
+<br>
+
+[*see interpolated data below*](#spatially-interpolated-near-real-time-data)
 
 <br>
 
@@ -142,7 +145,7 @@ R-Shiny-Leaflet mapping with access to our monitoring dataset.
 
 * [**Cleansed Climate Data**](/interpolants/modelling/waterbudget/data.html) for use in our water budget product which includes the computation of [potential evaporation](/interpolants/interpolation/calc/panET/PanEvaporation.html), [snowmelt](/interpolants/modelling/waterbudget/data.html#sub-daily-from-daily-snowmelt), etc. from available data.
 * [Spatial and Temporal interpolation](/interpolants/interpolation/climate-interpolation.html) of point/scalar data.
-* [Barometry](/interpolants/interpolation/barometry.html) elevation-corrected and projected to a 2km regional grid.
+* [Barometric pressure](/interpolants/interpolation/barometry.html) elevation-corrected and projected to a 2km regional grid.
 
 <br>
 

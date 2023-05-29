@@ -23,6 +23,7 @@
 *watercourse_*
 *.geojson
 *-script.txt
+_steps.txt
 
 overland-drainage-areas/
 input/
@@ -45,7 +46,8 @@ rosm.cache
 *.water_*
 *.lnk
 *.uhdem
-
+*.tif
+*.gdef
 
 # temporary (files here may be too big)
 grids/
