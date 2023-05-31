@@ -15,7 +15,7 @@ func main() {
 	var tdem *tem.TEM
 	var err error
 
-	fp := "shp/PDEM-South-D2013-OWRC23-60.bil" //  "shp/z_resmpl.bil" //
+	fp := "test/PDEM-South-D2013-OWRC23-60_resmpl.bil"
 	fmt.Printf("loading %s..\n", fp)
 	if err := dem.ImportBil(fp); err != nil {
 		panic(err)

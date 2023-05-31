@@ -40,29 +40,34 @@ The following is an index to the data maintained and produced by the ORMGP. All 
 
 
 ## Hydrogeology
-* [Monitoring](/monitoring/)
+* [**ORMGP monitoring sites**](/monitoring/)
 
-
+* Database groundwater monitoring locations
 <iframe src="https://golang.oakridgeswater.ca/pages/ycdb-locations.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
-_Locations with >35 monitoring dates_
+_Monitoring locations with >35 monitoring dates_
 
 <br>
 
 
-## Drainage and Topology
+## Elevation, Drainage and Topology
+For groundwater elevations, [digital elevation data are used to correct depths](/database-manual/02_Understanding_ORMGP_Database/02_03_Primary_Data_Relationships/02_03_05_Water_Level.html) of measure to metres above sea level (masl). Therefore, vertical accuracy and datum are tied to the digital elevation (terrain) model (DEM) we used as reference. Currently, correction are taken to the 10m [2006 OMNR *Digital Elevation Model - Version 2.0.0 - Provincial Tiled Dataset*](https://raw.githubusercontent.com/OWRC/metadata/main/external/mnr2006dem/LIO%20MNR%20DEM%2010m%20Metadata.pdf).
+
+Overland flow drainage and their pathways (topology) are defined using the 30m [Provincial Digital Elevation Model - South (CGVD2013)](/metadata/external/pdem).
+
 * [Overland drainage pathways](/interpolants/interpolation/overland.html)
    * [Sub-watersheds](/interpolants/interpolation/subwatershed.html)
-* [Watercourses](/interpolants/interpolation/watercourses.html)
-
-<br>
 
 <iframe src="https://golang.oakridgeswater.ca/pages/sws-characterization.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 _Sub-watershed characterization and flow topology_
 
 <br>
 
-## Climatology 
-* [**Data Source Reference**](/interpolants/sources/sources.html#climate-data-and-streamflow)
+* [Watercourse topology and stream order](/interpolants/interpolation/watercourses.html)
+
+<br>
+
+## Meteorological station data  
+* [Data source **References**](/interpolants/sources/sources.html#climate-data-and-streamflow): climate and streamflow
 * [**Near-Real-Time Data Acquisition**](/interpolants/interpolation/climate-sources.html), updated nightly, including:
    * Daily data
       * Min/max daily temperature
@@ -70,8 +75,10 @@ _Sub-watershed characterization and flow topology_
       * Precipitation (rainfall and snowfall)
       * Snowmelt ([sourced and computed](/interpolants/modelling/waterbudget/data.html#sub-daily-from-daily-snowmelt))
       * Potential evaporation ([computed](/interpolants/interpolation/calc/panET/PanEvaporation.html))
+      * Streamflow
       <!-- * Solar irradiation -->
    * Hourly data, updated every 6-hours, including:
+      * Precipitation (distributed, re-analysed, 6hr accumulations)
       * Air temperature
       * Atmospheric/Barometric pressure
       * Relative humidity
@@ -272,4 +279,6 @@ A number of open-source and proprietary data analysis tools have been employed i
 
 # **Glossary**
 [*click here*](glossary.html)
+
+
 
