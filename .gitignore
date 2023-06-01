@@ -48,6 +48,8 @@ rosm.cache
 *.uhdem
 *.tif
 *.gdef
+*.indx
+*.vrt
 
 # temporary (files here may be too big)
 grids/
