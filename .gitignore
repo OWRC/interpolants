@@ -28,6 +28,7 @@ _steps.txt
 overland-drainage-areas/
 input/
 old/
+doc/
 tiles/
 png*
 rosm.cache
