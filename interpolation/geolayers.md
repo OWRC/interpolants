@@ -1,11 +1,11 @@
 ﻿---
-title: Coverage--Geological Surfaces (2021)
+title: Geological surface coverage (2021)
 author: Oak Ridges Moraine Groundwater Program
 output: html_document
 ---
 
 
-It is important to note that the geology layers presented on the ORMGP Website have been created at different times, and in cases, by different parties over the years.  ORMGP staff are regularly checking the geological layers, making adjustments over time. However, these incremental changes are only periodically updated onto the website. The Figure below shows the various sets of geological layers that have been built into a regional picture and that are currently reflected on the ORMGP website. 
+The geology layers presented on the ORMGP Website have been created at different times, and in cases, by different parties over the years.  ORMGP staff are regularly checking the geological layers, making adjustments over time. However, these incremental changes are only periodically updated onto the website. The Figure below shows the various sets of geological layers that have been built into a regional picture and that are currently reflected on the ORMGP website. 
 
 ![](fig/geolayers-sourcemap.png)
 

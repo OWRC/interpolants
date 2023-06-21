@@ -33,7 +33,7 @@ The following is an index to the data maintained and produced by the ORMGP. All 
 
 ## Geology
 
-Further description of the geological layers, their interpreted depositional setting, and of the procedures used to interpolate the surfaces can be found here https://owrc.github.io/GeoLayers/.
+[Description of the geological layers, their interpreted depositional setting, and of the procedures used to interpolate the surfaces.](/GeoLayers/)
 
 * [Geology](/info/md/geology.html)
 * [Drilling](/info/md/drilling.html)
@@ -99,7 +99,7 @@ _Sub-watershed characterization and flow topology_
 
 # **Web Applications**
 
-## [Geocortex Data Portal](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP)
+## [**Geocortex** Data Portal](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP)
 
 The [ORMGP Geocortex Mapping hub has been divided into various Theme Maps](/webmapping/) to allow users to quickly hone in on the information they might be seeking. For example, the Documents Theme Map provides access to the program’s library of reports, The Boreholes Theme Map focuses on providing access to borehole specific information, and the Geology Theme Map provides access to all of the ORMGP geologically related mapping. The Theme Maps group specific related data sets or interpreted products ([more info here](/webmapping/)).
 
