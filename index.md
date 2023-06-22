@@ -110,7 +110,7 @@ The [ORMGP Geocortex Mapping hub has been divided into various Theme Maps](/webm
 
 ### Geological layers
 
-The geological layers made available on the Geocortex portal are found in two places: the Geology Theme Map and the cross-section tool.  
+The [geological layers made available on the Geocortex portal](/interpolants/interpolation/geolayers.html) are found in two places: the Geology Theme Map and the cross-section tool. More information on [their interpreted depositional setting and of the procedures used to interpolate the surfaces](/GeoLayers/).
 
 In the [Geology Theme Map](/webmapping/#geology-map), users can view either the tops of or the isopach/thickness of any of the layers.  The Geological Picks made at each well, that are used to construct or interpolate each layer are also available.  A screen capture from the website showing the Top of Halton Till as well as the picks is shown below.
 
@@ -122,12 +122,9 @@ The cross-section tool is designed to provide a cut, along a user-defined line, 
 
 ![](fig/xsection-tool.png)
 
-[*more information on layer development.*]()
 
 <br>
 
-
-Further description of the geological layers, their interpreted depositional setting, and of the procedures used to interpolate the surfaces [can be found here](/GeoLayers/).
 
 
 ## [sHydrology](/shydrologymap/)
@@ -164,18 +161,34 @@ R-Shiny-Leaflet mapping with access to our monitoring dataset.
 > _Static 2D fields, updated frequently_
 
 ### Bedrock
-### [**Geological Surfaces (2021)**](/interpolants/interpolation/geolayers.html)
-### [**Water Table Mapping**](/watertable/)
+### **Geological Surfaces (2021)**
+
+The geology layers presented on the ORMGP Website have been created at different times, and in cases, by different parties over the years.  ORMGP staff are regularly checking the geological layers, making adjustments over time. However, these incremental changes are only periodically updated onto the website. The Figure below shows the various sets of geological layers that have been built into a regional picture and that are currently reflected on the ORMGP website.
+
+[*more info*](/interpolants/interpolation/geolayers.html)
+
+### **Water Table Mapping**
 
 The Oak Ridges Moraine Groundwater Program (ORMGP) has been working on producing a reliable water table map for quite some time. Over the years several versions of the water table surface have been prepared as new information has become available or as the technical mapping methodology has been adjusted. Although it sounds straightforward to interpolate a water table surface, there are a number of factors that make the process difficult. Here we outline some of the considerations that have gone into creating the water table surfaces (and their derivatives) and can serve as a supplementary document for those that make use of these layers.
 
-### [Land use](/interpolants/interpolation/landuse.html)
+[*more info*](/watertable/)
 
-#### impervious cover
-#### canopy cover
-#### wetland cover
-#### open water
-#### relative permeability
+
+### Land use
+
+The source of the land use data is: Ministry of Natural Resources and Forestry, 2019. Southern Ontario Land Resource Information System (SOLRIS) Version 3.0: Data Specifications. Science and Research Branch, April 2019.
+
+From this layer, the follow land use categorizations are derived:
+
+- impervious cover
+- canopy cover
+- wetland cover
+- open water
+- relative permeability
+
+[*more info*](/interpolants/interpolation/landuse.html)
+
+<br>
 
 ## **Clip 'n Ship**
 * [**"Clip 'n Ship"**](/interpolants/sources/clipnship.html) — A bulk spatial data export system, by geographic extent. Includes many of the products listed below.
