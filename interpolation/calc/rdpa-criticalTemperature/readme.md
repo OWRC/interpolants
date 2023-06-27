@@ -5,7 +5,7 @@
 
 
 ## MSC scalars
-1. Scrape MSC for recent data, executed from [FEWS](https://owrc.github.io/interpolants/interpolation/fews.html).
+1. Scrape MSC for recent data, executed from [FEWS](https://owrc.github.io/interpolants/fews/).
 1. Import scraped MSC hourly scalars into FEWS.
 1. Export hourly MSC NetCDF file (*.nc) from FEWS, from 1989-10-01 
     

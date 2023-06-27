@@ -17,7 +17,7 @@ output: html_document
 
 Meteorological data acquisition, management, aggregation and interpolation was largely accomplished using [Delft-FEWS](https://www.deltares.nl/en/software/flood-forecasting-system-delft-fews-2/) (ver.2019.02 build.39845) a flood forecasting system offered (at no cost, only license agreement) by [Deltares](https://www.deltares.nl/en/). <!-- Configuration files for the Delft-FEWS system build can be found here: BLAH. -->
 
-Forcings data to the model processed by [ORMGP-FEWS](/interpolants/interpolation/fews.html), specific to the water budgeting are detailed below. Full list of data managed by the ORMGP are detailed [here](/interpolants/modelling/waterbudget/data.html).
+Forcings data to the model processed by [ORMGP-FEWS](/interpolants/fews/), specific to the water budgeting are detailed below. Full list of data managed by the ORMGP are detailed [here](/interpolants/modelling/waterbudget/data.html).
 
 
 ### Regional Deterministic Precipitation Analysis (CaPA-RDPA)
@@ -42,7 +42,7 @@ Forcings data to the model processed by [ORMGP-FEWS](/interpolants/interpolation
 
 ## Interpolation (spatial scale)
 
-Both scalar (i.e., point) data and gridded data are then [interpolated](/interpolants/interpolation/climate-interpolation.html) to each of the [~10 km² sub-watersheds](/interpolants/interpolation/subwatershed.html). Model elevations range from 75-400 masl and orographic effects related to temperature were deemed negligible beyond the spatial distribution meteorological stations.
+Both scalar (i.e., point) data and gridded data are then [interpolated](/interpolants/fews/climate-interpolation.html) to each of the [~10 km² sub-watersheds](/interpolants/interpolation/subwatershed.html). Model elevations range from 75-400 masl and orographic effects related to temperature were deemed negligible beyond the spatial distribution meteorological stations.
 
 <iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" target="_blank" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 *Every sub-watershed shown above consists of roughly 4000 model cells*

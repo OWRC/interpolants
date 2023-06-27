@@ -36,7 +36,7 @@ The following is an index to the data maintained and produced by the ORMGP. All 
 
 ## **Delft-FEWS Database**
 
-The [Delft-FEWS](https://www.deltares.nl/en/software-and-data/products/delft-fews-platform) platform offers a streamlined user interface that allows practitioners to visualize time-varying spatially-distributed data from a variety of sources and formats. For instance, spatial/vector/raster time-series datasets common to climatology differ from the point/location datasets contained in the SQL database. We maintain a Delft-FEWS platform to manage these data formats. Our [**ORMGP-FEWS**](/interpolants/interpolation/fews.html) system periodically ($\leq$ 1 day) scrapes data from federal, provincial, municipal and partner agencies to support a variety of APIs serving near-real-time historical climatologies to our partner users.
+The [Delft-FEWS](https://www.deltares.nl/en/software-and-data/products/delft-fews-platform) platform offers a streamlined user interface that allows practitioners to visualize time-varying spatially-distributed data from a variety of sources and formats. For instance, spatial/vector/raster time-series datasets common to climatology differ from the point/location datasets contained in the SQL database. We maintain a Delft-FEWS platform to manage these data formats. Our [**ORMGP-FEWS**](/interpolants/fews) system periodically ($\leq$ 1 day) scrapes data from federal, provincial, municipal and partner agencies to support a variety of APIs serving near-real-time historical climatologies to our partner users.
 
 
 More information:
@@ -85,7 +85,7 @@ _Sub-watershed characterization and flow topology_
 
 ## Meteorological station data  
 * [Data source **References**:](/interpolants/sources/sources.html#climate-data-and-streamflow) climate and streamflow
-* [**Spatial Interpolation**](/interpolants/interpolation/climate-interpolation.html) of point data
+* [**Spatial Interpolation**](/interpolants/fews/climate-interpolation.html) of point data
 * [**Near-Real-Time Data Acquisition**](/interpolants/interpolation/climate-sources.html), updated nightly, including:
    * Daily data
       * Min/max daily temperature
@@ -211,7 +211,7 @@ From this layer, the follow land use categorizations are derived:
 ## Spatially interpolated, near real-time data
 
 * [**Cleansed Climate Data**](/interpolants/modelling/waterbudget/data.html) for use in our water budget product which includes the computation of [potential evaporation](/interpolants/interpolation/calc/panET/PanEvaporation.html), [snowmelt](/interpolants/modelling/waterbudget/data.html#sub-daily-from-daily-snowmelt), etc. from available data.
-* [Spatial and Temporal interpolation](/interpolants/interpolation/climate-interpolation.html) of point/scalar data.
+* [Spatial and Temporal interpolation](/interpolants/fews/climate-interpolation.html) of point/scalar data.
 * [Barometric pressure](/interpolants/interpolation/barometry.html) elevation-corrected and projected to a 2km regional grid.
 
 <br>
@@ -325,12 +325,12 @@ A number of open-source and proprietary data analysis tools have been employed i
 * **[Our main MSSQL Server database](/database-manual/Contents/TOC.html)**
 * [VertiGIS Studio/Geocortex](https://www.vertigis.com/vertigis-studio/) — Our principle [web mapping server](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP) used by partners to access our database and products.
 * golang server — multi-functional REST API serving a variety of data products and interpolation tools.
-* fews server — home for the [ORMGP-FEWS](/interpolants/interpolation/fews.html) data management system.
+* fews server — home for the [ORMGP-FEWS](/interpolants/fews/) data management system.
 
 
 ### Web Scraping
 * ORMGP-cron: a linux server with scheduled [web-scraping tasks mostly written in Python](/interpolants/sources/webscraping.html).
-* [ORMGP-FEWS](/interpolants/interpolation/fews.html): our operational Delft-FEWS system that scrapes, stores, interpolates and regenerates data served on ORMGP-cron.
+* [ORMGP-FEWS](/interpolants/fews/): our operational Delft-FEWS system that scrapes, stores, interpolates and regenerates data served on ORMGP-cron.
 
 
 

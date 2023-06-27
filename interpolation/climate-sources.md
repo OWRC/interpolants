@@ -9,7 +9,7 @@ output: html_document
 
 
 # Introduction
-The [ORMGP](https://oakridgeswater.ca/) maintains a current, continuous daily climatology dataset beginning 1901 and a 6-hourly data from 2001. The data are [web-scraped](/interpolants/sources/webscraping.html), [interpolated](/interpolants/interpolation/climate-interpolation.html) to [some 3,000 ~10km² sub-watersheds](/interpolants/interpolation/subwatershed.html) and are made available through our [public web portal](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP). All interpolated data are automatically updated and maintained using the [ORMGP-FEWS system](/interpolants/interpolation/fews.html) system.
+The [ORMGP](https://oakridgeswater.ca/) maintains a current, continuous daily climatology dataset beginning 1901 and a 6-hourly data from 2001. The data are [web-scraped](/interpolants/sources/webscraping.html), [interpolated](/interpolants/fews/climate-interpolation.html) to [some 3,000 ~10km² sub-watersheds](/interpolants/interpolation/subwatershed.html) and are made available through our [public web portal](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP). All interpolated data are automatically updated and maintained using the [ORMGP-FEWS system](/interpolants/fews/) system.
 
 Reference to the external data acquired and discussed below [***are detailed here***](/interpolants/sources/sources.html).
 
@@ -90,7 +90,7 @@ While the CaPA-RDPA vector data fields can be acquired from Environment Canada i
 <br>
 
 ### Rainfall-snowfall parsing
-The CaPA data are collected in their 6-hourly steps and are aggregated to daily accumulations. [(The 6-hourly fields are maintained for the sub-daily fields described here.)](/interpolants/interpolation/climate-interpolation.html) The precipitation fields are proportioned into rainfall and snowfall amounts based using an "optimized critical temperature" approach where precipitation fields are proportioned into rainfall and snowfall amounts based using the "critical temperature" $ (T_\text{crit}) $ approach:
+The CaPA data are collected in their 6-hourly steps and are aggregated to daily accumulations. [(The 6-hourly fields are maintained for the sub-daily fields described here.)](/interpolants/fews/climate-interpolation.html) The precipitation fields are proportioned into rainfall and snowfall amounts based using an "optimized critical temperature" approach where precipitation fields are proportioned into rainfall and snowfall amounts based using the "critical temperature" $ (T_\text{crit}) $ approach:
 
 $$
 \text{Rainfall}=
@@ -166,7 +166,7 @@ At 2 locations, where the sub-watershed makes up the entirety of a small island,
 Snow water equivalent (SWE) and snowmelt must be derived from snowpack ablation models. These models come in a variety of forms and sophistication. The primary source of such information comes from the [Snow Data Assimilation System (SNODAS)](https://nsidc.org/data/g02158) system (NOHRSC, 2004), which offers ~1km gridded 24-hour (UTC 06-06) snowmelt totals, published freely in near real-time. The advantage of SNODAS is that we can avoid the need to model snowmelt explicitly, and leverage existing resources. The data cover our jurisdiction from 2009—present.
 
 #### SNODAS 6-hourly (*2020—present*)
-SNODAS is also offered in 6-hourly states, however offered only for the past month, so some automated web-scraping would be requires. Here, the [ORMGP-FEWS](https://owrc.github.io/interpolants/interpolation/fews.html) system imports and crops the data nightly.
+SNODAS is also offered in 6-hourly states, however offered only for the past month, so some automated web-scraping would be requires. Here, the [ORMGP-FEWS](/interpolants/fews/) system imports and crops the data nightly.
 
 ![SNODAS sample](fig/nsm_depth_2016011505_National.jpg)
 
@@ -222,7 +222,7 @@ Wind speed and direction data are acquired from Meteorological Service of Canada
 
 # Data interpolation
 
-The above data are automatically [interpolated to the 10km² sub-watershed scale](/interpolants/interpolation/climate-interpolation.html). 
+The above data are automatically [interpolated to the 10km² sub-watershed scale](/interpolants/fews/climate-interpolation.html). 
 
 
 ### **Waterbudget**

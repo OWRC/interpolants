@@ -116,7 +116,7 @@ In a similar sense, the "atmosphere" (specifically the Planetary Boundary Layer 
 
 It is matter of perspective that dictates the terminology here. The model was designed from a top-down viewpoint. Terms like "potential evaporation", which speaks to the evaporation occurring on a surface with unlimited water supply is instead termed "atmospheric demand", that is the capacity for the atmosphere to remove moisture from a rough land surface.
 
-Only snowmelt, rainfall and evaporation are not readily available in a distributed form and need to be determined. The model is integrated with [the ORMGP data management platform](/interpolants/interpolation/fews.html). Below is an interactive map of the climate forcing distribution used in the model. Total model coverage ~30,000km².
+Only snowmelt, rainfall and evaporation are not readily available in a distributed form and need to be determined. The model is integrated with [the ORMGP data management platform](/interpolants/fews/). Below is an interactive map of the climate forcing distribution used in the model. Total model coverage ~30,000km².
 
 
 

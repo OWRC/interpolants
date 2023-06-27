@@ -5,9 +5,9 @@ output: html_document
 ---
 
 
-# [Delft-FEWS](https://www.deltares.nl/en/software-and-data/products/delft-fews-platform) (**F**lood **E**arly **W**arning **S**ystem)
+# Delft-FEWS (**F**lood **E**arly **W**arning **S**ystem)
 
-Delft-FEWS is an industry-standard *"platform for real time forecasting and water resources management"* (Delft-FEWS brochure, 2015). Its strength is that it, as a stand-alone product, can i) fetch forecast data from 3rd party APIs, ii) interpolate data to/from points, grids and shapes, iii) aggregate and re-generate data from their source to any time scale, all with the ability to operate using a GIS-like platform. FEWS is a fully-generalized water data management tool.
+[Delft-FEWS](https://www.deltares.nl/en/software-and-data/products/delft-fews-platform) is an industry-standard *"platform for real time forecasting and water resources management"* (Delft-FEWS brochure, 2015). Its strength is that it, as a stand-alone product, can i) fetch forecast data from 3rd party APIs, ii) interpolate data to/from points, grids and shapes, iii) aggregate and re-generate data from their source to any time scale, all with the ability to operate using a GIS-like platform. FEWS is a fully-generalized water data management tool.
 
 In addition, FEWS has the ability to run scripts from command line, which, among other purposes, means that FEWS can even integrate with, say, any hydrological model—by creating input data, running the model (via command), importing the resulting model output and providing alerts should any threshold be met.
 
@@ -30,7 +30,7 @@ In support of our mapping, waterbalance and partners, we maintain two long-term 
 1. Potential evaporation
 
 
-The data support a wide variety of web services the ORMGP offers where knowledge of past climactic conditions have 
+The data support a wide variety of web services the ORMGP offers where knowledge of past climactic conditions have a direct causal link to other monitored phenomena.
 
 
 ## Data types

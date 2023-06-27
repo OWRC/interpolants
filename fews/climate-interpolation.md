@@ -11,13 +11,13 @@ output: html_document
 
 
 # Interpolation of Hourly scalars to Sub-daily Basins
-Bolow is an itemized description of the interpolation process, with open data access.  All interpolated (i.e., "vector") data are automatically updated and maintained using the [ORMGP-FEWS system](/interpolants/interpolation/fews.html) system.
+Bolow is an itemized description of the interpolation process, with open data access.  All interpolated (i.e., "vector") data are automatically updated and maintained using the [ORMGP-FEWS system](/interpolants/fews/) system.
 
 > workflow: `preprocessMSCtoBasinsHourly.xml`
 
 
 ## Meteorological Service of Canada (MSC) scalars
-1. Scrape MSC for recent data, executed from [FEWS](/interpolants/interpolation/fews.html).
+1. Scrape MSC for recent data, executed from [FEWS](/interpolants/fews/).
 1. Import scraped MSC hourly scalars into FEWS.
 1. Export hourly MSC NetCDF file (*.nc) from FEWS, from 1989-10-01 
     
