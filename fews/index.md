@@ -17,7 +17,7 @@ In addition, FEWS has the ability to run scripts from command line, which, among
 
 > The ORMGP-FEWS system operates using version 2019.02.
 
-The "ORMGP-FEWS" system is used to organize data collected from a variety of sources (international, federal, provincial, municipal, academia and private organizations) and consolidates them to a single spatially-distributed, temporally-aggregated data product we offer to our partners and utilized internally.
+The "ORMGP-FEWS" system is used to organize data collected from a variety of sources (international, federal, provincial and municipal agencies, academia and private organizations) and consolidates them to a single spatially-distributed, temporally-aggregated data product we offer to our partners and utilized internally.
 
 
 ### End Product
