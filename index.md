@@ -27,8 +27,22 @@ The following is an index to the data maintained and produced by the ORMGP. All 
 {:toc}
 
 # **Data Sources**
-## Database
-[Our main MSSQL Server database](/database-manual/Contents/TOC.html) holds all the information to support our decision-making tools. The ORMGP data systems are *active*, in that they are automatically updated at near real-time. From hourly and daily intervals, a series of web-scraping routines have been written to access open data made available from many sources including international, federal, provincial, municipal and conservation authority agencies. The objective is to centralize hydrogeological and hydrological data for the south-central Ontario (Canada) jurisdiction that currently makes-up the ORMGP. [**_Data sources: more details._**](/interpolants/sources/sources.html)
+## **SQL Database**
+[Our main MSSQL Server database](/database-manual/Contents/TOC.html) holds all the information to support our decision-making tools. The ORMGP data systems are *active*, in that they are automatically updated at near real-time. From hourly and daily intervals, a series of web-scraping routines have been written to access open data made available from many sources including international, federal, provincial, municipal and conservation authority agencies. The objective is to centralize hydrogeological and hydrological data for the south-central Ontario (Canada) jurisdiction that currently makes-up the ORMGP. 
+
+
+[**_Data source references._**](/interpolants/sources/sources.html)
+
+
+## **Delft-FEWS Database**
+
+Spatial/vector datasets common to climatology differ from point/location datasets contained in the SQL database. The ORMGP maintains a [Delft-FEWS](https://www.deltares.nl/en/software-and-data/products/delft-fews-platform) platform to manage these data formats. Our [**ORMGP-FEWS**](/interpolants/interpolation/fews.html) system periodically ($\leq$ 1 day) scrapes data from federal, provincial, municipal and partner agencies to support a variety of APIs serving near-real-time climatologies to our users.
+
+
+More information:
+1. about [Delft-FEWS](https://oss.deltares.nl/web/delft-fews/about-delft-fews)
+1. more into on [data scraping](/interpolants/sources/sources.html#web-data-scrapers)
+
 
 
 ## Geology
@@ -301,7 +315,7 @@ A number of open-source and proprietary data analysis tools have been employed i
 
 ## Databases (external links)
 * [MSSQL](https://www.microsoft.com/en-us/sql-server/sql-server-2019)
-* [Delft-FEWS](https://www.deltares.nl/app/uploads/2015/01/Delft-FEWS_brochure-2017.pdf)
+* [Delft-FEWS](https://www.deltares.nl/en/software-and-data/products/delft-fews-platform)
 
 
 ## **ORMGP Servers**

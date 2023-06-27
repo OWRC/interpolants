@@ -6,7 +6,7 @@ output: html_document
 
 # Processing steps
 
-1. Downloaded [Provincial Digital Elevation Model (PDEM)](https://geohub.lio.gov.on.ca/maps/mnrf::provincial-digital-elevation-model-pdem/about) and downscaled from its 30m resolution to a 60m grid. This puts the final DEM to a 12.8M cells covering 46,000 km².
+1. Downloaded [Provincial Digital Elevation Model (PDEM)](https://geohub.lio.gov.on.ca/maps/mnrf::provincial-digital-elevation-model-pdem/about) and downscaled from its 30m resolution to a 60m grid. This puts the final DEM to a 12.1M cells covering 43,700 km².
 
 2. Run script to build the Hydrologically-corrected digital elevation model (HDEM)
     ```
