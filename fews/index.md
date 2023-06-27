@@ -11,7 +11,7 @@ output: html_document
 
 In addition, FEWS has the ability to run scripts from command line, which, among other purposes, means that FEWS can even integrate with, say, any hydrological model—by creating input data, running the model (via command), importing the resulting model output and providing alerts should any threshold be met.
 
-
+![](fig/fews2019-splash.png)
 
 # ORMGP-FEWS
 
@@ -20,8 +20,8 @@ In addition, FEWS has the ability to run scripts from command line, which, among
 The "ORMGP-FEWS" system is used to organize data collected from a variety of sources (international, federal, provincial, municipal, academia and private organizations) and consolidates them to a single spatially-distributed, temporally-aggregated data product we offer to our partners and utilized internally.
 
 
-## End Product
-In support of our mapping, waterbalance and partners, we maintain two long-term climatological datasets updated nightly: at a daily timescale since 1901, and a 6-hourly dataset since 2001. The data, infilled and distributed at a 10km² resolution across our jurisdiction [*(more here)*](/interpolants/interpolation/climate-sources.html), include:
+### End Product
+In support of our mapping, waterbalance and partners, we maintain two long-term climatological datasets updated nightly: at a daily timescale since 1901, and a 6-hourly dataset since 2001. The data, [infilled and distributed](\fews\climate-interpolation.html) at a 10km² resolution across our jurisdiction, include:
 
 1. Rainfall
 1. Snowfall, snowmelt and snow equivalent (SWE)
@@ -30,7 +30,7 @@ In support of our mapping, waterbalance and partners, we maintain two long-term 
 1. Potential evaporation
 
 
-The data support a wide variety of web services the ORMGP offers where knowledge of past climactic conditions have a direct causal link to other monitored phenomena.
+The data support a wide variety of web services the ORMGP offers where knowledge of past climactic conditions have a direct causal link to other monitored phenomena.  [*All data sources can be found here.*](/interpolants/interpolation/climate-sources.html)
 
 
 ## Data types
@@ -39,10 +39,13 @@ The types of time-series data hosted in FEWS are described as such:
 1. **Scalar data** — These are data most common to environmental databases. They are data collected at stations, and represent phenomena measured at a point.  These data require spatial interpolation to convert them to a distributed field.
 1. **Vector data** — There data come in a distributed (i.e., raster) form, and thus may not require further interpolation.  This data format is relatively new given reduced technological constraints and have yet to make significant gains in practice. More and more open international sources offer such data, free of charge. Difficulties with the data are it's management, as they do not lend themselves well to standard "normalized" database schemas.  FEWS, on the other hand, is especially tailored to handle and manipulate vector data.
 
-![ORMGP-FEWS sample](fig/ORMGP-FEWS-sample1-fixed.gif)
+<br>
 
-*6-hourly ORMGP-interpolated precipitation (CaPA-RDPA) animated in FEWS*
+![ORMGP-FEWS sample](fig/ORMGP-FEWS-sample1-slowed.gif)
 
+*Example "vector" data: 6-hourly ORMGP-interpolated precipitation (CaPA-RDPA) animated in FEWS*
+
+<br>
 
 # References
 
