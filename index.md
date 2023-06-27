@@ -36,12 +36,12 @@ The following is an index to the data maintained and produced by the ORMGP. All 
 
 ## **Delft-FEWS Database**
 
-Spatial/vector datasets common to climatology differ from point/location datasets contained in the SQL database. The ORMGP maintains a [Delft-FEWS](https://www.deltares.nl/en/software-and-data/products/delft-fews-platform) platform to manage these data formats. Our [**ORMGP-FEWS**](/interpolants/interpolation/fews.html) system periodically ($\leq$ 1 day) scrapes data from federal, provincial, municipal and partner agencies to support a variety of APIs serving near-real-time climatologies to our users.
+The [Delft-FEWS](https://www.deltares.nl/en/software-and-data/products/delft-fews-platform) platform offers a streamlined user interface that allows practitioners to visualize time-varying spatially-distributed data from a variety of sources and formats. For instance, spatial/vector/raster time-series datasets common to climatology differ from the point/location datasets contained in the SQL database. We maintain a Delft-FEWS platform to manage these data formats. Our [**ORMGP-FEWS**](/interpolants/interpolation/fews.html) system periodically ($\leq$ 1 day) scrapes data from federal, provincial, municipal and partner agencies to support a variety of APIs serving near-real-time historical climatologies to our partner users.
 
 
 More information:
 1. about [Delft-FEWS](https://oss.deltares.nl/web/delft-fews/about-delft-fews)
-1. more into on [data scraping](/interpolants/sources/sources.html#web-data-scrapers)
+1. more on [*web data scraping*](/interpolants/sources/sources.html#web-data-scrapers)
 
 
 
@@ -84,7 +84,8 @@ _Sub-watershed characterization and flow topology_
 <br>
 
 ## Meteorological station data  
-* [Data source **References**](/interpolants/sources/sources.html#climate-data-and-streamflow): climate and streamflow
+* [Data source **References**:](/interpolants/sources/sources.html#climate-data-and-streamflow) climate and streamflow
+* [**Spatial Interpolation**](/interpolants/interpolation/climate-interpolation.html) of point data
 * [**Near-Real-Time Data Acquisition**](/interpolants/interpolation/climate-sources.html), updated nightly, including:
    * Daily data
       * Min/max daily temperature
