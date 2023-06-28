@@ -1,6 +1,6 @@
 ---
 title: Spatial interpolation of point data
-author: M.Marchildon
+author: M. Marchildon
 output: html_document
 ---
 
@@ -11,7 +11,7 @@ output: html_document
 
 
 # Interpolation of Hourly scalars to Sub-daily Basins
-Bolow is an itemized description of the interpolation process, with open data access.  All interpolated (i.e., "vector") data are automatically updated and maintained using the [ORMGP-FEWS system](/interpolants/fews/) system.
+Below is an itemized description of the interpolation process, with open data access.  All interpolated (i.e., "vector") data are automatically updated and maintained using the [ORMGP-FEWS system](/interpolants/fews/) system.
 
 > workflow: `preprocessMSCtoBasinsHourly.xml`
 
