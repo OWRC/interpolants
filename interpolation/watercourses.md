@@ -30,11 +30,11 @@ In a total of 62 locations, stream segments were manually removed in order to pr
 
 > __*Stream Segments*__ (used here) are the longitudinal lengths of mapped watercourse, ending at each downstream confluence.
 
-> data set shown above can be found here: [OHN_WATERCOURSE-export.geojson](https://www.dropbox.com/s/6vstocu2d2sm3ta/OHN_WATERCOURSE-export.7z?dl=1) (epsg: 26917)
+> data set shown above can be found here: [OHN_WATERCOURSE-export.geojson](https://www.dropbox.com/s/keulxjvddye09o6/OHN_WATERCOURSE-export.geojson?dl=1) (epsg: 26917)
 
 # Defining Outlets
 
-The above figure also shows 6 "shoreline" locations, from which the [algorithm](https://github.com/OWRC/interpolants/tree/main/interpolation/drainTopology) searches for any watercourse segments are touching any of these polygons.
+The above figure also shows 6 "shoreline" locations, from which the [algorithm](https://github.com/OWRC/interpolants/tree/main/interpolation/calc/drainTopology) searches for any watercourse segments are touching any of these polygons.
 
 From these selected segments, the algorithm searches for upstream segments until a head water feature is found, all the while book keeping the connections each segment has with its neighbouring upstream and downstream segments.
 
