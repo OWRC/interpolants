@@ -9,9 +9,19 @@ output: html_document
 * TOC
 {:toc}
 
+
+## Put somewhere ELSE
+
+> Model results are presented from a batch of models each showing a good "calibration" to a number of gauges. The model is not intended for prediction, rather it is used to determined land-surface moisture distribution where monitoring data are available. (retrodict) Validation not needed . constrained by (primarily) rainfall *in* and streamflow *out*, and the land-surface in between. 
+
+
+
+
+
+
 # Model parameters
 
-In total, the model consists of six parameters per computational element (CE), and one basin-wide paremeter. Five of the six parameters are distributed based on land use characteristics, while the reminder (`ksat`) is determine from surficial geology maping.
+In total, the model consists of six parameters per computational element (CE), and one basin-wide parameter. Five of the six parameters are distributed based on land use characteristics, while the reminder (`ksat`) is determine from surficial geology mapping.
 
 * Percolation storage (`DrnSto`): Reservoirs that require filling prior to adding to runoff. Sinks of this reservoir include drainage from percolation and evaporation [m].
 * Surface storage (`SrfSto`): Reservoirs that require filling prior to adding to runoff. Sinks include only evaporation [m].

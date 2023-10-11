@@ -83,8 +83,9 @@ _Sub-watershed characterization and flow topology_
 
 <br>
 
-## Meteorological station data  
+## Hydro-meteorological station data  
 * [Data source **References**:](/interpolants/sources/sources.html#climate-data-and-streamflow) climate and streamflow
+* [Baseflow/Hydrograph Separation](/info/hydrographseparation/)
 * [**Spatial Interpolation**](/interpolants/fews/climate-interpolation.html) of point data
 * [**Near-Real-Time Data Acquisition**](/interpolants/interpolation/climate-sources.html), updated nightly, including:
    * Daily data
@@ -142,8 +143,8 @@ The cross-section tool is designed to provide a cut, along a user-defined line, 
 
 
 
-## [sHydrology](/shydrologymap/)
-R-Shiny-Leaflet mapping with access to our monitoring dataset.
+## sHydrology
+R-Shiny-Leaflet mapping with access to our monitoring dataset. [**Go to online map.**](https://owrc.shinyapps.io/shydrologymap/)
 
 ## Time-Series Analysis
 * [**R-Shiny apps**]
