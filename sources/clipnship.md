@@ -48,14 +48,35 @@ The Clip 'n Ship function provides the top elevation and thickness (isopach) for
 
 Interpreted layer elevations and thicknesses are provided as raster files (*.bil format, see above) and follow this pattern: *WB_2021_`LayerNo`\_`LayerName`\_`LayerType`\_`dateCreated`-crop.bil*.
 
-The complete list of raster files is below
-`WB_2021_01_GROUND_SURFACE_20211027-crop.bil`
-`WB_2021_02C_HALTON_TILL_EQUIV_ISOPACH_20211027-crop.bil`
-`WB_2021_02_HALTON_TILL_EQUIV_20211027-crop.bil`
-WB_2021_03C_ORAC_ISOPACH_20220808-crop.bil
-WB_2021_03_ORAC_20211027-crop.bil
-WB_2021_04C_CHANNEL_SILT_ISOPACH_20220808-crop.bil
-WB_2021_04_CHANNEL_SILT_20220808-crop.bil
+The complete list of raster files is below (as mentioned above, each *.bil file listed below includes two additional files that are not listed here):
+- `WB_2021_01_GROUND_SURFACE_20211027-crop.bil`
+- `WB_2021_02_HALTON_TILL_EQUIV_20211027-crop.bil`
+- `WB_2021_02C_HALTON_TILL_EQUIV_ISOPACH_20211027-crop.bil`
+- `WB_2021_03_ORAC_20211027-crop.bil` 
+- `WB_2021_03C_ORAC_ISOPACH_20220808-crop.bil`
+- `WB_2021_04_CHANNEL_SILT_20220808-crop.bil`
+- `WB_2021_04C_CHANNEL_SILT_ISOPACH_20220808-crop.bil`
+- `WB_2021_05_CHANNEL_SAND_20220808-crop.bil`
+- `WB_2021_05C_CHANNEL_SAND_ISOPACH_20220808-crop.bil`
+- `WB_2021_06_UPPER_NEWMARKET_20220808-crop.bil`
+- `WB_2021_06C_UPPER_NEWMARKET_ISOPACH_20220808-crop.bil`
+- `WB_2021_07_INS_20220909-crop.bil`
+- `WB_2021_07C_INS_ISOPACH_20220909-crop.bil`
+- `WB_2021_08_LOWER_NEWMARKET_20220815-crop.bil`
+- `WB_2021_08C_LOWER_NEWMARKET_ISOPACH_20220815-crop.bil`
+- `WB_2021_09_THORNCLIFFE_20220808-crop.bil`
+- `WB_2021_09C_THORNCLIFFE_ISOPACH_20220808-crop.bil`
+- `WB_2021_10_SUNNYBROOK_20220808-crop.bil`
+- `WB_2021_10C_SUNNYBROOK_ISOPACH_20220808-crop.bil`
+- `WB_2021_11_SCARBOROUGH_20211027-crop.bil`
+- `WB_2021_11C_SCARBOROUGH_ISOPACH_20211027-crop.bil`
+- `WB_2021_12_BEDROCK_20211027-crop.bil`
+- `WB_2021_12E_BEDROCK_BASE_20211027-crop.bil`
+- `WB_2021_12F_QUATERNARY_SEDS_ISOPACH_20211027-crop.bil`
+- `WB_2021_12G_QUATERNARY_SEDS_OGS_ISOPACH_20211027-crop.bil`
+- `WB_2021_99F_UNCONFORMITY_20220808-crop.bil`
+
+- 
 
 
 For example
