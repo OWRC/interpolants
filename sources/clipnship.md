@@ -49,9 +49,9 @@ The Clip 'n Ship function provides the top elevation and thickness (isopach) for
 Interpreted layer elevations and thicknesses are provided as raster files (*.bil format, see above) and follow this pattern: *WB_2021_`LayerNo`\_`LayerName`\_`LayerType`\_`dateCreated`-crop.bil*.
 
 The complete list of raster files is below
-WB_2021_01_GROUND_SURFACE_20211027-crop.bil
-WB_2021_02C_HALTON_TILL_EQUIV_ISOPACH_20211027-crop.bil
-WB_2021_02_HALTON_TILL_EQUIV_20211027-crop.bil
+'WB_2021_01_GROUND_SURFACE_20211027-crop.bil'
+'WB_2021_02C_HALTON_TILL_EQUIV_ISOPACH_20211027-crop.bil'
+'WB_2021_02_HALTON_TILL_EQUIV_20211027-crop.bil'
 WB_2021_03C_ORAC_ISOPACH_20220808-crop.bil
 WB_2021_03_ORAC_20211027-crop.bil
 WB_2021_04C_CHANNEL_SILT_ISOPACH_20220808-crop.bil
