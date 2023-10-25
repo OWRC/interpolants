@@ -93,7 +93,7 @@ The following five _csv_ files provide results from database queries for the use
   
 ## Hydrogeology
 
-In the Hydrogeology folder of the compressed file, several raster files are included for the interpreted water table and potentiometric surface mapping:  [*(more info here)*](https://owrc.github.io/watertable/)) [*(metadata here)*](https://owrc.github.io/metadata/surfaces/water_table.html)
+In the Hydrogeology folder of the compressed file, several raster files are included for the interpreted water table and potentiometric surface mapping:  [*(more information about how these surfaces were generated can be found here)*](https://owrc.github.io/watertable/)) [*(metadata here)*](https://owrc.github.io/metadata/surfaces/water_table.html)
 
 The naming convention is as follows:
    - The first code is either DP (deep) or SH (shallow) water levels
@@ -104,14 +104,13 @@ The naming convention is as follows:
    - 20210824 refers to the date the raster file was created (in YYYYMMDD format).
  
 The included rasters are:
-    - `DP_WL_DEPTH_Final_20210824.bil`
-    - `DP_WL_ELEV_Final_corr_20210824.bil`
-    - `SH_WL_DEPTH_BHS_20210615.bil`
-    - `SH_WL_DEPTH_Combined_Final_20210708b.bil`
-    - `SH_WL_ELEV_BHS_Final_20210615.bil`
-    - `SH_WL_ELEV_BHS_Final_DA_20210615.bil`
-    - `SH_WL_ELEV_Combined_Final_20210708b.bil`
-
+   - `DP_WL_DEPTH_Final_20210824.bil`: Depth below ground surface of the deep potentiometric surface (metres below ground surface, mbgs)
+   - `DP_WL_ELEV_Final_corr_20210824.bil`: Elevation of the deep potentiometric surface (metres above sea level, masl)
+   - `SH_WL_DEPTH_BHS_20210615.bil`: Depth below ground surface of the WT0 surface (mbgs)
+   - `SH_WL_DEPTH_Combined_Final_20210708b.bil`: Depth below ground surface for the WT1 surface (mbgs)
+   - `SH_WL_ELEV_BHS_Final_20210615.bil`: Elevation of the WT0 surface (masl)
+   - `SH_WL_ELEV_BHS_Final_DA_20210615.bil`: Potential discharge areas using the WT) surface
+   - `SH_WL_ELEV_Combined_Final_20210708b.bil`Elevation of the WT1 surface (masl)
 
 ## Hydrology
 
