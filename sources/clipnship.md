@@ -102,8 +102,8 @@ In the Hydrogeology folder of the compressed file, several raster files are incl
     - The next term is either BHS (for the [*(WTO surface)*](https://owrc.github.io/watertable/) ) or Combined (For the [*(WT1 surface)*](https://owrc.github.io/watertable/)). Note that for the deep (DP) water levels, this term is not included). 
     - DA refers to potential discharge areas.
     - 20210824 refers to the date the raster file was created (in YYYYMMDD format).
-  
     - 
+The included rasters are:
     - `DP_WL_DEPTH_Final_20210824.bil`
     - `DP_WL_ELEV_Final_corr_20210824.bil`
     - `SH_WL_DEPTH_BHS_20210615.bil`
