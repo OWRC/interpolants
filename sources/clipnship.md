@@ -93,7 +93,17 @@ The following five _csv_ files provide results from database queries for the use
   
 ## Hydrogeology
 
-In the Hydrogeology folder of the compressed file, several raster files are included for water table mapping:  [*(more info here)*](https://owrc.github.io/watertable/)) [*(metadata here)*](https://owrc.github.io/metadata/surfaces/water_table.html)
+In the Hydrogeology folder of the compressed file, several raster files are included for the interpreted water table and potentiometric surface mapping:  [*(more info here)*](https://owrc.github.io/watertable/)) [*(metadata here)*](https://owrc.github.io/metadata/surfaces/water_table.html)
+
+ - The naming convention is as follows:
+    - The first code is either DP (deep) or SH (shallow) water levels
+    - The second code is WL (for water levels)
+    - The third term is either ELEV (for the water level elevation) or DEPTH (for water level depth below ground surface)
+    - The next term is either BHS (for the [*(WTO surface)*](https://owrc.github.io/watertable/) ) or Combined (For the [*(WT1 surface)*](https://owrc.github.io/watertable/)). Note that for the deep (DP) water levels, this term is not included). 
+    - DA refers to potential discharge areas.
+    - 20210824 refers to the date the raster file was created (in YYYYMMDD format).
+  
+    - 
     - `DP_WL_DEPTH_Final_20210824.bil`
     - `DP_WL_ELEV_Final_corr_20210824.bil`
     - `SH_WL_DEPTH_BHS_20210615.bil`
@@ -101,12 +111,7 @@ In the Hydrogeology folder of the compressed file, several raster files are incl
     - `SH_WL_ELEV_BHS_Final_20210615.bil`
     - `SH_WL_ELEV_BHS_Final_DA_20210615.bil`
     - `SH_WL_ELEV_Combined_Final_20210708b.bil`
- - The naming convention is as follows:
-    - The first code is either DP (deep) or SH (shallow) water levels
-    - The second code is WL (for water levels)
-    - The third term is either ELEV (for the water level elevation) or DEPTH (for water level depth below ground surface)
-    - The next term is either BHS (for the [*(WTO surface)*](https://owrc.github.io/watertable/) ) or Combined (For the [*(WT1 surface)*](https://owrc.github.io/watertable/)). Note that for the deep (DP) water levels, this term is not included). 
-    - DA refers to potential discharge areas. 
+
 
 ## Hydrology
 
