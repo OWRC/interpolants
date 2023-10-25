@@ -81,19 +81,19 @@ The complete list of raster files is below along with a brief description (as me
 The following five _csv_ files provide results from database queries for the user-selected polygon.
 
 - `V_CON_DOCUMENT.csv`
-   - Contains a list of all georeferenced documents and includes information such as: report name, year, author and location coordinates
+   - Contains a list of all georeferenced documents and includes information such as: location ID, report name, year, author and location coordinates
 - `V_CON_GENERAL.csv`
-   - Contains a list of all locations. This table includes information such as: location ID and names, type, top/bottom elevation, coordinates
+   - Contains a list of all borehole locations. This table includes information such as: location ID and names, type, top/bottom elevation, coordinates
 - `V_CON_GEOLOGY.csv`
    - Contains geologic records at locations within the selected polygon including: location ID, geologic descriptions, geologic interval top/botton elevation, location coordinates
 - `V_CON_HYDROGEOLOGY.csv`
    - Contains hydrogeological data at locations within the selected area including: location ID, screen interval, geologic formation, location coordinates
 - `V_CON_PTTW.scv`
-   - Contains a list of information of all permits to take water (PTTWs) with the selected area including: location ID, location coordiantes, maximum permitted rate, date issued
+   - Contains a list of information of all permits to take water (PTTWs) with the selected area including: location ID, location coordinates, maximum permitted pumping rate, date issued
   
 ## Hydrogeology
 
-- Water Table Mapping [*(more info here)*](https://owrc.github.io/watertable/)) [*(metadata here)*](https://owrc.github.io/metadata/surfaces/water_table.html)
+In the Hydrogeology folder of the compressed file, several raster files are included for water table mapping:  [*(more info here)*](https://owrc.github.io/watertable/)) [*(metadata here)*](https://owrc.github.io/metadata/surfaces/water_table.html)
     - `DP_WL_DEPTH_Final_20210824.bil`
     - `DP_WL_ELEV_Final_corr_20210824.bil`
     - `SH_WL_DEPTH_BHS_20210615.bil`
