@@ -48,43 +48,33 @@ The Clip 'n Ship function provides the top elevation and thickness (isopach) for
 
 Interpreted layer elevations and thicknesses are provided as raster files (*.bil format, see above) and follow this pattern: *WB_2021_`LayerNo`\_`LayerName`\_`LayerType`\_`dateCreated`-crop.bil*.
 
-The complete list of raster files is below (as mentioned above, each *.bil file listed below includes two additional files that are not listed here):
-- `WB_2021_01_GROUND_SURFACE_20211027-crop.bil`
-- `WB_2021_02_HALTON_TILL_EQUIV_20211027-crop.bil`
-- `WB_2021_02C_HALTON_TILL_EQUIV_ISOPACH_20211027-crop.bil`
-- `WB_2021_03_ORAC_20211027-crop.bil` 
-- `WB_2021_03C_ORAC_ISOPACH_20220808-crop.bil`
-- `WB_2021_04_CHANNEL_SILT_20220808-crop.bil`
-- `WB_2021_04C_CHANNEL_SILT_ISOPACH_20220808-crop.bil`
-- `WB_2021_05_CHANNEL_SAND_20220808-crop.bil`
-- `WB_2021_05C_CHANNEL_SAND_ISOPACH_20220808-crop.bil`
-- `WB_2021_06_UPPER_NEWMARKET_20220808-crop.bil`
-- `WB_2021_06C_UPPER_NEWMARKET_ISOPACH_20220808-crop.bil`
-- `WB_2021_07_INS_20220909-crop.bil`
-- `WB_2021_07C_INS_ISOPACH_20220909-crop.bil`
-- `WB_2021_08_LOWER_NEWMARKET_20220815-crop.bil`
-- `WB_2021_08C_LOWER_NEWMARKET_ISOPACH_20220815-crop.bil`
-- `WB_2021_09_THORNCLIFFE_20220808-crop.bil`
-- `WB_2021_09C_THORNCLIFFE_ISOPACH_20220808-crop.bil`
-- `WB_2021_10_SUNNYBROOK_20220808-crop.bil`
-- `WB_2021_10C_SUNNYBROOK_ISOPACH_20220808-crop.bil`
-- `WB_2021_11_SCARBOROUGH_20211027-crop.bil`
-- `WB_2021_11C_SCARBOROUGH_ISOPACH_20211027-crop.bil`
-- `WB_2021_12_BEDROCK_20211027-crop.bil`
-- `WB_2021_12E_BEDROCK_BASE_20211027-crop.bil`
-- `WB_2021_12F_QUATERNARY_SEDS_ISOPACH_20211027-crop.bil`
-- `WB_2021_12G_QUATERNARY_SEDS_OGS_ISOPACH_20211027-crop.bil`
-- `WB_2021_99F_UNCONFORMITY_20220808-crop.bil`
-
-- 
-
-
-For example
-- `WB_2021_01_GROUND_SURFACE_20211027-crop.bil` is the first, or uppermost geologic layer (01) and represents the ground surface
-- `WB_2021_02_HALTON_TILL_EQUIV_20211027-crop.bil` is the top of the second geologic layer (02) and represents the top of the Halton Till
-- `WB_2021_09C_THORNCLIFFE_ISOPACH_20220808-crop.bil` is the isopach (thickness) map of the Thorncliffe llayer (09) 
-
-Each geologic layer includes a set of _bil_, _hdr_, and _prj_ files for both the layer top and the isopach. 
+The complete list of raster files is below along with a brief description (as mentioned above, each *.bil file listed below includes two additional files that are not listed here). All elevations are in metres above sea level (m asl) and isopach maps are in metres: 
+- `WB_2021_01_GROUND_SURFACE_20211027-crop.bil`: Elevation of ground surface (Layer 01)
+- `WB_2021_02_HALTON_TILL_EQUIV_20211027-crop.bil`: Elevation of the top of Halton Till (or equivalent) (Layer 02)
+- `WB_2021_02C_HALTON_TILL_EQUIV_ISOPACH_20211027-crop.bil`: Thickness of the Halton Till  (or equivalent) 
+- `WB_2021_03_ORAC_20211027-crop.bil`: Elevation of the top of the Oak Ridges Moraine Aquifer Complex (ORAC) (Layer 03)
+- `WB_2021_03C_ORAC_ISOPACH_20220808-crop.bil`: Thickness of the ORAC (Layer 03)
+- `WB_2021_04_CHANNEL_SILT_20220808-crop.bil`: Elevation of the top of Channel Silt (Layer 04)
+- `WB_2021_04C_CHANNEL_SILT_ISOPACH_20220808-crop.bil`: Thickness of the Channel Silt (Layer 04)
+- `WB_2021_05_CHANNEL_SAND_20220808-crop.bil`: Elevation of the top of Channel Sand (Layer 05)
+- `WB_2021_05C_CHANNEL_SAND_ISOPACH_20220808-crop.bil`: Thickness of the Channel Sand (Layer 05)
+- `WB_2021_06_UPPER_NEWMARKET_20220808-crop.bil`: Elevation of the top of the Upper Newmarket Till (Layer 06)
+- `WB_2021_06C_UPPER_NEWMARKET_ISOPACH_20220808-crop.bil`: Thickness of the Upper Newmarket Till (Layer 06)
+- `WB_2021_07_INS_20220909-crop.bil`: Elevation of the top of the Inter-Newmarket Sediments (INS) (Layer 07)
+- `WB_2021_07C_INS_ISOPACH_20220909-crop.bil`: Thickness of the INS (Layer 07)
+- `WB_2021_08_LOWER_NEWMARKET_20220815-crop.bil`: Elevation of the top the Lower Newmarket Till (Layer 08)
+- `WB_2021_08C_LOWER_NEWMARKET_ISOPACH_20220815-crop.bil`: Thickness of the Lower Newmarket Till (Layer 08)
+- `WB_2021_09_THORNCLIFFE_20220808-crop.bil`: Elevation of the top of the Thorncliffe Formation (Layer 09)
+- `WB_2021_09C_THORNCLIFFE_ISOPACH_20220808-crop.bil`: Thickness of the Thorncliffe Formation (Layer 09)
+- `WB_2021_10_SUNNYBROOK_20220808-crop.bil`: Elevation of the top of the Sunnybrook Drift (Layer 10)
+- `WB_2021_10C_SUNNYBROOK_ISOPACH_20220808-crop.bil`: Thickness of the Sunnybrook Drift (Layer 10)
+- `WB_2021_11_SCARBOROUGH_20211027-crop.bil`: Elevation of the top of the Scarborough Formation (Layer 11)
+- `WB_2021_11C_SCARBOROUGH_ISOPACH_20211027-crop.bil`: Thickness of the Scarborough Formation (Layer 11)
+- `WB_2021_12_BEDROCK_20211027-crop.bil`: Elevation of the top of bedrock (Layer 12)
+- `WB_2021_12E_BEDROCK_BASE_20211027-crop.bil`: Elevation of the base of bedrock in the conceptual model
+- `WB_2021_12F_QUATERNARY_SEDS_ISOPACH_20211027-crop.bil`: Thickness of the Quaternary sediments
+- `WB_2021_12G_QUATERNARY_SEDS_OGS_ISOPACH_20211027-crop.bil`: Thickness of the Quaternary sediments (based on mapping from the Ontario Geological Survey)
+- `WB_2021_99F_UNCONFORMITY_20220808-crop.bil`: Elevation of the unconformity (see figure above; the unconformity lies beneath the ORAC and the tunnel channel sediments).
 
 ### Database Queries (*.csv)
 
