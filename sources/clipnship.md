@@ -4,9 +4,9 @@ author: Oak Ridges Moraine Groundwater Program
 output: html_document
 ---
 
-ORMGP partners can gain access to the spatial layers we produce.  Users specify a small, rectangular area, inside which a 3D block of the geologic data is provided. The specified area must not exceed 18 square kilometre (the user will get a warning if the specified rectangular area exceedss this). 
+ORMGP partners and paid subscribers can download the spatial layers we produce and some data.  To do this, users specify a small, rectangular area, inside which a 3D block of the geologic data is provided. The specified area must not exceed 18 square kilometre (the user will get a warning if the specified rectangular area exceedss this). Note: If users require a larger area, please contact ORMGP.
 
-The first part is the **clipping** function. This is where the user supplies the areal extent of their data request, and the return is all the data available within those extents.
+The first step in this process is the **clip** function. This is where the user supplies the areal extent of their data request. The return is the spatial layers and data available within the specified extent.
 
 ![https://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/clip.htm](https://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/GUID-6D3322A8-57EA-4D24-9FFE-2A9E7C6B29EC-web.png) \
 [*ArcMAP Clip function*](https://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/clip.htm)
@@ -16,7 +16,7 @@ The **ship** feature then provides a compressed file with all available data for
 
 
 # **Data Formats**
-The data format chosen for the exports is compressible and efficient. The files formats are thus less common, yet are general enough that they'll open on common GIS platforms. Data are compressed into a *tar.gz* file, which can be opened using free and open software such as [7-Zip](https://www.7-zip.org/) and [WinRAR](https://www.win-rar.com/).
+The data format for export is compressible and efficient. The files formats are less common, yet are general enough that they are compatible with common GIS platforms. Data are compressed into a *tar.gz* file, which can be opened using free and open software such as [7-Zip](https://www.7-zip.org/) and [WinRAR](https://www.win-rar.com/).
 
 
 ## File Formats
