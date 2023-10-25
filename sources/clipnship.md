@@ -117,7 +117,15 @@ The included rasters are:
 - [Interpolated daily climatology](/interpolants/interpolation/daily.html) given to the centroid of the area selected, tabular (*.csv) format.
 - `owrc20-50-noGreatLake-HC-observations-trim-FINAL-elevation.bil`---["Hydrologically corrected" digital elevation model](/interpolants/interpolation/overland.html). 
 - Land use [*(data sources)*](/interpolants/interpolation/landuse.html)
-    - `solrisv3_10_infilled_50_percov.bil`---fraction canopy cover
-    - `solrisv3_10_infilled_50_perimp.bil`---fraction impervious cover
-    - `solrisv3_10_infilled_50_perow.bil`---fraction open water cover
-    - `solrisv3_10_infilled_50_perwl.bil`---fraction wetland cover
+    - `solrisv3_10_infilled_50_percov-crop.bil`: fraction canopy cover
+    - `solrisv3_10_infilled_50_perimp-crop.bil`: fraction impervious cover
+    - `solrisv3_10_infilled_50_perow-crop.bil`: fraction open water cover
+    - `solrisv3_10_infilled_50_perwl-crop.bil`: fraction wetland cover
+ 
+- Water Budget:
+    - `evapotranspiration-crop.bil`: Spatial distribution of evapotranspiration for the specified polygon
+    - `owrc-20-50-noGreatLake-HC-observations-trim-FINAL-elevation-crop.bil`
+    - `precipitation-crop.bil`: Spatial distribution of precipitation for the specified polygon
+    - `recharge-crop.bil`: Spatial distribution of recharge for the specified polygon
+    - `runoff-crop.bil`: Spatial distribution of runoff for the specified polygon
+    - 
