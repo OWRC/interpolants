@@ -25,7 +25,7 @@ The data format for export is compressible and efficient. The files formats are 
 Raster files are provided in a [**band interleaved by line** (\*.bil)](https://desktop.arcgis.com/en/arcmap/10.5/manage-data/raster-and-images/bil-bip-and-bsq-raster-files.htm) format.  This is a raw binary format and is accompanied by two other files: (1) a header file (\*.hdr) and (2) a projection file (\*.prj).   This format will open in [ArcGIS](https://www.arcgis.com/index.html), [QGIS](https://www.qgis.org/en/site/), [Surfer](https://surferhelp.goldensoftware.com/subsys/subsys_band_interleaved_file_descr.htm) and will load as a [NumPy](https://numpy.org/) array.
 
 ### Vector Files
-Vector files (in particular polylines and polygons) are provided in [**GeoJson**](https://geojson.org/) (\*.geojson) format.  This is an all-encompassing ascii-format file which is flexible, but slow. It is suggested that files be converted to shapefiles (\*.shp) when performance is desired.
+Vector files (in particular polylines and polygons) are provided in [**GeoJson**](https://geojson.org/) (\*.geojson) format.  This is an ascii-format file that is flexible, but can be slow. It is suggested that files be converted to shapefiles (\*.shp) when performance is desired.
 
 ### Point Data
 Point data and database queries are provided in **comma-separated value** (\*.csv) format. This tabular format stores data as plain text, where each line in the file represents one data record, or location. Each record contains the same number of fields, and each field is separated by a comma. CSV files can be opened with any text editor or with Microsoft Excel, or can be imported into a database (e.g., Microsoft Access).
@@ -40,11 +40,14 @@ When referring to the interpretations and data from the Clip 'n Ship function, p
 
 # **Data Description**
 
-## Geology
+## Geology Folder
 
 ### Layers
+The Clip 'n Ship function provides the top elevation and thickness (isopach) for each interpreted hydrostratigraphic unit within the ORMGP jurisdiction. 
+![image](https://github.com/OWRC/interpolants/assets/92586150/947f8c3b-dec2-4ded-874d-454b7e4b863a)
 
-Geologic Model layers follow a pattern: *WB_2021_`LayerNo`\_`LayerName`\_`LayerType`\_`dateCreated`-crop.bil*.
+
+Layer elevations and thicknesses are provided as raster files (*.bil format, see above) and follow this pattern: *WB_2021_`LayerNo`\_`LayerName`\_`LayerType`\_`dateCreated`-crop.bil*.
 
 For example
 - `WB_2021_01_GROUND_SURFACE_20211027-crop.bil` is the first, or uppermost geologic layer (01) and represents the ground surface
