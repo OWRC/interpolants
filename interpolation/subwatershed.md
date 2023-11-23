@@ -12,7 +12,11 @@ The 3 million hectare ORMGP jurisdiction has been subdivided into thousands of ~
 
 <br>
 
-<iframe src="https://owrc.shinyapps.io/sws23/" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
+`click on a subwatershed:`
+
+<iframe src="https://owrc.shinyapps.io/sws23/" width="100%" height="500" scrolling="no" allowfullscreen></iframe>
+
+[*open in to view in separate tab*](https://owrc.shinyapps.io/sws23/)
 
 <br>
 
@@ -52,6 +56,7 @@ The ORMGP jurisdiction discretized into ~3000 ~10km² sub-watersheds. Below is a
 
 
 <iframe src="https://golang.oakridgeswater.ca/pages/sws-characterization.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
+
 _Sub-watershed characterization and flow topology_
 
 <br>
