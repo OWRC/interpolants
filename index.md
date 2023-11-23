@@ -138,6 +138,12 @@ The cross-section tool is designed to provide a cut, along a user-defined line, 
 
 ![](fig/xsection-tool.png)
 
+### Piper plots
+
+The piper plot tool presents water chemistry in an informative way and can be sorted by location or geologic formation.
+
+![](fig/piper.png)
+
 
 <br>
 

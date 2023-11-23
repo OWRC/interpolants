@@ -1,14 +1,19 @@
 ---
-title: Watercourse Topology of the ORMGP region
+title: Watercourse Topology 
+subtitle: of the ORMGP region
 author: Oak Ridges Moraine Groundwater Program
 output: html_document
 ---
 
 
-* Much of our analysis involves relating monitoring of of stream flow, point data, which exists along linear watercourse features.
-* Below describes an algorithm used to take an arbitrary watercourse map and determine its topology, that this the connectivity and flow direction of linearly mapped watercourse features (i.e., defining downstream vs. upstream directions).
+> Much of our analysis involves relating monitoring of of stream flow, point data, which exists along linear watercourse features.
+
+Below describes an algorithm used to take an arbitrary watercourse map and determine its topology, that this the connectivity and flow direction of linearly mapped watercourse features (i.e., defining downstream vs. upstream directions).
  
 <br>
+
+**CONTENTS**
+
 * TOC
 {:toc}
 

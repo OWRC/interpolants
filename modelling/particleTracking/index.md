@@ -6,7 +6,7 @@ output: html_document
 
 # Introduction
 
-The [ORMGP particle tracking web-tool](https://www.oakridgeswater.ca/) returns both forward and backward sub-surface particle tracks from a user-selected location.  The tool is built upon existing numerical groundwater models which in themselves have organized, synthesized and interpreted a wealth of hydrogeological information (e.g., boreholes, geological mapping, previous studies, etc.) to gain an understanding of the groundwater flow system. 
+The [ORMGP](https://www.oakridgeswater.ca/) particle tracking web-tool returns both forward and backward sub-surface particle tracks from a user-selected location.  The tool is built upon existing numerical groundwater models which in themselves have organized, synthesized and interpreted a wealth of hydrogeological information (e.g., boreholes, geological mapping, previous studies, etc.) to gain an understanding of the groundwater flow system. 
 
 Here, the results from running these models to a steady state are collected. From these states, a virtual particle can be released in the model domain and its path can be traced.
 
@@ -37,7 +37,7 @@ As of the date of this snapshot (listed below), the particle tracking from the f
 <!-- 1. NVCA-SSEA (FEFLOW) -->
 <!-- 1. Ramara Whites Talbot (MODFLOW) -->
 <!-- 1. York Tier-3 (MODFLOW) -->
-<!-- 1. Durham (MODFLOW) -->
+1. Durham 2021 (MODFLOW)
 
 
 
@@ -170,9 +170,11 @@ There are three ways these data are compressed:
 
 <iframe src="https://owrc.shinyapps.io/ptrack/" width="100%" height="500" scrolling="no" allowfullscreen></iframe>
 
-[*open in new tab*](https://owrc.shinyapps.io/ptrack/)
+[*open in to view in separate tab*](https://owrc.shinyapps.io/ptrack/)
 
 <br>
+
+
 
 # References
 
