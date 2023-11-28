@@ -130,7 +130,7 @@ The latest iteration of CaPA is the [High Resolution Deterministic Precipitation
 
 
 ### Missing Dates
-The CaPA RDPA products used do have periods of no data. Listed below are the dates found. Where no data are found, the API reports the [data interpolated from point locations](/interpolants/interpolation/daily.html#meteorological-service-of-canada).
+The CaPA RDPA products used do have periods of no data. Listed below are the dates found. Where no data are found, the API reports the [data interpolated from MSC point locations](#meteorological-service-of-canada).
 
 
 | CaPA-RDPA | CaPA-HRDPA |
