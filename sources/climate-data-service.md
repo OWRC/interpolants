@@ -3,21 +3,14 @@ title: Near Real-time Climate Data Service
 output: html_document
 ---
 
+<span style="font-size:2em;">Summary</span>
 
-
-The [ORMGP](https://oakridgeswater.ca/) maintains a current, continuous daily climatology dataset beginning 1901 and a 6-hourly dataset from 2002. 
-
-Every night, the automated data service [web-scrapes](/interpolants/sources/webscraping.html) and [interpolates](/interpolants/fews/climate-interpolation.html) publicly-available climate data to [some 4,200 ~10km² sub-watersheds](/interpolants/interpolation/subwatershed.html) covering our greater jurisdiction. The data are made available through our [public web portal](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP) and are served using the [ORMGP-FEWS](/interpolants/fews/) system.
+The [ORMGP](https://oakridgeswater.ca/) maintains a current, continuous daily climatology dataset beginning 1901 and a 6-hourly dataset from 2002. Every night, the automated data service [web-scrapes](/interpolants/sources/webscraping.html) and [interpolates](/interpolants/fews/climate-interpolation.html) publicly-available climate data to [some 4,200 ~10km² sub-watersheds](/interpolants/interpolation/subwatershed.html) covering our greater jurisdiction. The data are made available through our [public web portal](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP) and are served using the [ORMGP-FEWS](/interpolants/fews/) system.
 
 <!-- Reference to the external data acquired and discussed below [***are detailed here***](/interpolants/sources/sources.html). -->
 
-> *Data for download can be found [below](#highlights).*
+> *Data for download can be accessed [below](#highlights).*
 
-<br>
-
-<iframe src="https://owrc.shinyapps.io/sws23/" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
-
-*4,238 ~10km² sub-watersheds delineated with their topological relationships defined, as shown by clicking any sub-watershed of lake. In addition to climate data, these sub-watersheds have been attributed with land use characteristics, elevations, etc.*
 
 Currently, the data service offers [near-realtime](## '"Near-realtime" means that the data updated nightly are as close to real-time as made available from the open data sources being scraped. Generally, data are up to date a day or 2 prior to the current time.') estimates of:
 
@@ -30,6 +23,10 @@ Currently, the data service offers [near-realtime](## '"Near-realtime" means tha
 - Wind speed
 - Wind direction
 - Potential evaporation
+
+<br>
+
+The following document details the steps taken to support the ORMGP Near Real-time Climate Data Service. In addition to the climate data this service depends on,  
 
 <br><br>
 
@@ -59,7 +56,6 @@ It's also worth noting that the density of [active meteorological stations prese
 
 The data source that are collected, interpolated and delivered through our web portal are [referenced here](/interpolants/sources/reference.html). For the most part, the most recent datasets supersede the oldest.
 
-
 ## Version 2023
 
 With funding from Environment and Climate Change Canada under the Great Lakes Protection Initiative (GLPI), as part of the Great Lakes Water Quality Agreement (GLWQA), the ORMGP climate data service was expanded from our jurisdiction to cover the entire Canadian shoreline of Lake Ontario.  
@@ -83,7 +79,31 @@ This effort was a successful demonstration of the scalability of the ORMGP clima
 
 <br>
 
+
+
+# Data Service Coverage
+
+The service encompasses a 44,500km² region that includes the entire Canadian portion of the Lake Ontario drainage basin. This area has been sub-divided into 4,238 sub-watersheds that are roughly 10km² in size. These sub-watersheds are topologically connected, meaning that each have assigned their upslope and downslope neighbouring sub-watersheds, allowing for the quick collection of catchment areas and drainage pathways. At a high-level, when looking at the coverage as a whole, the sub-watershed collection appears similar to a spatial grid, only it is structured in a way that is hydrologically meaningful.
+
+This is an important distinction because not only can the data service yield long-term infilled climate data to any user-selected point, but it can readily (on-the-fly) aggregate climatologies within a catchment area of any size. Such data aggregation is a costly component to most hydrological research such as those involving numerical modelling.
+
+In creating this coverage, the ORMGP Near Real-time Climate Data Service is dependent on digital elevation models (DEMs). The processing of DEMs is described below.
+
 <br>
+
+<iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
+
+*4,238 ~10km² sub-watersheds delineated with their topological relationships defined, as shown by clicking any sub-watershed of lake. In addition to climate data, these sub-watersheds have been attributed with land use characteristics, elevations, etc.*
+
+## Digital Elevation Model
+
+## Hydrological correction
+
+## Sub-watershed delineation
+
+
+
+[*see also the sub-watershed topology here*](https://owrc.shinyapps.io/sws23/)
 
 
 # Data Sources
