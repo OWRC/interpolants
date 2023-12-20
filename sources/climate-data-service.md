@@ -5,12 +5,17 @@ output: html_document
 
 <span style="font-size:2em;">Summary</span>
 
-The [ORMGP](https://oakridgeswater.ca/) maintains a current, continuous daily climatology dataset beginning 1901 and a 6-hourly dataset from 2002. Every night, the automated data service [web-scrapes](/interpolants/sources/webscraping.html) and [interpolates](/interpolants/fews/climate-interpolation.html) publicly-available climate data to [some 4,200 ~10km² sub-watersheds](/interpolants/interpolation/subwatershed.html) covering our greater jurisdiction. The data are made available through our [public web portal](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP) and are served using the [ORMGP-FEWS](/interpolants/fews/) system.
+The [ORMGP](https://oakridgeswater.ca/) maintains a current, continuous daily climatology dataset beginning 1901 and a 6-hourly dataset from 2002. Every night, the automated data service [web-scrapes](/interpolants/sources/webscraping.html) and [interpolates](/interpolants/fews/climate-interpolation.html) publicly-available climate data to [some 4,200 ~10km² sub-watersheds](/interpolants/interpolation/subwatershed.html) covering our greater jurisdiction. The data are made available through our [**public web portal**](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP) and are served using the [ORMGP-FEWS](/interpolants/fews/) system.
 
-<!-- Reference to the external data acquired and discussed below [***are detailed here***](/interpolants/sources/sources.html). -->
+<br>
+
+<iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
+
+*4,238 ~10km² sub-watersheds delineated with their topological relationships defined, as shown by clicking any sub-watershed of lake. In addition to climate data, these sub-watersheds have been attributed with land use characteristics, elevations, etc.*
+
+<br>
 
 > *Data for download can be accessed [below](#highlights).*
-
 
 Currently, the data service offers [near-realtime](## '"Near-realtime" means that the data updated nightly are as close to real-time as made available from the open data sources being scraped. Generally, data are up to date a day or 2 prior to the current time.') estimates of:
 
@@ -26,7 +31,7 @@ Currently, the data service offers [near-realtime](## '"Near-realtime" means tha
 
 <br>
 
-The following document details the steps taken to support the ORMGP Near Real-time Climate Data Service. In addition to the climate data this service depends on,  
+The following document details the steps taken to support the ORMGP Near Real-time Climate Data Service. In addition to the climate data this service depends on, this page discusses how the spatial interpolation of the climate data are obtained.
 
 <br><br>
 
@@ -87,13 +92,9 @@ The service encompasses a 44,500km² region that includes the entire Canadian po
 
 This is an important distinction because not only can the data service yield long-term infilled climate data to any user-selected point, but it can readily (on-the-fly) aggregate climatologies within a catchment area of any size. Such data aggregation is a costly component to most hydrological research such as those involving numerical modelling.
 
-In creating this coverage, the ORMGP Near Real-time Climate Data Service is dependent on digital elevation models (DEMs). The processing of DEMs is described below.
+In creating this coverage, the ORMGP Near Real-time Climate Data Service is dependent on digital elevation models (DEMs). The processing of DEMs is briefly described below. Technical details on the processing are provide via hyperlinks.
 
-<br>
 
-<iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
-
-*4,238 ~10km² sub-watersheds delineated with their topological relationships defined, as shown by clicking any sub-watershed of lake. In addition to climate data, these sub-watersheds have been attributed with land use characteristics, elevations, etc.*
 
 ## Digital Elevation Model
 
@@ -189,7 +190,8 @@ Wind speed and direction data are acquired from Meteorological Service of Canada
 
 
 ## **Potential Evaporation**
-#### Hourly (*1953—present*)
+### Modelled
+##### Hourly (*1953—present*)
 The final 6-hourly dataset made available through the data service is potential evaporation $ (E_a) $ derived using the Penman wind function:
 
 $$
@@ -197,9 +199,9 @@ $$
 $$
 
 
-where $d_a$ is the vapour pressure deficit (Pa) and $f(u)$ is an empirical wind-function (m/s), where $u$ is wind speed (m/s). [Calibration of the model has been made against pan evaporation stations](/interpolants/interpolation/calc/panET/PanEvaporation.html)
+where $d_a$ is the vapour pressure deficit (Pa) and $f(u)$ is an empirical wind-function (m/s), where $u$ is wind speed (m/s).
 
-The advantage here is the ability to neglect the need for for the radiative terms used in Penman-Monteith (1965), Priestly-Taylor (1972), Jensen-Haise (1963), etc.---a *rare* data set that is hard to interpolate due to the influence of cloud cover--good to avoid.
+The advantage here is the ability to neglect the need for for the radiative terms used in Penman-Monteith (1965), Priestly-Taylor (1972), Jensen-Haise (1963), etc.---a *rare* data set that is hard to interpolate due to the influence of cloud cover--good to avoid. [Calibration of the model has been made against pan evaporation stations](/interpolants/interpolation/calc/panET/PanEvaporation.html).
 
 # Data Interpolation
 
