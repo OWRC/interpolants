@@ -138,7 +138,7 @@ where $E_a$ is now given in [m/s] for water.
 
 Considering its simplicity, the Penman advective term performs well against observation. [24,641 data-days from 17 MSC daily pan evaporation stations were gathered for validation](/interpolants/interpolation/calc/panET/PanEvaporation.html). With $u$ [m/s] and $d_a$ [Pa], $a=9.3\times 10^{-3}$ and $b=7.8\times 10^{-4}$ resulted in a globally weighted Nash-Sutcliffe efficiency of 0.41 and 0.90 for daily and monthly pan evaporation estimation, respectively. 
 
-The advantage here is the ability to neglect No need for for the radiative terms used in Penman-Monteith (1965), Priestly-Taylor (1972), Jensen-Haise (1963), etc. A *rare* data set that is hard to interpolate due to the influence of cloud cover--good to avoid.
+The advantage here is the ability to neglect the need for for the radiative terms used in Penman-Monteith (1965), Priestly-Taylor (1972), Jensen-Haise (1963), etc.---a *rare* data set that is hard to interpolate due to the influence of cloud cover--good to avoid.
 
 
 

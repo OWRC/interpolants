@@ -4,7 +4,7 @@ author: M.Marchildon
 output: html_document
 ---
 
-> Web scraping is the process of extracting data from websites
+> [Web scraping](https://en.wikipedia.org/wiki/Web_scraping) is the process of extracting data from websites through scheduled/automated scripts.
 
 On a nightly basis, data are extracted from a number of open data sources, whether they be:
 - **"APIs"**---That is databases that can be directly queried by sending a web-address (URL), fuch as:

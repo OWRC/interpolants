@@ -1,6 +1,5 @@
 ---
 title: Spatial interpolation of point data
-author: M. Marchildon
 output: html_document
 ---
 
@@ -72,3 +71,42 @@ The 6-hourly CaPA-RDPA precipitation $(P)$ field is a gridded raster that is rou
 # References
 
 Novák, V., 2012. Evapotranspiration in the Soil-Plant-Atmosphere System. Springer Science+Business Media Dordrecht. 253pp.
+
+
+
+
+
+
+
+
+# TO ADD
+
+
+### Rainfall-snowfall parsing
+The CaPA data are collected in their 6-hourly steps are both used on their own and are aggregated to daily __*precipitation*__ accumulations. The precipitation fields are proportioned into rainfall and snowfall amounts using an "optimized critical temperature" approach where precipitation fields are proportioned into rainfall and snowfall amounts. Optimization determines a critical temperature $ (T_\text{crit}) $ for every ["water year"](## "October 1 to September 30"), where:
+
+$$
+\text{Rainfall}=
+\begin{cases}
+\text{Precipitation}, & \overline{T}>T_\text{crit}\\
+0 & \text{otherwise},
+\end{cases}
+$$
+
+$$
+\text{Snowfall}=
+\begin{cases}
+\text{Precipitation}, & \overline{T}\leq T_\text{crit}\\
+0 & \text{otherwise}.
+\end{cases}
+$$
+
+An optimization routine is employed to determine $ T_\text{crit} $ such that total snowfall converges with total snowmelt *independently for every winter season* to ensure minimal deviation from total precipitation. 
+
+
+
+### Spatial interpolation vs. DAS
+
+A common question on the *data assimilation systems* (DAS) data employed by the ORMGP is how they compare to interpolated point data. In particular, we have met resistance to the use of CaPA-RDPA data as it has been known to disagree at times with point observations.
+
+*TODO*

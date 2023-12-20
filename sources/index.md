@@ -1,42 +1,44 @@
 ---
-title: Data Source Reference
+title: Open Data Sources
 output: html_document
 ---
+
+> Below lists the data used in supporting the ORMGP and its wide range on data services. This page details open data accessed for **external** source only and does not include data produced by the ORMGP.
 
 * TOC
 {:toc}
 
 # Spatial Data
 
-* [Ontario Hydro Network (OHN) - Watercourse](https://geohub.lio.gov.on.ca/datasets/a222f2996e7c454f9e8d028aa05995d3_26/about) provides the location of watercourses in Ontario and is offered by the Ontario Ministry of Natural Resources and Forestry.
+* [Ontario Hydro Network (OHN) - Watercourse](https://geohub.lio.gov.on.ca/datasets/mnrf::ontario-hydro-network-ohn-watercourse/about) provides the location of watercourses in Ontario and is offered by the Ontario Ministry of Natural Resources and Forestry.
+* [Ontario Hydro Network (OHN) - Waterbody](https://geohub.lio.gov.on.ca/datasets/mnrf::ontario-hydro-network-ohn-waterbody/about) shows the location of waterbodies in Ontario as part of the Ontario Hydro Network (OHN) and offered by the Ontario Ministry of Natural Resources and Forestry.
 * Ministry of Natural Resources and Forestry [Southern Ontario Land Resource Information System (SOLRIS) Version 3](https://geohub.lio.gov.on.ca/documents/lio::southern-ontario-land-resource-information-system-solris-3-0/about), April 2019
 * Ontario Geological Survey [surficial geology of southern Ontario, 2010](https://data.ontario.ca/dataset/surficial-geology-of-southern-ontario).
-* Ground surface elevations were collected from the 2006 version of the [Provincial (Ministry of Natural Resources) Digital Elevation Model (DEM)](https://geohub.lio.gov.on.ca/maps/mnrf::provincial-digital-elevation-model-pdem/about). This is a 10x10m² DEM derived from 1:10,000 scale OBM base mapping based on photogrammetic elevation points and 5m contours where the photogrammetic elevation points did not exist.
+* Ground surface elevations were collected from the October 16, 2023 update of the Provincial Digital Elevation Model (PDEM) offered by the [Ontario Ministry of Natural Resources and Forestry](https://geohub.lio.gov.on.ca/maps/mnrf::provincial-digital-elevation-model-pdem/about). This is a 30x30m² DEM referenced to the [Canadian Geodetic Vertical Datum of 2013](https://cdnsciencepub.com/doi/10.5623/cig2016-101) (CGVD2013).  
 
 
 # Timeseries Data
 
 ## Web Data Scrapers
 
-On a nightly basis, scheduled tasks are used to automatically download and insert new data into the [ORMGP database](https://owrc.github.io/database-manual/Contents/TOC.html), a process called ["web scraping"](https://en.wikipedia.org/wiki/Web_scraping). So, in addition to hydrogeologic information, the database maintains a realtime hydrometeorological dataset at the **daily** time scale. 
-
-[*more info here*](/interpolants/sources/webscraping.html)
-
-### Groundwater monitoring
-
-Groundwater monitoring data, [like those collected by the ORMGP](https://owrc.github.io/monitoring/), are kept in their time-scale, typically in the order of 10 min to hours, and inserted into the database.
+On a nightly basis, scheduled tasks are used to automatically download and insert new data into the [ORMGP database](https://owrc.github.io/database-manual/Contents/TOC.html), a process called ["web scraping"](/interpolants/sources/webscraping.html). So, in addition to hydrogeologic information, the database maintains a [near-realtime hydrometeorological](/interpolants/sources/climate-data-service.html) dataset at the 6-hourly and daily time scales. 
 
 
-### Climate data and Streamflow
-For the most part, information scraped below do not enter the database as they are sub-daily resolution. Rather, the higher-resolution data, including the gridded data, are maintained running [Delft-FEWS](https://oss.deltares.nl/web/delft-fews/about-delft-fews).
+## Groundwater monitoring
 
-The objective is to maintain a **daily** hydrometeorological dataset spatially distributed over the 30,000km² ORMGP management area, going back at least a century.  Data collected are "near" realtime in that they are what is reported when the scheduled task was run (the night prior). The web tools we maintain and numerical models we archive depend on this dataset.
+Groundwater monitoring data, [like those collected by the ORMGP](/monitoring/), are kept in their time-scale, typically in the order of 10 min to hours, and inserted into the database.
+
+
+## Climate data and streamflow
+For the most part, information scraped below do not enter the database as they are sub-daily resolution. Rather, the higher-resolution data, including the gridded data, are maintained running [Delft-FEWS](/interpolants/fews/).
+
+The ORMGP database maintains daily hydrometeorological data covering the 30,000km² ORMGP management area, going back over a century. Data collected are "near" realtime in that they are what is reported when the scheduled task was run (the night prior). The web tools and data services we maintain and numerical models we archive depend on this dataset.
 
 
 
 ### Current data sources
 
-Below is a list data sources used in deriving many of the interpolation products. These sources are all free and open, but come in a variety of formats.
+Below is a *summary* list of the hydrometeorological data sources used in deriving many our data services. These sources are all free and open, but come in a variety of formats. For more details, please visit the [detailed source reference page](/interpolants/sources/reference.html).
 
 
 * **WSC** - Water Survey of Canada 
@@ -50,7 +52,7 @@ Below is a list data sources used in deriving many of the interpolation products
         - hourly: air temperature, air pressure, relative humidity, wind speed, wind direction
         - daily: min/max air temperature, rainfall, snowfall, snow depth
     - Canadian Precipitation Analysis (CaPA)
-        - [Regional Deterministic Precipitation Analysis (CaPA-RDPA)](https://weather.gc.ca/grib/grib2_RDPA_ps10km_e.html) is a gridded (~10km) 6-hourly near realtime continuous precipitation field for the past 20 years, albeit in many overlapping versions.
+        - [Regional Deterministic Precipitation Analysis (CaPA-RDPA)](https://eccc-msc.github.io/open-data/msc-data/nwp_rdpa/readme_rdpa_en/) is a gridded (~10km) 6-hourly near realtime continuous precipitation field for the past 20 years, albeit in many overlapping versions.
         - [High Resolution Deterministic Precipitation Analysis (CaPA-HRDPA)](https://eccc-msc.github.io/open-data/msc-data/nwp_hrdpa/readme_hrdpa_en/) is a refined version (~2.5km) of the product above, going back to 2019.
 
 * **NOAA-NSIDC** - National Oceanic and Atmospheric Administration-National Snow & Ice Data Center
