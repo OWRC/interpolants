@@ -19,15 +19,14 @@ Every night, the automated data service [web-scrapes](/interpolants/sources/webs
 
 *4,238 ~10km² sub-watersheds delineated with their topological relationships defined, as shown by clicking any sub-watershed of lake. In addition to climate data, these sub-watersheds have been attributed with land use characteristics, elevations, etc.*
 
-<br>
-
-Currently, the data offered include:
+Currently, the data service offers near-realtime estimates of [hover text](# "your hover text") and  [hover text2](## "your hover text2"):
 
 - Rainfall
 - Snowfall
 - Snowmelt
 - Air temperatures
 - Atmospheric pressure
+- Relative humidity
 - Wind speed
 - Wind direction
 - Potential evaporation
