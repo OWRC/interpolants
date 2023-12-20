@@ -118,8 +118,8 @@ While the CaPA-RDPA vector data fields can be acquired from Environment Canada i
 
 
 
-# **Snowmelt**
-## U.S. National Oceanic and Atmospheric Administration (NOAA) 
+## **Snowmelt**
+### U.S. National Oceanic and Atmospheric Administration (NOAA) 
 #### SNODAS daily (*2010—present*)
 Typically, snowmelt must be derived from snowpack ablation models. These models come in a variety of forms and sophistication. The primary source of such information comes from the [Snow Data Assimilation System (SNODAS)](https://nsidc.org/data/g02158) system (NOHRSC, 2004), which offers an archive of ~1km gridded 24-hour (UTC 06-06) snowmelt totals, published freely. The advantage of SNODAS is that we can avoid the need to model snowmelt explicitly, leveraging existing resources. The data cover our jurisdiction since late 2010.
 
@@ -131,7 +131,7 @@ SNODAS is also offered in 6-hourly states, however offered only for the past mon
 
 <br>
 
-## Cold Content Energy Balance Snowpack Model
+### Cold Content Energy Balance Snowpack Model
 #### (*1901—present*)
 When unavailable, and prior to 2010, a [cold content energy balance snowpack model](/interpolants/modelling/waterbudget/snowmeltCCF.html) is applied relying on interpolated precipitation and temperatures. The model considerers a single layered snowpack with a liquid water holding capacity.
 
@@ -139,36 +139,37 @@ When unavailable, and prior to 2010, a [cold content energy balance snowpack mod
 
 
 
-# **Air Temperature**
+## **Air Temperature**
 
 Elevations within the ORMGP region range from 75-450 masl and thus orographic effects to temperatures are deemed negligible. The spatial distribution of minimum/maximum daily temperature is then interpolated from meteorological stations using a linear radial basis function.
 
 All temperature data are acquired from the Meteorological Service of Canada.
 
-## Meteorological Service of Canada
+### Meteorological Service of Canada
 #### Minimum and Maximum daily Temperature (*1901—present*)
-#### Hourlies (*1953—present*)
+#### Hourly (*1953—present*)
 
 
-# **Air Pressure**
-## Meteorological Service of Canada
-#### Hourlies (*1953—present*)
+## **Air Pressure**
+### Meteorological Service of Canada
+#### Hourly (*1953—present*)
 Atmospheric pressure data are acquired from Meteorological Service of Canada, which come in as hourly averages. In contrast to temperatures, [elevation does have am impact on pressure distribution and thus corrections are made](/interpolants/interpolation/barometry.html). Once corrected, the hourly data are then aggregated to 6-hourly averages. (Hourly data are still maintained and can be made available upon request.)
 
 
-# **Relative Humidity**
-## Meteorological Service of Canada
-#### Hourlies (*1953—present*)
+## **Relative Humidity**
+### Meteorological Service of Canada
+#### Hourly (*1953—present*)
 Hourly relative Humidity data are acquired from Meteorological Service of Canada and are aggregated to 6-hourly averages.
 
 
-# **Wind Speed**
-## Meteorological Service of Canada
-#### Hourlies (*1953—present*)
+## **Wind Speed**
+### Meteorological Service of Canada
+#### Hourly (*1953—present*)
 Wind speed and direction data are acquired from Meteorological Service of Canada. Wind speeds only are aggregated to 6-hourly averages.
 
 
-# **Potential Evaporation**
+## **Potential Evaporation**
+#### Hourly (*1953—present*)
 The final 6-hourly dataset made available through the data service is potential evaporation $ (E_a) $ derived using the Penman wind function:
 
 $$
@@ -180,12 +181,12 @@ where $d_a$ is the vapour pressure deficit (Pa) and $f(u)$ is an empirical wind-
 
 The advantage here is the ability to neglect the need for for the radiative terms used in Penman-Monteith (1965), Priestly-Taylor (1972), Jensen-Haise (1963), etc.---a *rare* data set that is hard to interpolate due to the influence of cloud cover--good to avoid.
 
-# Data interpolation
+# Data Interpolation
 
 With the exception of CaPA-HRDPA and SNODAS, point/station data require spatial interpolation to acheive a contiguous distribution of climactic variables. These data are automatically [interpolated to every 10km² sub-watersheds using Delft-FEWS](/interpolants/fews/climate-interpolation.html). 
 
 
-
+<br>
 
 # References
 
