@@ -14,8 +14,7 @@ output: html_document
 
 ## Meteorological Service of Canada
 
-Meteorological Service of Canada is a division of Environment Canada. Their [online historical data portal](https://climate.weather.gc.ca/index_e.html) provides data collected since the mid 19th century. 
-Precipitation is offered as rainfall and snowfall amounts to the tenth of a millimetre.
+Meteorological Service of Canada is a division of Environment Canada. Their [online historical data portal](https://climate.weather.gc.ca/index_e.html) provides data collected since the mid 19th century. Precipitation is offered as rainfall and snowfall amounts to the tenth of a millimetre.
 
 
 ## ECCC: Regional Deterministic Precipitation Analysis (RDPA)

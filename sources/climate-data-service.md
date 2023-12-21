@@ -9,6 +9,8 @@ The [ORMGP](https://oakridgeswater.ca/) maintains a current, continuous daily cl
 
 <br>
 
+`click on square in upper-left to bring to full screen` `clicking on sub-watershed will reveal statistics and offer link to the Climate Data Service`
+
 <iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 
 *4,238 ~10km² sub-watersheds delineated with their topological relationships defined, as shown by clicking any sub-watershed of lake. In addition to climate data, these sub-watersheds have been attributed with land use characteristics, elevations, etc.*
@@ -76,11 +78,16 @@ This effort was a successful demonstration of the scalability of the ORMGP clima
 - Digital files available as [CF 1.8-compliant](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.8/cf-conventions.html) NetCDF files. 
 - Available (hard-copy) data files for download (up to October, 2023):
     - indexed sub-watershed polygons: [`PDEM-South-D2013-OWRC23-60-HC-sws10.shp`](https://www.dropbox.com/scl/fi/a0r65kr7i1jirdci6d8jg/PDEM-South-D2013-OWRC23-60-HC-sws10.7z?rlkey=caol95r7k0s9p1re31mlev2a4&dl=1)
-    - daily climatologies: [`OWRCdailyBasins2023.nc`](https://www.dropbox.com/scl/fi/a0r65kr7i1jirdci6d8jg/PDEM-South-D2013-OWRC23-60-HC-sws10.7z?rlkey=caol95r7k0s9p1re31mlev2a4&dl=1)
-    - 6-hourly climatologies: [`OWRC6hourlyBasins2023.nc`](https://www.dropbox.com/scl/fi/a0r65kr7i1jirdci6d8jg/PDEM-South-D2013-OWRC23-60-HC-sws10.7z?rlkey=caol95r7k0s9p1re31mlev2a4&dl=1)
+    - daily climatologies: [`OWRCdailyBasins2023.nc`](https://www.dropbox.com/scl/fi/059gqccwej6m791j9el9d/OWRCdailyBasins2023.nc?rlkey=8fe4dq61t5qqkmawinuoxxhzj&dl=1)
+    - 6-hourly climatologies: [`OWRC6hourlyBasins2023.nc`](https://www.dropbox.com/scl/fi/coddz0za1zddtgv3utv4p/OWRC6hourlyBasins2023.nc?rlkey=65c0je8fg2dn4hr9g6yozt59k&dl=1)
 - Data service continues to append to these datasets. Updated NetCDF files can be produced on request.
 
-*NOTE: data compressed using [7-zip](https://www.7-zip.org/).*
+<br>
+
+*NOTES:* 
+- *data compressed using [7-zip](https://www.7-zip.org/).*
+- *NetCDF files can be opened using [Panoply](https://www.giss.nasa.gov/tools/panoply/).*
+- *NetCDF files can also be opened [using Python](/interpolants/sources/climate-data-service-python.html).*
 
 <br>
 
@@ -98,13 +105,25 @@ In creating this coverage, the ORMGP Near Real-time Climate Data Service is depe
 
 ## Digital Elevation Model
 
+The foundation to the climate data service (DS) is the digital elevation model (DEM). As part of the scaling exercise (v.2023) the DEM used was the Provincial Digital Elevation Model (PDEM) offered by the Ontario Ministry of Environment and Forestry, last updated October 16, 2023. The 30x30m² horizontal resolution DEM was first resampled to 60x60m². The resampled DEM can be found here: [`PDEM-South-D2013-OWRC23-60.bil`](https://www.dropbox.com/scl/fi/cu50wbrruxk8st4zv4o52/PDEM-South-D2013-OWRC23-60.bil.7z?rlkey=6hhe8udads6fx2psu1z8xx4jk&dl=1).
+
+
+
 ## Hydrological correction
+
+Next, the DEM is processed using a procedure called "hydrological correction" which is a means of essentially filling in sinks/depressions to ensure a continuous downslope flow directions. This procedure is a common practice in hydrology when there's a need to define stream channels from DEMs when direct mapping is unavailable. Hydrological correction used here follows the method of Wang and Liu (2006) with some flat region adjustments following Garbrecht and Martz (1997).
+
+The hydrological corrected DEM can be found here: [`PDEM-South-D2013-OWRC23-60-HC.bil`](https://www.dropbox.com/scl/fi/uxdcf18qeqv099el6yfwg/PDEM-South-D2013-OWRC23-60-HC.bil.7z?rlkey=tpoot5uqaswosozrrbvzdfry8&dl=1).
+
 
 ## Sub-watershed delineation
 
-
+With the hydrological corrected digital elevation model (HDEM) flow path are then defined using the so-called D8-algorithm (O'Callaghan and Mark, 1984). Hill climbing algorithm are them applied to define sub-watershed of a specified area; here 10km²
 
 [*see also the sub-watershed topology here*](https://owrc.shinyapps.io/sws23/)
+
+[`PDEM-South-D2013-OWRC23-60-HC-sws10.shp`](https://www.dropbox.com/scl/fi/a0r65kr7i1jirdci6d8jg/PDEM-South-D2013-OWRC23-60-HC-sws10.7z?rlkey=caol95r7k0s9p1re31mlev2a4&dl=1)
+
 
 
 # Data Sources
@@ -112,14 +131,14 @@ In creating this coverage, the ORMGP Near Real-time Climate Data Service is depe
 ## **Rainfall and Snowfall**
 
 ### Meteorological Service of Canada
-#### (*1901—present*)
+##### (*1901—present*)
 Meteorological Service of Canada is a division of Environment and Climate Change Canada (ECCC). Their [online historical data portal](https://climate.weather.gc.ca/index_e.html) provides data collected since the mid 19th century. These data are collected at (point/local/scalar) weather stations and require spatial interpolation. Here, the nearest neighbour (i.e., Thiessen polygon) method is applied.
 
 ## ECCC: Regional Deterministic Precipitation Analysis (RDPA)
 
 > The RDPA produces a best estimate of the amount of precipitation that occurred over recent past periods of 6 hours. The estimate integrates data from in situ precipitation gauge measurements, weather radar and numerical weather prediction models. Geographic coverage is North America (Canada, United States and Mexico). Data is available at horizontal resolution of 10km. Data is only available for the surface level. Analysis data is made available four times a day for the 6h intervals. A preliminary estimate is available approximately 1h after the end of the accumulation period, and revised 6h after in order to assimilate gauge data arriving later. [*(ECCC, 2023)*](https://api.weather.gc.ca/collections/weather:rdpa:10km:6f)
 
-#### (*2002—present, over a sequence of versions*)
+##### (*2002—present, over a sequence of versions*)
 
 The [Regional Deterministic Precipitation Analysis (RDPA)](https://eccc-msc.github.io/open-data/msc-data/nwp_rdpa/readme_rdpa_en/), which is based on the [Canadian Precipitation Analysis (CaPA) system](https://collaboration.cmc.ec.gc.ca/cmc/cmoi/product_guide/docs/lib/capa_information_leaflet_20141118_en.pdf), provides a Canada-wide field of 6-hourly precipitation accumulations. The CaPA-RDPA products has gone through a number of version changes since 2002. The data are updated in near real-time, meaning that the current state of precipitation patterns can be made immediately available.
 
@@ -141,10 +160,10 @@ While the CaPA-RDPA vector data fields can be acquired from Environment Canada i
 
 ## **Snowmelt**
 ### U.S. National Oceanic and Atmospheric Administration (NOAA) 
-#### SNODAS daily (*2010—present*)
+##### SNODAS daily (*2010—present*)
 Typically, snowmelt must be derived from snowpack ablation models. These models come in a variety of forms and sophistication. The primary source of such information comes from the [Snow Data Assimilation System (SNODAS)](https://nsidc.org/data/g02158) system (NOHRSC, 2004), which offers an archive of ~1km gridded 24-hour (UTC 06-06) snowmelt totals, published freely. The advantage of SNODAS is that we can avoid the need to model snowmelt explicitly, leveraging existing resources. The data cover our jurisdiction since late 2010.
 
-#### SNODAS 6-hourly (*2020—present*)
+##### SNODAS 6-hourly (*2020—present*)
 SNODAS is also offered in 6-hourly states, however offered only for the past month. These data are scraped nightly using the [ORMGP-FEWS](/interpolants/fews/) system which also crops the data to our jurisdiction.
 
 ![SNODAS sample](../fig/nsm_depth_2016011505_National.jpg)
@@ -153,7 +172,7 @@ SNODAS is also offered in 6-hourly states, however offered only for the past mon
 <br>
 
 ### Cold Content Energy Balance Snowpack Model
-#### (*1901—present*)
+##### (*1901—present*)
 When unavailable, and prior to 2010, a [cold content energy balance snowpack model](/interpolants/modelling/waterbudget/snowmeltCCF.html) is applied relying on interpolated precipitation and temperatures. The model considerers a single layered snowpack with a liquid water holding capacity.
 
 
@@ -167,25 +186,25 @@ Elevations within the ORMGP region range from 75-450 masl and thus orographic ef
 All temperature data are acquired from the Meteorological Service of Canada.
 
 ### Meteorological Service of Canada
-#### Minimum and Maximum daily Temperature (*1901—present*)
-#### Hourly (*1953—present*)
+##### Minimum and Maximum daily Temperature (*1901—present*)
+##### Hourly (*1953—present*)
 
 
 ## **Air Pressure**
 ### Meteorological Service of Canada
-#### Hourly (*1953—present*)
+##### Hourly (*1953—present*)
 Atmospheric pressure data are acquired from Meteorological Service of Canada, which come in as hourly averages. In contrast to temperatures, [elevation does have am impact on pressure distribution and thus corrections are made](/interpolants/interpolation/barometry.html). Once corrected, the hourly data are then aggregated to 6-hourly averages. (Hourly data are still maintained and can be made available upon request.)
 
 
 ## **Relative Humidity**
 ### Meteorological Service of Canada
-#### Hourly (*1953—present*)
+##### Hourly (*1953—present*)
 Hourly relative Humidity data are acquired from Meteorological Service of Canada and are aggregated to 6-hourly averages.
 
 
 ## **Wind Speed**
 ### Meteorological Service of Canada
-#### Hourly (*1953—present*)
+##### Hourly (*1953—present*)
 Wind speed and direction data are acquired from Meteorological Service of Canada. Wind speeds only are aggregated to 6-hourly averages.
 
 
@@ -212,4 +231,11 @@ With the exception of CaPA-HRDPA and SNODAS, point/station data require spatial 
 
 # References
 
-National Operational Hydrologic Remote Sensing Center. 2004. Snow Data Assimilation System (SNODAS) Data Products at NSIDC, Version 1. [Indicate subset used]. Boulder, Colorado USA. NSIDC: National Snow and Ice Data Center. doi: https://doi.org/10.7265/N5TB14TC. [Date Accessed]
+Garbrecht and Martz 1997 The assignment of drainage direction over flat surfaces in raster digital elevation models
+
+National Operational Hydrologic Remote Sensing Center. 2004. Snow Data Assimilation System (SNODAS) Data Products at NSIDC, Version 1. Boulder, Colorado USA. NSIDC: National Snow and Ice Data Center. doi: https://doi.org/10.7265/N5TB14TC.
+
+O'Callaghan, J.F., and D.M. Mark, 1984. The extraction of drainage net-works from digital elevation data, Comput. Vision Graphics Image Process., 28, pp. 328-344
+
+Wang, L., H. Liu, 2006. An efficient method for identifying and filling surface depressions in digital elevation models for hydrologic analysis and modelling. International Journal of Geographical Information Science 20(2): 193-213.
+

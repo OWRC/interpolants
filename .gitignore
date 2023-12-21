@@ -54,3 +54,4 @@ rosm.cache
 
 # temporary (files here may be too big)
 grids/
+sources/examples/
