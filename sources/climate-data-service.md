@@ -9,11 +9,13 @@ The [ORMGP](https://oakridgeswater.ca/) maintains a current, continuous daily cl
 
 <br>
 
-`click on square in upper-left to bring to full screen` `clicking on sub-watershed will reveal statistics and offer link to the Climate Data Service`
+`click on square in upper-left to bring to full screen`
+
+`clicking on sub-watershed will reveal statistics and offer link to the Climate Data Service`
 
 <iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 
-*4,238 ~10km² sub-watersheds delineated with their topological relationships defined, as shown by clicking any sub-watershed of lake. In addition to climate data, these sub-watersheds have been attributed with land use characteristics, elevations, etc.*
+*4,238 ~10km² sub-watersheds that make up the ORMGP Near Real-time climate data service coverage. In addition to climate data, these sub-watersheds have been attributed with land use characteristics, areas, elevations, long-term average climate, etc.*
 
 <br>
 
@@ -89,7 +91,7 @@ This effort was a successful demonstration of the scalability of the ORMGP clima
 - *NetCDF files can be opened using [Panoply](https://www.giss.nasa.gov/tools/panoply/).*
 - *NetCDF files can also be opened [using Python](/interpolants/sources/climate-data-service-python.html).*
 
-<br>
+<br><br>
 
 
 
@@ -118,13 +120,12 @@ The hydrological corrected DEM can be found here: [`PDEM-South-D2013-OWRC23-60-H
 
 ## Sub-watershed delineation
 
-With the hydrological corrected digital elevation model (HDEM) flow path are then defined using the so-called D8-algorithm (O'Callaghan and Mark, 1984). Hill climbing algorithm are them applied to define sub-watershed of a specified area; here 10km²
+With the hydrological corrected digital elevation model (HDEM) flow path are then defined using the so-called D8-algorithm (O'Callaghan and Mark, 1984). A hill-climbing algorithm is then applied to define sub-watersheds of a specified area; here 10km² is chosen as it is roughly the scale of a typical convective storm in southern Ontario. The v.2023 sub-watersheds can be accessed here: [`PDEM-South-D2013-OWRC23-60-HC-sws10.shp`](https://www.dropbox.com/scl/fi/a0r65kr7i1jirdci6d8jg/PDEM-South-D2013-OWRC23-60-HC-sws10.7z?rlkey=caol95r7k0s9p1re31mlev2a4&dl=1)
 
-[*see also the sub-watershed topology here*](https://owrc.shinyapps.io/sws23/)
-
-[`PDEM-South-D2013-OWRC23-60-HC-sws10.shp`](https://www.dropbox.com/scl/fi/a0r65kr7i1jirdci6d8jg/PDEM-South-D2013-OWRC23-60-HC-sws10.7z?rlkey=caol95r7k0s9p1re31mlev2a4&dl=1)
+> *see also the sub-watersheds topology connected [here](https://owrc.shinyapps.io/sws23/). Clicking on any sub-watershed polygon will reveal the catchment area to the selected watershed in green, and the downslope sub-watersheds in red.*
 
 
+<br><br>
 
 # Data Sources
 
@@ -217,17 +218,19 @@ $$
   E_a=7.46\times 10^{-6} \cdot d_a \cdot f(u) \qquad \text{(m/s)}
 $$
 
-
 where $d_a$ is the vapour pressure deficit (Pa) and $f(u)$ is an empirical wind-function (m/s), where $u$ is wind speed (m/s).
 
 The advantage here is the ability to neglect the need for for the radiative terms used in Penman-Monteith (1965), Priestly-Taylor (1972), Jensen-Haise (1963), etc.---a *rare* data set that is hard to interpolate due to the influence of cloud cover--good to avoid. [Calibration of the model has been made against pan evaporation stations](/interpolants/interpolation/calc/panET/PanEvaporation.html).
+
+
+<br><br>
 
 # Data Interpolation
 
 With the exception of CaPA-HRDPA and SNODAS, point/station data require spatial interpolation to acheive a contiguous distribution of climactic variables. These data are automatically [interpolated to every 10km² sub-watersheds using Delft-FEWS](/interpolants/fews/climate-interpolation.html). 
 
 
-<br>
+<br><br>
 
 # References
 
