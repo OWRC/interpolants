@@ -26,7 +26,7 @@ The 3 million hectare ORMGP jurisdiction has been subdivided into thousands of ~
 
 ## Build v.2023
 
-The sub-watershed delineation has expanded to include the entire Canadian Lake Ontario shoreline.
+The sub-watershed delineation has expanded to include the entire Canadian Lake Ontario shoreline. The ORMGP region is noe portioned into 4,238 ~10km² sub-watersheds.
 
 ## Build v.2020
 

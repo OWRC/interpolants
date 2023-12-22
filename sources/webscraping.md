@@ -16,14 +16,14 @@ On a nightly basis, data are extracted from a number of open data sources, wheth
 
 ### Notes:
 
-- Streamflow discharge and stage are re-scaled to daily mean timesteps when inserted into our database
+> Streamflow discharge and stage are re-scaled to daily mean timesteps when inserted into our database.
 
 
 ## Sources:
 
 A number of our partners maintain internal databases. Attempts are continuing to integrate these sources to our workflow without the need for data duplication. This is (hopefully) accomplished by establishing an [Application Programming Interface](https://en.wikipedia.org/wiki/API) (API) on the partners' end. Currently, we have:
 
-[*see also Sources*](/interpolants/sources/sources.html)
+[*see also Source References.*](/interpolants/sources/reference.html)
 
 
 

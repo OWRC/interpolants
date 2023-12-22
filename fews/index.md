@@ -22,16 +22,17 @@ The "ORMGP-FEWS" system is used to organize data collected from a variety of sou
 
 
 ### End Product
-In support of our mapping, waterbalance and partners, we maintain two long-term climatological datasets updated nightly: at a daily timescale since 1901, and a 6-hourly dataset since 2001. The data, [infilled and distributed](\fews\climate-interpolation.html) at a 10km² resolution across our jurisdiction, include:
+In support of our mapping, waterbalance and partners, we maintain two long-term climatological datasets updated nightly: at a daily timescale since 1901, and a 6-hourly dataset since 2002. The data, [infilled and distributed](/interpolants/fews/climate-interpolation.html) at a 10km² resolution across our jurisdiction, include:
 
 1. Rainfall
 1. Snowfall, snowmelt and snow equivalent (SWE)
 1. Air temperature and pressure
+1. Relative humidity
 1. Wind speed and direction
 1. Potential evaporation
 
 
-The data support a wide variety of web services the ORMGP offers where knowledge of past climactic conditions have a direct causal link to other monitored phenomena.  [*All data sources can be found here.*](/interpolants/interpolation/climate-sources.html)
+The data support a wide variety of web services the ORMGP offers where knowledge of past climactic conditions have a direct causal link to other monitored phenomena.  [*All data sources can be found here.*](/interpolants/sources/reference.html)
 
 
 ## Data types
