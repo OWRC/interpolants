@@ -135,7 +135,7 @@ With the hydrologically corrected digital elevation model (HCDEM) flow paths are
 ##### (*1901—present*)
 Meteorological Service of Canada is a division of Environment and Climate Change Canada (ECCC). Their [online historical data portal](https://climate.weather.gc.ca/index_e.html) provides data collected since the mid 19th century. These data are collected at (point/local/scalar) weather stations and require spatial interpolation. Here, the nearest neighbour (i.e., Thiessen polygon) method is applied.
 
-## ECCC: Regional Deterministic Precipitation Analysis (RDPA)
+### ECCC: Regional Deterministic Precipitation Analysis (RDPA)
 
 > The RDPA produces a best estimate of the amount of precipitation that occurred over recent past periods of 6 hours. The estimate integrates data from in situ precipitation gauge measurements, weather radar and numerical weather prediction models. Geographic coverage is North America (Canada, United States and Mexico). Data is available at horizontal resolution of 10km. Data is only available for the surface level. Analysis data is made available four times a day for the 6h intervals. A preliminary estimate is available approximately 1h after the end of the accumulation period, and revised 6h after in order to assimilate gauge data arriving later. [*(ECCC, 2023)*](https://api.weather.gc.ca/collections/weather:rdpa:10km:6f)
 
