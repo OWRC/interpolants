@@ -215,7 +215,7 @@ Wind speed and direction data are acquired from Meteorological Service of Canada
 The final 6-hourly dataset made available through the data service is potential evaporation $ (E_a) $ derived using the Penman wind function:
 
 $$
-  E_a=7.46\times 10^{-6} \cdot d_a \cdot f(u) \qquad \text{(m/s)}
+  E_a=7.46\times 10^{-6} \cdot d_a \cdot f(u) \qquad \text{(mm/s)}
 $$
 
 where $d_a$ is the vapour pressure deficit (Pa) and $f(u)$ is an empirical wind-function (m/s), where $u$ is wind speed (m/s).
