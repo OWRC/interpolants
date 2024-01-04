@@ -31,7 +31,7 @@ The following is an index to the data maintained and produced by the ORMGP. All 
 [Our main MSSQL Server database](/database-manual/Contents/TOC.html) holds all the information to support our decision-making tools. The ORMGP data systems are *active*, in that they are automatically updated at near real-time. From hourly and daily intervals, a series of web-scraping routines have been written to access open data made available from many sources including international, federal, provincial, municipal and conservation authority agencies. The objective is to centralize hydrogeological and hydrological data for the south-central Ontario (Canada) jurisdiction that currently makes-up the ORMGP. 
 
 
-[**_Data source references._**](/interpolants/sources/sources.html)
+[**_Data source references._**](/interpolants/sources/reference.html)
 
 
 ## **Delft-FEWS Database**
