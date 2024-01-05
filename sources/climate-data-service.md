@@ -59,12 +59,6 @@ Specifically, we are concerned about climatology at the *regional scale*. We cov
 
 Admittedly, greater emphasis is made to "re-packaging" data-products from external agencies; we are not trying to re-invent the wheel. Instead, we are only trying to automate a workflow that, until now, is constantly repeated by our partner agencies and partner consultants when such data are needed. We don't require any of our partners to use our data, we are only making available the data we use in our internal analyses.
 
-Below is a description of the datasets used in our overall climatology package. Precipitation, for example, comes from a multitude of sources that generally follow technological advances. In order to obtain a century+ continuous dataset, older station-based interpolation is supplanted by more recent *"data assimilation systems"* (DAS), where and when available.
-
-It's also worth noting that the density of [active meteorological stations present in our jurisdiction has been in decline since the 1970s](/snapshots/md/gantt-met.html). Understandably, much of the recent investment in meteorological station operation has been dedicated to Canada's north; a large geographical region that has been grossly overlooked yet is most susceptible to a changing climate and thus deserves greater investment.
-
-The data source that are collected, interpolated and delivered through our web portal are [referenced here](/interpolants/sources/reference.html). For the most part, the most recent datasets supersede the oldest.
-
 ## Version 2023
 
 With funding from Environment and Climate Change Canada under the Great Lakes Protection Initiative (GLPI), as part of the Great Lakes Water Quality Agreement (GLWQA), the ORMGP climate data service was expanded from our jurisdiction to cover the entire Canadian shoreline of Lake Ontario.  
@@ -128,6 +122,12 @@ With the hydrologically corrected digital elevation model (HCDEM) flow paths are
 <br><br>
 
 # Data Sources
+
+Below is a description of the datasets used in our overall climatology package. Precipitation, for example, comes from a multitude of sources that generally follow technological advances. In order to obtain a century+ continuous dataset, older station-based interpolation is supplanted by more recent *"data assimilation systems"* (DAS), where and when available.
+
+It's also worth noting that the density of [active meteorological stations present in our jurisdiction has been in decline since the 1970s](/snapshots/md/gantt-met.html). Understandably, much of the recent investment in meteorological station operation has been dedicated to Canada's north; a large geographical region that has been grossly overlooked yet is most susceptible to a changing climate and thus deserves greater investment.
+
+The data source that are collected, interpolated and delivered through our web portal are [referenced here](/interpolants/sources/reference.html). For the most part, the most recent datasets supersede the oldest.
 
 ## **Rainfall and Snowfall**
 
