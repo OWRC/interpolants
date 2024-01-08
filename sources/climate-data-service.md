@@ -127,7 +127,10 @@ Below is a description of the datasets used in our overall climatology package. 
 
 It's also worth noting that the density of [active meteorological stations present in our jurisdiction has been in decline since the 1970s](/snapshots/md/gantt-met.html). Understandably, much of the recent investment in meteorological station operation has been dedicated to Canada's north; a large geographical region that has been grossly overlooked yet is most susceptible to a changing climate and thus deserves greater investment.
 
-The data source that are collected, interpolated and delivered through our web portal are [referenced here](/interpolants/sources/reference.html). For the most part, the most recent datasets supersede the oldest.
+The data source that are collected, interpolated and delivered through our web portal are [**referenced here**](/interpolants/sources/reference.html). For the most part, the most recent datasets supersede the oldest. 
+
+Most of the data are acquired though Meteorological Service of Canada (MSC) [Open Data Service](https://eccc-msc.github.io/open-data/readme_en/) hosted by Environment and Climate Change Canada (ECCC). Near real-time station data are downloaded nightly using MSC's [Datamart](https://eccc-msc.github.io/open-data/msc-datamart/readme_en/) and processed by the [ORMGP-FEWS](/interpolants/fews/) system as described below.
+
 
 ## **Rainfall and Snowfall**
 
