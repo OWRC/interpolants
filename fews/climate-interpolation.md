@@ -98,7 +98,7 @@ A common question on the *data assimilation systems* (DAS) data employed by the 
 
 The use of these distributed products at the ORMGP are to provide an idea of precipitation as it covers our entire 30,000 km² jurisdiction. Comparisons of point stations to these fields fail to take in account the issue of how one should *interpolate* the point stations over space, as is always required prior to hydrologic modelling, for instance.
 
-So, in addition to comparing point stations (which themselves as known to be ±5% in error and [many don't record trace amounts](https://www.canada.ca/en/environment-climate-change/services/weather-general-tools-resources/frequently-asked-questions.html) less than 0.2 mm per hour), one should also be comparing how a field interpolated for point stations compare with CaPA-RDPA.
+So, in addition to comparing point stations (which themselves as known to be ±5% in error--Legates and DeLiberty, 1993--and [many don't record trace amounts](https://www.canada.ca/en/environment-climate-change/services/weather-general-tools-resources/frequently-asked-questions.html) less than 0.2 mm per hour), one should also be comparing how a field interpolated for point stations compare with CaPA-RDPA.
 
 Below shows a figure comparing CaPA vs. interpolated station data over the past 20 years of daily accumulations on days where precipitation was observed. Station data are interpolated using the nearest neighbour approach. Both fields are then averaged over the 30,000 km² ORMGP jurisdiction.
 
@@ -108,6 +108,8 @@ It's clear that for the most part, the 2 approaches are in agreement to within �
 
 
 # References
+
+Legates, D.R., DeLiberty, T.L. 1993. Precipitation measurement biases in the United States. – JAWRA Journal of the American Water Resources Association, 29(5), 855–861.
 
 Novák, V., 2012. Evapotranspiration in the Soil-Plant-Atmosphere System. Springer Science+Business Media Dordrecht. 253pp.
 
