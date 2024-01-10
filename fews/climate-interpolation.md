@@ -94,9 +94,15 @@ An optimization routine is employed to determine $ T_\text{crit} $ such that tot
 
 # Spatial interpolation vs. DAS
 
-A common question on the *data assimilation systems* (DAS) data employed by the ORMGP is how they compare to interpolated point data. In particular, we have met resistance to the use of [CaPA-RDPA](/interpolants/sources/climate-data-service.html#eccc-regional-deterministic-precipitation-analysis-rdpa) data as it has been known to disagree at times with point observations.
+A common question on the *data assimilation systems* (DAS) data employed by the ORMGP is how they compare to interpolated point data. In particular, we have met resistance to the use of [CaPA-RDPA](/interpolants/sources/climate-data-service.html#eccc-regional-deterministic-precipitation-analysis-rdpa) data as it has been known to disagree at times with point observations. But this is an unfair comparison as one should really expect every pixel of the CaPA field to be derived without uncertainty.
 
-*TO COMPLETE*
+The use of these distributed products at the ORMGP are to provide an idea of precipitation as it covers our entire 30,000 km² jurisdiction. Comparisons of point stations to these fields fail to take in account the issue of how one should *interpolate* the point stations over space, as is always required prior to hydrologic modelling, for instance.
+
+So, in addition to comparing point stations (which themselves as known to be ±5% in error and [many don't record trace amounts](https://www.canada.ca/en/environment-climate-change/services/weather-general-tools-resources/frequently-asked-questions.html) less than 0.2 mm per hour), one should also be comparing how a field interpolated for point stations compare with CaPA-RDPA.
+
+Below shows a figure comparing CaPA vs. interpolated station data over the past 20 years of daily accumulations on days where precipitation was observed. Station data are interpolated using the nearest neighbour approach. Both fields are then averaged over the 30,000 km² ORMGP jurisdiction.
+
+It's clear that for the most part, the 2 approaches are in agreement to within ±2 mm per day. Major discrepancies occur on days where heavy rainfall events are measured at individual stations, and the interpolation scheme over exaggerates the extent of the intense storm, which in southern Ontario tends to be convective (i.e., small extent) in nature. This is the problem we are trying to overcome as it is apparent that inadequate estimates of spatial distribution can be a greater source of error than the accuracy of any particular CaPA-RDPA pixel.
 
 ![](fig/h6-station-vs-rdpa.png)
 
