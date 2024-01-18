@@ -100,9 +100,9 @@ The use of these distributed products at the ORMGP are to provide an idea of pre
 
 So, in addition to comparing point stations (which themselves as known to be ±5% in error--Legates and DeLiberty, 1993--and [many don't record trace amounts](https://www.canada.ca/en/environment-climate-change/services/weather-general-tools-resources/frequently-asked-questions.html) less than 0.2 mm per hour), one should also be comparing how a field interpolated for point stations compare with CaPA-RDPA.
 
-Below shows a figure comparing CaPA vs. interpolated station data over the past 20 years of daily accumulations on days where precipitation was observed. Station data are interpolated using the nearest neighbour approach. Both fields are then averaged over the 30,000 km² ORMGP jurisdiction.
+Below shows a figure comparing CaPA vs. interpolated station data over the past 10 years of 6-hourly accumulations at time when precipitation was observed by either dataset. Station data are interpolated using the nearest neighbour approach. Both fields are then averaged over the 30,000 km² ORMGP jurisdiction.
 
-It's clear that for the most part, the 2 approaches are in agreement to within ±2 mm per day. Major discrepancies occur on days where heavy rainfall events are measured at individual stations, and the interpolation scheme over exaggerates the extent of the intense storm, which in southern Ontario tends to be convective (i.e., small extent) in nature. This is the problem we are trying to overcome as it is apparent that inadequate estimates of spatial distribution can be a greater source of error than the accuracy of any particular CaPA-RDPA pixel.
+It's clear that for the most part, the 2 approaches are in agreement to within ±2 mm per day; 1:1 line shown in red. Major discrepancies (circled red) occur when heavy rainfall events are measured at individual stations and the interpolation scheme over exaggerates the extent of the intense storm, which in southern Ontario tends to be convective (i.e., small extent) in nature. This is the problem we are trying to overcome as it appears that inadequate estimates of spatial distributions can be a greater source of error than the accuracy of any particular CaPA-RDPA pixel.
 
 ![](fig/h6-station-vs-rdpa.png)
 
