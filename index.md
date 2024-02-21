@@ -84,7 +84,7 @@ _Sub-watershed characterization and flow topology_
 <br>
 
 ## Hydro-meteorological station data  
-* [Data source **References**:](https://owrc.github.io/interpolants/sources/index.html#climate-data-and-streamflow) climate and streamflow
+* [Data source **References**:](/interpolants/sources/index.html#climate-data-and-streamflow) climate and streamflow
 * [Baseflow/Hydrograph Separation](/info/hydrographseparation/)
 * [**Spatial Interpolation**](/interpolants/fews/climate-interpolation.html) of point data
 * [**Near-Real-Time Data Acquisition**](/interpolants/interpolation/climate-sources.html), updated nightly, including:
