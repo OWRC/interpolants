@@ -39,7 +39,7 @@ In a total of 62 locations, stream segments were manually removed in order to pr
 
 # Defining Outlets
 
-The above figure also shows 6 "shoreline" locations, from which the [algorithm](https://github.com/OWRC/interpolants/tree/main/interpolation/calc/drainTopology) searches for any watercourse segments are touching any of these polygons.
+The above figure also shows 6 "shoreline" locations, from which the *algorithm* searches for any watercourse segments are touching any of these polygons.
 
 From these selected segments, the algorithm searches for upstream segments until a head water feature is found, all the while book keeping the connections each segment has with its neighbouring upstream and downstream segments.
 
@@ -101,9 +101,9 @@ Simply put, the downstream segment ID for all Lake Simcoe "root" segments are se
 1. [OHN_WATERCOURSE-export-segments-simplWGS.geojson](https://www.dropbox.com/s/uf9xs1zsfub917u/OHN_WATERCOURSE-export-segments-simplWGS.geojson?dl=1) (epsg: 4326) - The final output currently in operation.
 
 
-# Source code
+<!-- # Source code -->
 
-See [drainTopology](https://github.com/OWRC/interpolants/tree/main/interpolation/drainTopology) written in Go.
+<!-- See [drainTopology](https://github.com/OWRC/interpolants/tree/main/interpolation/drainTopology) written in Go. -->
 
 
 
