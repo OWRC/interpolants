@@ -87,7 +87,7 @@ _Sub-watershed characterization and flow topology_
 * [Data source **References**:](/interpolants/sources/index.html#climate-data-and-streamflow) climate and streamflow
 * [Baseflow/Hydrograph Separation](/info/hydrographseparation/)
 * [**Spatial Interpolation**](/interpolants/fews/climate-interpolation.html) of point data
-* [**Near-Real-Time Data Acquisition**](/interpolants/interpolation/climate-sources.html), updated nightly, including:
+* [**Near-Real-Time Data Acquisition**](/interpolants/sources/climate-data-service.html), updated nightly, including:
    * Daily data
       * Min/max daily temperature
       * Atmospheric/Barometric pressure
