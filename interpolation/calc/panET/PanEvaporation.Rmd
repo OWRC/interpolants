@@ -53,7 +53,7 @@ has the units [mm/s] for water and requires as input:
 - Wind speed $(u)$ [m/s]
 
 ## Pan Evaporation Data
-Daily Pan evaporation was measured by the Meteorological Services Canada (MSC) at a variety (17) of locations near the ORMGP jurisdiction from 1962-04-04 to 1996-10-31 (12629 days). The file `199611010000_exportPanEvap.nc` was exported from [FEWS](https://owrc.github.io/interpolants/interpolation/fews.html).
+Daily Pan evaporation was measured by the Meteorological Services Canada (MSC) at a variety (17) of locations near the ORMGP jurisdiction from 1962-04-04 to 1996-10-31 (12629 days). The file `199611010000_exportPanEvap.nc` was exported from [FEWS](https://owrc.github.io/interpolants/fews/index.html).
 <!-- T0: Fri 01-11-1996 00:00:00 -->
 
 ```{r panMap, fig.width=9, echo=FALSE}
