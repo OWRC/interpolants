@@ -41,7 +41,7 @@ The [Delft-FEWS](https://www.deltares.nl/en/software-and-data/products/delft-few
 
 More information:
 1. about [Delft-FEWS](https://oss.deltares.nl/web/delft-fews/about-delft-fews)
-1. more on [*web data scraping*](/interpolants/sources/sources.html#web-data-scrapers)
+1. more on [*web data scraping*](/interpolants/sources/index.html#web-data-scrapers)
 
 
 
