@@ -4,9 +4,12 @@ author: Oak Ridges Moraine Groundwater Program
 output: html_document
 ---
 
+![](fig/ORMGP_logo.png)
+
 ![](fig/ORMGP_3D.png)
 
 <br>
+
 
 The [**Oak Ridges Moraine Groundwater Program (ORMGP)**](https://www.oakridgeswater.ca/) maintains an authoritative understanding of: 
 
@@ -23,27 +26,34 @@ The [**Oak Ridges Moraine Groundwater Program (ORMGP)**](https://www.oakridgeswa
 
 The following is an index to the data maintained and produced by the ORMGP. All data can be cited by a link below.
 
+
+
+<span style="font-size:2em; font-weight: bold;">Contents</span>
+
 * TOC
 {:toc}
 
-# **Data Sources**
-## **SQL Database**
-[Our main MSSQL Server database](/database-manual/Contents/TOC.html) holds all the information to support our decision-making tools. The ORMGP data systems are *active*, in that they are automatically updated at near real-time. From hourly and daily intervals, a series of web-scraping routines have been written to access open data made available from many sources including international, federal, provincial, municipal and conservation authority agencies. The objective is to centralize hydrogeological and hydrological data for the south-central Ontario (Canada) jurisdiction that currently makes-up the ORMGP. 
 
+<br>
+
+# **Data Warehousing**
+
+## **The ORMGP Database (MSSQL)**
+[Our main MSSQL Server database](/database-manual/Contents/TOC.html) holds all the information to support our decision-making tools. The ORMGP data systems are *active*, in that they are automatically updated at near real-time. From hourly and daily intervals, a series of web-scraping routines have been written to access open data made available from many sources including international, federal, provincial, municipal and conservation authority agencies. The objective is to centralize hydrogeological and hydrological data for the south-central Ontario (Canada) jurisdiction that currently makes-up the ORMGP. 
 
 [**_Data source references._**](/interpolants/sources/reference.html)
 
-
-## **Delft-FEWS Database**
+## Delft-FEWS
 
 The [Delft-FEWS](https://www.deltares.nl/en/software-and-data/products/delft-fews-platform) platform offers a streamlined user interface that allows practitioners to visualize time-varying spatially-distributed data from a variety of sources and formats. For instance, spatial/vector/raster time-series datasets common to climatology differ from the point/location datasets contained in the SQL database. We maintain a Delft-FEWS platform to manage these data formats. Our [**ORMGP-FEWS**](/interpolants/fews) system periodically ($\leq$ 1 day) scrapes data from federal, provincial, municipal and partner agencies to support a variety of APIs serving near-real-time historical climatologies to our partner users.
 
-
 More information:
-1. about [Delft-FEWS](https://oss.deltares.nl/web/delft-fews/about-delft-fews)
-1. more on [*web data scraping*](/interpolants/sources/index.html#web-data-scrapers)
+1. About the [Delft-FEWS](https://oss.deltares.nl/web/delft-fews/about-delft-fews) product by Deltares.
+1. More information on ORMGP [*web data scraping*](/interpolants/sources/index.html#web-data-scrapers).
 
+<br>
 
+# **Data Sources**
 
 ## Geology
 
@@ -59,7 +69,7 @@ More information:
 ## Hydrogeology
 * [**ORMGP monitoring sites**](/monitoring/)
 
-* Database groundwater monitoring locations
+* Database groundwater monitoring locations:
 <iframe src="https://golang.oakridgeswater.ca/pages/ycdb-locations.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 _Monitoring locations with >35 monitoring dates_
 
@@ -72,7 +82,7 @@ For groundwater elevations, [digital elevation data are used to correct depths](
 Overland flow drainage and their pathways (topology) are defined using the 30m [Provincial Digital Elevation Model - South (CGVD2013)](/metadata/external/pdem).
 
 * [Overland drainage pathways](/interpolants/interpolation/overland.html)
-   * [Sub-watersheds](/interpolants/interpolation/subwatershed.html)
+   * [Sub-watersheds](/interpolants/interpolation/subwatershed.html):
 
 <iframe src="https://golang.oakridgeswater.ca/pages/sws-characterization.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 _Sub-watershed characterization and flow topology_
@@ -82,6 +92,7 @@ _Sub-watershed characterization and flow topology_
 * [Watercourse topology and stream order](/interpolants/interpolation/watercourses.html)
 
 <br>
+
 
 ## Hydro-meteorological station data  
 * [Data source **References**:](/interpolants/sources/index.html#climate-data-and-streamflow) climate and streamflow
@@ -104,20 +115,17 @@ _Sub-watershed characterization and flow topology_
       * Windspeed and direction
       * Potential evaporation flux
 
-<br>
-
 [*see interpolated data below*](#spatially-interpolated-near-real-time-data)
 
 <br>
 
 
 
-
 # **Web Applications**
 
-## [**Geocortex** Data Portal](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP)
+## **Geocortex** [Data Portal](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP)
 
-The [ORMGP Geocortex Mapping hub has been divided into various Theme Maps](/webmapping/) to allow users to quickly hone in on the information they might be seeking. For example, the Documents Theme Map provides access to the program’s library of reports, The Boreholes Theme Map focuses on providing access to borehole specific information, and the Geology Theme Map provides access to all of the ORMGP geologically related mapping. The Theme Maps group specific related data sets or interpreted products ([more info here](/webmapping/)).
+The ORMGP Geocortex Mapping hub has been divided into various [_**Theme Maps**_](/webmapping/) to allow users to quickly hone in on the information they might be seeking. For example, the Documents Theme Map provides access to the program’s library of reports, The Boreholes Theme Map focuses on providing access to borehole specific information, and the Geology Theme Map provides access to all of the ORMGP geologically related mapping. The Theme Maps group specific related data sets or interpreted products ([more info here](/webmapping/)).
 
 ![](fig/geocortex-surfacewater.png)
 
@@ -132,11 +140,15 @@ In the [Geology Theme Map](/webmapping/#geology-map), users can view either the 
 
 ![](fig/geocortex-geolayers.png)
 
-### Cross-section tool
+<br>
+
+### **Cross-section tool**
 
 The cross-section tool is designed to provide a cut, along a user-defined line, through the subsurface to display the regionally interpreted Quaternary geological layers down to the bedrock. 
 
 ![](fig/xsection-tool.png)
+
+<br>
 
 ### Piper plots
 
@@ -147,9 +159,7 @@ The piper plot tool presents water chemistry in an informative way and can be so
 
 <br>
 
-
-
-## sHydrology
+## <span style="text-decoration: underline;">Sh</span>iny H<span style="text-decoration: underline;">ydrology</span>  *(sHydrology)*
 R-Shiny-Leaflet mapping with access to our monitoring dataset. [**Go to online map.**](https://owrc.shinyapps.io/shydrologymap/)
 
 ## Time-Series Analysis
@@ -163,7 +173,12 @@ R-Shiny-Leaflet mapping with access to our monitoring dataset. [**Go to online m
 
 <!-- ADD SNAPSHOTS HERE -->
 <!-- shikaze: should we keep snapshots on a separate github to keep things simpler? -->
+
 <br>
+
+
+
+
 
 # **Open Data Products** 
 
@@ -171,16 +186,29 @@ R-Shiny-Leaflet mapping with access to our monitoring dataset. [**Go to online m
 
 [Our metadata repository, Table of Contents.](/metadata/content/toc.html)
 
-#### Surfaces
- - [Potential Discharge Areas - Metadata](/metadata/surfaces/potential_discharge.html)
- - [Potentiometric Surface - Metadata](/metadata/surfaces/potentiometric_surface.html)
- - [Water Table - Metadata](/metadata/surfaces/water_table.html)
+<span style="font-size:1.45em;">Surfaces</span>
+- [Hydrologically Conditioned DEM - Metadata](/metadata/surfaces/hdem.html)
 
+- [Land Use _(full coverage)_ - Metadata](/metadata/surfaces/land_use.html)
+
+- [Potential Discharge Areas - Metadata](/metadata/surfaces/potential_discharge.html)
+
+- [Potentiometric Surface - Metadata](/metadata/surfaces/potentiometric_surface.html)
+
+- [Surficial Geology _(full coverage)_ - Metadata](/metadata/surfaces/surficial_geology.html)
+
+- [Topologically Conditioned Sub-watersheds - Metadata](/metadata/surfaces/topo_sws.html)
+
+- [Topologically Conditioned Watercourses - Metadata](/metadata/surfaces/topo_watercourse.html)
+
+- [Water Table - Metadata](/metadata/surfaces/water_table.html)
+
+<br>
 
 
 ## Geospatial Layers
-
-> _Static 2D fields, updated frequently_
+<iframe src="https://golang.oakridgeswater.ca/pages/ormgp-image-server.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
+_Static 2D fields as hosted on the ORMGP image server, updated frequently_
 
 ### Bedrock
 ### **Geological Surfaces (2021)**
@@ -198,7 +226,7 @@ The Oak Ridges Moraine Groundwater Program (ORMGP) has been working on producing
 
 ### Land use
 
-The source of the land use data is: Ministry of Natural Resources and Forestry, 2019. Southern Ontario Land Resource Information System (SOLRIS) Version 3.0: Data Specifications. Science and Research Branch, April 2019.
+The source of the land use data is: *Ministry of Natural Resources and Forestry, 2019. Southern Ontario Land Resource Information System (SOLRIS) Version 3.0: Data Specifications. Science and Research Branch, April 2019.*
 
 From this layer, the follow land use categorizations are derived:
 
@@ -210,14 +238,26 @@ From this layer, the follow land use categorizations are derived:
 
 [*more info*](/interpolants/interpolation/landuse.html)
 
+
+### Surficial Geology
+
+The source of the land use data is: *Ontario Geological Survey 2010. Surficial geology of southern Ontario; Ontario Geological Survey, Miscellaneous Release— Data 128 – Revised*. From this layer, approximations of percolation rates that affect recharge rates.
+
+[*more info*](/interpolants/interpolation/surfgeo.html)
+
 <br>
 
+
 ## **Clip 'n Ship**
-* [**"Clip 'n Ship"**](/interpolants/sources/clipnship.html) — A bulk spatial data export system, by geographic extent. Includes many of the products listed below.
+* ["Clip 'n Ship"](/interpolants/sources/clipnship.html) — A bulk spatial data export system, by geographic extent provided by a user and returned many of the products listed below clipped to within the specified extent.
+
+![https://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/clip.htm](https://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/GUID-6D3322A8-57EA-4D24-9FFE-2A9E7C6B29EC-web.png) \
+*Source: [ArcMAP Clip function](https://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/clip.htm).*
+
 
 ## Spatially interpolated, near real-time data
 
-* [**Cleansed Climate Data**](/interpolants/modelling/waterbudget/data.html) for use in our water budget product which includes the computation of [potential evaporation](/interpolants/interpolation/calc/panET/PanEvaporation.html), [snowmelt](/interpolants/modelling/waterbudget/data.html#sub-daily-from-daily-snowmelt), etc. from available data.
+* [**Near Real-time Climate Data Service**](/interpolants/sources/climate-data-service.html) for use in our water budget product which includes the computation of [potential evaporation](/interpolants/interpolation/calc/panET/PanEvaporation.html), [snowmelt](/interpolants/modelling/waterbudget/data.html#sub-daily-from-daily-snowmelt), etc. from available data.
 * [Spatial and Temporal interpolation](/interpolants/fews/climate-interpolation.html) of point/scalar data.
 * [Barometric pressure](/interpolants/interpolation/barometry.html) elevation-corrected and projected to a 2km regional grid.
 
@@ -277,6 +317,7 @@ The ORMGP particle tracking tool shows both the forward or backward particle tra
 
 ## Regional **Water Budget**, Long-term and Continuous
 * Fine-resolution (2,500 m²) [**Water Budgeting** using a  regionally-distributed runoff-recharge model](/interpolants/modelling/waterbudgetmodel.html) for Long-term (>20 years) continuos 6-hourly hydrological modelling of the ORMGP jurisdiction.
+* Data sources for the water budget model are discussed [here](/interpolants/modelling/waterbudget/data.html).
 
 
 ## Short-term/event-based hydrology
@@ -302,9 +343,13 @@ The ORMGP particle tracking tool shows both the forward or backward particle tra
    
 
 
+<br>
 
 # **Technologies**
+
 A number of open-source and proprietary data analysis tools have been employed in our overall data management system. In contribution to the open-source community, much of our work has also left open [on our Github](https://github.com/OWRC).
+
+
 
 ## Tools (external links)
 * [Github pages](https://pages.github.com/) — the hosting of technical information, like what you see now.
@@ -325,14 +370,17 @@ A number of open-source and proprietary data analysis tools have been employed i
 * [MSSQL](https://www.microsoft.com/en-us/sql-server/sql-server-2019)
 * [Delft-FEWS](https://www.deltares.nl/en/software-and-data/products/delft-fews-platform)
 
+<br>
 
 ## **ORMGP Servers**
 
-### Databases and APIs
+### Databases and REST-APIs
 * **[Our main MSSQL Server database](/database-manual/Contents/TOC.html)**
 * [VertiGIS Studio/Geocortex](https://www.vertigis.com/vertigis-studio/) — Our principle [web mapping server](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP) used by partners to access our database and products.
 * golang server — multi-functional REST API serving a variety of data products and interpolation tools.
 * fews server — home for the [ORMGP-FEWS](/interpolants/fews/) data management system.
+* image server — hosts many of the data layers produced by the ORMGP (and discussed above).
+* data server — REST-API hosting GET-only requests to the ORMGP central database.
 
 
 ### Web Scraping
