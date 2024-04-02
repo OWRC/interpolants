@@ -178,14 +178,75 @@ The 30,000 km² model area has been sub divided into [2,813 approximately 10 km�
 
 ### Land use and Surficial geology
 
-- Southern Ontario Land Resource Information System (SOLRIS) Version 3.0 Landuse
-- OGS (2010) Surficial geology of southern Ontario
+An overlay analysis is the process of overlaying 2 or more spatial layers and capturing statistics associated with their relative coverage. In this case, the sub-watershed layer is overlain by Provincial land-use and surficial geology layers to obtain information like percent impervious, relative permeability, etc.
+
+Provincial layers discussed in more detail below have in all cases been re-sampled to the 50x50m² grid associated with the [hydrologically corrected DEM](/interpolants/interpolation/overland.html). It is from these rasters where the aggregation of watershed characteristics is computed.
+
+- [Land use](/interpolants/interpolation/landuse.html): Southern Ontario Land Resource Information System (SOLRIS) Version 3.0 Landuse. [*metadata*](/metadata/surfaces/land_use.html).
+- [Surficial geology](/interpolants/interpolation/surfgeo.html): OGS (2010) Surficial geology of southern Ontario. [*metadata*](/metadata/surfaces/surficial_geology.html).
+
+Downscaling of the above layers is based on the dominant land use/surficial geology class (by area) assigned within every 50x50m² grid cell. 
 
 
-[*read more*](/interpolants/interpolation/landuse.html)
+#### Impervious and Canopy coverage
+
+Using a look-up system, the set of raster cells contained within every 50x50m² grid cell are assigned a value of imperviousness, water body, wetland and canopy coverage (according to their SOLRIS index) and accumulated to grid cell sum.
+
+*Percent impervious and canopy coverage as per SOLRIS v3.0 (MNRF, 2019) land use classification.*
+| SOLRIS index | Name | Imperviousness (%) | Canopy cover (%) |
+|---|---|---:|---:|
+| 23 | Treed Sand Dune | | 50 |
+| 43 | Treed Cliff and Talus | | 50 |
+| 52 | Shrub Alvar | | 25 |
+| 53 | Treed Alvar | | 50 |
+| 65 | Sparse Treed | | 40 |
+| 81 | Open Tallgrass Prairie | | 10 |
+| 82 | Tallgrass Savannah | | 35 |
+| 83 | Tallgrass Woodland | | 85 |
+| 90 | Forest | | 100 |
+| 91 | Coniferous Forest | | 100 |
+| 92 | Mixed Forest | | 100 |
+| 93 | Deciduous Forest | | 100 |
+| 131 | Treed Swamp | | 50 |
+| 135 | Thicket Swamp | | 50 |
+| 140 | Fen | | 25 |
+| 150 | Bog | | 25 |
+| 160 | Marsh | | 25 |
+| 191 | Plantations -- Tree Cultivated | | 85 |
+| 192 | Hedge Rows | | 85 |
+| 201 | Transportation | 85 | |
+| 202 | Built-Up Area -- Pervious | 10 | 10 |
+| 203 | Built-Up Area -- Impervious | 90 |  |
+| 205 | Extraction -- Peat/Topsoil | | 10 |
+|  | **All else** | **0** | **0** |	
+
+<br>
+
+#### Permeability
+
+The OGS classes have been grouped according to the attribute "permeability" using a similar look-up table cross-referencing scheme. OGS (2010) adds: *"Permeability classification is a very generalized one, based purely on characteristics of material types."* 
+
+After assigning an assumed "effective" hydraulic conductivity to every permeability group, sub-watershed "permeability" is then calculated as the geometric mean of 50x50m² grid cells contained within a sub-watershed. Effective hydraulic conductivity value assumed for every permeability group are:
+
+*Permeability classifications (after OGS, 2010) and assumed effective hydraulic conductivities.*
+| OGS classification | K (m/s) |
+|---|---|
+| Low | 1e-09 |
+| Low-medium | 1e-08 |
+| Medium | 1e-07 |
+| Medium-high | 1e-06 |
+| high | 1e-05 |
+| unknown/variable | 1e-08 |
+| fluvial | 1e-05 |
+| organics | 1e-06  |
+
+<br>
+
+The resulting effective hydraulic conductivity is then mapped back to the nearest Low--High OGS (2010) classification.
 
 
-
+#### Source code
+Processing discussed above that are operational have been documented in a [jupyter notebook](https://github.com/OWRC/interpolants/blob/main/interpolation/calc/landuse/OWRC-SWS.ipynb). Source data can be found [here](https://www.dropbox.com/sh/rkdu5bwn1xhm7mh/AAA1bdaplpZAZIYl0DE1e39Oa?dl=0) and additional outputs can be found [here](https://github.com/OWRC/interpolants/tree/main/interpolation/calc/landuse/output).
 
 
 
@@ -328,3 +389,7 @@ As a simple expression of the model's ability to squeeze everything from the com
 # References
 
 Oke, T.R., 1987. Boundary Layer Climates, 2nd ed. London: Methuen, Inc.
+
+Ontario Geological Survey 2010. Surficial geology of southern Ontario; Ontario Geological Survey, Miscellaneous Release— Data 128 – Revised.
+
+Ontario Ministry of Natural Resources and Forestry, 2019. Southern Ontario Land Resource Information System (SOLRIS) Version 3.0: Data Specifications. Science and Research Branch, April 2019.

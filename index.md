@@ -163,7 +163,7 @@ The piper plot tool presents water chemistry in an informative way and can be so
 R-Shiny-Leaflet mapping with access to our monitoring dataset. [**Go to online map.**](https://owrc.shinyapps.io/shydrologymap/)
 
 ## Time-Series Analysis
-* [**R-Shiny apps**]
+* **R-Shiny apps**
    * [Help](/HydrographExplorerHelp/)
    * [Manual](/shinyapps-manual/)
 * [Automatic hydrograph separation](/info/hydrographseparation/)
