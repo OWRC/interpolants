@@ -6,7 +6,7 @@ output: html_document
 
 
 
-The Ontario Ministry of Natural Resources and Forestry (2019) SOLRIS version 3.0 provincial land use layer is employed to aggregate imperviousness and canopy coverage at the sub-watershed scale. In areas to the north, where the SOLRIS coverage discontinues, interpretation was supplied by the [Agriculture and Agri-food Canada Annual Crop Inventory](https://open.canada.ca/data/en/dataset/ba2645d5-4458-414d-b196-6303ac06c1c9) (2013). (for more details, please refer to the layer's[metadata](/metadata/surfaces/land_use.html).)
+The Ontario Ministry of Natural Resources and Forestry (2019) SOLRIS version 3.0 provincial land use layer is employed to aggregate imperviousness and canopy coverage at the sub-watershed scale. In areas to the north, where the SOLRIS coverage discontinues, interpretation was supplied by the [Agriculture and Agri-food Canada Annual Crop Inventory](https://open.canada.ca/data/en/dataset/ba2645d5-4458-414d-b196-6303ac06c1c9) (2013). (for more details, please refer to the layer's [metadata](/metadata/surfaces/land_use.html).)
 
 This land use layer is used primarily to assign hydrologic properties to the ORMGP [water budget model](/interpolants/modelling/waterbudgetmodel.html#land-use-and-surficial-geology).
 
