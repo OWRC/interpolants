@@ -102,6 +102,8 @@
         <p class="title">{{ page.title }}</p>
         <p class="subtitle">{{ page.subtitle }}</p>
         {{ content }}
+        <!-- https://github.com/allejo/jekyll-toc?tab=readme-ov-file -->
+        {% include toc.html html=content %}
       </section>
     </div>
 
@@ -109,11 +111,7 @@
     <div id="footer_wrap" class="outer">
       <footer class="inner">
         <p class="copyright">&copy; 2022 <a href="https://www.oakridgeswater.ca/">Oak Ridges Moraine Groundwater Program</a></p>
-        <p>to cite, go to <a href="{{ site.github.repository_url }}"><em>"Cite this repository"</em></a></p>
-        <!-- <a href="Oak Ridges Moraine Groundwater Program. (2022). Web-mapping Services [Data set]. https://github.com/OWRC/webmapping">to cite</a></p> -->
-        <!-- {% if site.github.is_project_page %}
-        <p class="copyright">{{ site.title | default: site.github.repository_name }} maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
-        {% endif %} -->
+        <p>to cite, click <a href="{{ site.github.repository_url }}">here</a> and go to <em>"Cite this repository"</em></p>
         <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
         <p <span id='last-modified'/></p>
       </footer>
