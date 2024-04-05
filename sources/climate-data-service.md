@@ -1,6 +1,7 @@
 ---
 title: Near Real-time Climate Data Service
 output: html_document
+image: https://golang.oakridgeswater.ca/pages/gif/gwvar-sample.gif
 ---
 
 <!-- <meta property="og:image" content="https://golang.oakridgeswater.ca/pages/gif/gwvar-sample.gif"> -->
