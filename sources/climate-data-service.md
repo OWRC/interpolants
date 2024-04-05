@@ -3,8 +3,8 @@ title: Near Real-time Climate Data Service
 output: html_document
 ---
 
-<meta name="image" property="og:image" content="https://golang.oakridgeswater.ca/pages/gif/gwvar-sample.gif">
-<meta name="description" property="og:description" content="Variability of the water table in south-central Ontario.">
+<!-- <meta property="og:image" content="https://golang.oakridgeswater.ca/pages/gif/gwvar-sample.gif"> -->
+<!-- <meta name="description" property="og:description" content="Variability of the water table in south-central Ontario."> -->
 
 
 <span style="font-size:2em;">Summary</span>
