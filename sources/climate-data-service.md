@@ -2,7 +2,7 @@
 title: Near Real-time Climate Data Service
 output: html_document
 image: https://golang.oakridgeswater.ca/pages/gif/climateDS0001-2000.gif
-description: ORMGP Near Real-time Climate Data Service
+pagecontent_description: ORMGP Near Real-time Climate Data Service
 ---
 
 
