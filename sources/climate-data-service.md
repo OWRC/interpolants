@@ -3,6 +3,10 @@ title: Near Real-time Climate Data Service
 output: html_document
 ---
 
+<meta name="image" property="og:image" content="https://golang.oakridgeswater.ca/pages/gif/gwvar-sample.gif">
+<meta name="description" property="og:description" content="Variability of the water table in south-central Ontario.">
+
+
 <span style="font-size:2em;">Summary</span>
 
 The [ORMGP](https://oakridgeswater.ca/) maintains a current, continuous daily climatology dataset beginning 1901 and a 6-hourly dataset from 2002. Every night, the automated data service [web-scrapes](/interpolants/sources/webscraping.html) and [interpolates](/interpolants/fews/climate-interpolation.html) publicly-available climate data to [some 4,200 ~10km² sub-watersheds](/interpolants/interpolation/subwatershed.html) covering our greater jurisdiction. The data are made available through our [**public web portal**](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP) and are served using the [ORMGP-FEWS](/interpolants/fews/) system.
