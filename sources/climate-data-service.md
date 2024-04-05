@@ -1,11 +1,9 @@
 ---
 title: Near Real-time Climate Data Service
 output: html_document
-image: https://golang.oakridgeswater.ca/pages/gif/gwvar-sample.gif
+image: https://golang.oakridgeswater.ca/pages/gif/climateDS0001-2000.gif
+description: ORMGP Near Real-time Climate Data Service
 ---
-
-<!-- <meta property="og:image" content="https://golang.oakridgeswater.ca/pages/gif/gwvar-sample.gif"> -->
-<!-- <meta name="description" property="og:description" content="Variability of the water table in south-central Ontario."> -->
 
 
 <span style="font-size:2em;">Summary</span>
