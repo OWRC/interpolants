@@ -4,6 +4,10 @@ author: Oak Ridges Moraine Groundwater Program
 output: html_document
 ---
 
+* TOC
+{:toc}
+
+
 ORMGP partners and paid subscribers can download the spatial layers we produce and some data.  To do this, users specify a small, rectangular area, inside which a 3D block of the geologic data is provided. The specified area must not exceed 18 square kilometre (the user will get a warning if the specified rectangular area exceedss this). Note: If users require a larger area, please contact ORMGP.
 
 The first step in this process is the **clip** function. This is where the user supplies the areal extent of their data request. The return is the spatial layers and data available within the specified extent.
