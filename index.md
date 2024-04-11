@@ -134,7 +134,7 @@ The ORMGP Geocortex Mapping hub has been divided into various [_**Theme Maps**_]
 
 ### Geological layers
 
-The [geological layers made available on the Geocortex portal](/interpolants/interpolation/geolayers.html) are found in two places: the Geology Theme Map and the cross-section tool. More information on [their interpreted depositional setting and of the procedures used to interpolate the surfaces](/GeoLayers/).
+The [geological layers made available on the Geocortex portal](/interpolants/interpolation/geolayers.html) are found in two places: the Geology Theme Map and the [cross-section tool](#cross-section-tool). More information on [their interpreted depositional setting and of the procedures used to interpolate the surfaces](/GeoLayers/).
 
 In the [Geology Theme Map](/webmapping/#geology-map), users can view either the tops of or the isopach/thickness of any of the layers.  The Geological Picks made at each well, that are used to construct or interpolate each layer are also available.  A screen capture from the website showing the Top of Halton Till as well as the picks is shown below.
 
@@ -144,9 +144,15 @@ In the [Geology Theme Map](/webmapping/#geology-map), users can view either the 
 
 ### **Cross-section tool**
 
-The cross-section tool is designed to provide a cut, along a user-defined line, through the subsurface to display the regionally interpreted Quaternary geological layers down to the bedrock. 
+The cross-section tool is designed to provide a cut, along a user-defined line, through the subsurface to display the regionally interpreted Quaternary [geological layers](#geological-layers) down to the bedrock. 
 
 ![](fig/xsection-tool.png)
+
+Included in the Cross-section tool (in addition to hydrostratigraphy):
+
+- local boreholes from the ORMGP database
+- [Watertable](#water-table-mapping)
+- Top surface DEM ([*see metadata*](/metadata/external/mnr2006dem/LIO%20MNR%20DEM%2010m%20Metadata.pdf))
 
 <br>
 
@@ -219,9 +225,7 @@ The geology layers presented on the ORMGP Website have been created at different
 
 ### **Water Table Mapping**
 
-The Oak Ridges Moraine Groundwater Program (ORMGP) has been working on producing a reliable water table map for quite some time. Over the years several versions of the water table surface have been prepared as new information has become available or as the technical mapping methodology has been adjusted. Although it sounds straightforward to interpolate a water table surface, there are a number of factors that make the process difficult. Here we outline some of the considerations that have gone into creating the water table surfaces (and their derivatives) and can serve as a supplementary document for those that make use of these layers.
-
-[*more info*](/watertable/)
+The Oak Ridges Moraine Groundwater Program (ORMGP) has been working on producing a reliable water table map for quite some time. Over the years several versions of the water table surface have been prepared as new information has become available or as the technical mapping methodology has been adjusted. Although it sounds straightforward to interpolate a water table surface, there are a number of factors that make the process difficult. Here we outline some of the considerations that have gone into creating the water table surfaces (and their derivatives) and can serve as a supplementary document for those that make use of these layers. For more information, see the [*Fact Sheet*](/watertable/).
 
 
 ### Land use

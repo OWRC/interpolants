@@ -15,3 +15,7 @@ The geology layers presented on the ORMGP Website have been created at different
 - **Area 4 – Blue Colour** – this small area in the north parts of Peel Region was not covered by the York Region work and therefore the geological layers here are those originally constructed through ORMGP work and finalized in 2006;
 - **Area 5 – Blue Colour** – the geological layers that are focused on Durham Region reflect the surfaces from the most recent Durham Modelling work completed in 2021.  The surfaces were adjusted from the original 2006 surfaces that are reflected in Area 4 (above).
 - **Area 6 – Pink Colour** – through the southwest parts, the geological surfaces were obtained through the Halton Region Tier 2 and Tier 3 Source Water Protection studies, work completed in 2013 and 2014.
+
+## Top/surface layer
+
+The top of the geology layers representing the land surface is base on the [10m OMNRF DEM (2006)](/metadata/external/mnr2006dem/LIO%20MNR%20DEM%2010m%20Metadata.pdf).
