@@ -4,7 +4,7 @@ author: Oak Ridges Moraine Groundwater Program
 output: html_document
 ---
 
-ORMGP partners and paid subscribers can download the spatial layers we produce and some data.  To do this, users specify a small, rectangular area, inside which a 3D block of the geologic data is provided. The specified area must not exceed 18 square kilometre (the user will get a warning if the specified rectangular area exceedss this). Note: If users require a larger area, please contact ORMGP.
+ORMGP partners and paid subscribers can download the spatial layers we produce and some data.  To do this, users specify a small, rectangular area, inside which a 3D block of the geological data is provided. The specified area must not exceed 18 square kilometre (the user will get a warning if the specified rectangular area exceedss this). Note: If users require a larger area, please contact ORMGP.
 
 The first step in this process is the **clip** function. This is where the user supplies the areal extent of their data request. The return is the spatial layers and data available within the specified extent.
 
@@ -36,7 +36,7 @@ Point data and database queries are provided in **comma-separated value** (\*.cs
 
 # **How to Cite**
 When referring to the interpretations and data from the Clip 'n Ship function, please cite in the following format:
-"Oak Ridges Moraine Groundwater Program Website (Oakridgeswater.ca) 2023. Accessed mm/dd/yyyy"
+"Oak Ridges Moraine Groundwater Program Website (Oakridgeswater.ca) 2024. Accessed mm/dd/yyyy"
 
 # **Data Description**
 
@@ -100,7 +100,7 @@ The naming convention is as follows:
    - The second code is WL (for water levels)
    - The third term is either ELEV (for the water level elevation) or DEPTH (for water level depth below ground surface)
    - The next term is either BHS (for the [*(WTO surface)*](https://owrc.github.io/watertable/) ) or Combined (For the [*(WT1 surface)*](https://owrc.github.io/watertable/)). Note that for the deep (DP) water levels, this term is not included).
-   -  DA refers to potential discharge areas.
+   - DA refers to potential discharge areas.
    - 20210824 refers to the date the raster file was created (in YYYYMMDD format).
  
 The included rasters are:
@@ -128,4 +128,3 @@ The included rasters are:
     - `precipitation-crop.bil`: Spatial distribution of precipitation for the specified polygon
     - `recharge-crop.bil`: Spatial distribution of recharge for the specified polygon
     - `runoff-crop.bil`: Spatial distribution of runoff for the specified polygon
-    - 
