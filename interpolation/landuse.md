@@ -11,13 +11,13 @@ The Ontario Ministry of Natural Resources and Forestry (2019) SOLRIS version 3.0
 <iframe src="https://golang.oakridgeswater.ca/pages/landuse23.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 _ORMGP land use as hosted on our image server_
 
-This land use layer is used primarily to assign hydrologic properties to the ORMGP [water budget model](/interpolants/modelling/waterbudgetmodel.html#land-use-and-surficial-geology).
+This land-use layer is used primarily to assign hydrologic properties to the ORMGP [water budget model](/interpolants/modelling/waterbudgetmodel.html#land-use-and-surficial-geology).
 
 ![](fig/SOLRIS-legend.png)
 
 # Raster download
 
-The version 2023 ORMGP land use surface can be found [here](https://www.dropbox.com/scl/fi/428o1h1a3qg1xnnt7g1iz/landuse23.tif?rlkey=9kzwrrvpi6mb9plwzajy8wiof&dl=1). See also the [metadata](/metadata/surfaces/land_use.html).
+The version 2023 ORMGP land-use surface can be found [here](https://www.dropbox.com/scl/fi/428o1h1a3qg1xnnt7g1iz/landuse23.tif?rlkey=9kzwrrvpi6mb9plwzajy8wiof&dl=1). See also the [metadata](/metadata/surfaces/land_use.html).
 
 
 ## References
