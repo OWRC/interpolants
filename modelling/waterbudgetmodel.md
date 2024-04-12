@@ -361,22 +361,19 @@ As part of the model pre-processor, the structural data and parameterization spe
 - `structure.ds`: down-slope cell array index
 - `structure.upcnt`: count of upslope/contributing cells
 - `structure.dwngrad`: downslope gradient $(\beta)$
-
 - `mapper.ilu`: land use index
 - `mapper.isg`: surficial geology index
 - `mapper.icov`: canopy cover type index
 - `mapper.igw`: groundwater reservoir index
 - `mapper.ksat`: vertical percolation/infiltration rates
 - `mapper.fimp`: fraction of impervious cover
-- `mapper.ifct`: interception cover factor
-
+- `mapper.fint`: interception cover factor
 - `sws.swsi`: subwatershed index (zero-based)
 - `sws.swsids`: subwatershed index (original/user supplied)
 <!-- - `sws.sgw`: groundwater index (only when groundwater reservoirs are not assigned by subwatershed) -->
 - `sws.dsws`: downslope subwatershed index
 - `sws.dcid`: receiving cell ID of downslope subwatershed
 - `sws.order`: computational subwatershed ordering
-
 - `parameter.gamma`: groundwater reservoir average soil-topographic index $(\gamma)$
 - `parameter.zeta`: soil-topographic index $(\zeta)$
 - `parameter.uca`: unit contributing area $(a)$
