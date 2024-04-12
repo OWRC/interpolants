@@ -193,6 +193,7 @@ Downscaling of the above layers is based on the dominant land use/surficial geol
 Using a look-up system, the set of raster cells contained within every 50x50m² grid cell are assigned a value of imperviousness, water body, wetland and canopy coverage (according to their SOLRIS index) and accumulated to grid cell sum.
 
 *Percent impervious and canopy coverage as per SOLRIS v3.0 (MNRF, 2019) land use classification.*
+
 | SOLRIS index | Name | Imperviousness (%) | Canopy cover (%) |
 |---|---|---:|---:|
 | 23 | Treed Sand Dune | | 50 |
@@ -229,6 +230,7 @@ The OGS classes have been grouped according to the attribute "permeability" usin
 After assigning an assumed "effective" hydraulic conductivity to every permeability group, sub-watershed "permeability" is then calculated as the geometric mean of 50x50m² grid cells contained within a sub-watershed. Effective hydraulic conductivity value assumed for every permeability group are:
 
 *Permeability classifications (after OGS, 2010) and assumed effective hydraulic conductivities.*
+
 | OGS classification | K (m/s) |
 |---|---|
 | Low | 1e-09 |
@@ -263,16 +265,13 @@ The model runs on a 6-hourly basis in order to capture hydrological dependence o
 The time step of the model has been set to 6 hour steps on 00:00 UTC, yielding the local time steps of 01:00, 07:00, 13:00, and 19:00 EST. This step is chosen as it matches the received precipitation dataset described above.
 
 ### Model Domain
-The overarching model code employs an object called the "Model Domain". Here, all necessary model data are digitized and self-contained, including:
+The overarching model code employs an object called the "Model Domain". Here, all necessary model data are digitized and self-contained into a set of 5 **_Model Domain Components_**, including:
 
 1. `Structure` holds all the geometrical and topological constraints to grid cells, including the physical dimensions of cells and knowledge of where runoff is to be routed.
 1. `Mapper` contains a *cell-to-type* cross-reference map to distribute model parameters, such as percolation rates, soil zone depth, depression storage, etc. The Mapper *projects* parameter selection onto the grid space domain based on their local (an often unique) land type.
 1. `Forcings`: Input (variable) data, generally climate forcings: $Y_a$ and $E_a$.
 1. `Subwatershed` provides the model with optimal order of processing, ensuring a down stream process.
-1. `Parameters`: Parameter collections for a set of [land-surface and groundwater reservoir types](/interpolants/interpolation/landuse.html).
-
-
-
+1. `Parameters`: Parameter collections for a set of [land-surface](/interpolants/interpolation/landuse.html), [surficial geology](/interpolants/interpolation/surfgeo.html) and groundwater reservoir types.
 
 
 
@@ -351,6 +350,39 @@ The following are used to compute the overall retention/storage capacity:
 ### Surficial geology based
 
 - $K_\text{sat}$: hydraulic conductivity as saturation (i.e., percolation rates) [m/s]
+
+
+
+#### Checks
+As part of the model pre-processor, the structural data and parameterization specified above is outputted as a set of raster for user inspection. These raster are written as binary rasters _(*.bil)_ to a `check` directory, prefixed by the model name and the [model domain component](#model-domain). Parameters include:
+
+- `structure.aids`: ordered/topologically-sorted cell ID
+- `structure.cids`: grid cell ID
+- `structure.ds`: down-slope cell array index
+- `structure.upcnt`: count of upslope/contributing cells
+- `structure.dwngrad`: downslope gradient $(\beta)$
+
+- `mapper.ilu`: land use index
+- `mapper.isg`: surficial geology index
+- `mapper.icov`: canopy cover type index
+- `mapper.igw`: groundwater reservoir index
+- `mapper.ksat`: vertical percolation/infiltration rates
+- `mapper.fimp`: fraction of impervious cover
+- `mapper.ifct`: interception cover factor
+
+- `sws.swsi`: subwatershed index (zero-based)
+- `sws.swsids`: subwatershed index (original/user supplied)
+<!-- - `sws.sgw`: groundwater index (only when groundwater reservoirs are not assigned by subwatershed) -->
+- `sws.dsws`: downslope subwatershed index
+- `sws.dcid`: receiving cell ID of downslope subwatershed
+- `sws.order`: computational subwatershed ordering
+
+- `parameter.gamma`: groundwater reservoir average soil-topographic index $(\gamma)$
+- `parameter.zeta`: soil-topographic index $(\zeta)$
+- `parameter.uca`: unit contributing area $(a)$
+- `parameter.tanbeta`: surface slope angle $(\tan\beta)$
+- `parameter.depsto`: depression storage
+
 
 
 
