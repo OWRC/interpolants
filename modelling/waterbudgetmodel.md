@@ -354,11 +354,12 @@ The following are used to compute the overall retention/storage capacity:
 
 
 #### Checks
-As part of the model pre-processor, the structural data and parameterization specified above is outputted as a set of raster for user inspection. These raster are written as binary rasters _(*.bil)_ to a `check` directory, prefixed by the model name and the [model domain component](#model-domain). Parameters include:
+As part of the model pre-processor, the structural data and parameterization specified above is outputted as a set of raster for user inspection and troubleshooting. These raster are written as binary rasters _(*.bil)_ to a `check/` directory, prefixed by the model name and the [model domain component](#model-domain). Parameters include:
 
-- `structure.aids`: ordered/topologically-sorted cell ID
-- `structure.cids`: grid cell ID
-- `structure.ds`: down-slope cell array index
+- `structure.cid`: grid cell ID ([row-major](https://en.wikipedia.org/wiki/Row-_and_column-major_order) ordered)
+- `structure.aid`: ordered/topologically-sorted (zero-based) cell ID
+- `structure.ads`: down-slope cell array index
+- `structure.nus`: number of (upslope) cells contributing runoff to current cell
 - `structure.upcnt`: count of upslope/contributing cells
 - `structure.dwngrad`: downslope gradient $(\beta)$
 - `mapper.ilu`: land use index
@@ -368,12 +369,12 @@ As part of the model pre-processor, the structural data and parameterization spe
 - `mapper.ksat`: vertical percolation/infiltration rates
 - `mapper.fimp`: fraction of impervious cover
 - `mapper.fint`: interception cover factor
-- `sws.swsi`: subwatershed index (zero-based)
-- `sws.swsids`: subwatershed index (original/user supplied)
-<!-- - `sws.sgw`: groundwater index (only when groundwater reservoirs are not assigned by subwatershed) -->
-- `sws.dsws`: downslope subwatershed index
-- `sws.dcid`: receiving cell ID of downslope subwatershed
-- `sws.order`: computational subwatershed ordering
+- `sws.aid`: sub-watershed index (zero-based)
+- `sws.sid`: sub-watershed index (original/user supplied)
+<!-- - `sws.sgw`: groundwater index (only when groundwater reservoirs are not assigned by sub-watershed) -->
+- `sws.dsws`: downslope sub-watershed index
+- `sws.dcid`: receiving cell ID of downslope sub-watershed
+- `sws.order`: computational sub-watershed ordering
 - `parameter.gamma`: groundwater reservoir average soil-topographic index $(\gamma)$
 - `parameter.zeta`: soil-topographic index $(\zeta)$
 - `parameter.uca`: unit contributing area $(a)$
