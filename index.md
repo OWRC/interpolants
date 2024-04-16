@@ -68,8 +68,9 @@ More information:
 
 ## Hydrogeology
 * [**ORMGP monitoring sites**](/monitoring/)
-
+* spotflow/baseflow surveys
 * Database groundwater monitoring locations:
+
 <iframe src="https://golang.oakridgeswater.ca/pages/ycdb-locations.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 _Monitoring locations with >35 monitoring dates_
 
@@ -140,6 +141,8 @@ In the [Geology Theme Map](/webmapping/#geology-map), users can view either the 
 
 ![](fig/geocortex-geolayers.png)
 
+*Screenshot of our Geocortex [web-mapping system](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP) showing geologic layers*
+
 <br>
 
 ### **Cross-section tool**
@@ -147,6 +150,10 @@ In the [Geology Theme Map](/webmapping/#geology-map), users can view either the 
 The cross-section tool is designed to provide a cut, along a user-defined line, through the subsurface to display the regionally interpreted Quaternary [geological layers](#geological-layers) down to the bedrock. 
 
 ![](fig/xsection-tool.png)
+
+*Screenshot of our cross-section tool*
+
+<br>
 
 Included in the Cross-section tool (in addition to hydrostratigraphy):
 
@@ -158,15 +165,29 @@ Included in the Cross-section tool (in addition to hydrostratigraphy):
 
 ### Piper plots
 
-The piper plot tool presents water chemistry in an informative way and can be sorted by location or geologic formation.
+The piper plot tool presents water chemistry in an informative way and can be sorted by location or geologic formation. Out piper plot tool take chemistry data in our database and creates the plots *on-the-fly*, for one or many locations.
 
 ![](fig/piper.png)
 
+*Screenshot of our database-generated piper plot*
 
 <br>
 
+### Spotflow Pickup
+
+Spotflow surveys added to the ORMGP database are automatically hosted on our baseflow pickup API that translates spotflow measurements into a losing/gaining stream reach feature map. This is done by (algorithmically) coordinating surveyed spotflow locations to our [watercourse topology](#elevation-drainage-and-topology) layer. For example, any 2 spotflow measurements connected by any number of stream reaches will convert the baseflow discharges measured into a linear computation rates of gain/loss per unit kilometre of stream reach.
+
+![](fig/pickup.png)
+
+*Screenshot of our [(beta) spotflow pickup tool](https://owrc.shinyapps.io/pickup/). Blue features represent baseflow gains, while red are losses computed between spotflow measurements (circles). Hovering over reaches/point will reveal their values.*
+
+<br>
+
+
 ## <span style="text-decoration: underline;">Sh</span>iny H<span style="text-decoration: underline;">ydrology</span>  *(sHydrology)*
 R-Shiny-Leaflet mapping with access to our monitoring dataset. [**Go to online map.**](https://owrc.shinyapps.io/shydrologymap/)
+
+<br>
 
 ## Time-Series Analysis
 * **R-Shiny apps**
