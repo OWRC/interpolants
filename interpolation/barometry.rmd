@@ -55,7 +55,7 @@ ggplot(dat, aes(x)) +
 
 ### Intent
 
-The initial intent for this interpolated product is to provide an estimate of atmospheric pressure at arbitrary locations within our jurisdiction to test is capability for barometric corrections to groundwater monitors.
+The initial intent for this interpolated product is to provide an estimate of atmospheric pressure at arbitrary locations within our jurisdiction to test its capability for barometric corrections to groundwater monitors.
 
 
 
@@ -63,7 +63,7 @@ The initial intent for this interpolated product is to provide an estimate of at
   
 ## Data Correction
 
-Station data reporting hourly atmospheric pressures $P$ are first "corrected" to a reference elevation $h_b$, set here as the median elevation of reporting weather stations at a given time step. 
+Station data reporting hourly atmospheric pressures $P$ are first corrected to a reference elevation $h_b$, set here as the median elevation of reporting weather stations at a given time step. 
 
 ```
 def referenceTemperature(ta, elev):
