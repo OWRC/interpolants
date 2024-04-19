@@ -390,6 +390,7 @@ A number of open-source and proprietary data analysis tools have been employed i
    * [Leaflet for R](https://rstudio.github.io/leaflet/) — web mapping
    * [ggplot2](https://ggplot2.tidyverse.org/) — data visualization
    * [dygraphs for R](https://rstudio.github.io/dygraphs/) — dynamic time-series visualization
+* [Surfer](https://www.goldensoftware.com/products/surfer/)
 
 ## Databases (external links)
 * [MSSQL](https://www.microsoft.com/en-us/sql-server/sql-server-2019)
