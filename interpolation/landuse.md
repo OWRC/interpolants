@@ -35,6 +35,7 @@ Provincial layers discussed above and [here](/interpolants/interpolation/surfgeo
 The Ministry of Natural Resources and Forestry (2019) SOLRIS version 3.0 provincial land use layer is employed to aggregate imperviousness, canopy coverage, wetland coverage and open water coverage at the sub-watershed scale. The dominant SOLRIS land use class (by area) is assigned the Land use class index for every 60x60m² grid cell. 
 
 ![Final 60x60m SOLRIS mapping.](https://github.com/OWRC/interpolants/blob/main/interpolation/calc/landuse/output/landuse23_60.png?raw=true)
+
 *Final 60x60m SOLRIS mapping. (For illustrative purposes only, [see here](https://github.com/OWRC/interpolants/blob/main/interpolation/calc/landuse/OWRC23-lusg.ipynb) to reproduce shown raster.)*
 
 
@@ -44,9 +45,11 @@ For any ~10km² sub-watershed and given a 60x60m² grid, there should be a subse
 
 
 ![Final 60x60m impervious mapping.](https://github.com/OWRC/interpolants/blob/main/interpolation/calc/landuse/output/landuse23_60_perimp.png?raw=true) 
+
 *Final 60x60m impervious mapping. (For illustrative purposes only, [see here](https://github.com/OWRC/interpolants/blob/main/interpolation/calc/landuse/OWRC23-lusg.ipynb) to reproduce shown raster.)*
 
 ![Final 60x60m canopy mapping.](https://github.com/OWRC/interpolants/blob/main/interpolation/calc/landuse/output/landuse23_60_percov.png?raw=true) 
+
 *Final 60x60m canopy mapping mapping. (For illustrative purposes only, [see here](https://github.com/OWRC/interpolants/blob/main/interpolation/calc/landuse/OWRC23-lusg.ipynb) to reproduce shown raster.)*
 
 
@@ -55,6 +58,7 @@ For any ~10km² sub-watershed and given a 60x60m² grid, there should be a subse
 The Ontario Geological Survey's (2010) Surficial geology of southern Ontario layer also assigns a 60x60m² grid by the dominant class. 
 
 ![Final 60x60m permeability mapping.](https://github.com/OWRC/interpolants/blob/main/interpolation/calc/landuse/output/surfgeo23_60.png?raw=true)
+
 *Final 60x60m permeability mapping. (For illustrative purposes only, [see here](https://github.com/OWRC/interpolants/blob/main/interpolation/calc/landuse/OWRC23-lusg.ipynb) to reproduce shown raster.)*
 
 ### Permeability
@@ -65,6 +69,7 @@ After assigning an assumed "effective" hydraulic conductivity to every permeabil
 
 
 ![Final 60x60m permeability mapping.](https://github.com/OWRC/interpolants/blob/main/interpolation/calc/landuse/output/surfgeo23_60-logK.png?raw=true) 
+
 *The resulting effective hydraulic conductivity is then reverted back to the nearest Low--High OGS (2010) classification. (For illustrative purposes only, [see here](https://github.com/OWRC/interpolants/blob/main/interpolation/calc/landuse/OWRC23-lusg.ipynb) to reproduce shown raster.)*
 
 
