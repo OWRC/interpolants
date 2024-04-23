@@ -19,7 +19,8 @@ _ORMGP surficial geology as hosted on our image server_
 
 # Raster download
 
-The version 2023 ORMGP surficial geology surface can be found [here](https://www.dropbox.com/scl/fi/l5upmlmext51h3iweofsc/surfgeo23.tif?rlkey=obs5mo8yt30u8owycpa768m7e&dl=1). See also the [metadata](/metadata/surfaces/surficial_geology.html).
+The version 2023 ORMGP surficial geology surface can be found [here](https://www.dropbox.com/scl/fi/zpjn8v71eamaoixlnr9f1/surfgeo23.tif?rlkey=wx7w80qz6efeh19pxitu8uefk&st=5o41wvz6&dl=1). See also the [metadata](/metadata/surfaces/surficial_geology.html).
+
 
 # References
 
