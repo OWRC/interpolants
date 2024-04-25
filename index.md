@@ -339,6 +339,9 @@ The ORMGP particle tracking tool shows both the forward or backward particle tra
 
 * More info on 3D [**particle tracking** of the groundwater flow system and the methodology used in our web tool](/interpolants/modelling/particleTracking/).
 
+![](fig/particles.png)
+
+<br>
 
 ## Regional **Water Budget**, Long-term and Continuous
 * Fine-resolution (2,500 m²) [**Water Budgeting** using a  regionally-distributed runoff-recharge model](/interpolants/modelling/waterbudgetmodel.html) for Long-term (>20 years) continuos 6-hourly hydrological modelling of the ORMGP jurisdiction.
