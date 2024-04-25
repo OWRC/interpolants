@@ -27,9 +27,9 @@ Particle tracking can prove important and useful from a number of perspectives:
 
 As the ORMGP continually adds numerical models into our [Numerical Model Custodianship Program](https://owrc.github.io/snapshots/md/numerical-model-custodianship-program.html) they become available for inclusion into the particle tracking tool. Not all models are included into the tool, but are included either by request, or simply for the sake of covering as much of our jurisdiction as possible.
 
-As of the date of this snapshot (listed below), the particle tracking from the following models have been made live online:
-  
-1. Regional model (MODFLOW)
+As of the date of this snapshot (listed below), the particle tracking from the following models have been made live online, ordered in priority:
+
+1. Durham 2021 (MODFLOW)
 1. Halton Tier-3 (FEFLOW)
 1. Oro-Hawkestone (MODFLOW)
 <!-- 1. South Halton (MODFLOW) -->
@@ -37,15 +37,15 @@ As of the date of this snapshot (listed below), the particle tracking from the f
 <!-- 1. NVCA-SSEA (FEFLOW) -->
 1. Ramara Whites Talbot (MODFLOW)
 <!-- 1. York Tier-3 (MODFLOW) -->
-1. Durham 2021 (MODFLOW)
+1. Regional model (MODFLOW)
 
 
 
 ![](img/models.png)
 
+*Boundaries of numerical models used in the particle tracking tool. For more information on the models, visit the [Numerical Model Custodianship Program page](https://owrc.github.io/snapshots/md/numerical-model-custodianship-program.html).*
 
-
-
+<br>
 
 
 # Methodology
