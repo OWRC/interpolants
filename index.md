@@ -339,7 +339,7 @@ The ORMGP particle tracking tool shows both the forward or backward particle tra
 
 * More info on 3D [**particle tracking** of the groundwater flow system and the methodology used in our web tool](/interpolants/modelling/particleTracking/).
 
-![](fig/particles.png)
+[![](fig/particles.png)](https://golang.oakridgeswater.ca/pages/443405-3D.html)
 
 <br>
 

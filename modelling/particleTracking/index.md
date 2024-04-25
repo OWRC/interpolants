@@ -144,7 +144,7 @@ The following figure is an interactive 3D illustration of the above particle tra
 
 <iframe src="https://golang.oakridgeswater.ca/pages/443405-3D.html" width="100%" height="700" scrolling="no" allowfullscreen></iframe>
 
-[open in fullscreen](https://golang.oakridgeswater.ca/pages/443405-3D.html)
+*3D particle pathlines drawn in [plotly](https://plotly.com/). Moving mouse while holding left button rotates; right button pans and center button zooms. [Click here to open 3D plot in fullscreen](https://golang.oakridgeswater.ca/pages/443405-3D.html).*
 
 <br>
 
@@ -172,7 +172,7 @@ There are three ways these data are compressed:
 
 <iframe src="https://owrc.shinyapps.io/ptrack/" width="100%" height="500" scrolling="no" allowfullscreen></iframe>
 
-*3D particle pathlines drawn in [plotly](https://plotly.com/). Moving mouse while holding left button rotates; right button pans and center button zooms. [*To open and view in separate tab, click here*](https://owrc.shinyapps.io/ptrack/).*
+*[To open and view in separate tab, click here](https://owrc.shinyapps.io/ptrack/).*
 
 <br>
 
