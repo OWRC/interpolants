@@ -89,7 +89,7 @@ $$ \Delta S=P-E-R-G $$
 
 ### [Overland flow routing](/interpolants/modelling/waterbudget/overlandflow.html)
 
-$$ F_\text{casc}=1-\exp\left(\frac{\beta}{-\alpha}\right) $$
+$$ F_\text{casc}=1-\exp\left(\frac{\beta^2}{-\alpha}\right) $$
 
 
 

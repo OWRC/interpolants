@@ -348,6 +348,12 @@ The ORMGP particle tracking tool shows both the forward or backward particle tra
 * Data sources for the water budget model are discussed [here](/interpolants/modelling/waterbudget/data.html).
 
 
+## ORMGP Raven Model
+
+In addition to the Water Budget model, the ORMGP hosts a semi-distributed rainfall runoff model built using the [**Raven hydrological modelling framework**](https://raven.uwaterloo.ca/). The model was initially developed to support the Water Budget (recharge) model in that it is built on the same [sub-watershed network](/interpolants/interpolation/subwatershed.html), [land-use](/interpolants/interpolation/landuse.html), [surficial geology](/interpolants/interpolation/surfgeo.html), [climate forcings](/interpolants/sources/climate-data-service.html), etc. With this *traditional* hydrologic model, results are indeed similar--although at the moment more calibration is required. We are happy to share the model (in full or in part) to anyone interested. [*More details here*](/interpolants/modelling/ravenmodel.html).
+
+
+
 ## Short-term/event-based hydrology
 * [Lateral water movement:](/info/lia/) a local inertial approximation of the shallow water equation for lateral movement of water.
 * [Multiphase flow through porous media:](/info/pmflow/) a one-dimensional fully-implicit multi-layer solution to multi-phase flow through porous media used to investigate infiltration, evaporation and runoff generation.
