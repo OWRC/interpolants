@@ -151,7 +151,7 @@ The [Regional Deterministic Precipitation Analysis (RDPA)](https://eccc-msc.gith
 
 Simply put, CaPA-RDPA is an amalgamation of near-cast weather model predictions corrected by RADAR data and ground-truthed using a select set of weather stations. Essentially, CaPA-RDPA is a [*data assimilation system* (DAS)](https://www.ecmwf.int/en/research/data-assimilation) that provides users with the best-possible spatial distribution of precipitation, necessary for analyzing hydrology at the regional scale like the ORMGP jurisdiction.
 
-Recently (2017), a high-resolution format of the RDPA system was released. The **HRPDA** ([High Resolution Deterministic Precipitation Analysis](https://eccc-msc.github.io/open-data/msc-data/nwp_hrdpa/readme_hrdpa_en/)) supplies a ~2.5km resolution 6-hourly precipitation field, in contrast to the ~10-15km resolution of the original RDPA product.
+Recently (as of 2019), a high-resolution format of the RDPA system was released. The **HRPDA** ([High Resolution Deterministic Precipitation Analysis](https://eccc-msc.github.io/open-data/msc-data/nwp_hrdpa/readme_hrdpa_en/)) supplies a ~2.5km resolution 6-hourly precipitation field, in contrast to the ~10-15km resolution of the original RDPA product.
 
 
 While the CaPA-RDPA vector data fields can be acquired from Environment Canada in GRIB2 format, the ORMGP has sourced historical/archived data from the [Canadian Surface Prediction Archive (CaSPAr)](https://caspar-data.ca/), as their archive holds the original raw data (ECCC's GRIB2 format is a re-interpolation to a polar-stereographic grid). Additionally, the CaSPAr platform allows users to crop their area of interest. 
