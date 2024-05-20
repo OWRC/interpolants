@@ -341,6 +341,8 @@ The ORMGP particle tracking tool shows both the forward or backward particle tra
 
 [![](fig/particles.png)](https://golang.oakridgeswater.ca/pages/443405-3D.html)
 
+*3D example of particles tracking within a 5-layer groundwater flow model--click on image to play with the interactive version*
+
 <br>
 
 ## Regional **Water Budget**, Long-term and Continuous

@@ -10,45 +10,59 @@ output: html_document
 
 <iframe src="https://golang.oakridgeswater.ca/pages/OWRC23WB.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 
-_Sample outputs from the water budget model (v.2405)_
+_Sample outputs (mm/yr) from the water budget model (v.2405)_
 
 <br>
 
 # Executive Summary
 
-- Integrated groundwater surface water numerical model
-- Built for fast computation
-- 12.1M x 50x50 m cells x 6-hourly time-step x 20 years
-- Simulates evaporation, runoff, infiltration, watertable elevations, groundwater discharge and recharge occurring in response to a rainfall and/or snowmelt event.
-- Model simulates from the hydrological water year 2002 (Oct 10, 2001) 
+- Integrated groundwater surface water numerical model.
+- Built for fast computation.
+- 12.4M x 60x60 m cells x 6-hourly time-step x >20 years.
+- Simulates evaporation, runoff, infiltration, watertable elevations, groundwater discharge and recharge occurring in response to a rainfall and/or snowmelt events.
+- Model simulates from the hydrological water year 2003 (Oct 10, 2002).
 - Runs on regional climate data-fields:
-    - ECCC Precipitation collected from [CaPA-RDPA](https://eccc-msc.github.io/open-data/msc-data/nwp_hrdpa/readme_hrdpa_en/)
-    - NOAA Snowmelt collected from [SNODAS](https://nsidc.org/data/g02158/versions/1)
-    - $T_a$, $r$, $u$ interpolated from [MSC](http://climate.weather.gc.ca/historical_data/search_historic_data_e.html)
-    - Potential evaporation $(E_a)$ determined using the [empirical wind functions of Penman (1948)](/interpolants/modelling/waterbudget/data.html#atmospheric-demand-e_a)
-
-- Explicit soil moisture accounting (SMA) scheme
-- Cold content energy balance snowpack model when SNODAS was unavailable (pre-2010)
-- Distribution function based shallow groundwater model with groundwater feedback mechanisms, following TOPMODEL
-- Steepest decent cascade overland flow routing
+    - ECCC Precipitation collected from [CaPA-HRDPA](https://eccc-msc.github.io/open-data/msc-data/nwp_hrdpa/readme_hrdpa_en/).
+    - NOAA Snowmelt collected from [SNODAS](https://nsidc.org/data/g02158/versions/1).
+    - Air temperature $(T_a)$, relative humidity $(r)$ and windspeed $(u)$ interpolated from [MSC](http://climate.weather.gc.ca/historical_data/search_historic_data_e.html).
+    - Potential evaporation $(E_a)$ determined using the [empirical wind functions of Penman (1948)](/interpolants/modelling/waterbudget/data.html#atmospheric-demand-e_a).
+- Explicit soil moisture accounting (SMA) scheme.
+- Cold content energy balance snowpack model when SNODAS was unavailable (pre-2010).
+- Distribution function based shallow groundwater model with groundwater feedback mechanisms (e.g., Dunnian runoff), following TOPMODEL.
+- Steepest decent cascade overland flow routing.
 
 
 <br>
 
+**Contents**
 
 * TOC
 {:toc}
 
 
+
 # Introduction
-The following is a description of the regionally-distributed runoff/recharge model, the water budget tool located on our website, hereinafter referred to as the "*model*".
+The following is a description of the regionally-distributed runoff/recharge model, the water budget tool located on our website, hereinafter referred to in its entirety as the "*model*".
+
+The model's primary intention is to project land surface moisture distribution for the purposes of estimating regional groundwater-surface water interactions, namely groundwater recharge and discharge. It utilizes hydrological model procedures that are amenable to data availability local to southern Ontario Canada. While the model can simulate stream flow discharge and overland runoff at any point in space, the model is not intended for rainfall runoff modelling; outputs from this model will be used to constrain regional groundwater models within the 30,000km² Oak Ridges Moraine Groundwater Program jurisdiction. That said, mean daily streamflow at >150 gauges remains the primary calibration target.
+
+This model is currently deemed experimental, and its use for practical application should proceed with caution. Users should be aware that model results posted online will always be subject to change. Ultimately, the intent of this model is to produced ranges of long-term (monthly average) water budget metrics (precipitation, runoff, evaporation, recharge, moisture state, etc.) as a hydrological *reference* for the [partners of the ORMGP](https://www.oakridgeswater.ca/). This reference is maintained in real-time, updated by the ORMGP [Near Real-time Climate Data Service](/interpolants/sources/climate-data-service.html).
+
+The model is physically based in that mass is conserved and processes are not constrained to any particular time-step. The model conceptualization has maintained parameters that speaks to the common physical hydrology lexicon, with parameters such as percent impervious, soil conductivity, extinction depth, depression storage, etc. The model is a hydrological model integrated with a TOPMODEL-inspired conceptual groundwater system. The source code is [open and free to use](https://github.com/maseology/rdrr). Below is the description of the model procedures that have been codified.
 
 
-The model's primary intention is to project land surface moisture distribution for the purposes of estimating regional groundwater recharge. It utilizes hydrological model procedures that are amenable to local data availability. While the model can simulate stream flow discharge and overland runoff at any point in space, the model is not intended for rainfall runoff modelling; outputs from this model will be used to constrain regional groundwater models within the 30,000km² Oak Ridges Moraine Groundwater Program jurisdiction of southern Ontario. That said, mean daily streamflow remains the primary calibration target.
+## The Pragmatic Model Design Philosophy
 
-This model is currently in beta mode, and its use for practical application should proceed with caution. Users should be aware that model results posted online will always be subject to change. Ultimately, the intent of this model is to produced ranges of long-term (monthly average) water budget metrics (precipitation, runoff, evaporation, recharge, moisture state, etc.) as a hydrological *reference* for the [partners of the ORMGP](https://www.oakridgeswater.ca/). This reference is maintained in real-time, [updated by the ORMGP server center](/interpolants/#servers).
+The model is deemed an *integrated* groundwater/surface water model although its build differs from most integrated models used in practice. With current technology, to arrive at an estimate of the distribution of groundwater recharge, modellers must choose between standard rainfall-runoff hydrologic models that neglect the role of groundwater feedback mechanisms (e.g., high water tables limiting the capacity of recharge rates) or move toward integrated groundwater/surface water models with their complicated data input and their *long* run times.
 
-The model is physically based in that mass is conserved and processes are not constrained to any particular timestep. The model conceptualization has maintained parameters that speaks to the common physical hydrology lexicon, with parameters such as percent impervious, conductivity of surficial soils, etc. The model is a hydrological model integrated with a TOPMODEL groundwater system. The source code is [open and free to use](https://github.com/maseology/rdrr). Below is the description of the model procedures that have been codified.
+Here, a pragmatic approach to recharge model design is followed to maintain an explicit representation of the shallow groundwater system, while maximizing computational performance. The proposed model design allows for uncertainty analysis to be readily performed on a large-scale model domain (>10,000 km²) at a fine spatial distribution (<hectare grid cells) and temporal scale (<daily time-steps).
+
+The proposed model incorporates a systematic framework with a diverse range of common hydrologic procedures, concurrent code selection, topological sorting of distributed environmental processes and an optimized IO strategy. Altogether, the model rivals the quick performance of rainfall-runoff models while still providing comparable groundwater-surface water interactions obtained using computationally expensive integrated models.
+
+> Today, as we modellers come to the realization that Moore’s Law is not panning out, the models we apply in decision-making, and the due diligence we maintain investigating our models’ uncertainty, ultimately require pragmatism in their design. 
+
+
+
 
 
 # Codification
@@ -140,7 +154,7 @@ Finally, the model was designed to remain amenable to data availability and new 
 
 
 
-[*see glossary*](glossary.html)
+[*see glossary*](/interpolants/glossary.html)
 
 
 
@@ -166,7 +180,7 @@ The extent of the model combined with the resolution of the processes simulated 
 
 ### Digital Elevation Model
 
-The Greater Toronto Area 2002 DEM (OMNRF, 2015) was re-sampled to the model's 50x50m grid cell resolution. Surface depressions were removed using Wang and Liu (2006) and flat regions were corrected using Martz (1997).
+The Greater Toronto Area 2002 DEM (OMNRF, 2015) was re-sampled to the model's 60x60m grid cell resolution. Surface depressions were removed using Wang and Liu (2006) and flat regions were corrected using Martz (1997).
 
 Drainage directions and flow-paths of the now "hydrologically correct" DEM were were assigned based on the direction of steepest decent (D8). Cell gradients ($b$) and slope aspects were calculated based on a 9-cell planar interpolation routine. The unit contributing area $a=A/w$ topographic wetness index $ln\frac{a}{\tan\beta}$ (Beven and Kirkby, 1979--CHECK) were computed for every cell.
 
@@ -185,17 +199,17 @@ The 30,000 km² model area has been sub divided into [2,813 approximately 10 km�
 
 An overlay analysis is the process of overlaying 2 or more spatial layers and capturing statistics associated with their relative coverage. In this case, the sub-watershed layer is overlain by Provincial land-use and surficial geology layers to obtain information like percent impervious, relative permeability, etc.
 
-Provincial layers discussed in more detail below have in all cases been re-sampled to the 50x50m² grid associated with the [hydrologically corrected DEM](/interpolants/interpolation/overland.html). It is from these rasters where the aggregation of watershed characteristics is computed.
+Provincial layers discussed in more detail below have in all cases been re-sampled to the 60x60m² grid associated with the [hydrologically corrected DEM](/interpolants/interpolation/overland.html). It is from these rasters where the aggregation of watershed characteristics is computed.
 
 - [Land use](/interpolants/interpolation/landuse.html): Southern Ontario Land Resource Information System (SOLRIS) Version 3.0 Landuse. [*metadata*](/metadata/surfaces/land_use.html).
 - [Surficial geology](/interpolants/interpolation/surfgeo.html): OGS (2010) Surficial geology of southern Ontario. [*metadata*](/metadata/surfaces/surficial_geology.html).
 
-Downscaling of the above layers is based on the dominant land use/surficial geology class (by area) assigned within every 50x50m² grid cell. 
+Downscaling of the above layers is based on the dominant land use/surficial geology class (by area) assigned within every 60x60m² grid cell. 
 
 
 #### Impervious and Canopy coverage
 
-Using a look-up system, the set of raster cells contained within every 50x50m² grid cell are assigned a value of imperviousness, water body, wetland and canopy coverage (according to their SOLRIS index) and accumulated to grid cell sum.
+Using a look-up system, the set of raster cells contained within every 60x60m² grid cell are assigned a value of imperviousness, water body, wetland and canopy coverage (according to their SOLRIS index) and accumulated to grid cell sum.
 
 *Percent impervious and canopy coverage as per SOLRIS v3.0 (MNRF, 2019) land use classification.*
 
@@ -232,7 +246,7 @@ Using a look-up system, the set of raster cells contained within every 50x50m² 
 
 The OGS classes have been grouped according to the attribute "permeability" using a similar look-up table cross-referencing scheme. OGS (2010) adds: *"Permeability classification is a very generalized one, based purely on characteristics of material types."* 
 
-After assigning an assumed "effective" hydraulic conductivity to every permeability group, sub-watershed "permeability" is then calculated as the geometric mean of 50x50m² grid cells contained within a sub-watershed. Effective hydraulic conductivity value assumed for every permeability group are:
+After assigning an assumed "effective" hydraulic conductivity to every permeability group, sub-watershed "permeability" is then calculated as the geometric mean of 60x60m² grid cells contained within a sub-watershed. Effective hydraulic conductivity value assumed for every permeability group are:
 
 *Permeability classifications (after OGS, 2010) and assumed effective hydraulic conductivities.*
 
@@ -292,7 +306,7 @@ The model's structure is defined rather simply by at least 5 raster data sets. T
 
 While a distributed model, the procedures applied at the cell scale are quite parsimonious. There is no separate treatment of interception, depression storage, nor soil water retention, rather it is assumed that these processes respond to environmental factors (e.g., evaporation) concurrently and thus treated as one.
 
-From the top down perspective, viewing some 12.1 million 50x50m cells covering 30,000 km², it seems rather overcomplicated (possibly frivolous) to account water any more than to total mass present at any particular location.
+From the top down perspective, viewing some 12.1 million 60x60m cells covering 30,000 km², it seems rather overcomplicated (possibly frivolous) to account water any more than to total mass present at any particular location.
 
 
 
