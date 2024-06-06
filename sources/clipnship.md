@@ -52,7 +52,7 @@ When referring to the interpretations and data from the Clip 'n Ship function, p
 ## Geology Folder
 
 ### Layers
-The Clip 'n Ship function provides the top elevation and thickness (isopach) for each interpreted hydrostratigraphic unit within the ORMGP jurisdiction. The following figure shows the interpreted units:
+The Clip 'n Ship function provides the top elevation and thickness (isopach) for each interpreted hydrostratigraphic unit within the ORMGP jurisdiction [from a variety of sources](/interpolants/interpolation/geolayers.html). The following figure shows the interpreted units:
 
 ![image](https://github.com/OWRC/interpolants/assets/92586150/947f8c3b-dec2-4ded-874d-454b7e4b863a)
 
