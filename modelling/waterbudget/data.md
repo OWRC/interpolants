@@ -1,5 +1,5 @@
 ---
-title: Long Term Water Budget
+title: Long Term Water Budget Model
 subtitle: Data sources, transformations and pre-processing
 author: M. Marchildon
 output: html_document

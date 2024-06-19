@@ -1,5 +1,5 @@
 ---
-title: Water Budget Modelling
+title: Water Budget Model
 subtitle: Model parameters
 author: M.Marchildon
 date: 2019

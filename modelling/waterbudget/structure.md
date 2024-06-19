@@ -1,8 +1,6 @@
 ---
-title: Water Budget Modelling
+title: Water Budget Model
 subtitle: Model structure
-author: M.Marchildon
-date: 2019
 output: html_document
 ---
 

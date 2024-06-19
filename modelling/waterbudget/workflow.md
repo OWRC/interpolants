@@ -1,8 +1,6 @@
 ---
-title: Water Budget Modelling
-subtitle: workflow
-author: M.Marchildon
-date: 2020
+title: Water Budget Model
+subtitle: Workflow
 output: html_document
 ---
 

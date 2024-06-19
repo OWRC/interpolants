@@ -1,5 +1,5 @@
 ---
-title: Water Budget Modelling
+title: Water Budget Model
 subtitle: Shallow groundwater model
 author: M.Marchildon
 output: html_document

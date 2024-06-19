@@ -404,11 +404,13 @@ As part of the model pre-processor, the structural data and parameterization spe
 
 
 
-# Testing
+# Benchmarking
 
-As a simple expression of the model's ability to squeeze everything from the computer, this is what happens when 12.1M model cells running at a 6-hourly timestep:
+As a simple expression of the model's ability to squeeze everything from the computer, this is what happens when 12.4M model cells running at a 6-hourly timestep:
 
 ![](fig/rdrr-taskman.png)
+
+[more info here](/interpolants/modelling/waterbudget/benchmarking.html)
 
 
 

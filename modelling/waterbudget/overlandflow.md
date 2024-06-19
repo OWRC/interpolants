@@ -1,11 +1,12 @@
 ---
-title: Water Budget Modelling
+title: Water Budget Model
 subtitle: Overland flow routing
 output: html_document
 ---
 
 
 The overland flow process is built for performance. While, many liberties are taken that may constrain its applicability, it exists because we are interested in:
+
  1. the fine scale spatial distribution of the land surface water budget; that includes,
  2. groundwater feedback, i.e., the ability to induce saturation excess (Dunnian) runoff; to give further insight into
  3. the role and seasonality of groundwater/surface water interaction at the model cell scale; which dictates,
