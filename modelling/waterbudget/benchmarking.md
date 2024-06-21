@@ -188,7 +188,6 @@ Here, another term is introduced: $D_i$ is the groundwater discharge term that o
 <br>
 
 
-
 #### test: 
 
 - 28,727 nodes (56,841 elements) x 5 sub-surface layers
@@ -206,13 +205,57 @@ Here, another term is introduced: $D_i$ is the groundwater discharge term that o
 
 
 
+### RDRR
+
+$$
+    P_i + O_i + D_i = E_i + R_i + G_i
+$$
+
+
+#### test: 
+
+- 101,369 50x50m cells
+- 27,390 (6hr) time steps
+- Runtime: 75s
+- *Model not calibrated*
+
+
+<br>
+
+![](../fig/benchmark-hyd-rdrr.png)
+
+*Sample hydrograph from the RDRR model. Discharge in m³/s.*
+
+<br>
+
+
+
 
 
 # Results
 
-asdf
+## Simulation time
+
+![](../fig/benchmark-res-time-ratio.png)
+
+![](../fig/benchmark-res-computation-rate.png)
+
+![](../fig/benchmark-res-computation-rate2.png)
 
 
+## CPU utilization
+
+#### GSSHA (OpenMP)
+
+![](../fig/benchmark-GSSHAv1.png)
+
+#### HGS (parallel mode with 8 threads)
+
+![](../fig/benchmark-HGSv1_8thrd.png)
+
+#### RDRR
+
+![](../fig/benchmark-rdrr.png)
 
 
 
