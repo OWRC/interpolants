@@ -1,5 +1,6 @@
 ---
-title: Benchmarking the Water Budget Model
+title: Model Benchmarking
+subtitle: Performance benefits of the Regionally-Distributed Runoff-Recharge model
 output: html_document
 ---
 
