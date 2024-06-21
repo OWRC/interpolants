@@ -1,14 +1,16 @@
 ---
-title: Water Budget Model
-subtitle: Benchmarking
+title: Benchmarking the Water Budget Model
 output: html_document
 ---
+
+
+## Study site
 
 ![](../fig/benchmark-trialarea.png)
 
 <br>
 
-### Artificial Neural Network
+## Artificial Neural Network
 
 $$
     \hat{Q}_t=E \left\{ Q_t | Q_{t-1}, Q_{t-2}, \dots , \\ Q_{t-n}, P_t, P_{t-1}, \dots , P_{t-n}, f(\cdot) \right\}
@@ -31,7 +33,7 @@ where $Q_t$ is discharge at time $t$, $P_t$ is precipitation at time $t$, and $f
 
 <br>
 
-### Lumped Rainfall-Runoff models
+## Lumped Rainfall-Runoff models
 
 ![](../fig/cup.png)
 
@@ -64,7 +66,7 @@ where $P$ is precipitation, $E$ is evaporation, $R$ is runoff and $G$ is groundw
 
 <br>
 
-### HRU-based model
+## HRU-based model
 
 A second version of the HBV model tested is based on the Hydrological Response Unit (HRU) concept where the watershed is divided into a number of sub-units:
 
@@ -98,7 +100,7 @@ Here, the water balance equation is the lumped version, only we are summing the 
 
 
 
-### Distributed model
+## Distributed model
 
 PRMS is the test case for a distributed hydrologic model.
 
@@ -132,7 +134,7 @@ Here, the water balance equation is modified in that the subscript $i$ is repres
 
 
 
-### 2D hydraulic model
+## 2D hydraulic model
 
 [GSSHA](https://gsshawiki.com/Gridded_Surface_Subsurface_Hydrologic_Analysis) is the test case for a distributed shallow water equation model.
 
@@ -167,7 +169,7 @@ The above equation is written the same as the distributed form although the runo
 
 
 
-### Integrated model
+## Integrated model
 
 [HydroGeoSphere](https://www.aquanty.com/hydrogeosphere) (HGS) is the test case for a distributed shallow water equation model.
 
@@ -205,7 +207,7 @@ Here, another term is introduced: $D_i$ is the groundwater discharge term that o
 
 
 
-### RDRR
+## The Regionally-Distributed Runoff-Recharge model
 
 $$
     P_i + O_i + D_i = E_i + R_i + G_i
