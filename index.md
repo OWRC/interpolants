@@ -299,16 +299,18 @@ _Distributed time-series data, updated nightly_
 
 # **Numerical Modelling**
 
-Numerical modelling are applied in two ways: 
+Numerical modelling at the ORMGP proceed in a number of ways: 
 
-1. A long-term data assimilation system that uses hydrological analysis tools (i.e., models) and leverages the ORMGP's database. What amounts to *data assimilation system* (DAS) utilized modelling technology to provide real-time *interpolation* of the hydrological system, data we have access to. The computational structure of the DAS is specifically tailored to run as fast as possible, such that thousands of model "projections" made continuously on [ORMGP servers](/interpolants/#servers). The results from this analysis will likely be offered as monthly ranges in long term seasonal water balance estimates.
-2. Other tools are intended for predictive use, but are restricted to short-term (less than 30 days) projections. The design of these models is more physically rigorous but will always be dependent on other models (existing groundwater models or the DAS described here) to prescribe the antecedent conditions. While computational time for this model is orders of magnitudes greater than that of the DAS, it continuous to share the philosophy of designed whereby computation efficiency is paramount.
+1. A long-term data assimilation system that uses hydrological analysis tools (i.e., models) and leverages the ORMGP's database. What amounts to a [*data assimilation system*](https://ldas.gsfc.nasa.gov/) (DAS), modelling technology is utilized to provide a real-time state of the hydrological system with the ORMGP jurisdiction, supported by the [data we manage](/interpolants/#data-sources). The computational structure of the DAS is specifically tailored to run as fast as possible, such that thousands of model "projections" made continuously on [ORMGP servers](/interpolants/#ormgp-servers). The results from these analyses are offered as monthly ranges in long term seasonal water balance estimates.
+1. The ORMGP has been charge with maintaining over [100 existing numerical models](/interpolants/#numerical-model-custodianship-program) of varying types and purposes. We actively strive to ensure that these models are mainlined in an operational state, such that they can be readily shared with future modellers, thereby reducing the need for reproducing past work and maintaining past knowledge.
+1. Outputs from select models maintained in our Numerical Model Custodianship Program are further processed to give our partners an interactive utility to the model's estimation of our regional flow system. For instance, users can readily visualize virtual [particle tracking](/interpolants/#particle-tracking-web-tool) to and from any location clicked within the model domain.
+1. Other tools are intended for predictive use, but are restricted to short-term (say, less than 30 days) projections. The design of these models is more physically rigorous but will always be dependent on other models (e.g., existing groundwater models, the ORMGP DAS) to prescribe the antecedent conditions. While computational time for this model is orders of magnitudes greater than that of the DAS, it continuous to share the philosophy of designed whereby computation efficiency is paramount.
 
 Combined, these two tools will provide all water groundwater resources needs for the ORMGP partners in order to:
 
-1. utilize readily available datasets provided daily by government agencies of Canada and the United States without the need for [data pre-processing](/interpolants/modelling/waterbudget/data.html)
-2. capture long-term hydrological water budget estimates with an emphasis on its certainty
-3. project near-term hydrological response given a known antecedent state
+1. utilize readily available datasets provided daily by government agencies of Canada and the United States without the need for [data pre-processing](/interpolants/modelling/waterbudget/data.html);
+2. capture long-term hydrological water budget estimates with an emphasis on its certainty; and,
+3. project near-term hydrological response given a known antecedent state.
 
 
 ## Numerical Model Custodianship Program

@@ -130,11 +130,15 @@ The cascade routing scheme built this way created issues in flat regions and lan
 
 One way to avoid this is to use a hydrologically-correct DEM, as done here. But this does not solve the tower problem as it can occur in flat regions in particular where a convergence of cascade flowpaths. In the model, excess storage is infiltrated assuming a falling head through a unit length back into the groundwater system:
 
-$$
+<!-- $$
   g=S_k^+\left[1-\exp(-K_\text{sat}\Delta t)\right],
+$$ -->
+
+$$
+  g=S^+\left[1-\exp\left(\frac{-K_\text{sat}}{L}\Delta t\right)\right].
 $$
 
-where $K_\text{sat}$ is saturated hydraulic conductivity of the surficial soils, and $\Delta t$ model timestep (s). This appears to resolve towers here.
+where $K_\text{sat}$ is saturated hydraulic conductivity of the surficial soils, and $\Delta t$ model timestep (s). This appears to resolve towers here. *(see also [groundwater recharge](/interpolants/modelling/waterbudget/sma.html#groundwater-recharge).)*
 
 
 # References

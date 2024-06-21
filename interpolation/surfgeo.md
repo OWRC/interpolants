@@ -15,6 +15,9 @@ _ORMGP surficial geology as hosted on our image server_
 
 ![](fig/surficial_geology_legend_p26-legend.png)
 
+<br>
+
+The complete OGS legend can be found [here](/metadata/external/ogs/surficial_geology_legend_p26.pdf).
 
 
 # Raster download

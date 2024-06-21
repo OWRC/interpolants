@@ -126,7 +126,7 @@ The included rasters are:
 ## Hydrology
 
 - [Interpolated daily climatology](/interpolants/sources/climate-data-service.html) given to the centroid of the area selected, tabular (*.csv) format.
-- `owrc-20-50-noGreatLake-HC-observations-trim-FINAL-elevation-crop.bil`: [A "hydrologically corrected" digital elevation model](/interpolants/interpolation/overland.html). [*(metadata)*](/metadata/surfaces/hdem.html)
+- `owrc-20-50-noGreatLake-HC-observations-trim-FINAL-elevation-crop.bil`: A ["hydrologically corrected"](/interpolants/interpolation/overland.html) digital elevation model. [(metadata)](/metadata/surfaces/hdem.html)
 - Land use [(more info)](/interpolants/interpolation/landuse.html):
     - `solrisv3_10_infilled_50_percov-crop.bil`: fraction canopy cover
     - `solrisv3_10_infilled_50_perimp-crop.bil`: fraction impervious cover
