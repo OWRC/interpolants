@@ -84,7 +84,7 @@ where $P$ is precipitation, $E$ is evaporation, $R$ is runoff and $G$ is groundw
 - 12,596 time steps
 - 6 models:
     - Atkinson et.al. (2003)--NSE: 0.40, runtime: 15.99ms
-    - Dawdy--O'Donnell (1965)--NSE: 0.36, runtime: 3.50ms
+    - Dawdy and O'Donnell (1965)--NSE: 0.36, runtime: 3.50ms
     - GR4J (Perrin et.al., 2003)--NSE: 0.46, runtime: 7.18ms
     - HBV (Bergström, 1976)--NSE: 0.45, runtime: 4.00ms
     - Manabe (1969) with a linear baseflow reservoir--NSE: 0.40, runtime: 3.59ms
@@ -106,7 +106,7 @@ A second version of the HBV model tested is based on the Hydrological Response U
 
 <!-- ![](../fig/benchmark-HRU.png) -->
 
-<img src="../fig/benchmark-HRU.png" width="75%">
+<img src="../fig/benchmark-HRU.png" width="65%">
 
 *An example of the HRU concept: Left shows a watershed divided into 8 sub-catchments; Right:shows the same system shown graphically. Essentially, the model is composed of 8 lumped models that are parametrized independently and runoff aggregated to math know outlet discharge.*
 
@@ -138,11 +138,11 @@ Here, the water balance equation is the lumped version, only we are summing the 
 
 ### Distributed model
 
-PRMS is the test case for a distributed hydrologic model.
+[PRMS](https://www.usgs.gov/software/precipitation-runoff-modeling-system-prms) is the test case for a distributed hydrologic model.
 
 <!-- ![](../fig/benchmark-distributed-grid.png) -->
 
-<img src="../fig/benchmark-distributed-grid.png" width="400">
+<img src="../fig/benchmark-distributed-grid.png" width="300">
 
 *A conceptual example of a distributed watershed model domain.*
 
@@ -178,7 +178,7 @@ Here, the water balance equation is modified in that the subscript $i$ is repres
 
 <!-- ![](../fig/benchmark-grid.png) -->
 
-<img src="../fig/benchmark-grid.png" width="75%">
+<img src="../fig/benchmark-grid.png" width="65%">
 
 *The gridded watershed model domain used with both PRMS and GSSHA.*
 
@@ -194,7 +194,7 @@ The above equation is written the same as the distributed form although the runo
 
 - 70,615 60x60m cells (same as used with PRMS)
 - 15 minute timestep, for 1 day
-- Diffusive wave equation, Green Ampt infilration
+- Diffusive wave equation, Green Ampt infiltration
 - Runtime: 338.24s
 - *Model not calibrated*
 
@@ -215,7 +215,7 @@ The above equation is written the same as the distributed form although the runo
 
 <!-- ![](../fig/benchmark-tin.png) -->
 
-<img src="../fig/benchmark-tin.png" width="75%">
+<img src="../fig/benchmark-tin.png" width="65%">
 
 *The irregular triangle network model domain used with HGS.*
 
@@ -229,7 +229,7 @@ Here, another term is introduced: $D_i$ is the groundwater discharge term that o
 
 <!-- ![](../fig/benchmark-discharge.png) -->
 
-<img src="../fig/benchmark-discharge.png" width="75%">
+<img src="../fig/benchmark-discharge.png" width="65%">
 
 <br>
 
