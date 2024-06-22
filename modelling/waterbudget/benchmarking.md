@@ -12,6 +12,14 @@ One path to handle non-uniqueness is to attempt to sample the full variability o
 This page is a test on the efficiency of the model. Here, the model runtimes are compared with standard off-the-shelf numerical models of varying types/applications. This is *not* a test of model performance in terms of their ability to represent reality, rather it is purely a test of computational efficiency.
 
 
+<br>
+
+**Contents**
+
+* TOC
+{:toc}
+
+
 ## Study site
 
 ![](../fig/benchmark-trialarea.png)
@@ -46,7 +54,7 @@ $$
 
 where $Q_t$ is discharge at time $t$, $P_t$ is precipitation at time $t$, and $f(\cdot)$ is a [sin curve PET function](/info/evaporation/#sine-curve) relating to the time of year.
 
-#### Test:
+**Test:**
 
 - 61 input layers $(n=30)$ + 2 hidden dense layers x 5 nodes per layer + 1 output layer
 - 1,989 epochs over daily timeseries of 12,565 timesteps
@@ -79,7 +87,7 @@ $$
 
 where $P$ is precipitation, $E$ is evaporation, $R$ is runoff and $G$ is groundwater recharge. *Note: The water balance equation as written in the long-term form where changes to water storage $(\Delta S)$ becomes negligible.*
 
-#### Test:
+**Test:**
 
 - 12,596 time steps
 - 6 models:
@@ -118,7 +126,7 @@ $$
 
 Here, the water balance equation is the lumped version, only we are summing the summing the components over $n$ HRUs.
 
-#### test:
+**Test:**
 
 - Built using [Raven](https://raven.uwaterloo.ca/).
 - 8,034 d, 21 sub-basins, 84 HRUs
@@ -155,7 +163,7 @@ $$
 Here, the water balance equation is modified in that the subscript $i$ is representative of a model cell index. The new term $O_i$ is "runon": Runon on cell $i$ is the runoff from some up-gradient cell $j$.
 
 
-#### test:
+**Test:**
 
 - Run in distributed mode (70,615 60x60m cells)
 - 6,848 d
@@ -190,7 +198,7 @@ $$
 
 The above equation is written the same as the distributed form although the runoff $R_i$ and runon $O_i$ terms moves in 2-dimensions.
 
-#### test: 
+**Test:** 
 
 - 70,615 60x60m cells (same as used with PRMS)
 - 15 minute timestep, for 1 day
@@ -234,7 +242,7 @@ Here, another term is introduced: $D_i$ is the groundwater discharge term that o
 <br>
 
 
-#### test: 
+**Test:** 
 
 - 28,727 nodes (56,841 elements) x 5 sub-surface layers
 - 15 minute time steps, for 1 day
@@ -258,7 +266,7 @@ $$
 $$
 
 
-#### test: 
+**Test:** 
 
 - 101,369 50x50m cells
 - 27,390 (6hr) time steps
