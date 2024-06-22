@@ -5,13 +5,40 @@ output: html_document
 ---
 
 
+The regionally-distributed runoff-recharge model was designed on the premise that computational efficiency should be maximized while maintaining a sound representation of hydrological processes. This is based on the fact that no model is a perfect representation of reality and that all models will fail to make a perfect match for reality. Instead, models can only get close to reality, and worst yet, many versions of models can get just as close to reality. Distributed models, like the one proposed, suffer even more as there are countless variants of model parameterizations that will also come close to reality; this is the non-uniqueness problem. 
+
+One path to handle non-uniqueness is to attempt to sample the full variability of possible parameter sets, each of equally variable according to the few observation points available. Accomplishing such sampling requires many, many model runs; many model runs require fast runtimes. 
+
+This page is a test on the efficiency of the model. Here, the model runtimes are compared with standard off-the-shelf numerical models of varying types/applications. This is *not* a test of model performance in terms of their ability to represent reality, rather it is purely a test of computational efficiency.
+
+
 ## Study site
 
 ![](../fig/benchmark-trialarea.png)
 
 <br>
 
-## Artificial Neural Network
+The study site chosen is a medium-scale watershed with a 35-year daily streamflow record. The catchment has 2 distinct physiographies, above and below the niagara escarpment.
+
+
+<br>
+
+
+## Off-the-shelf models
+
+Models of varying complexity have been selected to compare with the regionally-distributed runoff-recharge model. The models are distinct in character, in level of complexity. The model types include:
+
+1. Artificial Neural Network
+1. Lumped rainfall-runoff models
+1. HRU-based model
+1. distributed hydrologic model
+1. 2D hydraulic model
+1. Integrated groundwater/surface water model
+
+
+
+
+### Artificial Neural Network
 
 $$
     \hat{Q}_t=E \left\{ Q_t | Q_{t-1}, Q_{t-2}, \dots , \\ Q_{t-n}, P_t, P_{t-1}, \dots , P_{t-n}, f(\cdot) \right\}
@@ -34,9 +61,11 @@ where $Q_t$ is discharge at time $t$, $P_t$ is precipitation at time $t$, and $f
 
 <br>
 
-## Lumped Rainfall-Runoff models
 
-![](../fig/cup.png)
+
+### Lumped Rainfall-Runoff models
+
+![](../fig/cup.png){width=200}
 
 *Lumped models are often called the "Bucket Model" as they can be conceptualised as a above.*
 
@@ -67,7 +96,9 @@ where $P$ is precipitation, $E$ is evaporation, $R$ is runoff and $G$ is groundw
 
 <br>
 
-## HRU-based model
+
+
+### HRU-based model
 
 A second version of the HBV model tested is based on the Hydrological Response Unit (HRU) concept where the watershed is divided into a number of sub-units:
 
@@ -101,7 +132,7 @@ Here, the water balance equation is the lumped version, only we are summing the 
 
 
 
-## Distributed model
+### Distributed model
 
 PRMS is the test case for a distributed hydrologic model.
 
@@ -135,7 +166,7 @@ Here, the water balance equation is modified in that the subscript $i$ is repres
 
 
 
-## 2D hydraulic model
+### 2D hydraulic model
 
 [GSSHA](https://gsshawiki.com/Gridded_Surface_Subsurface_Hydrologic_Analysis) is the test case for a distributed shallow water equation model.
 
@@ -170,7 +201,7 @@ The above equation is written the same as the distributed form although the runo
 
 
 
-## Integrated model
+### Integrated model
 
 [HydroGeoSphere](https://www.aquanty.com/hydrogeosphere) (HGS) is the test case for a distributed shallow water equation model.
 
