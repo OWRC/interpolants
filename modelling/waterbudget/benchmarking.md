@@ -140,7 +140,9 @@ Here, the water balance equation is the lumped version, only we are summing the 
 
 PRMS is the test case for a distributed hydrologic model.
 
-![](../fig/benchmark-distributed-grid.png)
+<!-- ![](../fig/benchmark-distributed-grid.png) -->
+
+<img src="../fig/benchmark-distributed-grid.png" width="75%">
 
 *A conceptual example of a distributed watershed model domain.*
 
@@ -174,7 +176,9 @@ Here, the water balance equation is modified in that the subscript $i$ is repres
 
 [GSSHA](https://gsshawiki.com/Gridded_Surface_Subsurface_Hydrologic_Analysis) is the test case for a distributed shallow water equation model.
 
-![](../fig/benchmark-grid.png)
+<!-- ![](../fig/benchmark-grid.png) -->
+
+<img src="../fig/benchmark-grid.png" width="75%">
 
 *The gridded watershed model domain used with both PRMS and GSSHA.*
 
@@ -209,7 +213,9 @@ The above equation is written the same as the distributed form although the runo
 
 [HydroGeoSphere](https://www.aquanty.com/hydrogeosphere) (HGS) is the test case for a distributed shallow water equation model.
 
-![](../fig/benchmark-tin.png)
+<!-- ![](../fig/benchmark-tin.png) -->
+
+<img src="../fig/benchmark-tin.png" width="75%">
 
 *The irregular triangle network model domain used with HGS.*
 
@@ -221,7 +227,9 @@ $$
 
 Here, another term is introduced: $D_i$ is the groundwater discharge term that occurs when the water table exceeds the ground surface:
 
-![](../fig/benchmark-discharge.png)
+<!-- ![](../fig/benchmark-discharge.png) -->
+
+<img src="../fig/benchmark-discharge.png" width="75%">
 
 <br>
 
@@ -274,11 +282,17 @@ $$
 
 ## Simulation time
 
-![](../fig/benchmark-res-time-ratio.png)
+<!-- ![](../fig/benchmark-res-time-ratio.png) -->
 
-![](../fig/benchmark-res-computation-rate.png)
+<img src="../fig/benchmark-res-time-ratio.png" width="75%">
 
-![](../fig/benchmark-res-computation-rate2.png)
+<!-- ![](../fig/benchmark-res-computation-rate.png) -->
+
+<img src="../fig/benchmark-res-computation-rate.png" width="75%">
+
+<!-- ![](../fig/benchmark-res-computation-rate2.png) -->
+
+<img src="../fig/benchmark-res-computation-rate2.png" width="75%">
 
 
 ## CPU utilization
