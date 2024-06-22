@@ -65,7 +65,9 @@ where $Q_t$ is discharge at time $t$, $P_t$ is precipitation at time $t$, and $f
 
 ### Lumped Rainfall-Runoff models
 
-![](../fig/cup.png){width=200}
+<!-- ![](../fig/cup.png) -->
+
+<img src="../fig/cup.png" width="200">
 
 *Lumped models are often called the "Bucket Model" as they can be conceptualised as a above.*
 
