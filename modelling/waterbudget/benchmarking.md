@@ -67,7 +67,7 @@ where $Q_t$ is discharge at time $t$, $P_t$ is precipitation at time $t$, and $f
 
 <!-- ![](../fig/cup.png) -->
 
-<img src="../fig/cup.png" width="200">
+<img src="../fig/cup.png" width="300">
 
 *Lumped models are often called the "Bucket Model" as they can be conceptualised as a above.*
 
@@ -104,7 +104,9 @@ where $P$ is precipitation, $E$ is evaporation, $R$ is runoff and $G$ is groundw
 
 A second version of the HBV model tested is based on the Hydrological Response Unit (HRU) concept where the watershed is divided into a number of sub-units:
 
-![](../fig/benchmark-HRU.png)
+<!-- ![](../fig/benchmark-HRU.png) -->
+
+<img src="../fig/benchmark-HRU.png" width="75%">
 
 *An example of the HRU concept: Left shows a watershed divided into 8 sub-catchments; Right:shows the same system shown graphically. Essentially, the model is composed of 8 lumped models that are parametrized independently and runoff aggregated to math know outlet discharge.*
 
