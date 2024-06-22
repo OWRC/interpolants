@@ -135,7 +135,7 @@ Here, the water balance equation is the lumped version, only we are summing the 
 
 <br>
 
-![](../fig/benchmark-hyd-hbv-Raven.png)
+![](../fig/benchmark-hyd-HBV-Raven.png)
 
 *Sample hydrograph from the (HRU-based) HBV-EC model (built using Raven).*
 
@@ -307,11 +307,11 @@ where $n_t$ is the number of time steps simulated and $\Delta t$ is the time ste
 
 <img src="../fig/benchmark-res-time-ratio.png" width="75%">
 
-*Ratio of simulation time to wall time.*
+*Ratio of simulation time to wall time. Note the y-axis is in a Log scale.*
 
 <br>
 
-Above we see that in general, the greater the model complexity, the lower the ratio--this is the main reason why simple models tend to be preferred for continuous hydrological modelling applications. *Note the y-axis is in a Log scale.*
+Above we see that in general, the greater the model complexity, the lower the ratio--this is the main reason why simple models tend to be preferred for continuous hydrological modelling applications.
 
 The regionally-distributed runoff-recharge model (RDRR) fits somewhere between the HRU and distributed hydrological model. But clearly, optimizations can be further made by adjusting the scale (e.g., grid cell size) of the model. The plot above can be normalized by the number of computational elements (i.e., cells, nodes, HRUs, etc.) involved in the models computation:
 
