@@ -142,7 +142,7 @@ PRMS is the test case for a distributed hydrologic model.
 
 <!-- ![](../fig/benchmark-distributed-grid.png) -->
 
-<img src="../fig/benchmark-distributed-grid.png" width="75%">
+<img src="../fig/benchmark-distributed-grid.png" width="400">
 
 *A conceptual example of a distributed watershed model domain.*
 
