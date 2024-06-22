@@ -20,7 +20,7 @@ This page is a test on the efficiency of the model. Here, the model runtimes are
 {:toc}
 
 
-## Study site
+## Study Site
 
 ![](../fig/benchmark-trialarea.png)
 
@@ -32,7 +32,7 @@ The study site chosen is a medium-scale watershed with a 35-year daily streamflo
 <br>
 
 
-## Off-the-shelf models
+## Benchmarking: off-the-shelf models
 
 Models of varying complexity have been selected to compare with the regionally-distributed runoff-recharge model. The models are distinct in character, in level of complexity. The model types include:
 
@@ -44,7 +44,7 @@ Models of varying complexity have been selected to compare with the regionally-d
 1. Integrated groundwater/surface water model
 
 
-
+<br>
 
 ### Artificial Neural Network
 
@@ -259,7 +259,9 @@ Here, another term is introduced: $D_i$ is the groundwater discharge term that o
 
 
 
-## The Regionally-Distributed Runoff-Recharge model
+## Benchmarking: The Regionally-Distributed Runoff-Recharge model
+
+From a water balance perspective, the Regionally-Distributed Runoff-Recharge model is equivalent to the integrated model. Details on the model design can be found [here](/interpolants/modelling/waterbudgetmodel.html).
 
 $$
     P_i + O_i + D_i = E_i + R_i + G_i
@@ -288,22 +290,49 @@ $$
 
 # Results
 
+Below is a comparison of model performance as it relates to computational performance, *not with respect to the models' ability to match observation*. All models were run on an Intel(R) Core(TM) i5-4670K CPU 3.40GHz, 4 Cores/4 Logical Processors. 32GB RAM.
+ 
+
 ## Simulation time
+
+The first evaluation of model performance is the ratio of simulation time to wall time (s/s). Simply put, to model an event or some time period of given length will take time to run. The time a model take to complete its simulation is called the "wall time" $(t_w)$. The ratio is defined as:
+
+$$
+    \frac{n_t \cdot \Delta t}{t_w}
+$$
+
+where $n_t$ is the number of time steps simulated and $\Delta t$ is the time step length.
 
 <!-- ![](../fig/benchmark-res-time-ratio.png) -->
 
 <img src="../fig/benchmark-res-time-ratio.png" width="75%">
 
-<!-- ![](../fig/benchmark-res-computation-rate.png) -->
+*Ratio of simulation time to wall time.*
 
-<img src="../fig/benchmark-res-computation-rate.png" width="75%">
+<br>
 
-<!-- ![](../fig/benchmark-res-computation-rate2.png) -->
+Above we see that in general, the greater the model complexity, the lower the ratio--this is the main reason why simple models tend to be preferred for continuous hydrological modelling applications. *Note the y-axis is in a Log scale.*
 
-<img src="../fig/benchmark-res-computation-rate2.png" width="75%">
+The regionally-distributed runoff-recharge model (RDRR) fits somewhere between the HRU and distributed hydrological model. But clearly, optimizations can be further made by adjusting the scale (e.g., grid cell size) of the model. The plot above can be normalized by the number of computational elements (i.e., cells, nodes, HRUs, etc.) involved in the models computation:
 
+$$
+    \frac{n_e \cdot n_t \cdot \Delta t}{t_w}
+$$
+
+where $n_e$ is the number of computational elements.
+
+<img src="../fig/benchmark-res-computation-rate3.png" width="75%">
+
+*Ratio of normalized simulation time to wall time. Inset shows plot without RDRR.*
+
+<br>
 
 ## CPU utilization
+
+Below is a comparison of a model code's ability to utilize the full potential of a computer's resources. Simply put, more computations are made when the computational resources are maximally utilized. Event though solver-type models (i.e., GSSHA, HSA, etc.)--that is models that solve partial differential equations--can successfully apply parallelism into their algorithms (e.g., [OpenMP](https://www.openmp.org/)), they are nonetheless attempting to parallelize solvers that require many serial operations, because the model domain is being solved as a whole. As per Amdahl's law, any gain from parallelism is limited by the serial portion of an algorithm. 
+
+As shown below, only the regionally-distributed runoff-recharge model achieves 100% CPU utilization, leveraging to full capability of computer processor resources.
+
 
 #### GSSHA (OpenMP)
 
@@ -317,7 +346,7 @@ $$
 
 ![](../fig/benchmark-rdrr.png)
 
-
+<br>
 
 # References
 
