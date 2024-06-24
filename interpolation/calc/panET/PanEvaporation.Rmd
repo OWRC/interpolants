@@ -67,7 +67,7 @@ df %>% ggplot() +
   geom_text_repel(aes(x = long, y = lat, label = station_name), size = 2.5) +
   lims(x=c(-82,-76), y=c(43,45))
 
-kable(df, caption="Local MSC pan evaporation stations")
+kable(df, caption="Local MSC pan evaporation stations:")
 ```
 
 
@@ -82,15 +82,13 @@ Hourly scalar data from the MSC was collected from 105 stations over the same pe
 
 Parameters $a$ and $b$ were determined automatically using a [shuffled complex evolution](https://github.com/maseology/glbopt) (SCE) global optimization routine. The Nash-Sutcliffe (1970) efficiency factor (NSE) is computed for both daily and monthly timeseries, and the average of these 2 objective functions is automatically maximized.
 
-The goal here is not to create a predictive model, rather an empirical function that allows me to distribute $E_a$ estimates regionally.
+The goal here is not to create a predictive model, rather an empirical function that allows $E_a$ estimates to be distributed regionally.
 
 
 
 ## Model testing
 
-MSC station [4832: WATERLOO WELLINGTON A](https://climate.weather.gc.ca/climate_data/hourly_data_e.html?hlyRange=1966-06-13%7C2002-10-31&dlyRange=1970-03-01%7C2003-02-25&mlyRange=1970-01-01%7C2002-10-01&StationID=4832&Prov=ON&urlExtension=_e.html&searchType=stnName&optLimit=yearRange&StartYear=1840&EndYear=2022&selRowPerPage=25&Line=0&searchMethod=contains&Month=10&Day=31&txtStationName=WATERLOO+WELLINGTON+A&timeframe=1&Year=2002) maintained a 10+ years pan evaporation station with concurrent hourly meteorological data; however, reported only at daytime hours. This station was used as a benchmark in validating the above model formulation. Using the SCE optimization, $a=0.0107$ and $b=7.8\times 10^{-4}$ yielded the following results.
-
-
+MSC station [4832: WATERLOO WELLINGTON A](https://climate.weather.gc.ca/climate_data/hourly_data_e.html?hlyRange=1966-06-13%7C2002-10-31&dlyRange=1970-03-01%7C2003-02-25&mlyRange=1970-01-01%7C2002-10-01&StationID=4832&Prov=ON&urlExtension=_e.html&searchType=stnName&optLimit=yearRange&StartYear=1840&EndYear=2022&selRowPerPage=25&Line=0&searchMethod=contains&Month=10&Day=31&txtStationName=WATERLOO+WELLINGTON+A&timeframe=1&Year=2002) maintained a station with 10+ years pan evaporation with concurrent hourly meteorological data; however, data was reported only during daytime hours. This station was used as a benchmark in validating the above model formulation. Using the SCE optimization, $a=0.0107$ and $b=7.8\times 10^{-4}$ yielded the following results:
 
 <!-- 
 ```{r calibResults}
@@ -163,7 +161,7 @@ df %>% ggplot(aes(x=sim, y=obs)) +
 
 ## Regional calibration
 
-Due to the poor coordination among pan evaporation stations and hourly meteorological stations, the 17 locations where pan evaporation was measured had [hourly climate data interpolated to it's location](https://owrc.github.io/interpolants/interpolation/hourly.html). The SCE optimization routine was then applied independently to all stations using the interpolated input data.
+Due to the poor coordination among pan evaporation stations and hourly meteorological stations, the 17 locations where pan evaporation was measured had [hourly climate data interpolated to its location](https://owrc.github.io/interpolants/interpolation/hourly.html). The SCE optimization routine was then applied independently to all stations using the interpolated input data.
 
 > Using `pyFEWS\prep\interpolateMSCpanET.py` to create `199611010000_exportPanEvap-InterpolatedMSChourly.nc` ~9hrs \
 > Using `src\ORMGP Modelling\PanEvap\opt\main.go` to optimize ~10min
@@ -244,7 +242,7 @@ read.csv("interpolation/calc/panET/dat/4832_ts-full.csv") %>%
 
 ```
 
-The model also has a lower limit of zero meaning that condensation/dew collection is not represented. It is then assumed that this is a negotiable source to the land surface water balance.
+The model also has a lower limit of zero meaning that condensation/dew collection is not represented. It is then assumed that this is a negligible source to the land surface water balance.
 
 
 # Source data
