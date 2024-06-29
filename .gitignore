@@ -35,6 +35,7 @@ rosm.cache
 *.bil
 *.hdr
 *.prj
+*.xml
 *.nc
 *.csv
 *.xlsx

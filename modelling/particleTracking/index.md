@@ -27,25 +27,25 @@ Particle tracking can be important and useful from a number of perspectives:
 
 As the ORMGP continually adds numerical models into our [Numerical Model Custodianship Program](https://owrc.github.io/snapshots/md/numerical-model-custodianship-program.html), they become available for inclusion into the particle tracking tool. Not all models are included into the tool, but are included either by request, or simply for the sake of covering as much of our jurisdiction as possible.
 
-As of the date of this snapshot (listed below), the particle tracking from the following models have been made live online:
-  
-1. Regional model (MODFLOW)
+As of the date of this snapshot (listed below), the particle tracking from the following models have been made live online, ordered in priority:
+
+1. Durham 2021 (MODFLOW)
 1. Halton Tier-3 (FEFLOW)
 1. Oro-Hawkestone (MODFLOW)
 <!-- 1. South Halton (MODFLOW) -->
 <!-- 1. CVC (FEFLOW) -->
 <!-- 1. NVCA-SSEA (FEFLOW) -->
-<!-- 1. Ramara Whites Talbot (MODFLOW) -->
+1. Ramara Whites Talbot (MODFLOW)
 <!-- 1. York Tier-3 (MODFLOW) -->
-1. Durham 2021 (MODFLOW)
+1. Regional model (MODFLOW)
 
 
 
 ![](img/models.png)
 
+*Boundaries of numerical models used in the particle tracking tool. For more information on the models, visit the [Numerical Model Custodianship Program page](https://owrc.github.io/snapshots/md/numerical-model-custodianship-program.html).*
 
-
-
+<br>
 
 
 # Methodology
@@ -134,15 +134,17 @@ The following figures show the results of a cell being clicked by a user on our 
 
 ![](img/clicked-location1.png)
 
-And zooming in around the particle tracks:
+And zooming in around the "clicked" particle tracks:
 
 ![](img/clicked-location2.png)
 
 Though there are only 5 centroidal pathlines originating at this clicked location/cell (one for every layer), many (of the 1.3M) pathlines originating from cells not clicked appear to cross the clicked cell; the particle tracking API captures all pathlines that cross this clicked cell. This gives a nice way to see a number of pathlines that could originate from a particular cell without explicitly computing them.
 
+The following figure is an interactive 3D illustration of the above particle track example. Use your mouse to pan/rotate the tracks to visualize them at depth. Also shown are the 5 colour coded model cells (one per layer) that are selected by the API from which any intersecting pathlines are shown.
+
 <iframe src="https://golang.oakridgeswater.ca/pages/443405-3D.html" width="100%" height="700" scrolling="no" allowfullscreen></iframe>
 
-[open in fullscreen](https://golang.oakridgeswater.ca/pages/443405-3D.html)
+*3D particle pathlines drawn in [plotly](https://plotly.com/). Moving mouse while holding left button rotates; right button pans and center button zooms. [Click here to open 3D plot in fullscreen](https://golang.oakridgeswater.ca/pages/443405-3D.html).*
 
 <br>
 
@@ -171,6 +173,7 @@ There are three ways data are compressed:
 <iframe src="https://owrc.shinyapps.io/ptrack/" width="100%" height="500" scrolling="no" allowfullscreen></iframe>
 
 [*click here to view in separate tab*](https://owrc.shinyapps.io/ptrack/)
+
 
 <br>
 

@@ -4,25 +4,31 @@ author: Oak Ridges Moraine Groundwater Program
 output: html_document
 ---
 
-ORMGP partners and paid subscribers can download the spatial layers we produce and some data.  To do this, users specify a small, rectangular area, inside which a 3D block of the geological data is provided. The specified area must not exceed 18 square kilometre (the user will get a warning if the specified rectangular area exceedss this). Note: If users require a larger area, please contact ORMGP.
+* TOC
+{:toc}
 
-The first step in this process is the **clip** function. This is where the user supplies the areal extent of their data request. The return is the spatial layers and data available within the specified extent.
+# Introduction
+
+ORMGP partners and paid subscribers can download the spatial layers we produce and some data from within [our partner web mapping platform](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPC).  To do this, users specify a small, rectangular area, inside which a 3D block of the geologic data are provided. The specified area must not exceed 18 square kilometres (the user will get a warning if the specified rectangular area is exceeded). Note: If users require a larger area, please [contact the ORMGP](mailto:support@owrc.ca).
+
+The first step in this process is the **_clip_** function. This is where the user supplies the areal extent of their data request. The return is a set of  spatial layers and tabular data available within the specified areal extent.
 
 ![https://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/clip.htm](https://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/GUID-6D3322A8-57EA-4D24-9FFE-2A9E7C6B29EC-web.png) \
 [*ArcMAP Clip function*](https://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/clip.htm)
 
 
-The **ship** feature then provides a compressed file with all available data for download.  
+The **_ship_** feature then provides a compressed file with all available data for download.  
 
 
 # **Data Formats**
-The data format for export is compressible and efficient. The files formats are less common, yet are general enough that they are compatible with common GIS platforms. Data are compressed into a *tar.gz* file, which can be opened using free and open software such as [7-Zip](https://www.7-zip.org/) and [WinRAR](https://www.win-rar.com/).
+The data format for export is compressible and efficient. While the files formats are less common, they are compatible with most common GIS platforms. Data are compressed into a *tar.gz* file, which can be opened using free and open software such as [7-Zip](https://www.7-zip.org/) and [WinRAR](https://www.win-rar.com/).
+
 
 
 ## File Formats
 
 ### Raster Files
-Raster files are provided in a [**band interleaved by line** (\*.bil)](https://desktop.arcgis.com/en/arcmap/10.5/manage-data/raster-and-images/bil-bip-and-bsq-raster-files.htm) format.  This is a raw binary format and is accompanied by two other files: (1) a header file (\*.hdr) and (2) a projection file (\*.prj).   This format will open in [ArcGIS](https://www.arcgis.com/index.html), [QGIS](https://www.qgis.org/en/site/), [Surfer](https://surferhelp.goldensoftware.com/subsys/subsys_band_interleaved_file_descr.htm) and will load as a [NumPy](https://numpy.org/) array.
+Raster files are provided in a [**band interleaved by line** (\*.bil)](https://desktop.arcgis.com/en/arcmap/10.5/manage-data/raster-and-images/bil-bip-and-bsq-raster-files.htm) format.  This is a raw binary format and is accompanied by two other files: a header file (\*.hdr) and a projection file (\*.prj).   This format will open in [ArcGIS](https://www.arcgis.com/index.html), [QGIS](https://www.qgis.org/en/site/), [Surfer](https://surferhelp.goldensoftware.com/subsys/subsys_band_interleaved_file_descr.htm) and will load as a [NumPy](https://numpy.org/) array.
 
 ### Vector Files
 Vector files (in particular polylines and polygons) are provided in [**GeoJson**](https://geojson.org/) (\*.geojson) format.  This is an ascii-format file that is flexible, but can be slow. It is suggested that files be converted to shapefiles (\*.shp) when performance is desired.
@@ -32,23 +38,26 @@ Point data and database queries are provided in **comma-separated value** (\*.cs
 
 
 # **Metadata**
-[*our metadata repository*](/metadata/content/toc.html)
+[*See our metadata repository.*](/metadata/content/toc.html)
 
 # **How to Cite**
 When referring to the interpretations and data from the Clip 'n Ship function, please cite in the following format:
 "Oak Ridges Moraine Groundwater Program Website (Oakridgeswater.ca) 2024. Accessed mm/dd/yyyy"
+
 
 # **Data Description**
 
 ## Geology Folder
 
 ### Layers
-The Clip 'n Ship function provides the top elevation and thickness (isopach) for each interpreted hydrostratigraphic unit within the ORMGP jurisdiction. The following figure shows the intepreted units:
+The Clip 'n Ship function provides the top elevation and thickness (isopach) for each interpreted hydrostratigraphic unit within the ORMGP jurisdiction [from a variety of sources](/interpolants/interpolation/geolayers.html). The following figure shows the interpreted units:
+
 ![image](https://github.com/OWRC/interpolants/assets/92586150/947f8c3b-dec2-4ded-874d-454b7e4b863a)
 
 Interpreted layer elevations and thicknesses are provided as raster files (*.bil format, see above) and follow this pattern: *WB_2021_`LayerNo`\_`LayerName`\_`LayerType`\_`dateCreated`-crop.bil*.
 
-The complete list of raster files is below along with a brief description (as mentioned above, each *.bil file listed below includes two additional files that are not listed here). All elevations are in metres above sea level (m asl) and isopach maps are in metres: 
+The complete list of raster files is below along with a brief description (as mentioned above, each *.bil file listed below includes two additional files that are not listed here). All elevations are in metres above sea level (m asl) and isopach maps are in metres:
+
 - `WB_2021_01_GROUND_SURFACE_20211027-crop.bil`: Elevation of ground surface (Layer 01)
 - `WB_2021_02_HALTON_TILL_EQUIV_20211027-crop.bil`: Elevation of the top of Halton Till (or equivalent) (Layer 02)
 - `WB_2021_02C_HALTON_TILL_EQUIV_ISOPACH_20211027-crop.bil`: Thickness of the Halton Till  (or equivalent) 
@@ -88,20 +97,20 @@ The following five _csv_ files provide results from database queries for the use
    - Contains geologic records at locations within the selected polygon including: location ID, geologic descriptions, geologic interval top/botton elevation, location coordinates
 - `V_CON_HYDROGEOLOGY.csv`
    - Contains hydrogeological data at locations within the selected area including: location ID, screen interval, geologic formation, location coordinates
-- `V_CON_PTTW.scv`
+- `V_CON_PTTW.csv`
    - Contains a list of information of all permits to take water (PTTWs) with the selected area including: location ID, location coordinates, maximum permitted pumping rate, date issued
   
 ## Hydrogeology
 
-In the Hydrogeology folder of the compressed file, several raster files are included for the interpreted water table and potentiometric surface mapping:  [*(more information about how these surfaces were generated can be found here)*](https://owrc.github.io/watertable/)) [*(metadata here)*](https://owrc.github.io/metadata/surfaces/water_table.html)
+In the Hydrogeology folder of the compressed file, several raster files are included for the [interpreted water table and potentiometric surface mapping](https://owrc.github.io/watertable/). [(See also layer metadata.)](https://owrc.github.io/metadata/surfaces/water_table.html)
 
 The naming convention is as follows:
    - The first code is either DP (deep) or SH (shallow) water levels
    - The second code is WL (for water levels)
    - The third term is either ELEV (for the water level elevation) or DEPTH (for water level depth below ground surface)
-   - The next term is either BHS (for the [*(WTO surface)*](https://owrc.github.io/watertable/) ) or Combined (For the [*(WT1 surface)*](https://owrc.github.io/watertable/)). Note that for the deep (DP) water levels, this term is not included).
+   - The next term is either BHS (for the [WTO surface](https://owrc.github.io/watertable/#level-0-wt0) ) or Combined (for the [WT1 surface](https://owrc.github.io/watertable/#level-1-wt1)). Note that for the deep (DP) water levels, this term is not included.
    - DA refers to potential discharge areas.
-   - 20210824 refers to the date the raster file was created (in YYYYMMDD format).
+   - 20210824 refers to the date the raster file was created (in *YYYYMMDD* format).
  
 The included rasters are:
    - `DP_WL_DEPTH_Final_20210824.bil`: Depth below ground surface of the deep potentiometric surface (metres below ground surface, mbgs)
@@ -109,22 +118,21 @@ The included rasters are:
    - `SH_WL_DEPTH_BHS_20210615.bil`: Depth below ground surface of the WT0 surface (mbgs)
    - `SH_WL_DEPTH_Combined_Final_20210708b.bil`: Depth below ground surface for the WT1 surface (mbgs)
    - `SH_WL_ELEV_BHS_Final_20210615.bil`: Elevation of the WT0 surface (masl)
-   - `SH_WL_ELEV_BHS_Final_DA_20210615.bil`: Potential discharge areas using the WT) surface
-   - `SH_WL_ELEV_Combined_Final_20210708b.bil`Elevation of the WT1 surface (masl)
+   - `SH_WL_ELEV_BHS_Final_DA_20210615.bil`: Potential discharge areas using the WT0 surface
+   - `SH_WL_ELEV_Combined_Final_20210708b.bil`: Elevation of the WT1 surface (masl)
 
 ## Hydrology
 
-- [Interpolated daily climatology](/interpolants/interpolation/daily.html) given to the centroid of the area selected, tabular (*.csv) format.
-- `owrc20-50-noGreatLake-HC-observations-trim-FINAL-elevation.bil`---
-- Land use [*(data sources)*](/interpolants/interpolation/landuse.html)
+- [Interpolated daily climatology](/interpolants/sources/climate-data-service.html) given to the centroid of the area selected, tabular (*.csv) format.
+- `owrc-20-50-noGreatLake-HC-observations-trim-FINAL-elevation-crop.bil`: A ["hydrologically corrected"](/interpolants/interpolation/overland.html) digital elevation model. [(metadata)](/metadata/surfaces/hdem.html)
+- Land use [(more info)](/interpolants/interpolation/landuse.html):
     - `solrisv3_10_infilled_50_percov-crop.bil`: fraction canopy cover
     - `solrisv3_10_infilled_50_perimp-crop.bil`: fraction impervious cover
     - `solrisv3_10_infilled_50_perow-crop.bil`: fraction open water cover
     - `solrisv3_10_infilled_50_perwl-crop.bil`: fraction wetland cover
  
-- Water Budget:
+- Water Budget (2017) in millimetres per year (mm/yr):
     - `evapotranspiration-crop.bil`: Spatial distribution of evapotranspiration for the specified polygon
-    - `owrc-20-50-noGreatLake-HC-observations-trim-FINAL-elevation-crop.bil: `["Hydrologically corrected" digital elevation model](/interpolants/interpolation/overland.html). 
     - `precipitation-crop.bil`: Spatial distribution of precipitation for the specified polygon
     - `recharge-crop.bil`: Spatial distribution of recharge for the specified polygon
     - `runoff-crop.bil`: Spatial distribution of runoff for the specified polygon

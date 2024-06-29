@@ -1,7 +1,6 @@
 ---
-title: Water Budget Modelling
+title: Water Budget Model
 subtitle: Soil moisture accounting
-author: M.Marchildon
 output: html_document
 ---
 

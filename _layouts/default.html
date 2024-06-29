@@ -5,8 +5,15 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
-    <meta name="image" property="og:image" content="https://github.com/OWRC/logos/blob/main/ORMGP_logo_no_text.png?raw=true">
     <link rel="stylesheet" type="text/css" media="screen" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+
+    <meta property="og:title" content="{{ page.title }}"/>
+    {% if page.image %}<meta property="og:image" content="{{ page.image }}"/>{% else %}<meta name="image" property="og:image" content="https://github.com/OWRC/logos/blob/main/ORMGP_logo_no_text.png?raw=true">{% endif %}
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="{{ site.url }}{{ page.image }}"/>
+    <meta property="og:site_name" content="{{ site.title }}"/>
+    <meta property="og:description" content="{% if page.description.size > 10 %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"/>
 
 {% seo %}
     {% include head-custom.html %}
@@ -102,11 +109,7 @@
     <div id="footer_wrap" class="outer">
       <footer class="inner">
         <p class="copyright">&copy; 2022 <a href="https://www.oakridgeswater.ca/">Oak Ridges Moraine Groundwater Program</a></p>
-        <p>to cite, go to <a href="{{ site.github.repository_url }}"><em>"Cite this repository"</em></a></p>
-        <!-- <a href="Oak Ridges Moraine Groundwater Program. (2022). Web-mapping Services [Data set]. https://github.com/OWRC/webmapping">to cite</a></p> -->
-        <!-- {% if site.github.is_project_page %}
-        <p class="copyright">{{ site.title | default: site.github.repository_name }} maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
-        {% endif %} -->
+        <p>to cite, click <a href="{{ site.github.repository_url }}">here</a> and go to <em>"Cite this repository"</em></p>
         <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
         <p <span id='last-modified'/></p>
       </footer>

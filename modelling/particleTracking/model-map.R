@@ -4,7 +4,7 @@ library(dplyr)
 library(ggplot2)
 library(ggspatial)
 library(sf)
-library(rgdal)
+# library(rgdal)
 library(rnaturalearth)
 
 
@@ -41,13 +41,15 @@ basemapGL <- ggplot() +
 
 #############################
 
-model.bounds <- st_as_sf(readOGR("shp/230523-models.geojson",verbose = FALSE))
+# model.bounds <- st_as_sf(readOGR("shp/230523-models.geojson",verbose = FALSE))
+model.bounds <- read_sf("http://tile.oakridgeswater.ca:8080/geojson/NMCP_model_bounds.geojson") %>% 
+  filter(ModelID %in% c("0026","0070","0069","0008","0090"))
 
 
 basemapGL +
   annotation_map_tile(zoom=8) +
-  geom_sf(data=model.bounds, fill='blue', alpha=.3) +
-  geom_sf_label(data=model.bounds, aes(label = Name)) +
+  geom_sf(data=model.bounds, fill='blue', alpha=.2) +
+  geom_sf_label(data=model.bounds, aes(label = ModelName)) +
   coord_sf(default_crs = st_crs(4326),
            ylim = c(43.2, 44.9),
            xlim = c(-80.25, -77.5),
