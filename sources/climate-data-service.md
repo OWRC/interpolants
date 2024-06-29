@@ -1,5 +1,6 @@
 ---
 title: Near Real-time Climate Data Service
+author: M. Marchildon
 output: html_document
 image: https://golang.oakridgeswater.ca/pages/gif/climateDS0001-2000.gif
 description: ORMGP Near Real-time Climate Data Service
@@ -56,11 +57,11 @@ Currently, the data service offers [`near-realtime`](## '"Near-realtime" means t
 
 The data serve many purposes from basic time series overlay with point data sets (e.g., groundwater monitoring locations) to providing ready-made inputs to continuous hydrological models needed for, say, regionally-distributed groundwater recharge estimation.
 
-Clearly, data collection are constrained by public/private funding, open data sharing policies and technology; so the data served are a compilation of what is deemed the best for *our partners'* needs. The necessitates data acquisition from a number of public sources. 
+Collection of data is constrained by public/private funding, open data sharing policies and technology, so the data served are a compilation of what is deemed the best for *our partners'* needs. This necessitates data acquisition from a number of public sources. 
 
 Specifically, we are concerned about climatology at the *regional scale*. We cover a 3 Million hectare jurisdiction and based on our experience, compiling a continuous interpolated climate dataset requires greater emphasis on the spatial distribution of climatology over quality of data collected at (point) climate stations.  That's not to say that this is a general rule, but for our needs in our humid region with a significant winter/snowpack component, attention to how weather is distributed is of paramount importance.
 
-Admittedly, greater emphasis is made to "re-packaging" data-products from external agencies; we are not trying to re-invent the wheel. Instead, we are only trying to automate a workflow that, until now, is constantly repeated by our partner agencies and partner consultants when such data are needed. We don't require any of our partners to use our data, we are only making available the data we use in our internal analyses.
+Greater emphasis is made to "re-packaging" data-products from external agencies; we are not trying to re-invent the wheel. Instead, we are trying to automate a workflow that, until now, is constantly repeated by our partner agencies and partner consultants when such data are needed. We don't require any of our partners to use our data, we are only making available the data we use in our internal analyses.
 
 ## Version 2023
 
@@ -70,8 +71,8 @@ This effort was a successful demonstration of the scalability of the ORMGP clima
 
 ### Highlights:
 
-- Coverage grew from 2,813 ~10km² sub-watersheds covering 30,300km² to 4,238 sub-watersheds covering 44,500km².
-- ORMGP API data service includes near-realtime continuous, infilled:
+- Coverage grew from 2,813 ~10km² sub-watersheds covering 30,300 km² to 4,238 sub-watersheds covering 44,500 km².
+- The ORMGP API data service includes near-realtime continuous, infilled:
     - daily min/max air temperatures, rainfall, snowfall, snowmelt from 1901.
     - 6-hourly air temperature, air pressure, relative humidity, wind speed, rainfall, snowmelt, potential evaporation from 2002.
 - Digital files available as [CF 1.8-compliant](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.8/cf-conventions.html) NetCDF files (_*.nc_). 
@@ -94,32 +95,32 @@ This effort was a successful demonstration of the scalability of the ORMGP clima
 
 # Data Service Coverage
 
-The service encompasses a 44,500km² region that includes the entire Canadian portion of the Lake Ontario drainage basin. This area has been sub-divided into 4,238 sub-watersheds that are roughly 10km² in size (see map above). These sub-watersheds are [topologically connected](https://owrc.shinyapps.io/sws23/), meaning that each have assigned their upslope and downslope neighbouring sub-watersheds, allowing for the quick collection of catchment areas and drainage pathways. At a high-level, when looking at the coverage as a whole, the sub-watershed collection appears similar to a spatial grid, only it is structured in a way that is hydrologically meaningful.
+The service encompasses a 44,500 km² region that includes the entire Canadian portion of the Lake Ontario drainage basin. This area has been sub-divided into 4,238 sub-watersheds that are roughly 10 km² in size (see map above). These sub-watersheds are [topologically connected](https://owrc.shinyapps.io/sws23/), meaning that each have assigned their upslope and downslope neighbouring sub-watersheds, allowing for the quick collection of catchment areas and drainage pathways. At a high-level, when looking at the coverage as a whole, the sub-watershed collection appears similar to a spatial grid, only it is structured in a way that is hydrologically meaningful.
 
-This is an important distinction because not only can the data service yield long-term infilled climate data to any user-selected point, but it can readily (i.e., on-the-fly) aggregate climatologies within a catchment area of any size. Such data aggregation is a costly component to most hydrological research such as those involving numerical modelling.
+This is an important distinction because not only can the data service yield long-term infilled climate data to any user-selected point, but it can readily (i.e., on-the-fly) aggregate climatologies within a catchment area of any size. Such data aggregation is a costly component to most hydrological projects such as those involving numerical modelling.
 
-In creating this coverage, the ORMGP Near Real-time Climate Data Service is dependent on digital elevation models (DEMs). The processing of DEMs is briefly described below. Links to detailed technical notes on the processing are provided.
+The ORMGP Near Real-time Climate Data Service is dependent on digital elevation models (DEMs). The processing of DEMs is briefly described below. Links to detailed technical notes on the processing are provided.
 
 
 
 ## Digital Elevation Model
 
-The foundation to the climate data service (DS) is the digital elevation model (DEM). As part of the scaling exercise (v.2023) the DEM adopted was the Provincial Digital Elevation Model (PDEM) offered by the Ontario Ministry of Environment and Forestry, last updated October 16, 2023. The 30x30m² horizontal resolution DEM was first resampled to a 60x60m² resolution. The resampled DEM can be found here: [`PDEM-South-D2013-OWRC23-60.bil`](https://www.dropbox.com/scl/fi/cu50wbrruxk8st4zv4o52/PDEM-South-D2013-OWRC23-60.bil.7z?rlkey=6hhe8udads6fx2psu1z8xx4jk&dl=1).
+The foundation to the climate data service (DS) is the digital elevation model (DEM). As part of the scaling exercise (v.2023) the DEM adopted was the Provincial Digital Elevation Model (PDEM) offered by the Ontario Ministry of Environment, Conservation and Parks (MECP), last updated October 16, 2023. The 30x30 m² horizontal resolution DEM was first resampled to a 60 x 60 m² resolution. The resampled DEM can be found here: [`PDEM-South-D2013-OWRC23-60.bil`](https://www.dropbox.com/scl/fi/cu50wbrruxk8st4zv4o52/PDEM-South-D2013-OWRC23-60.bil.7z?rlkey=6hhe8udads6fx2psu1z8xx4jk&dl=1).
 
 
 
 ## Hydrological correction
 
-Next, the [DEM was processed](/interpolants/interpolation/overland2023.html) using a procedure called "hydrological correction" which is a means of essentially filling in sinks/depressions to ensure a continuous downslope flow directions. This procedure is a common practice in hydrology when there's a need to define stream channels from DEMs where direct watercourse mapping is unavailable. Hydrological correction used here follows the method of Wang and Liu (2006) with some flat region adjustments following Garbrecht and Martz (1997).
+Next, the [DEM was processed](/interpolants/interpolation/overland2023.html) using a procedure called "hydrological correction", which is a means of filling in sinks/depressions to ensure a continuous downslope flow direction for streams. This procedure is a common practice in hydrology when there is a need to define stream channels from DEMs where direct watercourse mapping is unavailable. Hydrological correction follows the method of Wang and Liu (2006) with some flat region adjustments following Garbrecht and Martz (1997).
 
-The hydrological corrected DEM can be found here: [`PDEM-South-D2013-OWRC23-60-HC.bil`](https://www.dropbox.com/scl/fi/uxdcf18qeqv099el6yfwg/PDEM-South-D2013-OWRC23-60-HC.bil.7z?rlkey=tpoot5uqaswosozrrbvzdfry8&dl=1).
+The hydrological-corrected DEM can be found here: [`PDEM-South-D2013-OWRC23-60-HC.bil`](https://www.dropbox.com/scl/fi/uxdcf18qeqv099el6yfwg/PDEM-South-D2013-OWRC23-60-HC.bil.7z?rlkey=tpoot5uqaswosozrrbvzdfry8&dl=1).
 
 
 ## Sub-watershed delineation
 
-With the hydrologically corrected digital elevation model (HCDEM) flow paths are then defined using the so-called *D8*-algorithm (O'Callaghan and Mark, 1984). A hill-climbing algorithm is then applied to define sub-watersheds of a specified area; [here 10km² is chosen](/interpolants/interpolation/subwatershed.html) as it is roughly the scale of a typical convective storm in southern Ontario. The v.2023 sub-watersheds can be accessed here: [`PDEM-South-D2013-OWRC23-60-HC-sws10.shp`](https://www.dropbox.com/scl/fi/a0r65kr7i1jirdci6d8jg/PDEM-South-D2013-OWRC23-60-HC-sws10.7z?rlkey=caol95r7k0s9p1re31mlev2a4&dl=1)
+With the hydrologically corrected digital elevation model (HCDEM), flow paths are defined using the *D8*-algorithm (O'Callaghan and Mark, 1984). A hill-climbing algorithm is then applied to define sub-watersheds of a specified area; [here 10 km² is chosen](/interpolants/interpolation/subwatershed.html) as it is roughly the scale of a typical convective storm in southern Ontario. The v.2023 sub-watersheds can be accessed here: [`PDEM-South-D2013-OWRC23-60-HC-sws10.shp`](https://www.dropbox.com/scl/fi/a0r65kr7i1jirdci6d8jg/PDEM-South-D2013-OWRC23-60-HC-sws10.7z?rlkey=caol95r7k0s9p1re31mlev2a4&dl=1)
 
-> *See also how the sub-watersheds are topology connected [here](https://owrc.shinyapps.io/sws23/). Clicking on any sub-watershed polygon will reveal the catchment area to the selected watershed in green, and the downslope sub-watersheds in red.*
+> *See also how the sub-watersheds are topologically connected [here](https://owrc.shinyapps.io/sws23/). Clicking on any sub-watershed polygon will reveal the catchment area to the selected watershed in green, and the downslope sub-watersheds in red.*
 
 
 <br><br>
@@ -139,11 +140,11 @@ Most of the data are acquired though Meteorological Service of Canada (MSC) [Ope
 
 ### Meteorological Service of Canada
 ##### (*1901—present*)
-Meteorological Service of Canada is a division of Environment and Climate Change Canada (ECCC). Their [online historical data portal](https://climate.weather.gc.ca/index_e.html) provides data collected since the mid 19th century. These data are collected at (point/local/scalar) weather stations and require spatial interpolation. Here, the nearest neighbour (i.e., Thiessen polygon) method is applied.
+Meteorological Service of Canada is a division of Environment and Climate Change Canada (ECCC). Their [online historical data portal](https://climate.weather.gc.ca/index_e.html) provides data collected since the mid-19th century. These data are collected at (point/local/scalar) weather stations and require spatial interpolation. Here, the nearest neighbour (i.e., Thiessen polygon) method is applied.
 
 ### ECCC: Regional Deterministic Precipitation Analysis (RDPA)
 
-> The RDPA produces a best estimate of the amount of precipitation that occurred over recent past periods of 6 hours. The estimate integrates data from in situ precipitation gauge measurements, weather radar and numerical weather prediction models. Geographic coverage is North America (Canada, United States and Mexico). Data is available at horizontal resolution of 10km. Data is only available for the surface level. Analysis data is made available four times a day for the 6h intervals. A preliminary estimate is available approximately 1h after the end of the accumulation period, and revised 6h after in order to assimilate gauge data arriving later. [*(ECCC, 2023)*](https://api.weather.gc.ca/collections/weather:rdpa:10km:6f)
+> The RDPA produces a best estimate of the amount of precipitation that occurred over recent past periods of 6 hours. The estimate integrates data from in-situ precipitation gauge measurements, weather radar and numerical weather prediction models. Geographic coverage is North America (Canada, United States and Mexico). Data is available at spatial resolution of 10 km. Data is only available for the surface level. Analysis data is made available four times a day for the 6-hour intervals. A preliminary estimate is available approximately 1 hour after the end of the accumulation period, and revised 6 hours after in order to assimilate gauge data arriving later. [*(ECCC, 2023)*](https://api.weather.gc.ca/collections/weather:rdpa:10km:6f)
 
 ##### (*2002—present, [over a sequence of versions](/interpolants/sources/reference.html#versions)*)
 
@@ -151,7 +152,8 @@ The [Regional Deterministic Precipitation Analysis (RDPA)](https://eccc-msc.gith
 
 Simply put, CaPA-RDPA is an amalgamation of near-cast weather model predictions corrected by RADAR data and ground-truthed using a select set of weather stations. Essentially, CaPA-RDPA is a [*data assimilation system* (DAS)](https://www.ecmwf.int/en/research/data-assimilation) that provides users with the best-possible spatial distribution of precipitation, necessary for analyzing hydrology at the regional scale like the ORMGP jurisdiction.
 
-Recently (as of 2019), a high-resolution format of the RDPA system was released. The **HRPDA** ([High Resolution Deterministic Precipitation Analysis](https://eccc-msc.github.io/open-data/msc-data/nwp_hrdpa/readme_hrdpa_en/)) supplies a ~2.5km resolution 6-hourly precipitation field, in contrast to the ~10-15km resolution of the original RDPA product.
+
+Recently (as of2019), a high-resolution format of the RDPA system was released. The **HRPDA** ([High Resolution Deterministic Precipitation Analysis](https://eccc-msc.github.io/open-data/msc-data/nwp_hrdpa/readme_hrdpa_en/)) supplies a ~2.5 km resolution 6-hourly precipitation field, in contrast to the ~10-15 km resolution of the original RDPA product.
 
 
 While the CaPA-RDPA vector data fields can be acquired from Environment Canada in GRIB2 format, the ORMGP has sourced historical/archived data from the [Canadian Surface Prediction Archive (CaSPAr)](https://caspar-data.ca/), as their archive holds the original raw data (ECCC's GRIB2 format is a re-interpolation to a polar-stereographic grid). Additionally, the CaSPAr platform allows users to crop their area of interest. 
@@ -168,10 +170,10 @@ While the CaPA-RDPA vector data fields can be acquired from Environment Canada i
 ## **Snowmelt**
 ### U.S. National Oceanic and Atmospheric Administration (NOAA) 
 ##### SNODAS daily (*2010—present*)
-Typically, snowmelt must be derived from snowpack ablation models. These models come in a variety of forms and sophistication. The primary source of such information comes from the [Snow Data Assimilation System (SNODAS)](https://nsidc.org/data/g02158) system (NOHRSC, 2004), which offers an archive of ~1km gridded 24-hour (UTC 06-06) snowmelt totals, published freely. The advantage of SNODAS is that we can avoid the need to model snowmelt explicitly, leveraging existing resources. The data cover our jurisdiction since late 2010.
+Typically, snowmelt must be derived from snowpack ablation models. These models come in a variety of forms and sophistication. The primary source of such information comes from the [Snow Data Assimilation System (SNODAS)](https://nsidc.org/data/g02158) system (NOHRSC, 2004), which offers an archive of ~1 km gridded 24-hour (UTC 06-06) snowmelt totals, published freely. The advantage of SNODAS is that we can avoid the need to model snowmelt explicitly, leveraging existing resources. The data cover our jurisdiction since late 2010.
 
 ##### SNODAS 6-hourly (*2020—present*)
-SNODAS is also offered in 6-hourly states, however offered only for the past month. These data are scraped nightly using the [ORMGP-FEWS](/interpolants/fews/) system which also crops the data to our jurisdiction.
+SNODAS is also offered in 6-hourly states, however it is offered only for the past month. These data are scraped nightly using the [ORMGP-FEWS](/interpolants/fews/) system which also crops the data to our jurisdiction.
 
 ![SNODAS sample](../fig/nsm_depth_2016011505_National.jpg)
 
@@ -188,7 +190,7 @@ When unavailable, and prior to 2010, a [cold content energy balance snowpack mod
 
 ## **Air Temperature**
 
-Elevations within the ORMGP region range from 75-450 metres above sea level (masl) and thus orographic effects to temperatures are deemed negligible. The spatial distribution of minimum/maximum daily temperature is then interpolated from meteorological stations using a linear radial basis function.
+Elevations within the ORMGP region range from 75 to450 metres above sea level (masl) and thus orographic effects to temperatures are deemed negligible. The spatial distribution of minimum/maximum daily temperature is then interpolated from meteorological stations using a linear radial basis function.
 
 All temperature data are acquired from the Meteorological Service of Canada.
 
@@ -206,7 +208,7 @@ Atmospheric pressure data are acquired from Meteorological Service of Canada, wh
 ## **Relative Humidity**
 ### Meteorological Service of Canada
 ##### Hourly (*1953—present*)
-Hourly relative Humidity data are acquired from Meteorological Service of Canada and are aggregated to 6-hourly averages.
+Hourly relative humidity data are acquired from Meteorological Service of Canada and are aggregated to 6-hourly averages.
 
 
 ## **Wind Speed**
@@ -233,7 +235,7 @@ The advantage here is the ability to neglect the need for for the radiative term
 
 # Data Interpolation
 
-With the exception of CaPA-HRDPA and SNODAS, point/station data require spatial interpolation to achieve a contiguous distribution of climactic variables. These data are automatically interpolated to every 10km² sub-watersheds using Delft-FEWS. [See here for more details on the interpolation techniques used on every climate variable offered with the data service](/interpolants/fews/climate-interpolation.html). 
+With the exception of CaPA-HRDPA and SNODAS, point/station data require spatial interpolation to achieve a contiguous distribution of climactic variables. These data are automatically interpolated to every 10 km² sub-watersheds using Delft-FEWS. [See here for more details on the interpolation techniques used on every climate variable offered with the data service](/interpolants/fews/climate-interpolation.html). 
 
 
 <br><br>

@@ -3,7 +3,7 @@ title: Data Source Reference
 output: html_document
 ---
 
-> The data source that are collected, interpolated and delivered through our web portal are described in chronological order. For the most part, the most recent datasets supersede the oldest.
+> The data sources that are collected, interpolated and delivered through the ORMGP web portal are described in chronological order. For the most part, the most recent datasets supersede the oldest.
 
 * TOC
 {:toc}
@@ -14,7 +14,7 @@ output: html_document
 
 ## Meteorological Service of Canada
 
-Meteorological Service of Canada is a division of Environment Canada. Their [online historical data portal](https://climate.weather.gc.ca/index_e.html) provides data collected since the mid 19th century. Precipitation is offered as rainfall and snowfall amounts to the tenth of a millimetre.
+Meteorological Service of Canada is a division of Environment Canada. Their [online historical data portal](https://climate.weather.gc.ca/index_e.html) provides data collected since the mid-19th century. Precipitation is offered as rainfall and snowfall amounts to the tenth of a millimetre.
 
 
 ## ECCC: Regional Deterministic Precipitation Analysis (RDPA)
@@ -36,7 +36,7 @@ The latest iteration of CaPA is the [High Resolution Deterministic Precipitation
 
 
 ### Missing Dates
-The CaPA RDPA products used do have periods of no data. Listed below are the dates found. Where no data are found, the API reports the [data interpolated from MSC point locations](#meteorological-service-of-canada).
+The CaPA RDPA products used have periods where no data exists. Listed below are the dates found. Where no data are found, the API reports the [data interpolated from MSC point locations](#meteorological-service-of-canada).
 
 
 | CaPA-RDPA | CaPA-HRDPA |
@@ -69,10 +69,10 @@ At 2 locations, where the sub-watershed makes up the entirety of a small island,
 # **Snowmelt and SWE**
 ## U.S. National Oceanic and Atmospheric Administration (NOAA) 
 #### SNODAS daily (*2010—present*)
-Snow water equivalent (SWE) and snowmelt must be derived from snowpack ablation models. These models come in a variety of forms and sophistication. The primary source of such information comes from the [Snow Data Assimilation System (SNODAS)](https://nsidc.org/data/g02158) system (NOHRSC, 2004), which offers ~1km gridded 24-hour (UTC 06-06) snowmelt totals, published freely in near real-time. The advantage of SNODAS is that we can avoid the need to model snowmelt explicitly, and leverage existing resources. The data cover our jurisdiction from 2009—present.
+Snow water equivalent (SWE) and snowmelt must be derived from snowpack ablation models. These models come in a variety of forms and sophistication. The primary source of such information comes from the [Snow Data Assimilation System (SNODAS)](https://nsidc.org/data/g02158) system (NOHRSC, 2004), which offers ~1 km gridded 24-hour (UTC 06-06) snowmelt totals, published freely in near real-time. The advantage of SNODAS is that we can avoid the need to model snowmelt explicitly, and leverage existing resources. The data cover our jurisdiction from 2009—present.
 
 #### SNODAS 6-hourly (*2020—present*)
-SNODAS is also offered in 6-hourly states, however offered only for the past month, so some automated web-scraping would be requires. Here, the [ORMGP-FEWS](/interpolants/fews/) system imports and crops the data nightly.
+SNODAS is also offered in 6-hourly states, however it is offered only for the past month, so some automated web-scraping would be required. Here, the [ORMGP-FEWS](/interpolants/fews/) system imports and crops the data nightly.
 
 ![SNODAS sample](../fig/nsm_depth_2016011505_National.jpg)
 
@@ -88,7 +88,7 @@ When unavailable (and prior to 2010), a [cold content energy balance snowpack mo
 
 # **Air Temperature**
 
-Elevations within the ORMGP region range from 75-400 masl and thus orographic effects to temperatures were deemed negligible. The spatial distribution of minimum/maximum daily temperature is then interpolated from meteorological stations using an inverse squared-distance methodology.
+Elevations within the ORMGP region range from 75 to 400 m ASL and thus orographic effects to temperatures were deemed negligible. The spatial distribution of minimum/maximum daily temperature is interpolated from meteorological stations using an inverse squared-distance methodology.
 
 All temperature data are acquired from the Meteorological Service of Canada.
 
@@ -100,13 +100,13 @@ All temperature data are acquired from the Meteorological Service of Canada.
 # **Atmospheric Pressure**
 ## Meteorological Service of Canada
 #### Hourlies (*1953—present*)
-Atmospheric pressure data are acquired from Meteorological Service of Canada, which come in as hourly averages. In contrast to temperatures, [elevation does have am impact on pressure distribution and thus corrections are made](/interpolants/interpolation/barometry.html). Once corrected, the hourly data are then aggregated to daily averages.
+Atmospheric pressure data are acquired from Meteorological Service of Canada and come in hourly averages. In contrast to temperatures, [elevation does have an impact on pressure distribution and thus corrections are made](/interpolants/interpolation/barometry.html). Once corrected, the hourly data are aggregated to daily averages.
 
 
 # **Relative Humidity**
 ## Meteorological Service of Canada
 #### Hourlies (*1953—present*)
-Relative Humidity data are acquired from Meteorological Service of Canada
+Relative humidity data are acquired from Meteorological Service of Canada
 
 
 # **Wind Speed and Direction**

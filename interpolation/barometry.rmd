@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 
 ## Summary
 
-Spatial Interpolation of hourly measured atmospheric pressure from a set of stations (points) to a regional grid requires correction for elevation. In the modest range of elevations found in the ORMGP jurisdiction (from Lake Ontario surface ~74 metres above sea level (masl) to just below 500 masl), atmospheric pressure can deviate up to 5 kPa. For instance, if the air pressure at Lake Ontario is greater than 100 kPa, given all else the same, the expected range in pressures can be predicted using the the barometric formula:
+Spatial interpolation of hourly measured atmospheric pressure data from a set of stations (points) to a regional grid requires correction for ground-surface elevation. In the modest range of elevations found in the ORMGP jurisdiction (from Lake Ontario surface ~74 metres above sea level (masl) to nearly 500 masl), atmospheric pressure can deviate up to 5 kPa. For instance, if the air pressure at Lake Ontario is greater than 100 kPa, given all else the same, the expected range in pressures can be predicted using the the barometric formula:
 
 $$
   P=P_b \cdot \left[\frac{T_b + L_b \cdot (h-h_b)}{T_b}\right]^{\frac{-g_0 \cdot M}{R^\cdot L_b}},
@@ -55,7 +55,7 @@ ggplot(dat, aes(x)) +
 
 ### Intent
 
-The initial intent for this interpolated product is to provide an estimate of atmospheric pressure at arbitrary locations within our jurisdiction to test is capability for barometric corrections to groundwater monitors.
+The initial intent for this interpolated product is to provide an estimate of atmospheric pressure at arbitrary locations within our jurisdiction to test its capability for barometric corrections to groundwater monitors.
 
 
 
@@ -63,7 +63,7 @@ The initial intent for this interpolated product is to provide an estimate of at
   
 ## Data Correction
 
-Station data reporting hourly atmospheric pressures $P$ are first "corrected" to a reference elevation $h_b$, set here as the median elevation of reporting weather stations at a given time step. 
+Station data reporting hourly atmospheric pressures $P$ are first corrected to a reference elevation $h_b$, set here as the median elevation of reporting weather stations at a given time step. 
 
 ```
 def referenceTemperature(ta, elev):

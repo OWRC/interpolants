@@ -7,7 +7,6 @@ output: html_document
 * TOC
 {:toc}
 
-
 # Introduction
 
 ORMGP partners and paid subscribers can download the spatial layers we produce and some data from within [our partner web mapping platform](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPC).  To do this, users specify a small, rectangular area, inside which a 3D block of the geologic data are provided. The specified area must not exceed 18 square kilometres (the user will get a warning if the specified rectangular area is exceeded). Note: If users require a larger area, please [contact the ORMGP](mailto:support@owrc.ca).
@@ -43,8 +42,7 @@ Point data and database queries are provided in **comma-separated value** (\*.cs
 
 # **How to Cite**
 When referring to the interpretations and data from the Clip 'n Ship function, please cite in the following format:
-
-`Oak Ridges Moraine Groundwater Program Website (Oakridgeswater.ca) 2024. Accessed mm/dd/yyyy.`
+"Oak Ridges Moraine Groundwater Program Website (Oakridgeswater.ca) 2024. Accessed mm/dd/yyyy"
 
 
 # **Data Description**
@@ -111,7 +109,7 @@ The naming convention is as follows:
    - The second code is WL (for water levels)
    - The third term is either ELEV (for the water level elevation) or DEPTH (for water level depth below ground surface)
    - The next term is either BHS (for the [WTO surface](https://owrc.github.io/watertable/#level-0-wt0) ) or Combined (for the [WT1 surface](https://owrc.github.io/watertable/#level-1-wt1)). Note that for the deep (DP) water levels, this term is not included.
-   -  DA refers to potential discharge areas.
+   - DA refers to potential discharge areas.
    - 20210824 refers to the date the raster file was created (in *YYYYMMDD* format).
  
 The included rasters are:

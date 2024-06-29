@@ -8,6 +8,7 @@ output: html_document
 
 > A regionally-distributed runoff/recharge model has been developed to simulate regional-scale (40k km²) integrated groundwater/surface water processes at a fine (60m grid) resolution. The model code is written in an attempt to simulate large-scale/high resolution distributed hydrological phenomena while remaining amenable to multi-threaded computer architectures. No process of the model is in any way novel, rather a suite of existing model structures have been chosen and coded to minimize model run times, while maintaining an ease of implementation, practical applicability and scalability.
 
+
 <iframe src="https://golang.oakridgeswater.ca/pages/OWRC23WB.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 
 _Sample outputs (mm/yr) from the water budget model (v.2405)_
@@ -57,11 +58,10 @@ The model is deemed an *integrated* groundwater/surface water model although its
 
 Here, a pragmatic approach to recharge model design is followed to maintain an explicit representation of the shallow groundwater system, while maximizing computational performance. The proposed model design allows for uncertainty analysis to be readily performed on a large-scale model domain (>10,000 km²) at a fine spatial distribution (<hectare grid cells) and temporal scale (<daily time-steps).
 
+
 The proposed model incorporates a systematic framework with a diverse range of common hydrologic procedures, concurrent code selection, topological sorting of distributed environmental processes and an optimized IO strategy. Altogether, the model rivals the quick performance of rainfall-runoff models while still providing comparable groundwater-surface water interactions obtained using computationally expensive integrated models. (For more information on model benchmarking can be explored [here](/interpolants/modelling/waterbudget/benchmarking.html).)
 
-> Today, as we modellers come to the realization that Moore’s Law is not panning out, the models we apply in decision-making, and the due diligence we maintain investigating our models’ uncertainty, ultimately require pragmatism in their design. 
-
-
+> Today, as we modellers come to the realization that Moore’s Law is not panning out, the models we apply in decision-making, and the due diligence we maintain investigating our models' uncertainty, ultimately require pragmatism in their design. 
 
 
 
@@ -76,13 +76,13 @@ Model performance has been maximized in three ways:
     Conceptually, the model relies heavily on inferred causal relationships, such as *runoff from a particular location moves in a downhill direction, where it may infiltrate and cease being runoff at any particular downslope location*. From these relationships, the causal (downhill) ordering of runoff processes is realized. This order is the model's topology and gives rise to performance gains like recursive algorithms and concurrent queuing/load balancing.
 
 1. Procedural selection (hydrological process simulation) \
-    Having a concurrent language alone isn't enough, rather it is hydrological processes that have been selected and coded into numerical procedures. Probably the biggest limitation to this model, is the strict avoidance of any numerical procedure that can't be solved analytically.
+    Having a concurrent language alone isn't enough, rather it is hydrological processes that have been selected and coded into numerical procedures. Probably the biggest limitation to this model is the strict avoidance of any numerical procedure that can't be solved analytically.
 
 
 
 The model represents a computational part of the ORMGP's *data assimilation system* (DAS), meaning it's not intended to be a predictive tool, rather a means to gain spatially distributed information (runoff, recharge etc.) from readily available data. Ultimately the goal is to have at near-realtime, distributed hydro-climatological data, at sub-daily time-steps that includes estimates of:
 - precipitation (rainfall and snowfall)
-- Atmospheric states (temperature, humidity, pressure, and wind)
+- atmospheric states (temperature, humidity, pressure, and wind)
 - snowmelt
 - total evaporation
 - soil moisture
@@ -143,23 +143,25 @@ $$ F_\text{casc}=1-\exp\left(\frac{\beta^2}{-\alpha}\right) $$
 
 ### IO strategy
 
-In an attempt to make most of computational efficiency, many processes that are typically computed as part of a hydrological model have been pre-processed as input to the ORMGP water balance model.  Processes such as snowmelt and potential evapotranspiration can modelled independently of the rainfall-runoff-recharge process and thus much computational gains can be made if these processes are pre-determined.
+To make the most of computational efficiency, many processes that are typically computed as part of a hydrological model have been pre-processed as input to the ORMGP water balance model.  Processes such as snowmelt and potential evapotranspiration can modelled independently of the rainfall-runoff-recharge process and thus computational gains can be made if these processes are pre-determined.
 
 > A top-down approach
 
 The model considers the greater role the atmosphere has on its ORMGP region. The *Planetary Boundary Layer* (Oke, 1987) is conceptualized as the barrier from which mass must transfer when surface evaporation is captured by the atmosphere and when liquid water originating from the atmosphere is released onto the land surface. 
 
+
 The model input ("climate forcing") data are provided on a 6-hourly timestep. These data have been distributed to [some 4,200 10km² sub-watersheds](https://owrc.github.io/interpolants/interpolation/subwatershed.html). They reflect the sources and sinks, respectively, of liquid (read: mobile) water on the land surface.
 
-The aim of the model design is to simultaneously reduce the amount of computational processes and leverage near-realtime data assimilation products. So, it is first recognized that from a hydrological model design perspective, that the primary driver of watershed moisture distribution is the *"Atmospheric Yield"*, that is water sourced from the atmosphere in its liquid/mobile form.
+The aim of the model design is to simultaneously reduce the amount of computational processes and leverage near-real-time data assimilation products. So, it is first recognized from a hydrological model design perspective, that the primary driver of watershed moisture distribution is the *"Atmospheric Yield"*, that is, water sourced from the atmosphere in its liquid/mobile form.
 
 $$\text{Atmospheric Yield} = \text{Rainfall} + \text{Snowmelt}$$
 
 In a similar sense, the "atmosphere" (specifically the Planetary Boundary Layer of Oke, 1987) also has a drying power, a sink termed *"Atmospheric Demand"*. 
 
-It is matter of perspective that dictates the terminology here. The model was designed from a top-down viewpoint. Terms like "potential evaporation", which speaks to the evaporation occurring on a surface with unlimited water supply is instead termed "atmospheric demand", that is the capacity for the atmosphere to remove moisture from a rough land surface.
+It is matter of perspective that dictates the terminology here. The model was designed from a top-down viewpoint. Terms like "potential evaporation", which speaks to the evaporation occurring on a surface with unlimited water supply, is instead termed "atmospheric demand", that is the capacity for the atmosphere to remove moisture from a rough land surface.
 
-Only snowmelt, rainfall and evaporation are not readily available in a distributed form and need to be determined/interpolated. The model is integrated with [the ORMGP data management platform](/interpolants/fews/). Below is an interactive map of the climate forcing distribution used in the model. Total model coverage ~40,000km².
+Snowmelt, rainfall and evaporation are not readily available in a distributed form and need to be determined/interpolated. The model is integrated with [the ORMGP data management platform](/interpolants/fews/). Below is an interactive map of the climate forcing distribution used in the model. Total model coverage ~40,000 km².
+
 
 <br>
 
@@ -168,6 +170,7 @@ Only snowmelt, rainfall and evaporation are not readily available in a distribut
 <iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" target="_blank" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 
 *Note: sub-watersheds shown above each consists of roughly 3,000 60x60m model grid cells*
+
 
 <br>
 
@@ -187,13 +190,11 @@ Finally, the model was designed to remain amenable to data availability and new 
 
 ### Model Variables
 
-One goal set for the model design was to leverage contemporary gridded data sets available from a variety of open and public sources. Products known as "*data re-analysis products*" or "*data-assimilation products*" attempt to merge meteorological information from a variety of sources, whether they be ground (station) measurements, remote sensing observations (e.g., radar, satellite, etc.), and archived near-cast weather model outputs.  When combined, the gridded data resemble the spatial distribution of meteorological forcings unlike what can be accomplished through standard interpolation practices using point measurements (e.g., thiessen polygons, inverse distance weighting, etc.).
+One goal for the model design was to leverage contemporary gridded data sets available from a variety of open and public sources. Products known as "*data re-analysis products*" or "*data-assimilation products*" attempt to merge meteorological information from a variety of sources, whether they be ground (station) measurements, remote sensing observations (e.g., radar, satellite, etc.), and archived near-cast weather model outputs.  When combined, the gridded data resemble the spatial distribution of meteorological forcings unlike what can be accomplished through standard interpolation practices using point measurements (e.g., thiessen polygons, inverse distance weighting, etc.).
 
-An advantage to the data-assimilation products is that it removes the modeller from needing to model certain processes explicitly. Here, for example, the model does not account for a snowpack, rather inputs to the model include snowmelt derived from SNODAS.
+An advantage to the data-assimilation products is that they remove the modeller from needing to model certain processes explicitly. For example, the model does not account for a snowpack, rather inputs to the model include snowmelt derived from SNODAS.
 
 The extent of the model combined with the resolution of the processes simulated lends itself best viewed from a top-down perspective (Sivapalan et.al., 2003). This allows for model simplification by which many of the layered water stores (i.e., interception, depression, soil, etc.) may be handled procedurally as one unit. Viewing the model domain in its 40,000 km² extents, one can imagine how difficult it would be to discern any vertical detail.
-
-
 
 
 
@@ -207,14 +208,15 @@ The extent of the model combined with the resolution of the processes simulated 
 
 ### Digital Elevation Model
 
-The Greater Toronto Area 2002 DEM (OMNRF, 2015) was re-sampled to the model's 60x60m grid cell resolution. Surface depressions were removed using Wang and Liu (2006) and flat regions were corrected using Martz (1997).
+The Greater Toronto Area 2002 DEM (OMNRF, 2015) was re-sampled to the model's 60 x 60 m grid cell resolution. Surface depressions were removed using Wang and Liu (2006) and flat regions were corrected using Martz (1997).
 
-Drainage directions and flow-paths of the now "hydrologically correct" DEM were were assigned based on the direction of steepest decent (D8). Cell gradients ($b$) and slope aspects were calculated based on a 9-cell planar interpolation routine. The unit contributing area $a=A/w$ topographic wetness index $ln\frac{a}{\tan\beta}$ (Beven and Kirkby, 1979--CHECK) were computed for every cell.
+
+Drainage directions and flow-paths of the now hydrologically correct DEM were were assigned based on the direction of steepest decent (D8). Cell gradients ($b$) and slope aspects were calculated based on a 9-cell planar interpolation routine. The unit contributing area $a=A/w$ topographic wetness index $ln\frac{a}{\tan\beta}$ (Beven and Kirkby, 1979--CHECK) were computed for every cell.
 
 ### Sub-basins
 
 The 30,000 km² model area has been sub divided into [2,813 approximately 10 km² sub-basins](/interpolants/interpolation/subwatershed.html). Within these sub-basins:
-1. Meteorological forcings from external sources are aggregated applied uniformly within the sub-basin (via a pre-processing routine); and
+1. Meteorological forcings from external sources are aggregated and applied uniformly within the sub-basin (via a pre-processing routine); and
 1. Local shallow water response is assumed to act uniformly (the shallow subsurface catchment area).
 
 
@@ -308,10 +310,11 @@ Model grids in the model represent a homogenized area on the land surface, simil
 
 The model runs on a 6-hourly basis in order to capture hydrological dependence on the diurnal fluctuation of energy flux at the ground surface.
 
-The time step of the model has been set to 6 hour steps on 00:00 UTC, yielding the local time steps of 01:00, 07:00, 13:00, and 19:00 EST. This step is chosen as it matches the received precipitation dataset described above.
+The time step of the model has been set to 6-hour steps on 00:00 UTC, yielding the local time steps of 01:00, 07:00, 13:00, and 19:00 EST. This step is chosen as it matches the received precipitation dataset described above.
 
 ### Model Domain
-The overarching model code employs an object called the "Model Domain". Here, all necessary model data are digitized and self-contained into a set of 5 **_Model Domain Components_**, including:
+The model code employs an object called the "Model Domain", where all necessary model data are digitized and self-contained, including:
+
 
 1. `Structure` holds all the geometrical and topological constraints to grid cells, including the physical dimensions of cells and knowledge of where runoff is to be routed.
 1. `Mapper` contains a *cell-to-type* cross-reference map to distribute model parameters, such as percolation rates, soil zone depth, depression storage, etc. The Mapper *projects* parameter selection onto the grid space domain based on their local (an often unique) land type.
@@ -324,16 +327,17 @@ The overarching model code employs an object called the "Model Domain". Here, al
 
 # Parameterization
 
-The model's structure is defined rather simply by at least 5 raster data sets. The model's input data pre-processor will generate additional information based on these data:
+The model's structure is defined by at least 5 raster data sets. The model's input data pre-processor will generate additional information based on these data:
 
 1. digital elevation model
 1. land use index (with parameter lookup table)
 1. surficial geology index (with parameter lookup table)
 1. groundwater zones
 
-While a distributed model, the procedures applied at the cell scale are quite parsimonious. There is no separate treatment of interception, depression storage, nor soil water retention, rather it is assumed that these processes respond to environmental factors (e.g., evaporation) concurrently and thus treated as one.
+The procedures applied at the cell scale are quite parsimonious. There is no separate treatment of interception, depression storage, nor soil water retention, rather it is assumed that these processes respond to environmental factors (e.g., evaporation) concurrently and thus treated as one.
 
-From the top down perspective, viewing some 12.1 million 60x60m cells covering 30,000 km², it seems rather overcomplicated (possibly frivolous) to account water any more than to total mass present at any particular location.
+From the top-down perspective, viewing some 12.4 million 60 x 60 m cells covering pver 40,000 km², it seems rather overcomplicated to account water any more than to total mass present at any particular location.
+
 
 
 
@@ -343,15 +347,15 @@ Land area that has the capacity to retain water (through interception, soil rete
 
 Runoff is conceptualized as being generated through the saturation excess (Dunne, 1975 CHECK) mechanism. The saturation excess mechanism is dependent on topography and its interaction with the water table. The model is distributed with an integrated (albeit conceptual) groundwater system.
 
-Surface water-groundwater integration is viewed from the hydrologists' perspective: areas where is the groundwater system limiting infiltration (shallow groundwater table) and even contributing to overland runoff (springs/seepage areas). As a model output, this can be quantified as a net groundwater exchange field (groundwater recharge less discharge)
+Surface water-groundwater integration is viewed from the hydrologists' perspective: areas where the groundwater system is limiting infiltration (shallow groundwater table) and even contributing to overland runoff (springs/seepage areas). As a model output, this can be quantified as a net groundwater exchange field (groundwater recharge less discharge)
 
-The basis of the model is that topography is paramount to the lateral movement of water yielding runoff. The model is deemed regional, in that it covers a large areal extent, yet is kept to a fine resolution to ensure that observed geomorphic flow patterns are represented in the model.
-
-
+The basis of the model is that topography is paramount to the lateral movement of water that yields runoff. The model is deemed regional in that it covers a large areal extent, yet is kept to a fine resolution to ensure that observed geomorphic flow patterns are represented in the model.
 
 
 
-### pre-defined data-driven parameters
+
+
+### Pre-defined data-driven parameters
 
 The following are determined using a topographical analysis:
 
@@ -360,7 +364,7 @@ The following are determined using a topographical analysis:
 - $F_\text{casc}$: cascade fractions are based on a pre-determined relationship with local gradients [-]
 
 
-### globally applied parameters
+### Globally applied parameters
 
 Cells with a contributing area greater than 1 km² are deemed "stream cells" in which additional sources include groundwater discharge to streams.
 
@@ -377,7 +381,7 @@ Groundwater processes in the model are conceptualized at the sub-basin scale and
 
 ### Land use based parameters
 
-Each cell is classified according to (i) surficial geology and (ii) land use mapping where each class is parameterized independently. "Look-up tables" are used to distribute model parameters according to their classification.
+Each cell is classified according to (i) surficial geology and (ii) land use mapping where each class is parameterized independently. Look-up tables are used to distribute model parameters according to their classification.
 
 
 - $F_\text{imp}$: fraction of impervious cover

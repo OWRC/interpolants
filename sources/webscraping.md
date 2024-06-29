@@ -7,11 +7,11 @@ output: html_document
 > [Web scraping](https://en.wikipedia.org/wiki/Web_scraping) is the process of extracting data from websites through scheduled/automated scripts.
 
 On a nightly basis, data are extracted from a number of open data sources, whether they be:
-- **"APIs"**---That is databases that can be directly queried by sending a web-address (URL), fuch as:
+- **"APIs"**---Databases that can be directly queried by sending a web-address (URL), such as:
   - [KISTERS](https://www.kisters.de/en/) Services (KiWIS)
   - AQUARIUS Time-Series Software, [Aquatic Informatics Inc.](https://aquaticinformatics.com/)
 - **File repositories**---Typically an FTP server hosting a number of general use files, like comma-separated-values (.csv) files
-- **HTML tables**---Readable tables posted online are converted into a dataframe---a form needed insert into our database. *This is the least reliable and thus the most effort required option.*
+- **HTML tables**---Readable tables posted online are converted into a dataframe---a form needed to insert into our database. *This is the least reliable and thus the most effort is required.*
 
 
 ### Notes:
@@ -21,7 +21,7 @@ On a nightly basis, data are extracted from a number of open data sources, wheth
 
 ## Sources:
 
-A number of our partners maintain internal databases. Attempts are continuing to integrate these sources to our workflow without the need for data duplication. This is (hopefully) accomplished by establishing an [Application Programming Interface](https://en.wikipedia.org/wiki/API) (API) on the partners' end. Currently, we have:
+A number of our partners maintain internal databases. ORMGP is continuing to integrate these sources into our workflow without the need for data duplication. This is (hopefully) accomplished by establishing an [Application Programming Interface](https://en.wikipedia.org/wiki/API) (API) on the partners' end. Currently, we have:
 
 [*see also Source References.*](/interpolants/sources/reference.html)
 
