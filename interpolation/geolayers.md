@@ -5,7 +5,7 @@ output: html_document
 ---
 
 
-The geologica layers presented on the ORMGP Website have been created at different times and by different parties over the past 20+ years.  ORMGP staff are regularly checking these geological layers, making adjustments as new data accumulates. However, these incremental changes are only periodically updated onto the website. The Figure below shows the various sets of geological layers that have been built into a regional layers and that are currently reflected on the ORMGP website. 
+The geological layers presented on the ORMGP Website have been created at different times and by different parties over the past 20+ years.  ORMGP staff are regularly checking these geological layers, making adjustments as new data accumulates. However, these incremental changes are only periodically updated onto the website. The Figure below shows the various sets of geological layers that have been built into a regional layers and that are currently reflected on the ORMGP website. 
 
 ![](fig/geolayers-sourcemap.png)
 
