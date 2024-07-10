@@ -23,12 +23,12 @@ Meteorological Service of Canada is a division of Environment Canada. Their [onl
 Below lists the versions used, a complete [changelog can be found here](https://eccc-msc.github.io/open-data/msc-data/nwp_rdpa/changelog_rdpa_en/). The most recent version always takes precedence. 
 
 #### CaPA-RDPA version 1—experimental (*2002—2012*)
-The hind-cast "experimental" version 1 of CaPA-RDPA comes in a ~15km resolution.
+The hind-cast "experimental"/"pre-operational" version 1 of CaPA-RDPA, comes in a ~15km resolution.
 
 #### CaPA-RDPA version version 2.4 (*2011—2016*)
 Version 2.4 brings a number of improvements by incorporating more ground-truthing and refining to a ~10km resolution.
 
-#### CaPA-RDPA version versions 4+ and 5+ (*2015—present*)
+#### CaPA-RDPA version versions 4+ and 5+ (*2015—2024*)
 Further improvements, still at a ~10km resolution. 
 
 #### CaPA-HRDPA (*2019—present*)

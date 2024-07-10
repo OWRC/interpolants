@@ -25,17 +25,18 @@ The [ORMGP](https://oakridgeswater.ca/) maintains a current, continuous daily cl
 
 > *Data for download can be accessed [below](#highlights).*
 
-Currently, the data service offers [`near-realtime`](## '"Near-realtime" means that the data updated nightly are as close to real-time as made available from the open data sources being scraped. Generally, data are up to date a day or 2 prior to the current time.') estimates of:
+Currently, the data service offers [*near-realtime*](## '"Near-realtime" means that the data updated nightly are as close to real-time as made available from the open data sources being scraped. Generally, data are up to date a day or 2 prior to the current time.') estimates of:
 
-- Rainfall
-- Snowfall
-- Snowmelt
-- Air temperatures
-- Atmospheric pressure
-- Relative humidity
-- Wind speed
-- Wind direction
-- Potential evaporation
+- Rainfall (**Rf**)
+- Snowfall (**Sf**)
+- Snowmelt (**Sm**)
+- Air temperatures (**Ta**)
+  - daily min (**Tn**) and max (**Tx**)
+- Atmospheric pressure (**Pa**)
+- Relative humidity (**Rh**)
+- Wind speed (**Us**)
+- Wind direction (**Ud**)
+- Potential evaporation (**Pe**)
 
 <br>
 
