@@ -4,30 +4,35 @@ output: html_document
 ---
 
 
+Below is an itemized description of the interpolation process used with ORMGP's [Near Real-time Climate Data Service](https://owrc.github.io/interpolants/sources/climate-data-service.html). This service is fullly supported by open data access from a variety of government sources. A complete reference to the data used is provided [here](https://owrc.github.io/interpolants/sources/reference.html).
+
+> version 2406
 
 * TOC
 {:toc}
 
 
-# Interpolation of Hourly scalars to Sub-daily Basins
-Below is an itemized description of the interpolation process, with open data access.  All interpolated (i.e., "vector") data are automatically updated and maintained using the [ORMGP-FEWS system](/interpolants/fews/) system.
+# Interpolation of station to ORMGP sub-watersheds
+All interpolated data are automatically updated and maintained using the [ORMGP-FEWS system](/interpolants/fews/) system.
 
-> workflow: `preprocessMSCtoBasinsHourly.xml`
+> workflow: `ImportMSCdatamartCsv.xml`
 
 
 ## Meteorological Service of Canada (MSC) scalars
-1. Scrape MSC for recent data, executed from FEWS.
+
+### Hourly data
+1. Scrape MSC for recent data from [datamart](https://dd.weather.gc.ca/) using python, executed from FEWS.
 2. Import scraped MSC hourly scalars into FEWS.
 3. Export hourly MSC NetCDF file (*.nc) from FEWS, from 1989-10-01 
     
-    > `_exportMSChourlyNetcdf.nc`  $T_a, p_a, r, \text{vis}, u, u_\alpha$
+    > `20240701-exportScalarHourly.nc`  $T_a, p_a, r, u, u_\alpha$
 
-4. Interpolate to 10 km sub-watersheds, using a python script executed from config file `pyMSChourliesToBasin.xml` that executes: `ncMSCtoHourlyBasinNetCDF.py`.
-    - Air temperature $(T_a)$, relative humidity $(r)$ and wind speeds $(u)$ are interpolated using a [radial basis function (RBF)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.Rbf.html) (with a cubic kernel and a smoothing factor $\lambda=1/1000$ to prevent singular matrices).
-    - Air/barometric pressure $(p_a)$ are first [corrected for elevation](/interpolants/interpolation/barometry.html) then interpolated using the same cubic RBF. 
-    - Wind directions $(u_\alpha)$ are split into their x-y components, each interpolated separately using a cubic RBF before returned to an angle. A sample result is shown below:
+4. Interpolate to 10 km sub-watersheds, using a python script executed from config file `pyMSChourliesToBasin.xml` that executes: `ncScalarToHourlyBasinNetCDF.py`.
+    - Air temperature $(T_a)$, relative humidity $(r)$ and wind speeds $(u)$ are interpolated using a [radial basis function (RBF)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.Rbf.html) (with a thin-plate-spline kernel and a smoothing factor $\lambda=1/1000$ to prevent singular matrices).
+    - Air/barometric pressure $(p_a)$ are first [corrected for elevation](/interpolants/interpolation/barometry.html) then interpolated using the same thin-plate-spline RBF. 
+    - Wind directions $(u_\alpha)$ are split into their x-y components, each interpolated separately using a thin-plate-spline RBF before returned to an angle. A sample result is shown below:
 
-![](fig/windir.png)
+    ![](fig/windir.png)
 
 5. Interpolated $(T_a, r, u)$ are applied to compute potential evaporation flux [m/s] (Novák, 2012):
 
@@ -41,36 +46,70 @@ $$
 
 6. Save to NetCDF (.nc) for import back to FEWS.
 
-    > `_exportMSChourlyNetcdf_interp.nc`  $T_a, p_a, r, u, E_a$ hourly basins
+    > `20240701-exportBasin6hourly.nc`  $T_a, p_a, r, u, E_a$ hourly basins
 
 
 
 
 ## Hourly Basin to 6-hourly Basin Interpolation
 
-
 1. Hourly aggregation to 6-hourly time intervals (00:00 06:00 12:00 18:00 UTC) is performed in FEWS using the:
     - [MeanToMean aggregation](https://publicwiki.deltares.nl/display/FEWSDOC/Aggregation+MeanToMean) routine for $Ta, p_a, r, u$, and
     - [Accumulative aggregation](https://publicwiki.deltares.nl/display/FEWSDOC/Aggregation+Accumulative) routine for $E_a$.
 
-    *__These data have a set expiry.__*
 
-2. Export 6-hourly, basin-interpolated $P_\text{HRDPA}, T_a, p_a, r, u$ to NetCDF. 
+2. Export 6-hourly, basin-interpolated $T_a, p_a, r, u$ to NetCDF. 
 
-    > `yyyyMMddHHmm-6hourlyBasin.nc`
+    > `20240701-exportBasin6hourly.nc`
 
-    *__to be altered to__* $P_\text{HRDPA}, P_R, P_S, T_a, p_a, r, u, E_a$
+
+### Daily data
+1. Scrape MSC for recent data from [datamart](https://dd.weather.gc.ca/) using python, executed from FEWS.
+2. Import scraped MSC daily scalars into FEWS.
+3. Export daily MSC NetCDF file (*.nc) from FEWS, from 1989-10-01 
+    
+    > `20240701-exportScalarDaily.nc`  $R_f, S_f, T_n, T_x, u_g, u_{g\alpha}$
+
+4. Interpolate to 10 km sub-watersheds, using a python script executed from config file `pyMSCdailiesToBasin.xml` that executes: `ncScalarToDailyBasinNetCDF.py`.
+    - Rainfall $(R_f)$ and snowfall $(S_f)$ are interpolated to thier nearest neighbour.
+    - Air temperatures $(T_\text{min}\text{ and } T_\text{max})$ and wind speed of gusts $(u_g)$ are interpolated using a [radial basis function (RBF)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.Rbf.html) (with a thin-plate-spline kernel and a smoothing factor $\lambda=1/1000$ to prevent singular matrices).
+    - Direction of wind gusts $(u_{g\alpha})$ are split into their x-y components, each interpolated separately using a thin-plate-spline RBF before returned to an angle.
+    - Air pressure $(p_a)$ and relative humidity $(r)$ are aggregated from hourly interpolations above.
+
+5. Daily snowmelt $(S_m)$ is first modelled using a [Cold Content Energy Balance Snowpack Model](/interpolants/modelling/waterbudget/snowmeltCCF.html).
+
+5. Save to NetCDF (.nc) for import back to FEWS.
+
+    > `20240701-exportBasinDaily.nc`  $R_f, S_f, S_m, T_n, T_x, u_g, u_{g\alpha}$ daily basins
+
+
+### Manual corrections
+
+#### Extreme low temperatures
+
+In very few instances, extremely low temperatures are recorded that fall out of range of many empirical functions, such as the [August-Roche-Magnus approximation for Saturation Vapour Pressure](/info/saturationvapourpressure/). Here, temperatures were constrained to a minimum temperature of $-65\degree \text{C}$.
+
+#### Summer snowfall
+
+During the summer, hail storms monitored by the MSC are recorded as snowfall; for example see [Daily Total Snow for August 2008 at PETERBOROUGH TRENT U (6166455)](https://climate.weather.gc.ca/climate_data/generate_chart_e.html?StationID=5192&timeframe=2&StartYear=1840&EndYear=2024&Day=31&Year=2008&Month=8&type=bar&MeasTypeID=totsnow) where 24.2 cm of snowfall was recorded. 
+
+In this case any snowfall recorded in the months of June--August was assumed to immediately melt and is recorded here as rainfall.
+
+
 
 
 
 # 6-hourly Precipitation to Basins
 
-The 6-hourly CaPA-RDPA precipitation $(P)$ field is a gridded raster that is routinely scraped of open web resources and proportioned to the sub-watersheds using our ORMGP-FEWS system, using the [Interpolation: SpatialAverage](https://publicwiki.deltares.nl/display/FEWSDOC/InterpolationSpatialAverage) transformation.
+The 6-hourly [CaPA-RDPA and CaPA-HRDPA](/interpolants/sources/climate-data-service.html#eccc-regional-deterministic-precipitation-analysis-rdpa) precipitation $(P)$ field is a gridded raster that is routinely scraped of open web resources and proportioned to the sub-watersheds using our ORMGP-FEWS system, using the [Interpolation: SpatialAverage](https://publicwiki.deltares.nl/display/FEWSDOC/InterpolationSpatialAverage) transformation.
+
+6-hourly snowmelts $(S_m)$ rates from [SNODAS](/interpolants/sources/climate-data-service.html#us-national-oceanic-and-atmospheric-administration-noaa) is also a gridded raster that is routinely scraped of open web resources and proportioned to the sub-watersheds using our ORMGP-FEWS system, using the [Interpolation: SpatialAverage](https://publicwiki.deltares.nl/display/FEWSDOC/InterpolationSpatialAverage) transformation. This is used to replace the modelled snowmelt discussed above (when available).
 
 
+<br>
 
 # Rainfall-Snowfall Parsing
-The [CaPA-RDPA](/interpolants/sources/climate-data-service.html#eccc-regional-deterministic-precipitation-analysis-rdpa) data are collected in their 6-hourly steps are used on their own and are aggregated to daily __*precipitation*__ accumulations. The precipitation fields are proportioned into rainfall and snowfall amounts using an "optimized critical temperature" approach where precipitation fields are proportioned into rainfall and snowfall amounts. Optimization determines a critical temperature $ (T_\text{crit}) $ for every ["water year"](## "defined as a year from October 1 to September 30"), where:
+The CaPA-RDPA data are collected in their 6-hourly steps are used on their own and are aggregated to daily __*precipitation*__ accumulations. The precipitation fields are proportioned into rainfall and snowfall amounts using an "optimized critical temperature" approach where precipitation fields are proportioned into rainfall and snowfall amounts. Optimization determines a critical temperature $ (T_\text{crit}) $ for every "[water year](## "defined as a year from October 1 to September 30")", where:
 
 $$
 \text{Rainfall}=
@@ -88,9 +127,14 @@ $$
 \end{cases}
 $$
 
-An optimization routine is employed to determine $ T_\text{crit} $ such that total snowfall converges with total snowmelt *independently for every winter season* to ensure minimal deviation from total precipitation. 
+An optimization routine is employed to determine $ T_\text{crit} $ such that total snowfall volumes converges with total snowmelt volumes *independently for every winter season and for every sub-watershed* to ensure minimal deviation from *total* precipitation. 
 
 
+![](fig/2024-Tcrit.png)
+
+*Time series of computed critical temperatures based on snowmelt volumes.*
+
+<br>
 
 # Spatial Interpolation versus DAS
 
