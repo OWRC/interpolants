@@ -10,6 +10,7 @@ On a nightly basis, data are extracted from a number of open data sources, wheth
 - **"APIs"**---Databases that can be directly queried by sending a web-address (URL), such as:
   - [KISTERS](https://www.kisters.de/en/) Services (KiWIS)
   - AQUARIUS Time-Series Software, [Aquatic Informatics Inc.](https://aquaticinformatics.com/)
+  - [FlowWorks](https://www.flowworks.com/)
 - **File repositories**---Typically an FTP server hosting a number of general use files, like comma-separated-values (.csv) files
 - **HTML tables**---Readable tables posted online are converted into a dataframe---a form needed to insert into our database. *This is the least reliable and thus the most effort is required.*
 
@@ -30,7 +31,9 @@ A number of our partners maintain internal databases. ORMGP is continuing to int
 ### APIs
 
 - Region of Peel
+- York Region
 - TRCA
+- LSRCA
 - CVC 
 - CLOCA 
 - MNRF 

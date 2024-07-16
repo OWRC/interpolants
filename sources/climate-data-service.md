@@ -9,13 +9,13 @@ description: ORMGP Near Real-time Climate Data Service
 
 <span style="font-size:2em;">Summary</span>
 
-The [ORMGP](https://oakridgeswater.ca/) maintains a current, continuous daily climatology dataset beginning 1901 and a 6-hourly dataset from 2002. Every night, the automated data service [web-scrapes](/interpolants/sources/webscraping.html) and [interpolates](/interpolants/fews/climate-interpolation.html) publicly-available climate data to [some 4,200 ~10km² sub-watersheds](/interpolants/interpolation/subwatershed.html) covering our greater jurisdiction. The data are made available through our [**public web portal**](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP) and are served using the [ORMGP-FEWS](/interpolants/fews/) system.
+The [ORMGP](https://oakridgeswater.ca/) maintains a current, continuous daily climatology dataset beginning 1901 and a 6-hourly dataset from 2002. Every night, the automated data service [web-scrapes](/interpolants/sources/webscraping.html) and [interpolates](/interpolants/fews/climate-interpolation.html) publicly-available climate data to [some 4,200 ~10km² sub-watersheds](/interpolants/interpolation/subwatershed.html) covering our greater jurisdiction. The data are made available through our [public web portal](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP) and are served using the [ORMGP-FEWS](/interpolants/fews/) system.
+
+In the map below, the Climate Data Service is summarized at every sub-watershed. Clicking on a sub-watershed will provide a link for users to view and download the interpolated time series data.
 
 <br>
 
-`click on square in upper-left to bring to full screen`
-
-`clicking on sub-watershed will reveal statistics and offer link to the Climate Data Service`
+`Click on square in upper-left to bring to full screen. Clicking on sub-watershed will reveal statistics and offer link to the Climate Data Service`
 
 <iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 
@@ -24,6 +24,8 @@ The [ORMGP](https://oakridgeswater.ca/) maintains a current, continuous daily cl
 <br>
 
 > *Data for download can be accessed [below](#highlights).*
+
+<br>
 
 Currently, the data service offers [*near-realtime*](## '"Near-realtime" means that the data updated nightly are as close to real-time as made available from the open data sources being scraped. Generally, data are up to date a day or 2 prior to the current time.') estimates of:
 
@@ -64,7 +66,7 @@ Specifically, we are concerned about climatology at the *regional scale*. We cov
 
 Greater emphasis is made to "re-packaging" data-products from external agencies; we are not trying to re-invent the wheel. Instead, we are trying to automate a workflow that, until now, is constantly repeated by our partner agencies and partner consultants when such data are needed. We don't require any of our partners to use our data, we are only making available the data we use in our internal analyses.
 
-## Version 2023
+## ORMGP-FEWS 2023
 
 With funding from Environment and Climate Change Canada under the Great Lakes Protection Initiative (GLPI), as part of the Great Lakes Water Quality Agreement (GLWQA), the ORMGP climate data service was expanded from our jurisdiction to cover the entire Canadian shoreline of Lake Ontario.  
 
@@ -77,10 +79,10 @@ This effort was a successful demonstration of the scalability of the ORMGP clima
     - daily min/max air temperatures, rainfall, snowfall, snowmelt from 1901.
     - 6-hourly air temperature, air pressure, relative humidity, wind speed, rainfall, snowmelt, potential evaporation from 2002.
 - Digital files available as [CF 1.8-compliant](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.8/cf-conventions.html) NetCDF files (_*.nc_). 
-- Available (hard-copy) data files for download (up to October, 2023):
+- Available (hard-copy) data files for download (up to July, 2024--v.2406):
     - indexed sub-watershed polygons: [`PDEM-South-D2013-OWRC23-60-HC-sws10.shp`](https://www.dropbox.com/scl/fi/a0r65kr7i1jirdci6d8jg/PDEM-South-D2013-OWRC23-60-HC-sws10.7z?rlkey=caol95r7k0s9p1re31mlev2a4&dl=1)
-    - daily climatologies: [`OWRCdailyBasins2023.nc`](https://www.dropbox.com/scl/fi/059gqccwej6m791j9el9d/OWRCdailyBasins2023.nc?rlkey=8fe4dq61t5qqkmawinuoxxhzj&dl=1)
-    - 6-hourly climatologies: [`OWRC6hourlyBasins2023.nc`](https://www.dropbox.com/scl/fi/coddz0za1zddtgv3utv4p/OWRC6hourlyBasins2023.nc?rlkey=65c0je8fg2dn4hr9g6yozt59k&dl=1)
+    - daily climatologies: [`20240701-OWRCdailyBasins.nc`](https://www.dropbox.com/scl/fi/y0tayowurx2qmxzqqecze/20240701-OWRCdailyBasins.nc?rlkey=6t90idrivpadtg78pcze15kec&st=epq5vdqz&dl=1)
+    - 6-hourly climatologies: [`20240701-OWRC6hourlyBasins.nc`](https://www.dropbox.com/scl/fi/4jawpqejihsumky83rjvv/20240701-OWRC6hourlyBasins.nc?rlkey=xgn54ewhar64gav5ysezppejf&st=qp5gn25f&dl=1)
 - Data service continues to append to these datasets. Updated NetCDF files can be produced on request.
 
 <br>
@@ -123,6 +125,10 @@ With the hydrologically corrected digital elevation model (HCDEM), flow paths ar
 
 > *See also how the sub-watersheds are topologically connected [here](https://owrc.shinyapps.io/sws23/). Clicking on any sub-watershed polygon will reveal the catchment area to the selected watershed in green, and the downslope sub-watersheds in red.*
 
+<br>
+
+*NOTES:* 
+- *data are compressed using [7-zip](https://www.7-zip.org/).*
 
 <br><br>
 
@@ -132,7 +138,7 @@ Below is a description of the datasets used in our overall climatology package. 
 
 It's also worth noting that the density of [active meteorological stations present in our jurisdiction has been in decline since the 1970s](/snapshots/md/gantt-met.html). Understandably, much of the recent investment in meteorological station operation has been dedicated to Canada's north; a large geographical region that has been grossly overlooked yet is most susceptible to a changing climate and thus deserves greater investment.
 
-The data source that are collected, interpolated and delivered through our web portal are [**referenced here**](/interpolants/sources/reference.html). For the most part, the most recent datasets supersede the oldest. 
+The data source that are collected, interpolated and delivered through our web portal are [**referenced here**](/interpolants/sources/reference.html). For the most part, the most recent datasets supersede the oldest. Below is a summary of the data used.
 
 Most of the data are acquired though Meteorological Service of Canada (MSC) [Open Data Service](https://eccc-msc.github.io/open-data/readme_en/) hosted by Environment and Climate Change Canada (ECCC). Near real-time station data are downloaded nightly using MSC's [Datamart](https://eccc-msc.github.io/open-data/msc-datamart/readme_en/) and processed by the [ORMGP-FEWS](/interpolants/fews/) system as described below.
 
@@ -154,14 +160,14 @@ The [Regional Deterministic Precipitation Analysis (RDPA)](https://eccc-msc.gith
 Simply put, CaPA-RDPA is an amalgamation of near-cast weather model predictions corrected by RADAR data and ground-truthed using a select set of weather stations. Essentially, CaPA-RDPA is a [*data assimilation system* (DAS)](https://www.ecmwf.int/en/research/data-assimilation) that provides users with the best-possible spatial distribution of precipitation, necessary for analyzing hydrology at the regional scale like the ORMGP jurisdiction.
 
 
-Recently (as of2019), a high-resolution format of the RDPA system was released. The **HRPDA** ([High Resolution Deterministic Precipitation Analysis](https://eccc-msc.github.io/open-data/msc-data/nwp_hrdpa/readme_hrdpa_en/)) supplies a ~2.5 km resolution 6-hourly precipitation field, in contrast to the ~10-15 km resolution of the original RDPA product.
+Recently (as of 2019), a high-resolution format of the RDPA system was released. The **HRPDA** ([High Resolution Deterministic Precipitation Analysis](https://eccc-msc.github.io/open-data/msc-data/nwp_hrdpa/readme_hrdpa_en/)) supplies a ~2.5 km resolution 6-hourly precipitation field, in contrast to the ~10-15 km resolution of the original RDPA product.
 
 
 While the CaPA-RDPA vector data fields can be acquired from Environment Canada in GRIB2 format, the ORMGP has sourced historical/archived data from the [Canadian Surface Prediction Archive (CaSPAr)](https://caspar-data.ca/), as their archive holds the original raw data (ECCC's GRIB2 format is a re-interpolation to a polar-stereographic grid). Additionally, the CaSPAr platform allows users to crop their area of interest. 
 
 ![CaPA-RDPA sample1](/interpolants/fews/fig/ORMGP-FEWS-sample1-slowed.gif)
 
-*Animated screen capture of CaPA-HRDPA in Delft-FEWS*
+*Animated screen capture of CaPA-HRDPA in Delft-FEWS.*
 
 <br>
 

@@ -15,11 +15,11 @@ The data files required are first the sub-watershed where the climate data have 
 
 and the NetCDF files that hold the data, either:
 
-> the daily climatologies: [`OWRCdailyBasins2023.nc`](https://www.dropbox.com/scl/fi/059gqccwej6m791j9el9d/OWRCdailyBasins2023.nc?rlkey=8fe4dq61t5qqkmawinuoxxhzj&dl=1)
+> the daily climatologies: [`20240701-OWRCdailyBasins.nc`](https://www.dropbox.com/scl/fi/y0tayowurx2qmxzqqecze/20240701-OWRCdailyBasins.nc?rlkey=6t90idrivpadtg78pcze15kec&st=epq5vdqz&dl=1)
 
 or
 
-> the 6-hourly climatologies: [`OWRC6hourlyBasins2023.nc`](https://www.dropbox.com/scl/fi/coddz0za1zddtgv3utv4p/OWRC6hourlyBasins2023.nc?rlkey=65c0je8fg2dn4hr9g6yozt59k&dl=1)
+> the 6-hourly climatologies: [`20240701-OWRC6hourlyBasins.nc`](https://www.dropbox.com/scl/fi/4jawpqejihsumky83rjvv/20240701-OWRC6hourlyBasins.nc?rlkey=xgn54ewhar64gav5ysezppejf&st=qp5gn25f&dl=1)
 
 
 ## Python script
@@ -46,7 +46,7 @@ sws = shp.Reader("PDEM-South-D2013-OWRC23-60-HC-sws10.shp")
 Followed by the NetCDF file:
 
 ```
-with nc.Dataset("OWRC6hourlyBasins2023.nc") as ds:
+with nc.Dataset("20240701-OWRC6hourlyBasins.nc") as ds:
     ds.set_auto_mask(False) # https://github.com/Unidata/netcdf4-python/issues/785
 
     # time stamps

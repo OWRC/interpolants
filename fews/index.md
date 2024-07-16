@@ -31,7 +31,9 @@ The ORMGP maintains two long-term climatological datasets that are updated night
 5. Wind speed and direction
 6. Potential evaporation
 
-The data support a wide variety of web services offered by the ORMGP where knowledge of past climactic conditions have a direct causal link to other monitored phenomena.  [*All data sources currently used can be found here.*](/interpolants/sources/reference.html)
+The data support a wide variety of web services offered by the ORMGP where knowledge of past climactic conditions have a direct causal link to other monitored phenomena.
+
+> ORMGP-FEWS is used to support the [**Near Real-time Climate Data Service**](/interpolants/sources/climate-data-service.html).
 
 
 ## Data types
@@ -44,10 +46,14 @@ The types of time-series data hosted in FEWS are described as:
 
 ![ORMGP-FEWS sample](fig/ORMGP-FEWS-sample1-slowed.gif)
 
-*Example "vector" data: 6-hourly ORMGP-interpolated precipitation (CaPA-RDPA) animated in FEWS*
+*Example "vector" data: 6-hourly ORMGP-interpolated precipitation (CaPA-RDPA) animated in FEWS.*
 
 <br>
 
-# References
+> [__*A reference to all data sources currently used (v.2406) can be found here.*__](/interpolants/sources/reference.html)
+
+<br>
+
+# Other Resources
 
 [Delft-FEWS brochure, 2017](https://cms.deltares.nl/assets/common/downloads/Delft-FEWS_brochure-2017-2-1.pdf)

@@ -87,7 +87,7 @@ $$
 
 #### Extreme low temperatures
 
-In very few instances, extremely low temperatures are recorded that fall out of range of many empirical functions, such as the [August-Roche-Magnus approximation for Saturation Vapour Pressure](/info/saturationvapourpressure/). Here, temperatures were constrained to a minimum temperature of $-65\degree \text{C}$.
+In very few instances, extremely low temperatures are recorded that fall out of range of many empirical functions, such as the [August-Roche-Magnus approximation for Saturation Vapour Pressure](/info/saturationvapourpressure/). Here, temperatures were constrained to a minimum temperature of $-65\text{Â°C}$.
 
 #### Summer snowfall
 
@@ -150,6 +150,24 @@ It's clear that for the most part, the 2 approaches are in agreement to within Â
 
 ![](fig/h6-station-vs-rdpa.png)
 
+
+# **Data Downloads**
+Below are the basin-interpolated datasets build from original sources (v.2406):
+
+1. CaSPAr CaPA-RDPA historical precipitation (2002-2024) [`20201001-CaSPAr-CaPA-RDPA_interpBasin.nc`](https://www.dropbox.com/scl/fi/e59j1rg1zzrdinmukqktg/20201001-CaSPAr-CaPA-RDPA_interpBasin.nc?rlkey=m7a0oltegx8mv6ipnr38jd7pe&st=yyjb0wam&dl=1)
+1. CaPA-HRDPA recent precititaion (2019-2024) [`20240701-CaPA-HRDPA_interpBasin.nc`](https://www.dropbox.com/scl/fi/bbzw2eno1dwua16rgejpw/20240701-CaPA-HRDPA_interpBasin.nc?rlkey=98k6ovyvfg6d5wc5q3rhbwqmw&st=zrhfkfd4&dl=1)
+1. Daily climate stations (1901-2024) [`20240701-exportScalarDaily_interpBasin.nc`](https://www.dropbox.com/scl/fi/7gu757k4op37o3m2l17r7/20240701-exportScalarDaily_interpBasin.nc?rlkey=o2ey2fupmarkpx2v87onau5kd&st=kqlszuvv&dl=1)
+1. Hourly climate stations aggregated to 6-hourly timesteps (2001-2024) [`20240701-exportBasin6hourly.nc`](https://www.dropbox.com/scl/fi/evbhj0qu6h36ki3ww3waa/20240701-exportBasin6hourly.nc?rlkey=0adti6aonms0xp6tmb9ea7z0f&st=6i0c84wb&dl=1)
+1. SNODAS historic daily snowmelt (2011-2024) [`20240701-exportSNODAShistoricDaily_interpBasin.nc`](https://www.dropbox.com/scl/fi/kdxipzxf82btc05yhwtyt/20240701-exportSNODAShistoricDaily_interpBasin.nc?rlkey=ztuohamsofvqt68knfvuuqi1s&st=ad794233&dl=1)
+1. SNODAS recent 6-hourly snowmelt (2020-2024) [`20240701-exportSNODASsixhourly_interpBasin.nc`](https://www.dropbox.com/scl/fi/uw93tvo3sag7cw5wgnwmx/20240701-exportSNODASsixhourly_interpBasin.nc?rlkey=rrdq1qb2ixd3lhh1br89zlfxm&st=cpfvnu95&dl=1)
+
+
+*NOTES:* 
+- *data are indexed according to the sub-watershed polygons: [`PDEM-South-D2013-OWRC23-60-HC-sws10.shp`](https://www.dropbox.com/scl/fi/a0r65kr7i1jirdci6d8jg/PDEM-South-D2013-OWRC23-60-HC-sws10.7z?rlkey=caol95r7k0s9p1re31mlev2a4&dl=1) (compressed using [7-zip](https://www.7-zip.org/)).*
+- *NetCDF files can be opened using [Panoply](https://www.giss.nasa.gov/tools/panoply/).*
+- *NetCDF files can also be opened [using Python](/interpolants/sources/climate-data-service-python.html).*
+
+<br>
 
 # References
 
