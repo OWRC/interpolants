@@ -114,7 +114,7 @@ The foundation to the climate data service (DS) is the digital elevation model (
 
 ## Hydrological correction
 
-Next, the [DEM was processed](/interpolants/interpolation/overland2023.html) using a procedure called "hydrological correction", which is a means of filling in sinks/depressions to ensure a continuous downslope flow direction for streams. This procedure is a common practice in hydrology when there is a need to define stream channels from DEMs where direct watercourse mapping is unavailable. Hydrological correction follows the method of Wang and Liu (2006) with some flat region adjustments following Garbrecht and Martz (1997).
+Next, the [DEM was processed](/interpolants/interpolation/overland.html) using a procedure called "hydrological correction", which is a means of filling in sinks/depressions to ensure a continuous downslope flow direction for streams. This procedure is a common practice in hydrology when there is a need to define stream channels from DEMs where direct watercourse mapping is unavailable. Hydrological correction follows the method of Wang and Liu (2006) with some flat region adjustments following Garbrecht and Martz (1997).
 
 The hydrological-corrected DEM can be found here: [`PDEM-South-D2013-OWRC23-60-HC.bil`](https://www.dropbox.com/scl/fi/uxdcf18qeqv099el6yfwg/PDEM-South-D2013-OWRC23-60-HC.bil.7z?rlkey=tpoot5uqaswosozrrbvzdfry8&dl=1).
 
