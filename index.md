@@ -24,7 +24,7 @@ The [**Oak Ridges Moraine Groundwater Program (ORMGP)**](https://www.oakridgeswa
 - by virtue of being in our database, web applications allowing users to analyze the data become available
 - this is a system of delivering information needed for water resources and planning.
 
-The following is an index to the data maintained and produced by the ORMGP. All data can be cited by a link below.
+The following is an index to the data maintained and produced by the ORMGP. All data can be cited using the link below.
 
 
 
@@ -49,7 +49,7 @@ The [Delft-FEWS](https://www.deltares.nl/en/software-and-data/products/delft-few
 
 More information:
 1. About the [Delft-FEWS](https://oss.deltares.nl/web/delft-fews/about-delft-fews) product by Deltares.
-1. More information on ORMGP [*web data scraping*](/interpolants/sources/index.html#web-data-scrapers).
+1. More information on ORMGP [*web data scraping*](/interpolants/sources/webscraping.html) and the [sources scraped on a nightly basis](/interpolants/sources/index.html).
 
 <br>
 

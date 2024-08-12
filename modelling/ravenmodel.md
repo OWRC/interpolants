@@ -19,6 +19,14 @@ The model is built off the same 4,230 sub-watersheds used in the climate data se
 The latest model build can be found [here](https://github.com/OWRC/OWRC-Raven).
 
 
+### Additional build notes
+
+- Sub-watersheds where >80% of their area is covered by waterbodies and wetlands and where waterbodies are the dominant feature (i.e., greater coverage than wetlands) are deemed lake sub-watersheds.
+- HRUs defined in each sub-watershed (as a unique combination of land use and surficial geology combinations) that do not cover 5% of the sub-watershed area are excluded from the model and are assumed to take the average results from the remaining sub-watershed.
+- Model is run in daily time steps from October 1993 through September 2023.
+
+> WARNING: The model currently remains largely un-calibrated.
+
 ## Comparison to an Integrated Water Budget
 
 While a standard in the hydrological community, models such as Raven are designed to neglect the role of groundwater influence on runoff generation. In most cases this can be a fair simplification, especially during the onsets of extreme rainfall events, which is likely the most prominent use case of such models. The problem is that in many areas (of southern Ontario), [water tables are close to (or even above) ground surface](/watertable/). What this means is that recharge cannot occur in these areas yet standard hydrological models fail to account for this. In practice, areas where seepage is known to occur, such as wetlands (fens), modellers are forced to "effectively" treat wetlands as an impervious surface. Computationally, wetlands are thus no different than a parking lot.
@@ -28,3 +36,7 @@ By design, integrated models treat the water table explicitly and so no effectiv
 <iframe src="https://golang.oakridgeswater.ca/pages/Raven23WB-compare.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 
 _Comparison of groundwater recharge simulated using Raven vs. an integrated groundwater/surface water model (mm/yr). Notice how in the integrated case much of the low lying areas exhibit negative "net recharge", meaning that these are area where water tables are high and seepage to the surface is being simulated._
+
+# Contact
+
+Should more information on the model wish to be known or if a subset of the model wish to be used, please contact support@owrc.ca.

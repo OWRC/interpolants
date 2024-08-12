@@ -1,0 +1,2 @@
+Percent Impervious	landuse23_60_perimp.bil
+Wetland Coverage	landuse23_60_perwl.bil

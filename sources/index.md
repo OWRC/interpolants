@@ -19,8 +19,6 @@ output: html_document
 
 # Timeseries Data
 
-## Web Data Scrapers
-
 On a nightly basis, scheduled tasks are used to automatically download and insert new data into the [ORMGP database](https://owrc.github.io/database-manual/Contents/TOC.html), a process called ["web scraping"](/interpolants/sources/webscraping.html). So, in addition to hydrogeologic information, the database maintains a [near-realtime hydrometeorological](/interpolants/sources/climate-data-service.html) dataset at the 6-hourly and daily time scales. 
 
 
