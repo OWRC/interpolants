@@ -4,7 +4,7 @@ author: Oak Ridges Moraine Groundwater Program
 output: html_document
 ---
 
-![](fig/ORMGP_logo.png)
+<span style="font-size:3em; font-weight: bold;">Data Management</span>
 
 <br>
 
@@ -23,7 +23,7 @@ The following is a description of the ORMGP's data management practice. All data
 
 # **Data Warehousing**
 
-## **The ORMGP Database (MSSQL)**
+## The ORMGP Database (MSSQL)
 [Our main MSSQL Server database](/database-manual/Contents/TOC.html) holds all the information to support our decision-making tools. The ORMGP data systems are *active*, in that they are automatically updated at near real-time. From hourly and daily intervals, a series of web-scraping routines have been written to access open data made available from many sources including international, federal, provincial, municipal and conservation authority agencies. The objective is to centralize hydrogeological and hydrological data for the south-central Ontario (Canada) jurisdiction that currently makes-up the ORMGP. 
 
 [**_Data source references._**](/interpolants/sources/reference.html)
@@ -39,7 +39,7 @@ More information:
 
 <br>
 
-## **ORMGP Servers**
+## ORMGP Servers
 
 ### Databases and REST-APIs
 * **[Our main MSSQL Server database](/database-manual/Contents/TOC.html)**

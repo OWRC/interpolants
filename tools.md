@@ -4,7 +4,7 @@ author: Oak Ridges Moraine Groundwater Program
 output: html_document
 ---
 
-![](fig/ORMGP_logo.png)
+<span style="font-size:3em; font-weight: bold;">Tools</span>
 
 <br>
 
@@ -23,7 +23,7 @@ The following is an index of the tools maintained by the ORMGP. All data can be 
 
 # **Web Applications**
 
-## **Geocortex** [Data Portal](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP)
+## Geocortex [Data Portal](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP)
 
 The ORMGP Geocortex Mapping hub has been divided into various [_**Theme Maps**_](/webmapping/) to allow users to quickly hone in on the information they might be seeking. For example, the Documents Theme Map provides access to the program’s library of reports, The Boreholes Theme Map focuses on providing access to borehole specific information, and the Geology Theme Map provides access to all of the ORMGP geologically related mapping. The Theme Maps group specific related data sets or interpreted products ([more info here](/webmapping/)).
 
@@ -44,7 +44,7 @@ In the [Geology Theme Map](/webmapping/#geology-map), users can view either the 
 
 <br>
 
-### **Cross-section tool**
+### Cross-section tool
 
 The cross-section tool is designed to provide a cut, along a user-defined line, through the subsurface to display the regionally interpreted Quaternary [geological layers](#geological-layers) down to the bedrock. 
 
@@ -57,7 +57,7 @@ The cross-section tool is designed to provide a cut, along a user-defined line, 
 Included in the Cross-section tool (in addition to hydrostratigraphy):
 
 - local boreholes from the ORMGP database
-- [Watertable](#water-table-mapping)
+- [Watertable](/interpolants/interpolation#water-table-mapping)
 - Top surface DEM ([*see metadata*](/metadata/external/mnr2006dem/LIO%20MNR%20DEM%2010m%20Metadata.pdf))
 
 <br>
@@ -74,7 +74,7 @@ The piper plot tool presents water chemistry in an informative way and can be so
 
 ### Spotflow Pickup
 
-Spotflow surveys added to the ORMGP database are automatically hosted on our baseflow pickup API that translates spotflow measurements into a losing/gaining stream reach feature map. This is done by (algorithmically) coordinating surveyed spotflow locations to our [watercourse topology](#elevation-drainage-and-topology) layer. For example, any 2 spotflow measurements connected by any number of stream reaches will convert the baseflow discharges measured into a linear computation rates of gain/loss per unit kilometre of stream reach.
+Spotflow surveys added to the ORMGP database are automatically hosted on our baseflow pickup API that translates spotflow measurements into a losing/gaining stream reach feature map. This is done by (algorithmically) coordinating surveyed spotflow locations to our [watercourse topology](/interpolants/interpolation#elevation-drainage-and-topology) layer. For example, any 2 spotflow measurements connected by any number of stream reaches will convert the baseflow discharges measured into a linear computation rates of gain/loss per unit kilometre of stream reach.
 
 ![](fig/pickup.png)
 
@@ -83,7 +83,7 @@ Spotflow surveys added to the ORMGP database are automatically hosted on our bas
 <br>
 
 
-### **Particle Tracking** web-tool
+### Particle Tracking web-tool
 
 The ORMGP particle tracking tool shows both the forward or backward particle tracking from a site that is being studied.  The tool is built upon [numerical models](/snapshots/md/numerical-model-custodianship-program.html) which have organized, synthesized and interpreted a wealth of hydrogeological information (e.g., boreholes, geological mapping, previous studies, etc.). 
 
@@ -95,11 +95,13 @@ The ORMGP particle tracking tool shows both the forward or backward particle tra
 
 <br>
 
-### **Clip 'n Ship**
+### Clip 'n Ship
 * ["Clip 'n Ship"](/interpolants/sources/clipnship.html) — A bulk spatial data export system, by geographic extent provided by a user and returned many of the products listed below clipped to within the specified extent.
 
 ![https://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/clip.htm](https://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/GUID-6D3322A8-57EA-4D24-9FFE-2A9E7C6B29EC-web.png) \
 *Source: [ArcMAP Clip function](https://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/clip.htm).*
+
+<br>
 
 
 ## <span style="text-decoration: underline;">Sh</span>iny H<span style="text-decoration: underline;">ydrology</span>  *(sHydrology)*
@@ -122,9 +124,9 @@ R-Shiny-Leaflet mapping with access to our monitoring dataset. [**Go to online m
 
 Numerical modelling at the ORMGP proceed in a number of ways: 
 
-1. A long-term data assimilation system that uses hydrological analysis tools (i.e., models) and leverages the ORMGP's database. What amounts to a [*data assimilation system*](https://ldas.gsfc.nasa.gov/) (DAS), modelling technology is utilized to provide a real-time state of the hydrological system with the ORMGP jurisdiction, supported by the [data we manage](/interpolants/#data-sources). The computational structure of the DAS is specifically tailored to run as fast as possible, such that thousands of model "projections" made continuously on [ORMGP servers](/interpolants/#ormgp-servers). The results from these analyses are offered as monthly ranges in long term seasonal water balance estimates.
-1. The ORMGP has been charge with maintaining over [100 existing numerical models](/interpolants/#numerical-model-custodianship-program) of varying types and purposes. We actively strive to ensure that these models are mainlined in an operational state, such that they can be readily shared with future modellers, thereby reducing the need for reproducing past work and maintaining past knowledge.
-1. Outputs from select models maintained in our Numerical Model Custodianship Program are further processed to give our partners an interactive utility to the model's estimation of our regional flow system. For instance, users can readily visualize virtual [particle tracking](/interpolants/#particle-tracking-web-tool) to and from any location clicked within the model domain.
+1. A long-term data assimilation system that uses hydrological analysis tools (i.e., models) and leverages the ORMGP's database. What amounts to a [*data assimilation system*](https://ldas.gsfc.nasa.gov/) (DAS), modelling technology is utilized to provide a real-time state of the hydrological system with the ORMGP jurisdiction, supported by the [data we manage](/interpolants/datamanagement/#data-sources). The computational structure of the DAS is specifically tailored to run as fast as possible, such that thousands of model "projections" made continuously on [ORMGP servers](/interpolants/datamanagement/#ormgp-servers). The results from these analyses are offered as monthly ranges in long term seasonal water balance estimates.
+1. The ORMGP has been charge with maintaining over [100 existing numerical models](#numerical-model-custodianship-program) of varying types and purposes. We actively strive to ensure that these models are mainlined in an operational state, such that they can be readily shared with future modellers, thereby reducing the need for reproducing past work and maintaining past knowledge.
+1. Outputs from select models maintained in our Numerical Model Custodianship Program are further processed to give our partners an interactive utility to the model's estimation of our regional flow system. For instance, users can readily visualize virtual [particle tracking](#particle-tracking-web-tool) to and from any location clicked within the model domain.
 1. Other tools are intended for predictive use, but are restricted to short-term (say, less than 30 days) projections. The design of these models is more physically rigorous but will always be dependent on other models (e.g., existing groundwater models, the ORMGP DAS) to prescribe the antecedent conditions. While computational time for this model is orders of magnitudes greater than that of the DAS, it continuous to share the philosophy of designed whereby computation efficiency is paramount.
 
 Combined, these two tools will provide all water groundwater resources needs for the ORMGP partners in order to:
@@ -133,6 +135,7 @@ Combined, these two tools will provide all water groundwater resources needs for
 2. capture long-term hydrological water budget estimates with an emphasis on its certainty; and,
 3. project near-term hydrological response given a known antecedent state.
 
+<br>
 
 ## Numerical Model Custodianship Program
 
@@ -159,7 +162,7 @@ _Set of numerical models maintained in the custodianship program_
 
 
 
-## Regional **Water Budget**, Long-term and Continuous
+## Regional Water Budget, Long-term and Continuous
 * Fine-resolution (2,500 m²) [**Water Budgeting** using a  regionally-distributed runoff-recharge model](/interpolants/modelling/waterbudgetmodel.html) for Long-term (>20 years) continuos 6-hourly hydrological modelling of the ORMGP jurisdiction.
 * Data sources for the water budget model are discussed [here](/interpolants/modelling/waterbudget/data.html).
 

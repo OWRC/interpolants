@@ -211,24 +211,18 @@ R-Shiny-Leaflet mapping with access to our monitoring dataset. [**Go to online m
 
 ## Metadata
 
-[Our metadata repository, Table of Contents.](/metadata/content/toc.html)
+[*Our metadata repository, Table of Contents.*](/metadata/content/toc.html)
 
 <span style="font-size:1.45em;">Surfaces</span>
-- [Hydrologically Conditioned DEM - Metadata](/metadata/surfaces/hdem.html)
 
-- [Land Use _(full coverage)_ - Metadata](/metadata/surfaces/land_use.html)
-
-- [Potential Discharge Areas - Metadata](/metadata/surfaces/potential_discharge.html)
-
-- [Potentiometric Surface - Metadata](/metadata/surfaces/potentiometric_surface.html)
-
-- [Surficial Geology _(full coverage)_ - Metadata](/metadata/surfaces/surficial_geology.html)
-
-- [Topologically Conditioned Sub-watersheds - Metadata](/metadata/surfaces/topo_sws.html)
-
-- [Topologically Conditioned Watercourses - Metadata](/metadata/surfaces/topo_watercourse.html)
-
-- [Water Table - Metadata](/metadata/surfaces/water_table.html)
+- [Hydrologically Conditioned DEM](/metadata/surfaces/hdem.html)
+- [Land Use _(full coverage)_](/metadata/surfaces/land_use.html)
+- [Potential Discharge Areas](/metadata/surfaces/potential_discharge.html)
+- [Potentiometric Surface](/metadata/surfaces/potentiometric_surface.html)
+- [Surficial Geology _(full coverage)_](/metadata/surfaces/surficial_geology.html)
+- [Topologically Conditioned Sub-watersheds](/metadata/surfaces/topo_sws.html)
+- [Topologically Conditioned Watercourses](/metadata/surfaces/topo_watercourse.html)
+- [Water Table](/metadata/surfaces/water_table.html)
 
 <br>
 
