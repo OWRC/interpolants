@@ -1,6 +1,5 @@
 ---
 title: Web Scraping
-author: M.Marchildon
 output: html_document
 ---
 
@@ -11,6 +10,7 @@ On a nightly basis, data are extracted from a number of open data sources, wheth
   - [KISTERS](https://www.kisters.de/en/) Services (KiWIS)
   - AQUARIUS Time-Series Software, [Aquatic Informatics Inc.](https://aquaticinformatics.com/)
   - [FlowWorks](https://www.flowworks.com/)
+  - [WaterTrax](https://aquaticinformatics.com/products/wastewater-compliance-software/)
 - **File repositories**---Typically an FTP server hosting a number of general use files, like comma-separated-values (.csv) files
 - **HTML tables**---Readable tables posted online are converted into a dataframe---a form needed to insert into our database. *This is the least reliable and thus the most effort is required.*
 
@@ -26,12 +26,13 @@ A number of our partners maintain internal databases. ORMGP is continuing to int
 
 [*see also Source References.*](/interpolants/sources/reference.html)
 
-
+<br>
 
 ### APIs
 
 - Region of Peel
 - York Region
+- Durham Region
 - TRCA
 - LSRCA
 - CVC 
@@ -42,12 +43,12 @@ A number of our partners maintain internal databases. ORMGP is continuing to int
 
 ### File repositories
 
-- WSC datamart
-- WSC HYDAT
-- ECCC CaPA-HRDPA
-- NOAA SNODAS
+- MSC [Datamart](https://eccc-msc.github.io/open-data/msc-datamart/readme_en/)
+- WSC [HYDAT](https://www.canada.ca/en/environment-climate-change/services/water-overview/quantity/monitoring/survey/data-products-services/national-archive-hydat.html)
+- ECCC [CaPA-HRDPA](https://eccc-msc.github.io/open-data/msc-data/nwp_hrdpa-watershed/readme_hrdpa-watershed_en/)
+- NOAA [SNODAS](https://nsidc.org/data/g02158/versions/1)
 
 
 ### HTML Tables
 
-- MSC historical (hourly and daily)
+- MSC [historical](https://climate.weather.gc.ca/) (hourly and daily)
