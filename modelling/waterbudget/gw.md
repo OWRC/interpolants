@@ -37,7 +37,10 @@ $$
 
 > At the ORMGP regional scale, multiple TOPMODEL reservoirs have been established to represent groundwater dynamics in greater physiographic regions, where it is assumed that material properties are functionally similar and groundwater dynamics are locally in sync. 
 
-Groundwater discharge estimates from each TOPMODEL reservoir instantaneously contributes lateral discharge to a model cells according to Darcy's law:
+
+#### Distributed across $n$ cells
+
+Groundwater discharge estimates from each TOPMODEL reservoir instantaneously contributes lateral discharge to model grid cell $i$ according to Darcy's law:
 
 <!-- $$
 	q = T\tan\beta,
@@ -65,7 +68,9 @@ $$
 	D_i = \overline{D} + m \left[\gamma - \ln\left(\frac{a}{T_o \tan \beta}\right)_i\right],
 $$ -->
 
-where $\zeta_i$ is the soil-topographic index at cell $i$ defined by:
+<!-- $$ \overline{D}=\frac{1}{n} \sum D_i $$ -->
+
+where $\overline{D}$ is the mean deficit of all cells. $\zeta_i$ is the soil-topographic index at cell $i$ defined by:
 
 $$\zeta=\ln\left(\frac{a}{T_o \tan \beta}\right)$$
 
@@ -92,7 +97,7 @@ Conditions where $D_i<0$ for any grid cell will have its excess water $(x_i=-D_i
 
 <!-- TOPMODEL may continue discharge groundwater to streams (see below). -->
 
-This exchange, in addition to groundwater discharge to streams, represents the distributed interaction the groundwater system has on the surface. With recharge $(g)$ at the model grid cell computed by the SMA when deficits are present $(D<0)$, net basin groundwater exchange $(G)$ is determined by:
+This exchange, in addition to groundwater discharge to streams, represents the distributed interaction the groundwater system has on the surface. With recharge $(g)$ at the model grid cell computed by the SMA when deficits are present $(D_i<0)$, net basin groundwater exchange $(G)$ is determined by:
 
 $$
   G = \sum_i(g-x)_i.
