@@ -82,6 +82,12 @@ Spotflow surveys added to the ORMGP database are automatically hosted on our bas
 
 <br>
 
+![](sources/spotflow/240913-spotflow-query.png)
+
+*Summary of spotflow measurements shared amongst our partners.*
+
+<br>
+
 
 ### Particle Tracking web-tool
 

@@ -97,6 +97,8 @@ _Sub-watershed characterization and flow topology_
 
 * [Watercourse topology and stream order](/interpolants/interpolation/watercourses.html)
 
+![](fig/draintopo-georgetown.png)
+
 <br>
 
 
