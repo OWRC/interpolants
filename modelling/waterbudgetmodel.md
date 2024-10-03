@@ -229,8 +229,6 @@ The sub-basins are *topologically connected* meaning that encoded among each bas
 
 <br>
 
-<!-- <iframe src="https://golang.oakridgeswater.ca/pages/sws-characterization.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe> -->
-
 <iframe src="https://owrc.shinyapps.io/sws23/" width="100%" height="500" scrolling="no" allowfullscreen></iframe>
 
 *Layout of the 4,238 sub-basins, each about 10 km² in size. Clicking on any basin will show the upstream basins in green (i.e., the catchment area) and the downstream basins in red. This map can also be [opened in separate tab.](https://owrc.shinyapps.io/sws23/)*
@@ -365,6 +363,11 @@ Additional processing includes aggregating the "effective" hydraulic conductivit
 #### Processing source code
 Processing discussed above that are operational have been documented in a [jupyter notebook](https://github.com/OWRC/interpolants/blob/main/interpolation/calc/landuse/OWRC23-lusg.ipynb). Source data needed to build the derivative surfaces can be found [here](https://www.dropbox.com/scl/fo/bfkxkkrz940eqkdsk9cqy/AJadVHg9De-SdPWFORDCIHE?rlkey=tndynpc63rclqc8tu527cxg0d&e=1&dl=0) and resulting outputs can be found [here](https://github.com/OWRC/interpolants/tree/main/interpolation/calc/landuse/output).
 
+<br>
+
+<iframe src="https://golang.oakridgeswater.ca/pages/sws-characterization.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
+
+*Distribution of land use and surficial geology properties aggregated by sub-watershed.*
 
 
 <br>

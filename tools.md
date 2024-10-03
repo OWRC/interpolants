@@ -162,6 +162,7 @@ The idea is that model sharing could perhaps reduce duplication of effort, there
 * [*A Guide for Actively Managing Watershed-Scale Numerical Models in Ontario*](https://www.oakridgeswater.ca/_files/ugd/4a0a6e_c41c71a481ea4657806e1fbb0c912f7a.pdf) — model management guidance (2017)
 
 <iframe src="https://golang.oakridgeswater.ca/pages/numerical-model-custodianship-program.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
+
 _Set of numerical models maintained in the custodianship program_
 
 <br>
@@ -171,6 +172,12 @@ _Set of numerical models maintained in the custodianship program_
 ## Regional Water Budget, Long-term and Continuous
 * Fine-resolution (2,500 m²) [**Water Budgeting** using a  regionally-distributed runoff-recharge model](/interpolants/modelling/waterbudgetmodel.html) for Long-term (>20 years) continuos 6-hourly hydrological modelling of the ORMGP jurisdiction.
 * Data sources for the water budget model are discussed [here](/interpolants/modelling/waterbudget/data.html).
+
+<iframe src="https://golang.oakridgeswater.ca/pages/Raven23WB-compare.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
+
+_Comparison of integrated vs. contemporary recharge modelling._
+
+<br>
 
 
 ## ORMGP Raven Model
