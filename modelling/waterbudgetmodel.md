@@ -290,38 +290,43 @@ Using a look-up system, the set of raster cells contained within every 60x60m² 
 Land used are also grouped according to a surface type and a canopy type. This was done to reduce the number of distinct land use types into a set of types with similar hydological function.
 
 
-__Surface Type__
 
-The surface type is mainly used to parametrize surficial storage, including depression storage and shallow soil zone storage that is base on soil zone depth, porosity, and water retention (i.e., field capacity). The surface types include:
+##### Surface Type
 
-1. No flow (i.e., lands where runoff does not occur)
-1. Urban
-1. Agriculture
-1. Barren
-1. Sparse Vegetation
-1. Dense Vegetation
-1. Short Vegetation (mainly trees)
-1. Tall Vegetation (mainly grass)
-1. Forest
-1. Meadow
-1. Wetland
-1. Swamp
-1. Marsh
-1. Channel (natural)
-1. Waterbody (small)
-1. Lake
+The surface type is mainly used to parametrize surficial storage, including depression storage and shallow soil zone storage that is base on soil zone depth, porosity, and water retention (i.e., field capacity).
 
-<br>
+| Surface Type | notes |
+|---|---|
+| No flow | lands where runoff does not occur |
+| Urban |  |
+| Agriculture |  |
+| Barren |  |
+| Sparse Vegetation |  |
+| Dense Vegetation |  |
+| Short Vegetation  | mainly trees |
+| Tall Vegetation | mainly grass |
+| Forest |  |
+| Meadow |  |
+| Wetland |  |
+| Swamp |  |
+| Marsh |  |
+| Channel | natural, streams |
+| Waterbody | small/isolated |
+| Lake |  |
+
+
 
 __Canopy Type__
 
-Next, canopy type dictate how canopy cover affects water storage, such as leaf-are-index (LAI) and interception storage. Canopy types include:
+Next, canopy type dictate how canopy cover affects water storage, such as leaf-are-index (LAI) and interception storage.
 
-1. Open (no canopy)
-1. Shrub
-1. Coniferous
-1. Deciduous (i.e., seasonal)
-1. Mixed Vegetation
+| Canopy Type | notes |
+|---|---|
+| Open | no canopy |
+| Shrub |  |
+| Coniferous |  |
+| Deciduous | seasonal coverage |
+| Mixed Vegetation |  |
 
 <br>
 
@@ -330,7 +335,9 @@ Next, canopy type dictate how canopy cover affects water storage, such as leaf-a
 
 #### Permeability
 
-The OGS classes have been grouped according to the attribute "permeability" using a similar look-up table cross-referencing scheme. OGS (2010) adds: *"Permeability classification is a very generalized one, based purely on characteristics of material types."*  Each classification is assigned an "effective" hydraulic conductivity listed below. (For reference 1e-8 m/s = 316 mm/yr.)
+The OGS classes have been grouped according to the attribute "permeability" using a similar look-up table cross-referencing scheme. OGS (2010) adds: *"Permeability classification is a very generalized one, based purely on characteristics of material types."*  Each classification is assigned an "effective" hydraulic conductivity listed below. 
+
+> For reference 1e-8 m/s = 316 mm/yr.
 
 *Permeability classifications (after OGS, 2010) and assumed effective hydraulic conductivities.*
 
@@ -347,7 +354,7 @@ The OGS classes have been grouped according to the attribute "permeability" usin
 | Bedrock with drift&#8224; |  1e-09 |
 | Impermeable&#8224; | -- |
 
-&#8224 *Bedrock and Impermeable have been added and are not part of the OGS classification scheme.*
+*&#8224; Bedrock and Impermeable have been added and are not part of the OGS classification scheme.*
 
 <br>
 
@@ -360,6 +367,7 @@ Processing discussed above that are operational have been documented in a [jupyt
 
 
 
+<br>
 
 # Model Structure
 
