@@ -316,7 +316,7 @@ The surface type is mainly used to parametrize surficial storage, including depr
 
 
 
-__Canopy Type__
+##### Canopy Type
 
 Next, canopy type dictate how canopy cover affects water storage, such as leaf-are-index (LAI) and interception storage.
 
@@ -337,7 +337,7 @@ Next, canopy type dictate how canopy cover affects water storage, such as leaf-a
 
 The OGS classes have been grouped according to the attribute "permeability" using a similar look-up table cross-referencing scheme. OGS (2010) adds: *"Permeability classification is a very generalized one, based purely on characteristics of material types."*  Each classification is assigned an "effective" hydraulic conductivity listed below. 
 
-> For reference 1e-8 m/s = 316 mm/yr.
+> For reference, 1e-8 m/s = 316 mm/yr.
 
 *Permeability classifications (after OGS, 2010) and assumed effective hydraulic conductivities.*
 
