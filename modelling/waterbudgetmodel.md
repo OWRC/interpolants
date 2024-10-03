@@ -141,26 +141,31 @@ $$ F_\text{casc}=1-\exp\left(\frac{\beta^2}{-\alpha}\right) $$
 
 # Input Data
 
+## Meteorological Forcings
+
+Meteorological forcing represents how the weather affects sea the rainfall-runoff-recharge phenomenon.  These include to varying degree: precipitation, air temperature, air pressure, relative humidity, wind speed, solar radiation, etc. Many hydrological models accept a variety of these forcing data, depending on the processes the model code (and sometimes the modeller) chooses to implement.
+
+
 ### IO strategy
 
-To make the most of computational efficiency, many processes that are typically computed as part of a hydrological model have been pre-processed as input to the ORMGP water balance model.  Processes such as snowmelt and potential evapotranspiration can modelled independently of the rainfall-runoff-recharge process and thus computational gains can be made if these processes are pre-determined.
+To make the most of computational efficiency, many processes that are typically computed as part of an *off-the-shelf* hydrological model have here been pre-processed as an input to the ORMGP water balance model and post-processed from model output. These pre-/post-processing steps are made independent of the core model code by strategically designing the model's inputs and outputs *(IO)*, thereby making computational gains.  For instance, meteorological forcings such as snowmelt and potential evapotranspiration can modelled independently prior to the rainfall-runoff-recharge process. 
 
 > A top-down approach
 
-The model considers the greater role the atmosphere has on its ORMGP region. The *Planetary Boundary Layer* (Oke, 1987) is conceptualized as the barrier from which mass must transfer when surface evaporation is captured by the atmosphere and when liquid water originating from the atmosphere is released onto the land surface. 
+The model considers the greater role the atmosphere has on the ORMGP region. The *Planetary Boundary Layer* (Oke, 1987) is conceptualized as the barrier from which mass must transfer when surface evaporation is captured by the atmosphere and when liquid water originating from the atmosphere is released onto the land surface. 
 
 
-The model input ("climate forcing") data are provided on a 6-hourly timestep. These data have been distributed to [some 4,200 10km² sub-watersheds](https://owrc.github.io/interpolants/interpolation/subwatershed.html). They reflect the sources and sinks, respectively, of liquid (read: mobile) water on the land surface.
+The model input ("meteorological forcing") data are provided on a 6-hourly timestep. These data have been distributed to [some 4,200 10km² sub-watersheds](https://owrc.github.io/interpolants/interpolation/subwatershed.html). They reflect the sources and sinks, respectively, of liquid (read: mobile) water on the land surface.
 
-The aim of the model design is to simultaneously reduce the amount of computational processes and leverage near-real-time data assimilation products. So, it is first recognized from a hydrological model design perspective, that the primary driver of watershed moisture distribution is the *"Atmospheric Yield"*, that is, water sourced from the atmosphere in its liquid/mobile form.
+The aim of the model design is to simultaneously reduce the amount of computational processes and leverage near-real-time data assimilation products. So, it is first recognized from a hydrological model design perspective, that the primary driver of watershed moisture distribution is the *"Atmospheric Yield"*, that is, water sourced from the atmosphere in its liquid/mobile form:
 
 $$\text{Atmospheric Yield} = \text{Rainfall} + \text{Snowmelt}$$
 
 In a similar sense, the "atmosphere" (specifically the Planetary Boundary Layer of Oke, 1987) also has a drying power, a sink termed *"Atmospheric Demand"*. 
 
-It is matter of perspective that dictates the terminology here. The model was designed from a top-down viewpoint. Terms like "potential evaporation", which speaks to the evaporation occurring on a surface with unlimited water supply, is instead termed "atmospheric demand", that is the capacity for the atmosphere to remove moisture from a rough land surface.
+It is matter of perspective that dictates the terminology here. The model was designed from a *top-down* viewpoint. Terms like "potential evaporation", which speaks to the evaporation occurring on a surface with unlimited water supply, is instead termed "atmospheric demand", that is the capacity for the atmosphere to remove moisture from a rough land surface.
 
-Snowmelt, rainfall and evaporation are not readily available in a distributed form and need to be determined/interpolated. The model is integrated with [the ORMGP data management platform](/interpolants/fews/). Below is an interactive map of the climate forcing distribution used in the model. Total model coverage ~40,000 km².
+Snowmelt, rainfall and evaporation are not readily available in a distributed form and need to be determined/interpolated. The model is integrated with [the ORMGP-FEWS data management platform](/interpolants/fews/). Below is an interactive map of the meteorological forcing distribution used in the model. Total model coverage ~40,000 km².
 
 
 <br>
@@ -174,17 +179,17 @@ Snowmelt, rainfall and evaporation are not readily available in a distributed fo
 
 <br>
 
-Finally, the model was designed to remain amenable to data availability and new technologies. For instance, [SNODAS](https://nsidc.org/data/g02158) can avoid the need to model snowmelt explicitly (saving on run-times); [CaPA-HRDPA](https://eccc-msc.github.io/open-data/msc-data/nwp_hrdpa/readme_hrdpa_en/) eliminates the undesirable need to spatially interpolate station-based precipitation.
+Finally, the model was designed to remain amenable to data availability and new technologies int the ORMGP jurisdiction.  For instance, [SNODAS](https://nsidc.org/data/g02158) can avoid the need to model snowmelt explicitly (saving on run-times); [CaPA-HRDPA](https://eccc-msc.github.io/open-data/msc-data/nwp_hrdpa/readme_hrdpa_en/) eliminates the (undesirable) need to spatially interpolate station-based precipitation.
 
 
-### **[Data sources, transformations and pre-processing](/interpolants/modelling/waterbudget/data.html)**
+### Data sources, transformations and pre-processing
+
+In the **[Data sources, transformations and pre-processing](/interpolants/modelling/waterbudget/data.html)** section, all of the source data, how they're distributed over the ORMGP jurisdiction and how they're scaled both spatially and temporally are described. (For more aid, refer to the [*glossary*](/interpolants/glossary.html).)  In the end, all climate data are reduced to two meteorological *forcing* data used as input to the model:
+
 * **[Atmospheric Demand $(E_a)$](/interpolants/modelling/waterbudget/data.html#atmospheric-demand-e_a)** is the "drying power" of the near-surface atmosphere, also known as the Planetary Boundary Layer (PBL­­­­-­­­Oke, 1987); and
-* **[Atmospheric Yield $(Y_a)$](/interpolants/modelling/waterbudget/data.html#atmospheric-yield-y_a)** is water in its liquid form released either as rainfall or snowmelt onto the land surface.
+* **[Atmospheric Yield $(Y_a)$](/interpolants/modelling/waterbudget/data.html#atmospheric-yield-y_a)** is water in its liquid/mobile form released either as rainfall or snowmelt onto the land surface.
 <!-- * **[Snowmelt $(P_M)$](/interpolants/modelling/waterbudget/data.html#sub-daily-from-daily-snowmelt)** -->
 
-
-
-[*see also glossary*](/interpolants/glossary.html)
 
 
 
@@ -204,23 +209,31 @@ The extent of the model combined with the resolution of the processes simulated 
 
 
 
-# Physical Constraints
+## Physical Constraints
+
+Physical constraints speak to how the model domain is structured spatially, meaning that these constraints (generally) do not change over time. Things like elevation and topography, land use and soil types make up the constraints that that ultimately translate to watershed hydrology.
+
 
 ### Digital Elevation Model
 
-The Greater Toronto Area 2002 DEM (OMNRF, 2015) was re-sampled to the model's 60 x 60 m grid cell resolution. Surface depressions were removed using Wang and Liu (2006) and flat regions were corrected using Martz (1997).
+The [Provincial Digital Elevation Model](https://geohub.lio.gov.on.ca/maps/mnrf::provincial-digital-elevation-model-pdem/about) (PDEM--OMNRF, 2019) was re-sampled to the model's 60 x 60 m grid cell resolution. Surface depressions were removed using Wang and Liu (2006) and flat regions were corrected using Garbrecht and Martz (1997).
 
+Drainage directions and flow-paths of the now hydrologically correct DEM were were assigned based on the direction of steepest decent (D8). Cell gradients ($b$) and slope aspects were calculated based on a 9-cell planar interpolation routine. The unit contributing area $a=A/w$ topographic wetness index $ln\frac{a}{\tan\beta}$ (Beven and Kirkby, 1979) were computed for every cell.
 
-Drainage directions and flow-paths of the now hydrologically correct DEM were were assigned based on the direction of steepest decent (D8). Cell gradients ($b$) and slope aspects were calculated based on a 9-cell planar interpolation routine. The unit contributing area $a=A/w$ topographic wetness index $ln\frac{a}{\tan\beta}$ (Beven and Kirkby, 1979--CHECK) were computed for every cell.
 
 ### Sub-basins
 
-The 30,000 km² model area has been sub divided into [2,813 approximately 10 km² sub-basins](/interpolants/interpolation/subwatershed.html). Within these sub-basins:
-1. Meteorological forcings from external sources are aggregated and applied uniformly within the sub-basin (via a pre-processing routine); and
-1. Local shallow water response is assumed to act uniformly (the shallow subsurface catchment area).
+The 40,000 km² model area has been sub divided into [4,238 approximately 10 km² sub-basins](/interpolants/interpolation/subwatershed.html). Within these sub-basins meteorological forcings from external sources are aggregated and applied uniformly within the sub-basin (via a pre-processing routine).
 
+The sub-basins are *topologically connected* meaning that encoded among each basins is the knowledge of both the upstream basins it receives drainage from and the downstream basin it drains to.
 
-<iframe src="https://golang.oakridgeswater.ca/pages/sws-characterization.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
+<br>
+
+<!-- <iframe src="https://golang.oakridgeswater.ca/pages/sws-characterization.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe> -->
+
+<iframe src="https://owrc.shinyapps.io/sws23/" width="100%" height="500" scrolling="no" allowfullscreen></iframe>
+
+*Layout of the 4,238 sub-basins, each about 10 km² in size. Clicking on any basin will show the upstream basins in green (i.e., the catchment area) and the downstream basins in red. This map can also be [opened in separate tab.](https://owrc.shinyapps.io/sws23/)*
 
 <br>
 
@@ -271,11 +284,53 @@ Using a look-up system, the set of raster cells contained within every 60x60m² 
 
 <br>
 
+
+#### Land use sub-categorization
+
+Land used are also grouped according to a surface type and a canopy type. This was done to reduce the number of distinct land use types into a set of types with similar hydological function.
+
+
+__Surface Type__
+
+The surface type is mainly used to parametrize surficial storage, including depression storage and shallow soil zone storage that is base on soil zone depth, porosity, and water retention (i.e., field capacity). The surface types include:
+
+1. No flow (i.e., lands where runoff does not occur)
+1. Urban
+1. Agriculture
+1. Barren
+1. Sparse Vegetation
+1. Dense Vegetation
+1. Short Vegetation (mainly trees)
+1. Tall Vegetation (mainly grass)
+1. Forest
+1. Meadow
+1. Wetland
+1. Swamp
+1. Marsh
+1. Channel (natural)
+1. Waterbody (small)
+1. Lake
+
+<br>
+
+__Canopy Type__
+
+Next, canopy type dictate how canopy cover affects water storage, such as leaf-are-index (LAI) and interception storage. Canopy types include:
+
+1. Open (no canopy)
+1. Shrub
+1. Coniferous
+1. Deciduous (i.e., seasonal)
+1. Mixed Vegetation
+
+<br>
+
+
+
+
 #### Permeability
 
-The OGS classes have been grouped according to the attribute "permeability" using a similar look-up table cross-referencing scheme. OGS (2010) adds: *"Permeability classification is a very generalized one, based purely on characteristics of material types."* 
-
-After assigning an assumed "effective" hydraulic conductivity to every permeability group, sub-watershed "permeability" is then calculated as the geometric mean of 60x60m² grid cells contained within a sub-watershed. Effective hydraulic conductivity value assumed for every permeability group are:
+The OGS classes have been grouped according to the attribute "permeability" using a similar look-up table cross-referencing scheme. OGS (2010) adds: *"Permeability classification is a very generalized one, based purely on characteristics of material types."*  Each classification is assigned an "effective" hydraulic conductivity listed below. (For reference 1e-8 m/s = 316 mm/yr.)
 
 *Permeability classifications (after OGS, 2010) and assumed effective hydraulic conductivities.*
 
@@ -289,14 +344,19 @@ After assigning an assumed "effective" hydraulic conductivity to every permeabil
 | unknown/variable | 1e-08 |
 | fluvial | 1e-05 |
 | organics | 1e-06  |
+| Bedrock with drift&#8224; |  1e-09 |
+| Impermeable&#8224; | -- |
+
+&#8224 *Bedrock and Impermeable have been added and are not part of the OGS classification scheme.*
 
 <br>
 
-The resulting effective hydraulic conductivity is then mapped back to the nearest Low--High OGS (2010) classification.
+
+Additional processing includes aggregating the "effective" hydraulic conductivities to each sub-watershed by taking the the geometric mean of every 60x60m² grid cell contained within each sub-watershed. The resulting effective hydraulic conductivity is then mapped back to the nearest Low–High OGS (2010) classification.
 
 
-#### Source code
-Processing discussed above that are operational have been documented in a [jupyter notebook](https://github.com/OWRC/interpolants/blob/main/interpolation/calc/landuse/OWRC-SWS.ipynb). Source data can be found [here](https://www.dropbox.com/sh/rkdu5bwn1xhm7mh/AAA1bdaplpZAZIYl0DE1e39Oa?dl=0) and additional outputs can be found [here](https://github.com/OWRC/interpolants/tree/main/interpolation/calc/landuse/output).
+#### Processing source code
+Processing discussed above that are operational have been documented in a [jupyter notebook](https://github.com/OWRC/interpolants/blob/main/interpolation/calc/landuse/OWRC23-lusg.ipynb). Source data needed to build the derivative surfaces can be found [here](https://www.dropbox.com/scl/fo/bfkxkkrz940eqkdsk9cqy/AJadVHg9De-SdPWFORDCIHE?rlkey=tndynpc63rclqc8tu527cxg0d&e=1&dl=0) and resulting outputs can be found [here](https://github.com/OWRC/interpolants/tree/main/interpolation/calc/landuse/output).
 
 
 
@@ -318,7 +378,7 @@ The model code employs an object called the "Model Domain", where all necessary 
 
 1. `Structure` holds all the geometrical and topological constraints to grid cells, including the physical dimensions of cells and knowledge of where runoff is to be routed.
 1. `Mapper` contains a *cell-to-type* cross-reference map to distribute model parameters, such as percolation rates, soil zone depth, depression storage, etc. The Mapper *projects* parameter selection onto the grid space domain based on their local (an often unique) land type.
-1. `Forcings`: Input (variable) data, generally climate forcings: $Y_a$ and $E_a$.
+1. `Forcings`: Input (variable) data, generally meteorological forcings: $Y_a$ and $E_a$.
 1. `Subwatershed` provides the model with optimal order of processing, ensuring a down stream process.
 1. `Parameters`: Parameter collections for a set of [land-surface](/interpolants/interpolation/landuse.html), [surficial geology](/interpolants/interpolation/surfgeo.html) and groundwater reservoir types.
 
@@ -336,7 +396,7 @@ The model's structure is defined by at least 5 raster data sets. The model's inp
 
 The procedures applied at the cell scale are quite parsimonious. There is no separate treatment of interception, depression storage, nor soil water retention, rather it is assumed that these processes respond to environmental factors (e.g., evaporation) concurrently and thus treated as one.
 
-From the top-down perspective, viewing some 12.4 million 60 x 60 m cells covering pver 40,000 km², it seems rather overcomplicated to account water any more than to total mass present at any particular location.
+From the top-down perspective, viewing some 12.4 million 60 x 60 m cells covering over 40,000 km², it seems rather overcomplicated to account water any more than to total mass present at any particular location.
 
 
 
@@ -471,10 +531,18 @@ A specific page has been prepared comparing the [performance of the regionally-d
 
 # References
 
+Beven, K.J. and M.J. Kirkby, 1979. A physically based variable contributing area model of basin hydrology. Hydrological Science Bulletin 24(1):43—69.
+
+Garbrecht, J. and L.W. Martz 1997 The assignment of drainage direction over flat surfaces in raster digital elevation models
+
 Oke, T.R., 1987. Boundary Layer Climates, 2nd ed. London: Methuen, Inc.
 
 Ontario Geological Survey 2010. Surficial geology of southern Ontario; Ontario Geological Survey, Miscellaneous Release— Data 128 – Revised.
 
+Ontario Ministry of Natural Resources and Forestry - Provincial Mapping Unit, 2019. Provincial Digital Elevation Model (PDEM).
+
 Ontario Ministry of Natural Resources and Forestry, 2019. Southern Ontario Land Resource Information System (SOLRIS) Version 3.0: Data Specifications. Science and Research Branch, April 2019.
 
 Sivapalan, M., L. Zhang, R. Vertessy, G. Blöschl, 2003. Downward approach to hydrological prediction, preface. Hydrol. Process. 17. pg. 2099. DOI: 10.1002/hyp.1426.
+
+Wang, L., H. Liu, 2006. An efficient method for identifying and filling surface depressions in digital elevation models for hydrologic analysis and modelling. International Journal of Geographical Information Science 20(2): 193-213.

@@ -69,7 +69,7 @@ Locations of 309 current and historical stream flow gauges are used to compare d
 
 # References
 
-Garbrecht Martz 1997 The assignment of drainage direction over flat surfaces in raster digital elevation models
+Garbrecht, J. and L.W. Martz 1997 The assignment of drainage direction over flat surfaces in raster digital elevation models
 
 O'Callaghan, J.F., and D.M. Mark, 1984. The extraction of drainage net-works from digital elevation data, Comput. Vision Graphics Image Process., 28, pp. 328-344
 
