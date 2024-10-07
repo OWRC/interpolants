@@ -36,7 +36,7 @@ The following is an index to the data maintained and produced by the ORMGP. All 
 
 <br>
 
-# **Data Warehousing**
+# **Data Warehousing** *--how we store our data*
 
 ## **The ORMGP Database (MSSQL)**
 [Our main MSSQL Server database](/database-manual/Contents/TOC.html) holds all the information to support our decision-making tools. The ORMGP data systems are *active*, in that they are automatically updated at near real-time. From hourly and daily intervals, a series of web-scraping routines have been written to access open data made available from many sources including international, federal, provincial, municipal and conservation authority agencies. The objective is to centralize hydrogeological and hydrological data for the south-central Ontario (Canada) jurisdiction that currently makes-up the ORMGP. 
@@ -53,7 +53,7 @@ More information:
 
 <br>
 
-# **Data Sources**
+# **Data Sources** *--where we get our data*
 
 ## Geology
 
@@ -124,7 +124,7 @@ _Sub-watershed characterization and flow topology_
 
 
 
-# **Web Applications**
+# **Web Applications** *--how we disseminate our data*
 
 ## **Geocortex** [Data Portal](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP)
 
@@ -135,7 +135,7 @@ The ORMGP Geocortex Mapping hub has been divided into various [_**Theme Maps**_]
 *Our current [web-mapping system](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP) relies on Geocortex*
 
 
-### Geological layers
+### Geological layer theme
 
 The [geological layers made available on the Geocortex portal](/interpolants/interpolation/geolayers.html) are found in two places: the Geology Theme Map and the [cross-section tool](#cross-section-tool). More information on [their interpreted depositional setting and of the procedures used to interpolate the surfaces](/GeoLayers/).
 
@@ -147,7 +147,7 @@ In the [Geology Theme Map](/webmapping/#geology-map), users can view either the 
 
 <br>
 
-### **Cross-section tool**
+## **Cross-section tool**
 
 The cross-section tool is designed to provide a cut, along a user-defined line, through the subsurface to display the regionally interpreted Quaternary [geological layers](#geological-layers) down to the bedrock. 
 
@@ -165,7 +165,7 @@ Included in the Cross-section tool (in addition to hydrostratigraphy):
 
 <br>
 
-### Piper plots
+## Piper plots
 
 The piper plot tool presents water chemistry in an informative way and can be sorted by location or geologic formation. Out piper plot tool take chemistry data in our database and creates the plots *on-the-fly*, for one or many locations.
 
@@ -175,7 +175,7 @@ The piper plot tool presents water chemistry in an informative way and can be so
 
 <br>
 
-### Spotflow Pickup
+## Spotflow Pickup
 
 Spotflow surveys added to the ORMGP database are automatically hosted on our baseflow pickup API that translates spotflow measurements into a losing/gaining stream reach feature map. This is done by (algorithmically) coordinating surveyed spotflow locations to our [watercourse topology](#elevation-drainage-and-topology) layer. For example, any 2 spotflow measurements connected by any number of stream reaches will convert the baseflow discharges measured into a linear computation rates of gain/loss per unit kilometre of stream reach.
 
@@ -192,12 +192,21 @@ Spotflow surveys added to the ORMGP database are automatically hosted on our bas
 <br>
 
 
+## **Clip 'n Ship**
+* ["Clip 'n Ship"](/interpolants/sources/clipnship.html) — A bulk spatial data export system, by geographic extent provided by a user and returned many of the products listed below clipped to within the specified extent.
+
+![https://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/clip.htm](https://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/GUID-6D3322A8-57EA-4D24-9FFE-2A9E7C6B29EC-web.png) \
+*Source: [ArcMAP Clip function](https://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/clip.htm).*
+
+<br>
+
+
 ## <span style="text-decoration: underline;">Sh</span>iny H<span style="text-decoration: underline;">ydrology</span>  *(sHydrology)*
 R-Shiny-Leaflet mapping with access to our monitoring dataset. [**Go to online map.**](https://owrc.shinyapps.io/shydrologymap/)
 
 <br>
 
-## Time-Series Analysis
+### Time-Series Analysis
 * **R-Shiny apps**
    * [Help](/HydrographExplorerHelp/)
    * [Manual](/shinyapps-manual/)
@@ -215,7 +224,9 @@ R-Shiny-Leaflet mapping with access to our monitoring dataset. [**Go to online m
 
 
 
-# **Open Data Products** 
+# **Open Data Products** *--the data we create*
+
+Below lists the data products and surfaces produced and offered by the ORMGP, many of which can be accessed via [our clip 'n ship tool](#clip-n-ship).
 
 ## Metadata
 
@@ -275,12 +286,6 @@ The source of the land use data is: *Ontario Geological Survey 2010. Surficial g
 <br>
 
 
-## **Clip 'n Ship**
-* ["Clip 'n Ship"](/interpolants/sources/clipnship.html) — A bulk spatial data export system, by geographic extent provided by a user and returned many of the products listed below clipped to within the specified extent.
-
-![https://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/clip.htm](https://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/GUID-6D3322A8-57EA-4D24-9FFE-2A9E7C6B29EC-web.png) \
-*Source: [ArcMAP Clip function](https://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/clip.htm).*
-
 
 ## Spatially interpolated, near real-time data
 
@@ -299,7 +304,7 @@ _Distributed time-series data, updated nightly_
 
 
 
-# **Numerical Modelling**
+# **Numerical Modelling** *--how we help make informed decisions*
 
 Numerical modelling at the ORMGP proceed in a number of ways: 
 
@@ -393,7 +398,7 @@ In addition to the Water Budget model, the ORMGP hosts a semi-distributed rainfa
 
 <br>
 
-# **Technologies**
+# **Technologies** *--the tools we use*
 
 A number of open-source and proprietary data analysis tools have been employed in our overall data management system. In contribution to the open-source community, much of our work has also left open [on our Github](https://github.com/OWRC).
 
