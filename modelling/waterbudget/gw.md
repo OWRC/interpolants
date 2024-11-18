@@ -54,7 +54,7 @@ $$
 	q_i = T_o\tan\beta\exp(-D_i/m),
 $$
 
-where $q_i$ is interpreted here as groundwater discharge per unit length of stream/iso-potential contour [m²/s] at grid cell $i$, and $\tan\beta$ is the surface slope angle in the downslope direction, assumed equivalent to the saturated zone's hydraulic gradient. 
+where $q_i$ is interpreted here as groundwater discharge per unit length of stream/iso-potential contour [m²/s] at grid cell $i$, and $\beta$ is the local surface slope angle in the downslope direction, assumed representative of the saturated zone's hydraulic gradient. 
 
 <!-- ![](../fig/histo-tanbeta.png) -->
 
@@ -97,7 +97,7 @@ Conditions where $D_i<0$ for any grid cell will have its excess water $(x_i=-D_i
 
 <!-- TOPMODEL may continue discharge groundwater to streams (see below). -->
 
-This exchange, in addition to groundwater discharge to streams, represents the distributed interaction the groundwater system has on the surface. With recharge $(g)$ at the model grid cell computed by the SMA when deficits are present $(D_i<0)$, net basin groundwater exchange $(G)$ is determined by:
+This exchange, in addition to groundwater discharge to streams, represents the interaction the groundwater system has on the surface, distributed in space. With recharge $(g)$ at the model grid cell computed by the SMA when deficits are present $(D_i<0)$, net basin groundwater exchange $(G)$ is determined by:
 
 $$
   G = \sum_i(g-x)_i.
@@ -115,11 +115,11 @@ $$
 	Q_b = \frac{AB}{\Delta t} = \sum_{i=1}^Ml_iq_i,
 $$
 
-where $B$ is the total groundwater discharge to streams occurring over a time step $\Delta t$ [m/s], $l_i=\Omega_i w$ is length of channel in grid cell $i$ [m], here assumed constant and equivalent to the uniform cell width $(w)$ times a sinuosity factor $(\Omega)$, and $M$ is the total number of model cells containing stream channels (termed "stream cells"). 
+where $B$ is the total groundwater discharge to streams occurring over a time step $\Delta t$ [m/s], $l_i\approx\Omega_i w$ is length of channel in grid cell $i$ [m], here assumed constant and equivalent to the uniform cell width $(w)$ times a sinuosity factor $(\Omega)$, and $M$ is the total number of model cells containing stream channels (termed "stream cells"). 
 
-> Stream cells were identified as cells having a contributing area greater than a set threshold of 1000 cells $\approx$ 2.5km², but could have easily been determined from watercourse mapping. 
+> Stream cells were identified as DEM cells having a contributing area greater than a set threshold of 1000 cells $\approx$ 2.5km², rather than being determined from watercourse mapping. 
 
-For every stream cell $i$, groundwater flux to stream cells $b$ [m] during timestep $\Delta t$ is given by:
+For every stream cell $i$, groundwater flux to the cell $b_i$ [m] over the timestep $\Delta t$ is given by:
 
 $$
   b_i=\frac{l_iq_i}{A_i}\Delta t=\frac{\Omega_i w q_i}{A_i}\Delta t=b_{0,i}\exp\left(\frac{-D_i}{m}\right) \Delta t, %\qquad i \in \text{streams}

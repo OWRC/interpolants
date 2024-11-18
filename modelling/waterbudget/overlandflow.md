@@ -12,9 +12,9 @@ The overland flow process is built for performance. While, many liberties are ta
  3. the role and seasonality of groundwater/surface water interaction at the model cell scale; which dictates,
  1. the role and seasonality antecedent moisture patterns and its impact on runoff generation.
 
-The overland flow model is dependent on [topography](/interpolants/interpolation/overland.html) both in terms of it's lateral direction of flow and rate if discharge. It is called a *__"cascade"__* model because runoff from a model cell is routed and become *__"runon"__* to a downslope cell. Routing following the $D8$ algorithm (O'Callaghan and Mark, 1984) takes runoff computed at a cell, and adds it as runon to the adjacent model cell having the steepest decent.
+The overland flow model is dependent on [topography](/interpolants/interpolation/overland.html) both in terms of it's lateral direction of flow and rate if discharge. It is called a *"cascade"* model because runoff from a model cell is routed and become *"runon"* to a downslope cell. Routing following the $D8$ algorithm (O'Callaghan and Mark, 1984) takes runoff computed at a cell, and adds it as runon to the adjacent model cell having the steepest decent.
 
-Hydrological correction has been applied to the digital elevation model (DEM) which means that the derived routing model will always drain to a model boundary, and land surface swales are always assumed to drain. (*This is matter of choice, and is not a limitation to the routing model; only users should be aware of the issues arising from swales in a cascade network. See cascade-towers discussion below.*)
+Hydrological correction has been applied to the digital elevation model (DEM) which means that the derived routing model will always drain to a model boundary, and land surface swales are always assumed to drain. (*This is matter of choice, and is not a limitation to the routing model; only users should be aware of the issues arising from swales in a cascade network. See [cascade-towers](#cascade-towers) discussion below.*)
 
 A property of the cascade is that when it involved a sequence of many linear reservoirs, the movement of water resembles a kinetic system, a concept known as the Nash model (Nash, 1957). Consequently, the model cannot have any back-water effects or inertial effects.
 
@@ -113,7 +113,7 @@ Urban areas that are assumed serviced also have $F_\text{casc}=1$ but also have 
 The $D8$ algorithm produces a dendritic network of overland flow paths whose rate of discharge depends on $F_\text{casc}$:
 - stream cells: $F_\text{casc}=1$
 - urban cells: $F_\text{casc}=1$ (assumes serviced areas)
-- all else $F_\text{casc}=1-\exp\left(\frac{\beta^2}{-\alpha}\right)$, $(\beta=\text{surface gradient})$
+- all else $F_\text{casc}=1-\exp\left(\frac{\tan^2\beta}{-\alpha}\right)$,  where $\tan\beta$ is the local surface slope.
 
 
 
