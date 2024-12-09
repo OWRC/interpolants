@@ -52,7 +52,7 @@ $$ q_i = T_o S_0\exp(-D_i/m), $$
 
 where $q_i$ is interpreted here as groundwater discharge per unit length of stream/iso-potential contour [m²/s] at grid cell $i$, and $S_0$ is the local surface slope [L/L] in the downslope direction, assumed representative of the saturated zone's hydraulic gradient. 
 
-*Note that in Beven and Kirkby's (1979), and many subsequent papers referring to TOPMODEL, the term $\tan\beta$ is often used, where $\beta$ is the local surface slope angle in the downslope direction. Here, we are replacing this term with the standard term $S$, to avoid confusion.*
+*Note that in Beven and Kirkby's (1979), and many subsequent papers referring to TOPMODEL, the term $\tan\beta$ is often used, where $\beta$ is the local surface slope angle in the downslope direction. Here, we are replacing this term with the term $S_0$, to avoid confusion.*
 
 <!-- ![](../fig/histo-tanbeta.png) -->
 
