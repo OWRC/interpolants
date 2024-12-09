@@ -126,7 +126,7 @@ Theory of the regionally-distributed runoff/recharge model can broken up into th
 
 <!-- $$ \zeta=\ln\frac{a}{T_o\tan\beta} $$ -->
 
-$$ \zeta=\ln\frac{a}{T_oS} $$
+$$ \zeta=\ln\frac{a}{T_oS_0} $$
 
 ### [Land surface soil moisture accounting](/interpolants/modelling/waterbudget/sma.html)
 
@@ -136,7 +136,7 @@ $$ \Delta S=P-E-R-G $$
 
 <!-- $$ F_\text{casc}=1-\exp\left(\frac{\tan^2\beta}{-\alpha}\right) $$ -->
 
-$$ F_\text{casc}=1-\exp\left(\frac{S^2}{-\alpha}\right) $$
+$$ F_\text{casc}=1-\exp\left(\frac{S_0^2}{-\alpha}\right) $$
 
 
 
@@ -486,7 +486,7 @@ As part of the model pre-processor, the structural data and parameterization spe
 - `structure.ads`: down-slope cell array index
 - `structure.nus`: number of (upslope) cells contributing runoff to current cell
 - `structure.upcnt`: count of upslope/contributing cells
-- `structure.dwngrad`: downslope slope $(S)$
+- `structure.dwngrad`: downslope slope $(S_0)$
 - `mapper.ilu`: land use index
 - `mapper.isg`: surficial geology index
 - `mapper.icov`: canopy cover type index
@@ -503,7 +503,7 @@ As part of the model pre-processor, the structural data and parameterization spe
 - `parameter.gamma`: groundwater reservoir average soil-topographic index $(\gamma)$
 - `parameter.zeta`: soil-topographic index $(\zeta)$
 - `parameter.uca`: unit contributing area $(a)$
-<!-- - `parameter.tanbeta`: surface slope $(S)$ -->
+<!-- - `parameter.tanbeta`: surface slope $(S_0)$ -->
 - `parameter.depsto`: depression storage
 
 
