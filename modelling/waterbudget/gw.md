@@ -42,19 +42,17 @@ $$
 
 Groundwater discharge estimates from each TOPMODEL reservoir instantaneously contributes lateral discharge to model grid cell $i$ according to Darcy's law:
 
-<!-- $$
-	q = T\tan\beta,
-$$ -->
+<!-- $$ q = T\tan\beta, $$ -->
 
-<!-- $$
-	q = T\tan\beta = T_o\tan\beta\cdot e^{\left(\frac{-D}{m}\right)},
-$$ -->
+<!-- $$ q = T\tan\beta = T_o\tan\beta\cdot e^{\left(\frac{-D}{m}\right)}, $$ -->
 
-$$
-	q_i = T_o\tan\beta\exp(-D_i/m),
-$$
+<!-- $$ q_i = T_o\tan\beta\exp(-D_i/m), $$ -->
 
-where $q_i$ is interpreted here as groundwater discharge per unit length of stream/iso-potential contour [m²/s] at grid cell $i$, and $\beta$ is the local surface slope angle in the downslope direction, assumed representative of the saturated zone's hydraulic gradient. 
+$$ q_i = T_o S\exp(-D_i/m), $$
+
+where $q_i$ is interpreted here as groundwater discharge per unit length of stream/iso-potential contour [m²/s] at grid cell $i$, and $S$ is the local surface slope [L/L] in the downslope direction, assumed representative of the saturated zone's hydraulic gradient. 
+
+*Note that in Beven and Kirkby's (1979), and many subsequent papers referring to TOPMODEL, the term $\tan\beta$ is often used, where $\beta$ is the local surface slope angle in the downslope direction. Here, we are replacing this term with the standard term $S$, to avoid confusion.*
 
 <!-- ![](../fig/histo-tanbeta.png) -->
 
@@ -72,7 +70,9 @@ $$ -->
 
 where $\overline{D}$ is the mean deficit of all cells. $\zeta_i$ is the soil-topographic index at cell $i$ defined by:
 
-$$\zeta=\ln\left(\frac{a}{T_o \tan \beta}\right)$$
+<!-- $$\zeta=\ln\left(\frac{a}{T_o \tan \beta}\right)$$ -->
+
+$$\zeta=\ln\left(\frac{a}{T_o S}\right)$$
 
 and $a_i$ is the unit contributing area defined here as the total contributing area to cell $i$ divided by the cell's width $w$.  The catchment average soil-topographic index:
 
@@ -129,7 +129,8 @@ where $b_0$ groundwater flux at stream cell $i$ when the watertable is above the
 
 $$
 %   b_0=\Omega\cdot \frac{T_o\tan\beta}{w}=\Omega\cdot \tan\beta \cdot K_\text{sat}
-	b_0=\Omega\cdot \tan\beta \cdot K_\text{sat}.
+%	b_0=\Omega\cdot \tan\beta \cdot K_\text{sat}.
+b_0=\Omega\cdot S \cdot K_\text{sat}.
 $$
 
 
@@ -212,10 +213,17 @@ $$ z_{wt_{i,t}} = \frac{1}{\phi}\left( m\cdot \delta D_i + \overline{D}_t\right)
 
 Groundwater discharge occurs in any saturated areas $(D_i<0)$ and is given by:
 
-$$
+<!-- $$
 \begin{align*}
 	b_i = \frac{wq_i}{A_i} = \frac{q_i}{w} &= \frac{T_o\tan\beta\exp(-D_i/m)}{w} \\\\
 	&= K_\text{sat}\tan\beta\exp(-D_i/m)
+\end{align*}
+$$ -->
+
+$$
+\begin{align*}
+	b_i = \frac{wq_i}{A_i} = \frac{q_i}{w} &= \frac{T_oS\exp(-D_i/m)}{w} \\\\
+	&= K_\text{sat}S\exp(-D_i/m)
 \end{align*}
 $$
 

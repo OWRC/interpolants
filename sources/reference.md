@@ -69,7 +69,7 @@ At 2 locations, where the sub-watershed makes up the entirety of a small island,
 # **Snowmelt and SWE**
 ## U.S. National Oceanic and Atmospheric Administration (NOAA) 
 #### SNODAS daily (*2010—present*)
-Snow water equivalent (SWE) and snowmelt must be derived from snowpack ablation models. These models come in a variety of forms and sophistication. The primary source of such information comes from the [Snow Data Assimilation System (SNODAS)](https://nsidc.org/data/g02158) system (NOHRSC, 2004), which offers ~1 km gridded 24-hour (UTC 06-06) snowmelt totals, published freely in near real-time. The advantage of SNODAS is that we can avoid the need to model snowmelt explicitly, and leverage existing resources. The data cover our jurisdiction from 2009—present.
+Snow water equivalent (SWE) and snowmelt must be derived from snowpack ablation models. These models come in a variety of forms and sophistication. The primary source of such information comes from the [Snow Data Assimilation System (SNODAS)](https://nsidc.org/data/g02158) system (NOHRSC, 2004), which offers ~1 km gridded 24-hour (UTC 06-06) snowmelt totals, published freely in near real-time. The advantage of SNODAS is that we can avoid the need to model snowmelt explicitly, and leverage existing resources. The data cover our jurisdiction from 2009-12-09—present.
 
 #### SNODAS 6-hourly (*2020—present*)
 SNODAS is also offered in 6-hourly states, however it is offered only for the past month, so some automated web-scraping would be required. Here, the [ORMGP-FEWS](/interpolants/fews/) system imports and crops the data nightly.

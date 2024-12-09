@@ -124,7 +124,9 @@ Theory of the regionally-distributed runoff/recharge model can broken up into th
 
 ### [Shallow groundwater](/interpolants/modelling/waterbudget/gw.html)
 
-$$ \zeta=\ln\frac{a}{T_o\tan\beta} $$
+<!-- $$ \zeta=\ln\frac{a}{T_o\tan\beta} $$ -->
+
+$$ \zeta=\ln\frac{a}{T_oS} $$
 
 ### [Land surface soil moisture accounting](/interpolants/modelling/waterbudget/sma.html)
 
@@ -132,7 +134,9 @@ $$ \Delta S=P-E-R-G $$
 
 ### [Overland flow routing](/interpolants/modelling/waterbudget/overlandflow.html)
 
-$$ F_\text{casc}=1-\exp\left(\frac{\tan^2\beta}{-\alpha}\right) $$
+<!-- $$ F_\text{casc}=1-\exp\left(\frac{\tan^2\beta}{-\alpha}\right) $$ -->
+
+$$ F_\text{casc}=1-\exp\left(\frac{S^2}{-\alpha}\right) $$
 
 
 
@@ -430,7 +434,7 @@ The basis of the model is that topography is paramount to the lateral movement o
 
 The following are determined using a topographical analysis:
 
-- $\tan\beta$: slope angle of a model grid cell [rad]
+- $S$: slope of a model grid cell [m/m]
 - $\delta D_i$: relative saturation ([see more](/interpolants/modelling/waterbudget/gw.html)) [m]
 - $F_\text{casc}$: cascade fractions are based on a pre-determined relationship with local gradients [-]
 
@@ -482,7 +486,7 @@ As part of the model pre-processor, the structural data and parameterization spe
 - `structure.ads`: down-slope cell array index
 - `structure.nus`: number of (upslope) cells contributing runoff to current cell
 - `structure.upcnt`: count of upslope/contributing cells
-- `structure.dwngrad`: downslope gradient $(\beta)$
+- `structure.dwngrad`: downslope slope $(S)$
 - `mapper.ilu`: land use index
 - `mapper.isg`: surficial geology index
 - `mapper.icov`: canopy cover type index
@@ -499,7 +503,7 @@ As part of the model pre-processor, the structural data and parameterization spe
 - `parameter.gamma`: groundwater reservoir average soil-topographic index $(\gamma)$
 - `parameter.zeta`: soil-topographic index $(\zeta)$
 - `parameter.uca`: unit contributing area $(a)$
-- `parameter.tanbeta`: surface slope angle $(\tan\beta)$
+<!-- - `parameter.tanbeta`: surface slope $(S)$ -->
 - `parameter.depsto`: depression storage
 
 

@@ -113,7 +113,8 @@ Urban areas that are assumed serviced also have $F_\text{casc}=1$ but also have 
 The $D8$ algorithm produces a dendritic network of overland flow paths whose rate of discharge depends on $F_\text{casc}$:
 - stream cells: $F_\text{casc}=1$
 - urban cells: $F_\text{casc}=1$ (assumes serviced areas)
-- all else $F_\text{casc}=1-\exp\left(\frac{\tan^2\beta}{-\alpha}\right)$,  where $\tan\beta$ is the local surface slope.
+<!-- - all else $F_\text{casc}=1-\exp\left(\frac{\tan^2\beta}{-\alpha}\right)$,  where $\tan\beta$ is the local surface slope. -->
+- all else $F_\text{casc}=1-\exp\left(\frac{S^2}{-\alpha}\right)$,  where $S$ is the local surface slope.
 
 
 

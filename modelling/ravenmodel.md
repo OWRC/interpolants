@@ -40,3 +40,9 @@ _Comparison of groundwater recharge simulated using Raven vs. an integrated grou
 # Contact
 
 Should more information on the model wish to be known or if a subset of the model wish to be used, please contact support@owrc.ca.
+
+
+# Other resources:
+
+- [**RavenView**](https://raven.uwaterloo.ca/RavenView/RavenView.html) is an online tool Raven users can use to view model results.
+- [**RavenR**](https://raven.uwaterloo.ca/RavenR.html) is an [__*R*__](https://www.r-project.org/) package that can be used to build Raven models and report results.
