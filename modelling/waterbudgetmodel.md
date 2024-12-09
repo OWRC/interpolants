@@ -434,7 +434,7 @@ The basis of the model is that topography is paramount to the lateral movement o
 
 The following are determined using a topographical analysis:
 
-- $S$: slope of a model grid cell [m/m]
+- $S_0$: slope of a model grid cell [m/m]
 - $\delta D_i$: relative saturation ([see more](/interpolants/modelling/waterbudget/gw.html)) [m]
 - $F_\text{casc}$: cascade fractions are based on a pre-determined relationship with local gradients [-]
 

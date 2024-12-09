@@ -5,12 +5,13 @@ recall
 
 <!-- $$ D_i = \overline{D} + m \left[\gamma - \ln\left(\frac{a}{T_o \tan \beta}\right)_i\right], $$ -->
 
-$$ D_i = \overline{D} + m \left[\gamma - \ln\left(\frac{a}{T_o S}\right)_i\right], $$
+$$ D_i = \overline{D} + m \left[\gamma - \ln\left(\frac{a}{T_o S_0}\right)_i\right], $$
 
 where
 
 <!-- $$ \gamma = \frac{1}{A}\sum_i A_i\ln\left(\frac{a}{T_o \tan \beta}\right)_i. $$ -->
-$$ \gamma = \frac{1}{A}\sum_i A_i\ln\left(\frac{a}{T_o S}\right)_i. $$
+
+$$ \gamma = \frac{1}{A}\sum_i A_i\ln\left(\frac{a}{T_o S_0}\right)_i. $$
 
 Taking the geometric mean of basin transmissivity:
 
@@ -22,13 +23,13 @@ the above can be rearranged to:
 
 <!-- $$ \frac{\overline{D}-D_i}{m} = \left(\ln\frac{a}{\tan\beta}-\ln T_o\right)_i - \left(\lambda - \ln T_e\right), $$ -->
 
-$$ \frac{\overline{D}-D_i}{m} = \left(\ln\frac{a}{S}-\ln T_o\right)_i - \left(\lambda - \ln T_e\right), $$
+$$ \frac{\overline{D}-D_i}{m} = \left(\ln\frac{a}{S_0}-\ln T_o\right)_i - \left(\lambda - \ln T_e\right), $$
 
 where
 
 <!-- $$ \lambda = \frac{1}{A}\sum_i A_i\ln\left(\frac{a}{\tan \beta}\right)_i. $$ -->
 
-$$ \lambda = \frac{1}{A}\sum_i A_i\ln\left(\frac{a}{S}\right)_i. $$
+$$ \lambda = \frac{1}{A}\sum_i A_i\ln\left(\frac{a}{S_0}\right)_i. $$
 
 <br>
 
@@ -44,7 +45,7 @@ $$ b_i = b_{0,i} \exp\left(\frac{-D_i}{m}\right) \Delta t $$
 
 <!-- $$ b_0 = \Omega K_\text{sat}\cdot\tan\beta $$ -->
 
-$$ b_0 = \Omega K_\text{sat}\cdot S $$
+$$ b_0 = \Omega K_\text{sat}\cdot S_0 $$
 
 recall
 
@@ -68,7 +69,7 @@ $$
 
 <!-- $$ \zeta=\ln\left(\frac{a}{T_o \tan \beta}\right) $$ -->
 
-$$ \zeta=\ln\left(\frac{a}{T_o S}\right) $$
+$$ \zeta=\ln\left(\frac{a}{T_o S_0}\right) $$
 
 re-arranging more:
 

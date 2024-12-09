@@ -49,10 +49,10 @@ $$
 where $S^+>0$ is water in the detention store in excess of the store's capacity. $F_\text{casc}$ is related to land surface gradient by:
 
 $$
-  F_\text{casc}=1-\exp\left(\frac{\beta^2}{-\alpha}\right),
+  F_\text{casc}=1-\exp\left(\frac{S_0^2}{-\alpha}\right),
 $$
 
-where $\beta$ is land surface gradient and $\alpha$ is a scaling parameter (note that the above equation is identical to the Gaussian variogram kernel with a unit range).
+where $S_0$ is land surface gradient and $\alpha$ is a scaling parameter (note that the above equation is identical to the Gaussian variogram kernel with a unit range).
 
 
 <!-- $$
@@ -114,7 +114,7 @@ The $D8$ algorithm produces a dendritic network of overland flow paths whose rat
 - stream cells: $F_\text{casc}=1$
 - urban cells: $F_\text{casc}=1$ (assumes serviced areas)
 <!-- - all else $F_\text{casc}=1-\exp\left(\frac{\tan^2\beta}{-\alpha}\right)$,  where $\tan\beta$ is the local surface slope. -->
-- all else $F_\text{casc}=1-\exp\left(\frac{S^2}{-\alpha}\right)$,  where $S$ is the local surface slope.
+- all else $F_\text{casc}=1-\exp\left(\frac{S_0^2}{-\alpha}\right)$,  where $S_0$ is the local surface slope.
 
 
 

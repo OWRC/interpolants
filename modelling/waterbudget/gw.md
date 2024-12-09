@@ -48,9 +48,9 @@ Groundwater discharge estimates from each TOPMODEL reservoir instantaneously con
 
 <!-- $$ q_i = T_o\tan\beta\exp(-D_i/m), $$ -->
 
-$$ q_i = T_o S\exp(-D_i/m), $$
+$$ q_i = T_o S_0\exp(-D_i/m), $$
 
-where $q_i$ is interpreted here as groundwater discharge per unit length of stream/iso-potential contour [m²/s] at grid cell $i$, and $S$ is the local surface slope [L/L] in the downslope direction, assumed representative of the saturated zone's hydraulic gradient. 
+where $q_i$ is interpreted here as groundwater discharge per unit length of stream/iso-potential contour [m²/s] at grid cell $i$, and $S_0$ is the local surface slope [L/L] in the downslope direction, assumed representative of the saturated zone's hydraulic gradient. 
 
 *Note that in Beven and Kirkby's (1979), and many subsequent papers referring to TOPMODEL, the term $\tan\beta$ is often used, where $\beta$ is the local surface slope angle in the downslope direction. Here, we are replacing this term with the standard term $S$, to avoid confusion.*
 
@@ -72,7 +72,7 @@ where $\overline{D}$ is the mean deficit of all cells. $\zeta_i$ is the soil-top
 
 <!-- $$\zeta=\ln\left(\frac{a}{T_o \tan \beta}\right)$$ -->
 
-$$\zeta=\ln\left(\frac{a}{T_o S}\right)$$
+$$\zeta=\ln\left(\frac{a}{T_o S_0}\right)$$
 
 and $a_i$ is the unit contributing area defined here as the total contributing area to cell $i$ divided by the cell's width $w$.  The catchment average soil-topographic index:
 
@@ -130,7 +130,7 @@ where $b_0$ groundwater flux at stream cell $i$ when the watertable is above the
 $$
 %   b_0=\Omega\cdot \frac{T_o\tan\beta}{w}=\Omega\cdot \tan\beta \cdot K_\text{sat}
 %	b_0=\Omega\cdot \tan\beta \cdot K_\text{sat}.
-b_0=\Omega\cdot S \cdot K_\text{sat}.
+b_0=\Omega\cdot S_0 \cdot K_\text{sat}.
 $$
 
 
@@ -222,8 +222,8 @@ $$ -->
 
 $$
 \begin{align*}
-	b_i = \frac{wq_i}{A_i} = \frac{q_i}{w} &= \frac{T_oS\exp(-D_i/m)}{w} \\\\
-	&= K_\text{sat}S\exp(-D_i/m)
+	b_i = \frac{wq_i}{A_i} = \frac{q_i}{w} &= \frac{T_oS_0\exp(-D_i/m)}{w} \\\\
+	&= K_\text{sat}S_0\exp(-D_i/m)
 \end{align*}
 $$
 
