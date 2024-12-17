@@ -3,7 +3,7 @@ title: Open Data Sources
 output: html_document
 ---
 
-> Below lists the data used in supporting the ORMGP and its wide range on data services. This page details open data accessed for **external** source only and does not include data produced by the ORMGP.
+> Below is a concise list of data used in supporting the ORMGP and its wide range on data services. This page details open data accessed for **external** source only and does not include data produced by the ORMGP.
 
 * TOC
 {:toc}
@@ -36,7 +36,7 @@ The ORMGP database maintains daily hydrometeorological data covering the 30,000k
 
 ### Current data sources
 
-Below is a *summary* list of the hydrometeorological data sources used in deriving many our data services. These sources are all free and open, but come in a variety of formats. For more details, please visit the [detailed source reference page](/interpolants/sources/reference.html).
+Below is a *summary* list of the hydrometeorological data sources used in deriving many our data services. These sources are all free and open, but come in a variety of formats. For more details, please visit the [**detailed source reference page**](/interpolants/sources/reference.html).
 
 
 * **WSC** - Water Survey of Canada 

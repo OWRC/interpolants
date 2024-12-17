@@ -17,14 +17,16 @@ output: html_document
 
 Meteorological data acquisition, management, aggregation and interpolation was largely accomplished using [Delft-FEWS](https://www.deltares.nl/en/software/flood-forecasting-system-delft-fews-2/) (ver.2019.02 build.39845), which is a flood forecasting system offered (at no cost, only license agreement) by [Deltares](https://www.deltares.nl/en/). <!-- Configuration files for the Delft-FEWS system build can be found here: BLAH. -->
 
-Forcings data to the model processed by [ORMGP-FEWS](/interpolants/fews/), specific to the water budgeting are detailed below. Full list of data managed by the ORMGP are detailed [here](/interpolants/modelling/waterbudget/data.html).
+Forcings data to the model processed by [ORMGP-FEWS](/interpolants/fews/), specific to the water budgeting are detailed below. A complete reference list of climate data managed by the ORMGP is detailed [here](/interpolants/sources/reference.html).
 
 
 ### Regional Deterministic Precipitation Analysis (CaPA-RDPA)
 [CaPA-RDPA](https://weather.gc.ca/grib/grib2_RDPA_ps10km_e.html) 10 - 15k m gridded precipitation fields, yielding 6-hourly precipitation totals, acquired from [CaSPAr](https://caspar-data.ca/);
 
 ### Snow Data Assimilation System (SNODAS)
-[SNODAS](https://nsidc.org/data/g02158) (NOHRSC, 2004) ~1 km gridded 24-hour (UTC 06-06) snowmelt totals
+[SNODAS](https://nsidc.org/data/g02158) (NOHRSC, 2004) ~1 km gridded 24-hour (UTC 06-06) snowmelt totals prior to 2020. Post-2020, the 6-hourly snowmelt product is ingested.
+
+> A recent study on the applicability of SNODAS showed that SNODAS greatly improves the performance of distributed models in Canada (Farhoodi et.al., 2024).
 
 
 ### Meteorological Service of Canada (MSC) hourly
@@ -50,7 +52,7 @@ Both scalar (i.e., point) data and gridded data are then [interpolated](/interpo
 <br>
 
 ### Precipitation and Snowmelt
-The 6-hourly CaPA-RDPA precipitation $(P)$ and the daily SNODAS snowmelt $(P_M)$ fields are both gridded rasters that are routinely scraped from open web resources and proportioned to the sub-watersheds using the Delft-FEWS transformation [Interpolation: SpatialAverage](https://publicwiki.deltares.nl/display/FEWSDOC/InterpolationSpatialAverage).
+The 6-hourly CaPA-RDPA precipitation $(P)$ and SNODAS snowmelt $(P_M)$ fields are both gridded rasters that are routinely scraped from open web resources and proportioned to the sub-watersheds using the Delft-FEWS transformation [Interpolation: SpatialAverage](https://publicwiki.deltares.nl/display/FEWSDOC/InterpolationSpatialAverage).
 
 ### Temperature, Pressure, Humidity and Wind Speed
 These hourly datasets offered by the MSC are scalar in that they are ground measurements taken at station locations. Spatial interpolation includes:
@@ -93,19 +95,15 @@ The [Accumulative Aggregation](https://publicwiki.deltares.nl/display/FEWSDOC/Ag
 
 
 ### Sub-daily from daily Snowmelt
-Archived 24-hour snowmelt accumulation is recovered from the [Snow Data Assimilation System (SNODAS) data product](https://nsidc.org/data/g02158), a (near-)real-time service that returns gridded data at a ~30 m resolution. The [NSIDC](https://nsidc.org/) also maintains continuous estimates covering our jurisdiction since September, 2010. As of 2021, 6-hourly SNODAS fields are scraped regularily. [Prior to September 2010, snowmelt estimation computed using a Cold-Content Function (CCF) model.](/interpolants/modelling/waterbudget/snowmeltCCF.html) 
+Archived 24-hour snowmelt accumulation is recovered from the [Snow Data Assimilation System (SNODAS) data product](https://nsidc.org/data/g02158), a (near-)real-time service that returns gridded data at a ~30 m resolution. The [NSIDC](https://nsidc.org/) also maintains continuous estimates covering our jurisdiction since September, 2010. As of 2021, 6-hourly SNODAS fields are scraped regularily. [Prior to September 2010, snowmelt estimation computed using a Cold-Content Function (CCF) model](/interpolants/modelling/waterbudget/snowmeltCCF.html).
 
-Snowmelt data is acquired at a daily timestep that represents the "*total of 24 per hour melt rates, 06:00 UTC-06:00 UTC ... integrated for the previous 24 hours, giving daily totals*" (NOHRSC, 2004), is disaggregated to a 6-hourly time step based on the following rules:
+Snowmelt data that are acquired/modelled at a daily timestep represents the "*total of 24 per hour melt rates, 06:00 UTC-06:00 UTC ... integrated for the previous 24 hours, giving daily totals*" (NOHRSC, 2004), is disaggregated to a 6-hourly time step based on the following rules:
 
 1. If any timesteps have temperatures greater than 10°C, snowmelt is equally divided amongst them;
 1. The first time step having 6-hour rainfall $\geq$ 5mm, all melt is assumed to occur during this event;
 1. If any timesteps within 06:00 - 06:00 UTC has rainfall greater than 1 mm, snowmelt is proportioned according to (and added with) rainfall;
 1. If any timesteps have temperatures greater than 0°C, snowmelt is equally divided amongst them; otherwise
 1. Snowmelt is equally divided among the 2 daytime time steps (12:00-00:00 UTC---07:00-19:00 EST).
-
-
-
-
 
 
 
@@ -199,6 +197,8 @@ Reference sub watersheds: [`owrc20-50a_SWS10-final.geojson`](https://www.dropbox
 # References
 
 Bailey W.G., Oke T.R., Rouse W.R., 1997. The Surface Climates of Canada. ed. W.G. Bailey, Timothy R. Oke, and Wayne R. Rouse. McGill-Queen's University Press.
+
+Farhoodi, S., Trudel, M., & Leconte, R., 2024. The effect of hydrological model structure on spring flow forecasts when assimilating a distributed snow product. Canadian Water Resources Journal / Revue Canadienne Des Ressources Hydriques, 1–20. https://doi.org/10.1080/07011784.2024.2434517
 
 Monteith, J.L., 1965. Evaporation and environment. Symposia of the Society for Experimental Biology 19: 205—224.
 
