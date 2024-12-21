@@ -55,7 +55,7 @@ The cascade factor $(F_\text{casc})$ is assumed related to land surface slope us
 
 ### Gaussian method
 
-Here, $F_\text{casc}$ is assumed to be related to slope given exponential relationship:
+Here, $F_\text{casc}$ is assumed to be related to slope given the exponential relationship:
 
 $$
   F_\text{casc}=1-\exp\left(\frac{S_0^2}{-\alpha}\right),
@@ -77,8 +77,34 @@ where $\beta$ is land surface gradient, $r$ is called the "range" (note that the
 
 *$F_\text{casc}$ is assigned as a function of slope. Above shows the affect of varying $\alpha$ within the range of gradients found local to the ORMGP (see histogram below).*
 
+<br>
+
+
+
+### Threshold method
+
+Here, $F_\text{casc}$ is assumed to be related to slope given the piecewise function:
+
+$$
+  F_\text{casc}=
+  \begin{cases}
+    0 \qquad & 0\leq \sqrt{S_0}\leq S_\text{thr}\\
+    (\sqrt{S_0}-S_\text{thr})\cdot\tan{\theta} & S_\text{thr}\lt \sqrt{S_0}\lt S_\text{thr} + \tan^{-1}{\theta}\\
+    1 & \text{otherwise} 
+  \end{cases}
+$$
+
+Where $S_\text{thr}$ is the *threshold* surface gradient when runoff occurs and $\theta$ is a scaling parameter $[0,\pi/2]$.
 
 <br>
+
+![](../fig/rdrr-fcasc-2.png)
+
+*$F_\text{casc}$ is assigned as a function of slope threshold $S_\text{thr}$ and scaling parameter $\theta$.*
+
+
+<br>
+
 
 ## Constraining $F_\text{casc}$
 
@@ -123,12 +149,12 @@ The $D8$ algorithm produces a dendritic network of overland flow paths whose rat
 - stream cells: $F_\text{casc}=1$
 - urban cells: $F_\text{casc}=1$ (assumes serviced areas)
 <!-- - all else $F_\text{casc}=1-\exp\left(\frac{\tan^2\beta}{-\alpha}\right)$,  where $\tan\beta$ is the local surface slope. -->
-- all else $F_\text{casc}=1-\exp\left(\frac{S_0^2}{-\alpha}\right)$,  where $S_0$ is the local surface slope.
+<!-- - all else $F_\text{casc}=1-\exp\left(\frac{S_0^2}{-\alpha}\right)$,  where $S_0$ is the local surface slope. -->
+- all else $F_\text{casc}\alpha\sqrt{S_0}$,  where $S_0$ is the local surface slope.
 
+<br>
 
-
-
-![](../fig/rdrr-beta-1.png)
+![](../fig/rdrr-fcasc-2-histo.png)
 
 *When comparing the distribution of land surface gradient to a calibrated cascade factor function it's apparent that lateral movement of overland flow is not a dominant process for most of the landscape.*
 
