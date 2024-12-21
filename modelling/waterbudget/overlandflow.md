@@ -102,6 +102,7 @@ Where $S_\text{thr}$ is the *threshold* surface gradient when runoff occurs and 
 
 *$F_\text{casc}$ is assigned as a function of slope threshold $S_\text{thr}$ and scaling parameter $\theta$.*
 
+The threshold runoff process is a real phenomenon in runoff hydrology. For instance, such behaviour was observed on a research hillslope (Tromp-van Meerveld and McDonnell, 2006). From a modelling standpoint, this behaviour is simple to implement.
 
 <br>
 
@@ -126,9 +127,10 @@ Meaning the model will always maintain some (small) runoff $(\hat{F}\_\text{casc
 ## Special conditions
 
 
-Special conditions are set for $F_\text{casc}$: All stream cells have $F_\text{casc}=1$, meaning that the the mobile water store remains 100% mobile.
+Special conditions are set for $F_\text{casc}$:
 
-Urban areas that are assumed serviced also have $F_\text{casc}=1$ but also have their runoff routed directly to the nearest stream cell; meaning that within a timestep, municipal servicing adequately drained the urban area to it's likely stormwater discharge point. This is termed a cascade *"Urban Diversion"*.
+1. All stream cells have $F_\text{casc}=F_\text{stream}$, such that a stream cell mobile water store guarantees mobility.
+1. Urban areas that are assumed serviced also have $F_\text{casc}=F_\text{urban}$ but also have their runoff routed directly to the nearest stream cell; meaning that within a time-step, municipal servicing adequately drained the urban area to it's likely stormwater discharge point. This is termed a cascade *"Urban Diversion"*.
 
 
 
@@ -146,11 +148,11 @@ Urban areas that are assumed serviced also have $F_\text{casc}=1$ but also have 
 ## In Summary
 
 The $D8$ algorithm produces a dendritic network of overland flow paths whose rate of discharge depends on $F_\text{casc}$:
-- stream cells: $F_\text{casc}=1$
-- urban cells: $F_\text{casc}=1$ (assumes serviced areas)
+- stream cells: $F_\text{casc}=F_\text{stream}$
+- urban cells: $F_\text{casc}=F_\text{urban}$ (assumes serviced areas)
 <!-- - all else $F_\text{casc}=1-\exp\left(\frac{\tan^2\beta}{-\alpha}\right)$,  where $\tan\beta$ is the local surface slope. -->
 <!-- - all else $F_\text{casc}=1-\exp\left(\frac{S_0^2}{-\alpha}\right)$,  where $S_0$ is the local surface slope. -->
-- all else $F_\text{casc}\alpha\sqrt{S_0}$,  where $S_0$ is the local surface slope.
+- all else $F_\text{casc}=f(\sqrt{S_0})$, where $S_0$ is the local surface slope.
 
 <br>
 
@@ -182,5 +184,7 @@ where $K_\text{sat}$ is saturated hydraulic conductivity of the surficial soils,
 Nash, J.E., 1957. The form of the instantaneous unit hydrograph. IAHS Publication 45(3), 114–121.
 
 O'Callaghan, J.F., and D.M. Mark, 1984. The extraction of drainage net-works from digital elevation data, Comput. Vision Graphics Image Process., 28, pp 328-344.
+
+Tromp-van Meerveld, H.J., J.J. McDonnell, 2006. Threshold relations in subsurface stormflow: 1. A 147-storm analysis of the Panola hillslope. Water Resources Research 42. doi:10.1029/2004WR003778
 
 USACE, 1994: Engineering and Design – Flood-Runoff Analysis, Department of the Army U.S. Army Corps ofEngineers Washington, DC 20314-1000

@@ -136,9 +136,9 @@ $$ \Delta S=P-E-R-G $$
 
 <!-- $$ F_\text{casc}=1-\exp\left(\frac{\tan^2\beta}{-\alpha}\right) $$ -->
 
-$$ F_\text{casc}=1-\exp\left(\frac{S_0^2}{-\alpha}\right) $$
+<!-- $$ F_\text{casc}=1-\exp\left(\frac{S_0^2}{-\alpha}\right) $$ -->
 
-
+$$ F_\text{casc}=f(\sqrt{S_0}) $$
 
 
 
