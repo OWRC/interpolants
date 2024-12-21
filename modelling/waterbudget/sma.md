@@ -71,6 +71,8 @@ It is important that the second term of the groundwater recharge equation remain
 
 <br>
 
-![](../fig/rdrr-sma-recharge.png)
+![](../fig/rdrr-sma-recharge-daily.png)
 
-*Visual interpretation of the above function. Characteristic length $L$ can clearly be used as a scaling factor, showing here how it varies from $L=1\text{ mm}$. $(\Delta t=21600 \text{ sec}.)$*
+*Visual interpretation of the above function. Characteristic length $L$ can clearly be used as a scaling factor, showing here how it varies from $L=1\text{ mm}$. $(\Delta t=86400 \text{ sec}.)$*
+
+<!-- *Visual interpretation of the above function. Characteristic length $L$ can clearly be used as a scaling factor, showing here how it varies from $L=1\text{ mm}$. $(\Delta t=21600 \text{ sec}.)$* -->

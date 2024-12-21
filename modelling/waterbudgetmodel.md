@@ -233,7 +233,7 @@ The sub-basins are *topologically connected* meaning that encoded among each bas
 
 <br>
 
-<iframe src="https://owrc.shinyapps.io/sws23/" width="100%" height="500" scrolling="no" allowfullscreen></iframe>
+<iframe src="https://owrc.shinyapps.io/sws23/" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 
 *Layout of the 4,238 sub-basins, each about 10 km² in size. Clicking on any basin will show the upstream basins in green (i.e., the catchment area) and the downstream basins in red. This map can also be [opened in separate tab.](https://owrc.shinyapps.io/sws23/)*
 

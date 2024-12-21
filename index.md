@@ -80,17 +80,21 @@ _Monitoring locations with >35 monitoring dates_
 ## Elevation, Drainage and Topology
 For groundwater elevations, [digital elevation data are used to correct depths](/database-manual/02_Understanding_ORMGP_Database/02_03_Primary_Data_Relationships/02_03_05_Water_Level.html) of measure to metres above sea level (masl). Therefore, vertical accuracy and datum are tied to the digital elevation (terrain) model (DEM) we used as reference. Currently, correction are taken to the 10m [2006 OMNR *Digital Elevation Model - Version 2.0.0 - Provincial Tiled Dataset*](https://raw.githubusercontent.com/OWRC/metadata/main/external/mnr2006dem/LIO%20MNR%20DEM%2010m%20Metadata.pdf).
 
-Overland flow drainage and their pathways (topology) are defined using the 30m [Provincial Digital Elevation Model - South (CGVD2013)](/metadata/external/pdem).
 
-* [Overland drainage pathways](/interpolants/interpolation/overland.html)
-   * [Sub-watersheds](/interpolants/interpolation/subwatershed.html):
+### Overland flow
+
+Overland flow drainage and their pathways (topology) are defined using the 30m [Provincial Digital Elevation Model - South (CGVD2013)](/metadata/external/pdem) followed by a [hydrological "correction"](/interpolants/interpolation/overland.html) to ensure continuous flow paths--needed for drainage area delineation for example.
+
+An additional derivative of the corrected DEM is the discretization of the ORMGP jurisdiction into a number of [sub-watersheds](/interpolants/interpolation/subwatershed.html):
 
 <iframe src="https://golang.oakridgeswater.ca/pages/sws-characterization.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 _Sub-watershed characterization and flow topology_
 
 <br>
 
-* [Watercourse topology and stream order](/interpolants/interpolation/watercourses.html)
+### Watercourse topology and stream order
+
+Watercourse mapping was retrieved from the [Ontario Hydro Network (OHN) - Watercourse](https://geohub.lio.gov.on.ca/datasets/a222f2996e7c454f9e8d028aa05995d3_26/about) layer that provides the location of watercourses in Ontario and is offered by the Ontario Ministry of Natural Resources and Forestry. From this, a [spatial algorithm](/interpolants/interpolation/watercourses.html) is performed in order to assign every stream segment the upstream and downstream segment(s) connected to it. This allows for tracking of flow-paths along stream channels, determining flow directions, stream order, etc.
 
 ![](fig/draintopo-georgetown-large.png)
 

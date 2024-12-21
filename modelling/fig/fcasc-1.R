@@ -19,4 +19,8 @@ ggplot(data.frame(x = 0),aes(x=x)) + # dummy dataframe
   annotate("text", label = "r=.75", x = .3, y = .69) +
   annotate("text", label = "r=1", x = .415, y = .66) +
   annotate("text", label = "r=1.5", x = .555, y = .57) +
-  xlim(0,1) + labs(title="Proportion of mobile water leaving cell (a=5)", x="gradient",y=expression(f["casc"]))
+  xlim(0,1) + labs(title="Proportion of mobile water leaving cell (a=5)", 
+                   x=expression("land surface slope ("*S[0]*")"),
+                   y=expression(f["casc"]))
+
+ggsave('modelling/fig/fcasc-1.png', width=8, height=4)

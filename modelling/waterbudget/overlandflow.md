@@ -46,13 +46,22 @@ $$
   k_\text{out}=F_\text{casc}S^+,
 $$
 
-where $S^+>0$ is water in the detention store in excess of the store's capacity. $F_\text{casc}$ is related to land surface gradient by:
+where $S^+>0$ is water in the detention store in excess of the store's capacity. 
+
+## Cascade factor
+
+The cascade factor $(F_\text{casc})$ is assumed related to land surface slope using some functional relationship. Two methods are trialled in the ORMGP area: the Gaussian method and the Threshold method
+
+
+### Gaussian method
+
+Here, $F_\text{casc}$ is assumed to be related to slope given exponential relationship:
 
 $$
   F_\text{casc}=1-\exp\left(\frac{S_0^2}{-\alpha}\right),
 $$
 
-where $S_0$ is land surface gradient and $\alpha$ is a scaling parameter (note that the above equation is identical to the Gaussian variogram kernel with a unit range).
+where $S_0$ is land surface gradient and $\alpha$ is a scaling parameter. (Note that the above equation is identical to the Gaussian variogram kernel with a unit range.)
 
 
 <!-- $$
@@ -64,14 +73,14 @@ where $\beta$ is land surface gradient, $r$ is called the "range" (note that the
 
 <br>
 
-![](../fig/rdrr-fcasc.png)
+![](../fig/rdrr-fcasc-1.png)
 
 *$F_\text{casc}$ is assigned as a function of slope. Above shows the affect of varying $\alpha$ within the range of gradients found local to the ORMGP (see histogram below).*
 
 
 <br>
 
-## Constrained $F_\text{casc}$
+## Constraining $F_\text{casc}$
 
 As applied to the model, $F_\text{casc}$ is further constrained to a subset of $[0,1]$ using the linear re-scaling:
 
@@ -83,7 +92,7 @@ $$
   0 < F_\text{cn} < F_\text{cx} <1 
 $$
 
-meaning the model will always maintain some (small) runoff $(\hat{F}_\text{casc}=F_\text{cn}\approx 0.001)$ and $F_\text{cx}$ can be applied as a **_runoff coefficient_**.
+Meaning the model will always maintain some (small) runoff $(\hat{F}\_\text{casc}=F\_\text{cn}\approx 0.001)$ and $F_\text{cx}$ can be though of as a **_runoff coefficient_**.
 
 
 
