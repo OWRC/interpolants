@@ -78,6 +78,9 @@ _Monitoring locations with >35 monitoring dates_
 
 
 ## Elevation, Drainage and Topology
+
+### Digital elevation
+
 For groundwater elevations, [digital elevation data are used to correct depths](/database-manual/02_Understanding_ORMGP_Database/02_03_Primary_Data_Relationships/02_03_05_Water_Level.html) of measure to metres above sea level (masl). Therefore, vertical accuracy and datum are tied to the digital elevation (terrain) model (DEM) we used as reference. Currently, correction are taken to the 10m [2006 OMNR *Digital Elevation Model - Version 2.0.0 - Provincial Tiled Dataset*](https://raw.githubusercontent.com/OWRC/metadata/main/external/mnr2006dem/LIO%20MNR%20DEM%2010m%20Metadata.pdf).
 
 
@@ -96,7 +99,7 @@ _Sub-watershed characterization and flow topology_
 
 Watercourse mapping was retrieved from the [Ontario Hydro Network (OHN) - Watercourse](https://geohub.lio.gov.on.ca/datasets/a222f2996e7c454f9e8d028aa05995d3_26/about) layer that provides the location of watercourses in Ontario and is offered by the Ontario Ministry of Natural Resources and Forestry. From this, a [spatial algorithm](/interpolants/interpolation/watercourses.html) is performed in order to assign every stream segment the upstream and downstream segment(s) connected to it. This allows for tracking of flow-paths along stream channels, determining flow directions, stream order, etc.
 
-![](fig/draintopo-georgetown-large.png)
+![](interpolation/fig/draintopo-georgetown-large.png)
 
 <br>
 
@@ -153,7 +156,7 @@ In the [Geology Theme Map](/webmapping/#geology-map), users can view either the 
 
 ## **Cross-section tool**
 
-The cross-section tool is designed to provide a cut, along a user-defined line, through the subsurface to display the regionally interpreted Quaternary [geological layers](#geological-layers) down to the bedrock. 
+The cross-section tool is designed to provide a cut, along a user-defined line, through the subsurface to display the regionally interpreted Quaternary [geological layers](/GeoLayers/) down to the bedrock. 
 
 ![](fig/xsection-tool.png)
 
@@ -181,7 +184,7 @@ The piper plot tool presents water chemistry in an informative way and can be so
 
 ## Spotflow Pickup
 
-Spotflow surveys added to the ORMGP database are automatically hosted on our baseflow pickup API that translates spotflow measurements into a losing/gaining stream reach feature map. This is done by (algorithmically) coordinating surveyed spotflow locations to our [watercourse topology](#elevation-drainage-and-topology) layer. For example, any 2 spotflow measurements connected by any number of stream reaches will convert the baseflow discharges measured into a linear computation rates of gain/loss per unit kilometre of stream reach.
+Spotflow surveys added to the ORMGP database are automatically hosted on our baseflow pickup API that translates spotflow measurements into a losing/gaining stream reach feature map. This is done by (algorithmically) coordinating surveyed spotflow locations to our [watercourse topology](/interpolation/watercourses.html) layer. For example, any 2 spotflow measurements connected by any number of stream reaches will convert the baseflow discharges measured into a linear computation rates of gain/loss per unit kilometre of stream reach.
 
 ![](fig/pickup.png)
 

@@ -9,7 +9,9 @@ output: html_document
 > Much of our analysis involves relating monitoring of stream flow, point data, which exists along linear watercourse features.
 
 Below describes an algorithm used to take a watercourse map and determine its topology, and use this topology to determine the connectivity and flow direction of linearly mapped watercourse features (i.e., defining downstream versus upstream directions).
- 
+
+![](fig/draintopo-georgetown-large.png)
+
 <br>
 
 **CONTENTS**

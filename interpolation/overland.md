@@ -1,5 +1,5 @@
 ---
-title: Overland Drainage Topology
+title: Overland Drainage Pathways
 author: Oak Ridges Moraine Groundwater Program
 output: html_document
 ---
@@ -7,8 +7,10 @@ output: html_document
 
 # Summary
 
-* A so-called "hydrologic correction" has been applied to a regional digital elevation model (DEM) of our study area
-* Hydrologic correction has enabled for the ability to automatically delineate contributing areas to *any* point in our jurisdiction.
+* A provincial-scale digital elevation model (DEM) has been cropped to our study area
+* Hydrologic correction has been applied to the DEM that:
+    * enables users the ability for users to automatically delineate contributing areas to *any* point in our jurisdiction;
+    * is used to discretize our jurisdiction into [4,238 10km2 sub-watersheds](/interpolants/interpolation/subwatershed.html).
 
 
 # Digital Elevation Model
