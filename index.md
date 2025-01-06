@@ -144,7 +144,9 @@ The ORMGP Geocortex Mapping hub has been divided into various [_**Theme Maps**_]
 
 ### Geological layer theme
 
-The [geological layers made available on the Geocortex portal](/interpolants/interpolation/geolayers.html) are found in two places: the Geology Theme Map and the [cross-section tool](#cross-section-tool). More information on [their interpreted depositional setting and of the procedures used to interpolate the surfaces](/GeoLayers/).
+The [geological layers made available on the Geocortex portal](/interpolants/interpolation/geolayers.html) are found in two places: the Geology Theme Map and the [cross-section tool](#cross-section-tool). 
+
+*More information* on [their interpreted depositional setting and of the procedures used to interpolate the surfaces](/GeoLayers/).
 
 In the [Geology Theme Map](/webmapping/#geology-map), users can view either the tops of or the isopach/thickness of any of the layers.  The Geological Picks made at each well, that are used to construct or interpolate each layer are also available.  A screen capture from the website showing the Top of Halton Till as well as the picks is shown below.
 
@@ -170,6 +172,8 @@ Included in the Cross-section tool (in addition to hydrostratigraphy):
 - [Watertable](#water-table-mapping)
 - Top surface DEM ([*see metadata*](/metadata/external/mnr2006dem/LIO%20MNR%20DEM%2010m%20Metadata.pdf))
 
+[*More details here*](/interpolants/tools/crosssection.html)
+
 <br>
 
 ## Piper plots
@@ -179,6 +183,10 @@ The piper plot tool presents water chemistry in an informative way and can be so
 ![](fig/piper.png)
 
 *Screenshot of our database-generated piper plot*
+
+<br>
+
+[*More details here*](/interpolants/tools/piper.html)
 
 <br>
 
@@ -195,6 +203,10 @@ Spotflow surveys added to the ORMGP database are automatically hosted on our bas
 ![](sources/spotflow/240913-spotflow-query.png)
 
 *Summary of spotflow measurements shared amongst our partners.*
+
+<br>
+
+[*More details here*](/interpolants/tools/spotflow.html)
 
 <br>
 
