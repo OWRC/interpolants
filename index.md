@@ -184,8 +184,6 @@ The piper plot tool presents water chemistry in an informative way and can be so
 
 *Screenshot of our database-generated piper plot*
 
-<br>
-
 [*More details here*](/interpolants/tools/piper.html)
 
 <br>
@@ -203,8 +201,6 @@ Spotflow surveys added to the ORMGP database are automatically hosted on our bas
 ![](sources/spotflow/240913-spotflow-query.png)
 
 *Summary of spotflow measurements shared amongst our partners.*
-
-<br>
 
 [*More details here*](/interpolants/tools/spotflow.html)
 

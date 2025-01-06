@@ -9,3 +9,9 @@ Spotflow surveys added to the ORMGP database are automatically hosted on our bas
 ![](../fig/pickup.png)
 
 *Screenshot of our [(beta) spotflow pickup tool](https://owrc.shinyapps.io/pickup/). Blue features represent baseflow gains, while red are losses computed between spotflow measurements (circles). Hovering over reaches/point will reveal their values.*
+
+<br>
+
+![](../sources/spotflow/240913-spotflow-query.png)
+
+*Summary of spotflow measurements shared amongst our partners.*
