@@ -29,7 +29,8 @@ ggplot() +
   geom_segment(aes(x=a,xend=a+1/tan(s),y=0,yend=mult), linewidth=2) +
   geom_segment(aes(x=a+1/tan(s),xend=1,y=,mult,yend=mult), linewidth=2) +
   geom_point(data=data.frame(x=c(0,a,a+1/tan(s)),y=c(0,0,mult)),aes(x,y),size=3) +
-  annotate("text", label = expression(f["casc-min"]), x = .2, y = .25*mult,size=6) +
+  # annotate("text", label = expression(f["casc-min"]), x = a, y = .25*mult,size=6) +
+  annotate("text", label = expression(S["thr"]), x = a, y = .25*mult,size=6) +
   annotate("text", label = expression(theta), x = .285, y = .125*mult,size=6) +
   coord_cartesian(x=c(NA,0.7),y=c(0,mult)) +
   # xlim(c(0,.8)) +

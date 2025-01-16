@@ -52,12 +52,11 @@ The hydrologically-corrected digital elevation model (HDEM) is further process t
 
 # Product
 
-The ORMGP jurisdiction discretized into ~3000 ~10km² sub-watersheds. Below is an interactive map whereby *Clicking* at any sub-watershed will return a number of properties. In the figure below, sub-watersheds are colour-coded according to their degree of impervious cover, for instance.
+The greater ORMGP jurisdiction discretized into ~4000 ~10km² sub-watersheds. Below is an interactive map whereby *Clicking* at any sub-watershed will return a number of properties. In the figure below, sub-watersheds are colour-coded according to their degree of impervious cover, for instance.
 
+<iframe src="https://golang.oakridgeswater.ca/pages/sws-characterization.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 
-<!-- <iframe src="https://golang.oakridgeswater.ca/pages/sws-characterization.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe> -->
-
-<!-- _Sub-watershed characterization and flow topology_ -->
+_Sub-watershed characterization and flow topology_
 
 <br>
 
@@ -65,4 +64,4 @@ The ORMGP jurisdiction discretized into ~3000 ~10km² sub-watersheds. Below is a
 
 # Source Data
 
-Sub watershed shapefile: [`owrc20-50a_SWS10-final.geojson`](https://www.dropbox.com/s/ro16gg6zi4kqbc0/owrc20-50a_SWS10-final.geojson?dl=1)
+ORMGP Sub watershed shapefile: [`PDEM-South-D2013-OWRC23-60-HC-sws10-simpl.geojson`](https://www.dropbox.com/scl/fi/s6u7nhjp7wkj2xpd78hqp/PDEM-South-D2013-OWRC23-60-HC-sws10-simpl.geojson?rlkey=t9xqsbdb3o311nq8w8ksc8k0h&st=5pz6o1l4&dl=1)

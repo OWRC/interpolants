@@ -390,12 +390,11 @@ The time step of the model has been set to 6-hour steps on 00:00 UTC, yielding t
 ### Model Domain
 The model code employs an object called the "Model Domain", where all necessary model data are digitized and self-contained, including:
 
-
-1. `Structure` holds all the geometrical and topological constraints to grid cells, including the physical dimensions of cells and knowledge of where runoff is to be routed.
-1. `Mapper` contains a *cell-to-type* cross-reference map to distribute model parameters, such as percolation rates, soil zone depth, depression storage, etc. The Mapper *projects* parameter selection onto the grid space domain based on their local (an often unique) land type.
+1. `Structure` holds all the geometrical and topological information at every grid cell, including the physical dimensions of cells (e.g., cell slope) and knowledge of where runoff is to be routed, upslope contributing area.
+1. `Mapper` contains a *cell-to-type* cross-reference mapping to distribute model parameters, such as percolation rates, soil zone depth, depression storage, etc. The Mapper *projects* parameter selection onto the grid space domain based on their local (an often unique) land use type and surface material.
+1. `Subwatershed` references cells grouped as sub-watersheds and provides the model with optimal order of downstream processing.
+1. `Parameters`: Parameter collections for a set of [land-surface](/interpolants/interpolation/landuse.html), [surficial geology](/interpolants/interpolation/surfgeo.html) and groundwater reservoir types that are mapped using the `Mapper` object.
 1. `Forcings`: Input (variable) data, generally meteorological forcings: $Y_a$ and $E_a$.
-1. `Subwatershed` provides the model with optimal order of processing, ensuring a down stream process.
-1. `Parameters`: Parameter collections for a set of [land-surface](/interpolants/interpolation/landuse.html), [surficial geology](/interpolants/interpolation/surfgeo.html) and groundwater reservoir types.
 
 
 
