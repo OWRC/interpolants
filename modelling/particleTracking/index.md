@@ -6,6 +6,13 @@ output: html_document
 
 # Introduction
 
+
+<iframe src="https://owrc.shinyapps.io/ptrack/" width="100%" height="500" scrolling="no" allowfullscreen></iframe>
+
+[*click here to view in separate tab*](https://owrc.shinyapps.io/ptrack/)
+
+<br>
+
 The [ORMGP](https://www.oakridgeswater.ca/) particle tracking web-tool returns both forward and backward sub-surface particle tracks from a user-selected location.  The tool is built upon existing numerical groundwater models, which have organized, synthesized and interpreted a wealth of hydrogeological information (e.g., boreholes, geological mapping, previous studies, etc.) to gain an understanding of the groundwater flow system. 
 
 The results from running these models to steady state are collected. From the model results, a virtual water particle can be released in the model domain and its path can be traced.
@@ -165,14 +172,6 @@ There are three ways data are compressed:
     - quality thresholds (FE meshes only, aspect ratios, Delaunay criterion, etc.)
 
 
-
-<br>
-
-# System test
-
-<iframe src="https://owrc.shinyapps.io/ptrack/" width="100%" height="500" scrolling="no" allowfullscreen></iframe>
-
-[*click here to view in separate tab*](https://owrc.shinyapps.io/ptrack/)
 
 
 <br>
