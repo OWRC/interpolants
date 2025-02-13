@@ -4,14 +4,13 @@ author: Oak Ridges Moraine Groundwater Program
 output: html_document
 ---
 
-# Introduction
-
-
 <iframe src="https://owrc.shinyapps.io/ptrack/" width="100%" height="500" scrolling="no" allowfullscreen></iframe>
 
 [*click here to view in separate tab*](https://owrc.shinyapps.io/ptrack/)
 
 <br>
+
+# Introduction
 
 The [ORMGP](https://www.oakridgeswater.ca/) particle tracking web-tool returns both forward and backward sub-surface particle tracks from a user-selected location.  The tool is built upon existing numerical groundwater models, which have organized, synthesized and interpreted a wealth of hydrogeological information (e.g., boreholes, geological mapping, previous studies, etc.) to gain an understanding of the groundwater flow system. 
 
