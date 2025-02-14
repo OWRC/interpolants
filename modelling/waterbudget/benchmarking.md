@@ -316,14 +316,14 @@ Above we see that in general, the greater the model complexity, the lower the ra
 The regionally-distributed runoff-recharge model (RDRR) fits somewhere between the HRU and distributed hydrological model. But clearly, optimizations can be further made by adjusting the scale (e.g., grid cell size) of the model. The plot above can be normalized by the number of computational elements (i.e., cells, nodes, HRUs, etc.) involved in the models computation:
 
 $$
-    \frac{n_e \cdot n_t \cdot \Delta t}{t_w}
+    \frac{n_e \cdot n_t}{t_w}
 $$
 
-where $n_e$ is the number of computational elements.
+where $n_e$ is the number of computational elements (i.e., cells, HRUs, finite elements, etc.).
 
 <img src="../fig/benchmark-res-computation-rate3.png" width="75%">
 
-*Ratio of normalized simulation time to wall time. Inset shows plot without RDRR.*
+*Ratio of normalized simulation time to wall time. Inset shows plot without RDRR. (On an Intel Core-i5, our model achieves 37M cell-timesteps per second!!)*
 
 <br>
 
