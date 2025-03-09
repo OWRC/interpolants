@@ -71,8 +71,8 @@ $$
     > `20240701-exportScalarDaily.nc`  $R_f, S_f, T_n, T_x, u_g, u_{g\alpha}$
 
 4. Interpolate to 10 km sub-watersheds, using a python script executed from config file `pyMSCdailiesToBasin.xml` that executes: `ncScalarToDailyBasinNetCDF.py`.
-    - Rainfall $(R_f)$ and snowfall $(S_f)$ are interpolated to thier nearest neighbour.
-    - Air temperatures $(T_\text{min}\text{ and } T_\text{max})$ and wind speed of gusts $(u_g)$ are interpolated using a [radial basis function (RBF)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.Rbf.html) (with a thin-plate-spline kernel and a smoothing factor $\lambda=1/1000$ to prevent singular matrices).
+    - Rainfall $(R_f)$ and snowfall $(S_f)$ are interpolated to their nearest neighbour.
+    - Air temperatures $(T_\text{min}\text{ and } T_\text{max})$ and wind speed of gusts $(u_g)$ are interpolated using a [radial basis function (RBF)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.Rbf.html) (with a thin-plate-spline kernel and a smoothing factor $\lambda=1/1000$ to prevent singular matrices). This only occurs when there is more than 3 point measurements to interpolate from, otherwise nearest neighbour is used.
     - Direction of wind gusts $(u_{g\alpha})$ are split into their x-y components, each interpolated separately using a thin-plate-spline RBF before returned to an angle.
     - Air pressure $(p_a)$ and relative humidity $(r)$ are aggregated from hourly interpolations above.
 

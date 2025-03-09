@@ -240,7 +240,7 @@ R-Shiny-Leaflet mapping with access to our monitoring dataset. [**Go to online m
 
 
 
-# **Open Data Products** *--the data we create*
+# **ORGMP Open Data Products** *--the data we create*
 
 Below lists the data products and surfaces produced and offered by the ORMGP, many of which can be accessed via [our clip 'n ship tool](#clip-n-ship).
 
@@ -303,7 +303,9 @@ The source of the land use data is: *Ontario Geological Survey 2010. Surficial g
 
 
 
-## Spatially interpolated, near real-time data
+## **Climate Data Service (CDS)** 
+
+> Spatially interpolated, near real-time data
 
 * [**Near Real-time Climate Data Service**](/interpolants/sources/climate-data-service.html) for use in our water budget product which includes the computation of [potential evaporation](/interpolants/interpolation/calc/panET/PanEvaporation.html), [snowmelt](/interpolants/modelling/waterbudget/data.html#sub-daily-from-daily-snowmelt), etc. from available data.
 * [Spatial and Temporal interpolation](/interpolants/fews/climate-interpolation.html) of point/scalar data.
