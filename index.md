@@ -50,6 +50,7 @@ The [Delft-FEWS](https://www.deltares.nl/en/software-and-data/products/delft-few
 More information:
 1. About the [Delft-FEWS](https://oss.deltares.nl/web/delft-fews/about-delft-fews) product by Deltares.
 1. More information on ORMGP [*web data scraping*](/interpolants/sources/webscraping.html) and the [sources scraped on a nightly basis](/interpolants/sources/index.html).
+1. Find our platform hosted on the Deltares' [World Map of Delft-FEWS Applications](https://fewsmap.deltares.nl/topology/node/all_systems/map). 
 
 <br>
 
