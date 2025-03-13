@@ -378,7 +378,7 @@ The ORMGP particle tracking tool shows both the forward or backward particle tra
 
 ## Regional **Water Budget**, Long-term and Continuous
 * Fine-resolution (3,600 m²) [**Water Budgeting** using a  regionally-distributed runoff-recharge model](/interpolants/modelling/waterbudgetmodel.html) for Long-term (>20 years) continuos 6-hourly hydrological modelling of the ORMGP jurisdiction.
-* Data sources for the water budget model are discussed [here](/interpolants/modelling/waterbudget/data.html).
+* Climate forcing data sources used to force the water budget model are discussed [here](/interpolants/modelling/waterbudget/data.html).
 
 <iframe src="https://golang.oakridgeswater.ca/pages/Raven23WB-compare.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
 
