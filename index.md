@@ -80,22 +80,25 @@ _Monitoring locations with >35 monitoring dates_
 
 ## Elevation, Drainage and Topology
 
-### Digital elevation
+### Reference elevation
 
-For groundwater elevations, [digital elevation data are used to correct depths](/database-manual/02_Understanding_ORMGP_Database/02_03_Primary_Data_Relationships/02_03_05_Water_Level.html) of measure to metres above sea level (masl). Therefore, vertical accuracy and datum are tied to the digital elevation (terrain) model (DEM) we used as reference. Currently, correction are taken to the 10m [2006 OMNR *Digital Elevation Model - Version 2.0.0 - Provincial Tiled Dataset*](https://raw.githubusercontent.com/OWRC/metadata/main/external/mnr2006dem/LIO%20MNR%20DEM%2010m%20Metadata.pdf).
+For groundwater elevations, [digital elevation data are used to correct depths of measure to metres above sea level (masl)](/database-manual/02_Understanding_ORMGP_Database/02_03_Primary_Data_Relationships/02_03_05_Water_Level.html). Therefore, vertical accuracy and datum are tied to the digital elevation (terrain) model (DEM) we used as reference. Currently, reference elevations are taken from the 10m [2006 OMNR *Digital Elevation Model - Version 2.0.0 - Provincial Tiled Dataset*](https://raw.githubusercontent.com/OWRC/metadata/main/external/mnr2006dem/LIO%20MNR%20DEM%2010m%20Metadata.pdf).
 
 
 ### Overland flow
 
-Overland flow drainage and their pathways (topology) are defined using the 30m [Provincial Digital Elevation Model - South (CGVD2013)](/metadata/external/pdem) followed by a [hydrological "correction"](/interpolants/interpolation/overland.html) to ensure continuous flow paths--needed for drainage area delineation for example.
+Overland flow drainage and their pathways are defined using the 30m [Provincial Digital Elevation Model - South (CGVD2013)](/metadata/external/pdem).
 
-An additional derivative of the corrected DEM is the discretization of the ORMGP jurisdiction into a number of [sub-watersheds](/interpolants/interpolation/subwatershed.html):
+The DEM was then processed through a [hydrological correction algorithm](/interpolants/interpolation/overland.html) to ensure continuous overland flow paths.  Flow paths (i.e., overland flow topology) are needed for a variety of applications such as drainage area delineation.
 
-<iframe src="https://golang.oakridgeswater.ca/pages/sws-characterization.html" width="100%" height="400" scrolling="no" allowfullscreen></iframe>
+An additional derivative of the corrected DEM is the discretization of the ORMGP jurisdiction into a number of [sub-watersheds](/interpolants/interpolation/subwatershed.html) from which a number of characteristics across the ORMGP jurisdiction can be aggregated:
+
+<iframe src="https://golang.oakridgeswater.ca/pages/sws-characterization.html" width="100%" height="500" scrolling="no" allowfullscreen></iframe>
 
 _Sub-watershed characterization and flow topology_
 
 <br>
+
 
 ### Watercourse topology and stream order
 
