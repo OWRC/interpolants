@@ -46,6 +46,8 @@ With the current version (v.2025), 65 flow corrections have been imposed and are
 
 *The ORMGP regional 60x60m² Hydrologically corrected Digital Elevation Model (HDEM, v.2025). Elevations range from 75 masl along Lake Ontario (dark blues) to >500 masl above the escarpment and up in the algonquin highlands (whites).*
 
+<br>
+
 The benefit of computing the flow direction topology associated with the HDEM is that any user a could place a "virtual particle" on the landscape and follow its drainage path as it traverses toward its terminus; in this case, the Great Lakes.
 
 More importantly however, given an HDEM, one can also efficiently compute the contributing area to any selected point on the landscape. (A working version of this system [is currently hosted on our public mapping page](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPP).) 

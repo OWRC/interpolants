@@ -25,7 +25,8 @@
 *-script.txt
 _steps.txt
 
-overland-drainage-areas/
+getCatchments.py
+
 input/
 old/
 doc/
