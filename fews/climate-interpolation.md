@@ -6,7 +6,7 @@ output: html_document
 
 Below is an itemized description of the interpolation process used with ORMGP's [Near Real-time Climate Data Service](https://owrc.github.io/interpolants/sources/climate-data-service.html). This service is fullly supported by open data access from a variety of government sources. A complete reference to the data used is provided [here](https://owrc.github.io/interpolants/sources/reference.html).
 
-> version 2406
+> version 2502
 
 * TOC
 {:toc}
@@ -132,7 +132,7 @@ An optimization routine is employed to determine $ T_\text{crit} $ such that tot
 
 ![](fig/2024-Tcrit.png)
 
-*Time series of computed critical temperatures based on snowmelt volumes.*
+*Time series of computed critical temperatures based on snowmelt volumes. Points are the median values, bars capture the 90th percentile range.*
 
 <br>
 
@@ -150,6 +150,7 @@ It's clear that for the most part, the 2 approaches are in agreement to within Â
 
 ![](fig/h6-station-vs-rdpa.png)
 
+<br>
 
 # **Data Downloads**
 Below are the basin-interpolated datasets build from original sources (v.2406):
