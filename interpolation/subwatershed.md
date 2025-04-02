@@ -73,6 +73,13 @@ _Sub-watershed characterization and flow topology_
 
 <br>
 
+<iframe src="https://golang.oakridgeswater.ca/pages/swsmet.html" width="100%" height="500" scrolling="no" allowfullscreen></iframe>
+
+_Sub-watershed average climate (2002-2024)._
+
+
+<br>
+
 <br>
 
 # Source Data
