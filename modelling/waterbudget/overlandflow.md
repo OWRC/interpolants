@@ -64,9 +64,7 @@ $$
 where $S_0$ is land surface gradient and $\alpha$ is a scaling parameter. (Note that the above equation is identical to the Gaussian variogram kernel with a unit range.)
 
 
-<!-- $$
-  F_\text{casc}=1-\exp\left(-a\frac{\beta^2}{r^2}\right),
-$$
+<!-- $$ F_\text{casc}=1-\exp\left(-a\frac{\beta^2}{r^2}\right), $$
 
 where $\beta$ is land surface gradient, $r$ is called the "range" (note that the above equation is identical to the Gaussian variogram model), and $a$ is a scaling factor applied to the range such that it's value approaches unity at $r$. ; Below are examples with $a\approx 5$: -->
 
@@ -166,15 +164,11 @@ The $D8$ algorithm produces a dendritic network of overland flow paths whose rat
 ### Cascade "Towers"
 The cascade routing scheme built this way created issues in flat regions and land surface swales (low points on the land where runon os received from all direction). This can lead to unrealistic water depths $(\gg100\text{m})$.
 
-One way to avoid this is to use a hydrologically-correct DEM, as done here. But this does not solve the tower problem as it can occur in flat regions in particular where a convergence of cascade flowpaths. In the model, excess storage is infiltrated assuming a falling head through a unit length back into the groundwater system:
+One way to avoid this is to use a hydrologically-correct DEM, as done here. But this does not solve the tower problem as it can occur in flat regions in particular where a convergence of cascade flowpaths. In the model, excess storage $(S^+=S-S_\text{max}>0)$ is infiltrated assuming a falling head through a unit length back into the groundwater system:
 
-<!-- $$
-  g=S_k^+\left[1-\exp(-K_\text{sat}\Delta t)\right],
-$$ -->
+<!-- $$ g=S_k^+\left[1-\exp(-K_\text{sat}\Delta t)\right], $$ -->
 
-$$
-  g=S^+\left[1-\exp\left(\frac{-K_\text{sat}}{L}\Delta t\right)\right].
-$$
+$$ g=S^+\left[1-\exp\left(\frac{-K_\text{sat}}{L}\Delta t\right)\right]. $$
 
 where $K_\text{sat}$ is saturated hydraulic conductivity of the surficial soils, and $\Delta t$ model timestep (s). This appears to resolve towers here. *(see also [groundwater recharge](/interpolants/modelling/waterbudget/sma.html#groundwater-recharge).)*
 
