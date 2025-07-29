@@ -11,6 +11,8 @@ output: html_document
 
 ORMGP partners and paid subscribers can download the spatial layers we produce and some data from within [our partner web mapping platform](https://maps.oakridgeswater.ca/Html5Viewer/index.html?viewer=ORMGPC).  To do this, users specify a small, rectangular area, inside which a 3D block of the geologic data are provided. The specified area must not exceed 18 square kilometres (the user will get a warning if the specified rectangular area is exceeded). Note: If users require a larger area, please [contact the ORMGP](mailto:support@owrc.ca).
 
+[_**Watch video tutorial here**_](https://www.youtube.com/watch?v=KsSHHViP85k)
+
 The first step in this process is the **_clip_** function. This is where the user supplies the areal extent of their data request. The return is a set of  spatial layers and tabular data available within the specified areal extent.
 
 ![https://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/clip.htm](https://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/GUID-6D3322A8-57EA-4D24-9FFE-2A9E7C6B29EC-web.png) \
