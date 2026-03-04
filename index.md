@@ -6,7 +6,7 @@ output: html_document
 
 ![](fig/ORMGP_logo.png)
 
-![](fig/ORMGP_3D.png)
+![](fig/ORMGP_3D-ORM.png)
 
 <br>
 
