@@ -9,8 +9,8 @@ output: html_document
 
 * A provincial-scale digital elevation model (DEM) has been cropped to our study area
 * Hydrologic correction has been applied to the DEM that:
+    * is used to discretize our jurisdiction into [4,231 10km² sub-watersheds](/interpolants/interpolation/subwatershed.html).
     * enables users the ability for users to automatically delineate contributing areas to *any* point in our jurisdiction;
-    * is used to discretize our jurisdiction into [4,231 10km2 sub-watersheds](/interpolants/interpolation/subwatershed.html).
 
 
 # Digital Elevation Model
@@ -25,7 +25,7 @@ PDEM elevation data are down-scaled by taking the average of known elevations oc
 An automated topological topological analysis is performed on the DEM using the following methodologies:
 
 <!-- 1. Cell slopes and aspects are computed using a 9-point planar regression from the cell's elevation plus its 8 neighbouring grid elevations. -->
-1. DEM cell slopes and aspects are computed using the Tarboton (1997) method that breaks the gridded elevation surface into eight planar triangular facets at every cell. The steepest downward facet from the a cell is use to determine slope and aspect.
+1. DEM cell slopes and aspects are computed using the Tarboton (1997) method that breaks the gridded elevation surface into eight planar triangular facets at every cell. The steepest downward facet from a cell is used to determine slope and aspect.
 2. Automated depression filling (Wang and Liu, 2006) was applied to the DEM. This filtering of elevation data ensures that every grid cell has at least 1 neighbouring cell with an assigned elevation at or below the current cell's elevation. This ensures that "drainage" is never impeded.
 3. While the above code works for most of the area, it will leave flat (zero-gradient) regions especially around lakes and wetlands. A fix by Garbrecht and Martz (1997) was added to ensure a consistent flow direction with negligible change to the corrected DEM.
 4. Flow paths are then computed based on the "D8" algorithm (O'Callaghan and Mark, 1984).
