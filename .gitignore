@@ -53,7 +53,10 @@ rosm.cache
 *.gdef
 *.indx
 *.vrt
+*.stx
 *.gsr2
+*.pdf
+Thumbs.db
 
 # temporary (files here may be too big)
 grids/
