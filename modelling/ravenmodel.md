@@ -81,7 +81,7 @@ Historical precipitation $(P)$ and minimum and maximum air temperature $(T_a)$ a
 `PET_OUDIN` follows Oudin et al. (2005), in millimetres per day  [mm/day], where:
 
 $$
-   E_p = \frac{R_e}{\lambda\rho}\frac{T_a+5}{100}\cdot\texttt{PET\_CORRECTION}
+   E_p = \frac{R_e}{\lambda\rho}\frac{T_a+5}{100}\cdot\texttt{PET_CORRECTION}
 $$
 
 and $R_e$ is the extraterrestrial radiation $(\text{MJ}\cdot \text{m}^{-2} \text{day}^{-1})$ and $T_a$ is mean daily air temperature $(\degree \text{C})$. Constants properties $\lambda$ and $\rho$ are the latent heat flux $(\text{MJ}\cdot \text{kg}^{-1})$ and the density of water $(\text{kg}\cdot \text{m}^3)$, respectively. 
@@ -97,7 +97,7 @@ Canopy interception of precipitation was simulated using Raven's LAI-based inter
 
 The the potential rate of interception [mm/day] is related to the monthly $\text{LAI}$ value:
 
-$$ R_\text{int}=\min\left(\texttt{RAIN\_ICEPT\_FACT}\cdot\text{LAI},1.0 \right)\cdot P $$
+$$ R_\text{int}=\min\left(\texttt{RAIN_ICEPT_FACT}\cdot\text{LAI},1.0 \right)\cdot P $$
 
 Interception loss [mm/day] is limited by the `MAX_CAPACITY` parameter defined by:
 
@@ -111,9 +111,9 @@ $$
 
 and
 
-$$ C_\text{int} = \texttt{MAX\_CAPACITY} \cdot \frac{\text{LAI}}{\text{LAI}_\text{max}} $$
+$$ C_\text{int} = \texttt{MAX_CAPACITY} \cdot \frac{\text{LAI}}{\text{LAI}_\text{max}} $$
 
-Interception storage is flushed daily (`CANEVP_ALL`--assumed evaporated) and throughfall is thus $R=P- \left(\texttt{FOREST\_COVERAGE}\cdot E_\text{int} \right)$,  [mm/day].
+Interception storage is flushed daily (`CANEVP_ALL`--assumed evaporated) and throughfall is thus $R=P- \left(\texttt{FOREST_COVERAGE}\cdot E_\text{int} \right)$,  [mm/day].
 
 
 
@@ -148,7 +148,7 @@ In Raven the HBV parameter:
 
 Infiltration (`INF_HBV`) into the **Topsoil** layer follows Bergström (1992):
 
-$$ f = R\cdot(1-\texttt{IMPERMEABLE\_FRAC})\cdot\left[1-\left(\frac{S_\text{sm}}{\text{FC}}\right)^\beta\right] $$
+$$ f = R\cdot(1-\texttt{IMPERMEABLE_FRAC})\cdot\left[1-\left(\frac{S_\text{sm}}{\text{FC}}\right)^\beta\right] $$
 
 and thus surface runoff $q=R-f$ is routed to the Fast Reservoir. $\beta$ is a tuning parameter (`HBV_BETA`). 
 
@@ -159,7 +159,7 @@ and thus surface runoff $q=R-f$ is routed to the Fast Reservoir. $\beta$ is a tu
 
 Lastly, `CRISE_HBV` is used to route water from the fast reservoir back to the topsoil layer using:
 
-$$ M_\text{cr} = \texttt{MAX\_CAP\_RISE\_RATE}\cdot \left(1-\frac{S_\text{sm}}{\text{FC}}\right). $$
+$$ M_\text{cr} = \texttt{MAX_CAP_RISE_RATE}\cdot \left(1-\frac{S_\text{sm}}{\text{FC}}\right). $$
 
 
 
@@ -173,7 +173,7 @@ Within urbanized areas, **recharge** is used to represent losses from leaky stor
 
 <!-- $$ g = \frac{1}{20}S_\text{fast} $$ -->
 
-$$ g = \texttt{PERC\_COEFF}\cdot S_\text{fast} $$
+$$ g = \texttt{PERC_COEFF}\cdot S_\text{fast} $$
 
 - $g$ is recharge to the groundwater system [mm/day]
 - $S_\text{fast}$ is the fast storage reservoir
@@ -201,7 +201,7 @@ $$ q_\text{fast} = kS^n_\text{fast} $$
 
 Within non-urbanized areas, **recharge** is assumed constant and proportional to the saturated hydraulic conductivity of the soil under an assumed unit hydraulic gradient:
 
-$$ g = \texttt{MAX\_PERC\_RATE\_MULT}\cdot \texttt{MAX\_PERC\_RATE} $$
+$$ g = \texttt{MAX_PERC_RATE_MULT}\cdot \texttt{MAX_PERC_RATE} $$
 
 - $g$ is recharge to the groundwater system [mm/day]
 - `MAX_PERC_RATE_MULT` is the global scaling factor, and
