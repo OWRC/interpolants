@@ -290,6 +290,10 @@ The second form consists of two sloping sides and a single flat central bottom a
 
 > WARNING: The model currently remains largely un-calibrated.
 
+## Outputs
+
+<iframe src="https://owrc.shinyapps.io/sHyWaterbalance/" width="100%" height="600" scrolling="no" allowfullscreen></iframe>
+
 ## Comparison to an Integrated Water Budget
 
 While a standard in the hydrological community, models such as Raven are designed to neglect the role of groundwater influence on runoff generation. In most cases this can be a fair simplification, especially during the onsets of extreme rainfall events, which is likely the most prominent use case of such models. The problem is that in many areas (of southern Ontario), [water tables are close to (or even above) ground surface](/watertable/). What this means is that recharge cannot occur in these areas yet standard hydrological models fail to account for this. In practice, areas where seepage is known to occur, such as wetlands (fens), modellers are forced to "effectively" treat wetlands as an impervious surface. Computationally, wetlands are thus no different than a parking lot.
